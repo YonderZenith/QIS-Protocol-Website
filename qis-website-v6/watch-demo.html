@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QIS Protocol • Watch Intelligence Scale</title>
+  
+  <!-- Google Fonts - Matching QIS Website -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==================== CSS VARIABLES - QIS BRAND ==================== */
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --cyan-dark: #008BA3;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --dark-bg: #0A0A0A;
+      --dark-card: #1a1a1a;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+    }
+
+    /* ==================== GLOBAL RESETS ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background gradient overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 190, 234, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ==================== TYPOGRAPHY ==================== */
+    h1, h2, h3, h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    /* ==================== MAIN CONTAINER ==================== */
+    .demo-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 30px;
+    }
+
+    /* ==================== HEADER ==================== */
+    .demo-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .demo-header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 60px rgba(0, 217, 255, 0.4);
+      margin-bottom: 15px;
+    }
+
+    .demo-header .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--green-neural);
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+    }
+
+    /* ==================== DOMAIN TABS ==================== */
+    .domain-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .domain-tab {
+      padding: 12px 24px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: rgba(0, 190, 234, 0.1);
+      border: 2px solid rgba(0, 190, 234, 0.3);
+      color: var(--text-secondary);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .domain-tab:hover {
+      background: rgba(0, 190, 234, 0.2);
+      border-color: var(--cyan-bright);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    .domain-tab.active {
+      background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-bright));
+      border-color: var(--cyan-bright);
+      color: #000;
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+    }
+
+    /* ==================== MAIN GRID ==================== */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 968px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==================== CARDS ==================== */
+    .demo-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(0, 190, 234, 0.3);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .demo-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+      animation: shimmer 4s infinite;
+    }
+
+    @keyframes shimmer {
+      to { left: 200%; }
+    }
+
+    .demo-card:hover {
+      border-color: var(--cyan-bright);
+      box-shadow: 0 0 40px rgba(0, 190, 234, 0.3);
+    }
+
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cyan-bright);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title::before {
+      content: '◆';
+      color: var(--purple-quantum);
+      font-size: 0.8rem;
+    }
+
+    /* ==================== NETWORK VISUALIZER ==================== */
+    #networkCanvas {
+      width: 100%;
+      height: 350px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .node-counter {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .counter-main {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: var(--text-primary);
+    }
+
+    .counter-nodes {
+      color: var(--cyan-bright);
+      text-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
+    }
+
+    .counter-arrow {
+      color: var(--purple-quantum);
+      margin: 0 15px;
+    }
+
+    .counter-synthesis {
+      color: var(--green-neural);
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
+    }
+
+    .counter-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 5px;
+    }
+
+    /* ==================== SLIDER ==================== */
+    .slider-container {
+      margin-top: 25px;
+    }
+
+    .slider-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .slider-btn {
+      padding: 10px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: transparent;
+      border: 2px solid rgba(0, 190, 234, 0.4);
+      color: var(--text-primary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slider-btn:hover {
+      background: rgba(0, 190, 234, 0.2);
+      border-color: var(--cyan-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    }
+
+    .slider-btn.active {
+      background: var(--cyan-bright);
+      border-color: var(--cyan-bright);
+      color: #000;
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      background: rgba(0, 190, 234, 0.2);
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, var(--cyan-bright), var(--cyan-primary));
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
+      transition: transform 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, var(--cyan-bright), var(--cyan-primary));
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
+    }
+
+    /* ==================== COMPARISON TABLE ==================== */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .comparison-table th {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 15px 10px;
+      border-bottom: 2px solid rgba(0, 190, 234, 0.3);
+      color: var(--text-secondary);
+    }
+
+    .comparison-table th:nth-child(2) {
+      color: var(--cyan-bright);
+    }
+
+    .comparison-table th:nth-child(3) {
+      color: var(--green-neural);
+    }
+
+    .comparison-table td {
+      padding: 12px 10px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .comparison-table tr:hover td {
+      background: rgba(0, 190, 234, 0.05);
+    }
+
+    .comparison-table tr.highlight td {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .comparison-table .nodes-col {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .comparison-table .linear-col {
+      color: var(--cyan-bright);
+    }
+
+    .comparison-table .quadratic-col {
+      color: var(--green-neural);
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    }
+
+    .gap-indicator {
+      font-size: 0.75rem;
+      color: var(--purple-quantum);
+      opacity: 0.8;
+    }
+
+    /* ==================== EFFICIENCY COUNTER ==================== */
+    .efficiency-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(0, 190, 234, 0.1));
+      border: 2px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .efficiency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .efficiency-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+
+    .efficiency-item {
+      padding: 20px 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .efficiency-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .efficiency-value.cyan { color: var(--cyan-bright); text-shadow: 0 0 15px rgba(0, 217, 255, 0.6); }
+    .efficiency-value.green { color: var(--green-neural); text-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
+    .efficiency-value.purple { color: var(--purple-quantum); text-shadow: 0 0 15px rgba(139, 92, 246, 0.6); }
+
+    .efficiency-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .efficiency-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      margin-top: 3px;
+    }
+
+    /* ==================== SCENARIO BOX ==================== */
+    .scenario-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(0, 190, 234, 0.08));
+      border: 2px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .scenario-content {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: var(--text-primary);
+    }
+
+    .scenario-highlight {
+      color: var(--green-neural);
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    }
+
+    .scenario-emphasis {
+      color: var(--cyan-bright);
+      font-weight: 600;
+    }
+
+    .scenario-number {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--purple-quantum);
+      font-weight: 700;
+    }
+
+    /* ==================== RUN IT YOURSELF BUTTON ==================== */
+    .verify-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .verify-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 45px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      background: transparent;
+      border: 3px solid var(--purple-quantum);
+      color: var(--text-primary);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .verify-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .verify-btn:hover::before {
+      left: 100%;
+    }
+
+    .verify-btn:hover {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: var(--purple-quantum);
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+    }
+
+    .verify-icon {
+      font-size: 1.3rem;
+    }
+
+    /* ==================== FOOTER ==================== */
+    .demo-footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .demo-footer p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .demo-footer a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .demo-footer a:hover {
+      text-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
+    }
+
+    .tagline {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--purple-quantum);
+      letter-spacing: 2px;
+      margin-top: 15px;
+    }
+
+    /* ==================== ANIMATIONS ==================== */
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes nodeExplosion {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5));
+    }
+
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan-bright);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="demo-container" style="padding-top: 80px;">
+    <!-- Header -->
+    <header class="demo-header">
+      <h1>WATCH INTELLIGENCE SCALE</h1>
+      <p class="subtitle">I(N) = Θ(N²) &nbsp;•&nbsp; C = O(log N)</p>
+    </header>
+
+    <!-- Domain Tabs -->
+    <div class="domain-tabs">
+      <button class="domain-tab active" data-domain="healthcare">🏥 Healthcare</button>
+      <button class="domain-tab" data-domain="agriculture">🌾 Agriculture</button>
+      <button class="domain-tab" data-domain="finance">💰 Finance</button>
+      <button class="domain-tab" data-domain="iot">📡 IoT</button>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="demo-grid">
+      <!-- Left: Network Visualizer -->
+      <div class="demo-card">
+        <div class="card-title">Network Visualizer</div>
+        <canvas id="networkCanvas"></canvas>
+        <div class="node-counter">
+          <div class="counter-main">
+            <span class="counter-nodes" id="nodeCount">3</span>
+            <span class="counter-arrow">→</span>
+            <span class="counter-synthesis" id="synthesisCount">3</span>
+          </div>
+          <div class="counter-label">
+            <span id="nodeLabel">agents</span> → <span id="synthesisLabel">synthesis opportunities</span>
+          </div>
+        </div>
+        <div class="slider-container">
+          <div class="slider-buttons">
+            <button class="slider-btn active" data-nodes="10">10</button>
+            <button class="slider-btn" data-nodes="100">100</button>
+            <button class="slider-btn" data-nodes="500">500</button>
+            <button class="slider-btn" data-nodes="1000">1K</button>
+            <button class="slider-btn" data-nodes="10000">10K</button>
+          </div>
+          <input type="range" id="nodeSlider" min="3" max="10000" value="10" step="1">
+        </div>
+      </div>
+
+      <!-- Right: Comparison Chart -->
+      <div class="demo-card">
+        <div class="card-title">Linear vs Quadratic</div>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Nodes</th>
+              <th>Linear (N)</th>
+              <th>Quadratic N(N-1)/2</th>
+            </tr>
+          </thead>
+          <tbody id="comparisonBody">
+            <!-- Filled by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Communication Efficiency -->
+    <div class="demo-card efficiency-card">
+      <div class="card-title">Communication Efficiency</div>
+      <div class="efficiency-grid">
+        <div class="efficiency-item">
+          <div class="efficiency-value cyan" id="effNodes">10</div>
+          <div class="efficiency-label">Network Size</div>
+          <div class="efficiency-note">agents</div>
+        </div>
+        <div class="efficiency-item">
+          <div class="efficiency-value green" id="effSynthesis">45</div>
+          <div class="efficiency-label">Synthesis Opportunities</div>
+          <div class="efficiency-note">O(N²)</div>
+        </div>
+        <div class="efficiency-item">
+          <div class="efficiency-value purple" id="effMessages">~3</div>
+          <div class="efficiency-label">Messages per Agent</div>
+          <div class="efficiency-note">O(log N)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scenario -->
+    <div class="demo-card scenario-card">
+      <div class="card-title" id="scenarioTitle">Healthcare Scenario</div>
+      <div class="scenario-content" id="scenarioContent">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <!-- Verify Section -->
+    <div class="verify-section">
+      <a href="index.html?skip=true#hero" class="verify-btn" style="text-decoration: none; margin-bottom: 15px;">
+        <span class="verify-icon">←</span>
+        Go Back
+      </a>
+      <a href="https://github.com/YonderZenith/QIS-protocol" target="_blank" class="verify-btn" style="text-decoration: none;">
+        <span class="verify-icon">⚡</span>
+        Run the Simulation Yourself
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="demo-footer">
+      <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+      <p><a href="https://github.com/YonderZenith/QIS-protocol" target="_blank">View on GitHub</a> • <a href="https://yonderzenith.com" target="_blank">Yonder Zenith LLC</a></p>
+      <p class="tagline">The Math is Public • 39 Patents Pending</p>
+    </footer>
+  </div>
+
+  <script>
+    // ==================== CONFIGURATION ====================
+    const domains = {
+      healthcare: {
+        icon: '🏥',
+        nodeLabel: 'patients',
+        synthesisLabel: 'pattern matches',
+        title: 'Healthcare Scenario',
+        scenarios: {
+          10: `<span class="scenario-number">10</span> <span class="scenario-emphasis">cancer patients</span> sharing treatment patterns. <span class="scenario-highlight">45 possible pattern matches</span>. Your oncologist sees maybe <span class="scenario-number">5</span> similar cases per year.`,
+          100: `<span class="scenario-number">100</span> <span class="scenario-emphasis">cancer patients</span>. <span class="scenario-highlight">4,950 pattern synthesis opportunities</span>. Rare side effects that would take years to discover? Found in <span class="scenario-number">weeks</span>.`,
+          500: `<span class="scenario-number">500</span> <span class="scenario-emphasis">patients</span>. <span class="scenario-highlight">124,750 synthesis opportunities</span>. Treatment patterns that work for your specific genetic markers? <span class="scenario-number">Matched instantly</span>.`,
+          1000: `<span class="scenario-number">1,000</span> <span class="scenario-emphasis">cancer patients</span>. <span class="scenario-highlight">499,500 pattern synthesis opportunities</span>. The network now knows more than any single oncologist could learn in <span class="scenario-number">100 lifetimes</span>.`,
+          10000: `<span class="scenario-number">100,000</span> <span class="scenario-emphasis">patients</span>. <span class="scenario-highlight">4.99 BILLION synthesis opportunities</span>. A rare side effect affecting <span class="scenario-number">0.01%</span> of patients? The network finds it in <span class="scenario-number">hours</span>, not years.`
+        }
+      },
+      agriculture: {
+        icon: '🌾',
+        nodeLabel: 'farms',
+        synthesisLabel: 'pattern matches',
+        title: 'Agriculture Scenario',
+        scenarios: {
+          10: `<span class="scenario-number">10</span> <span class="scenario-emphasis">smart farms</span> sharing soil data. <span class="scenario-highlight">45 pattern matches</span>. Your agronomist visits maybe <span class="scenario-number">3</span> similar farms per year.`,
+          100: `<span class="scenario-number">100</span> <span class="scenario-emphasis">farms</span>. <span class="scenario-highlight">4,950 synthesis opportunities</span>. Farm A's soil profile matches <span class="scenario-number">203 farms</span> where Cover Crop Y increased yield by <span class="scenario-number">23%</span>.`,
+          500: `<span class="scenario-number">500</span> <span class="scenario-emphasis">smart tractors</span>. <span class="scenario-highlight">124,750 pattern matches</span>. Pest outbreak prediction? <span class="scenario-number">2 weeks earlier</span> than traditional methods.`,
+          1000: `<span class="scenario-number">1,000</span> <span class="scenario-emphasis">farms</span>. <span class="scenario-highlight">499,500 synthesis opportunities</span>. Weather + soil + crop data combined across regions—yield optimization at <span class="scenario-number">population scale</span>.`,
+          10000: `<span class="scenario-number">10,000</span> <span class="scenario-emphasis">farms globally</span>. <span class="scenario-highlight">49.9M+ synthesis opportunities</span>. Climate-adaptive crop recommendations synthesized from <span class="scenario-number">millions</span> of data points in real-time.`
+        }
+      },
+      finance: {
+        icon: '💰',
+        nodeLabel: 'portfolios',
+        synthesisLabel: 'pattern correlations',
+        title: 'Finance Scenario',
+        scenarios: {
+          10: `<span class="scenario-number">10</span> <span class="scenario-emphasis">trading desks</span> sharing risk patterns. <span class="scenario-highlight">45 correlation opportunities</span>. Your risk analyst monitors maybe <span class="scenario-number">5</span> comparable portfolios.`,
+          100: `<span class="scenario-number">100</span> <span class="scenario-emphasis">portfolios</span>. <span class="scenario-highlight">4,950 pattern correlations</span>. Fraud signatures that span multiple institutions? <span class="scenario-number">Detected instantly</span>.`,
+          500: `<span class="scenario-number">500</span> <span class="scenario-emphasis">financial nodes</span>. <span class="scenario-highlight">124,750 synthesis opportunities</span>. Market anomalies visible across the network <span class="scenario-number">before</span> they hit mainstream.`,
+          1000: `<span class="scenario-number">1,000</span> <span class="scenario-emphasis">trading systems</span>. <span class="scenario-highlight">499,500 correlations</span>. Systemic risk patterns that regulators miss? The network <span class="scenario-number">sees everything</span>.`,
+          10000: `<span class="scenario-number">10,000</span> <span class="scenario-emphasis">financial agents</span>. <span class="scenario-highlight">49.9M+ correlations</span>. Global market intelligence synthesized in real-time. <span class="scenario-number">Flash crash prevention</span> at scale.`
+        }
+      },
+      iot: {
+        icon: '📡',
+        nodeLabel: 'sensors',
+        synthesisLabel: 'pattern correlations',
+        title: 'IoT Scenario',
+        scenarios: {
+          10: `<span class="scenario-number">10</span> <span class="scenario-emphasis">sensors</span> in a smart factory. <span class="scenario-highlight">45 pattern correlations</span>. Traditional monitoring catches <span class="scenario-number">maybe 60%</span> of anomalies.`,
+          100: `<span class="scenario-number">100</span> <span class="scenario-emphasis">IoT sensors</span>. <span class="scenario-highlight">4,950 synthesis opportunities</span>. Machine failure prediction accuracy jumps to <span class="scenario-number">94%</span>.`,
+          500: `<span class="scenario-number">500</span> <span class="scenario-emphasis">connected devices</span>. <span class="scenario-highlight">124,750 correlations</span>. Energy optimization across the factory floor—<span class="scenario-number">23% reduction</span> in power costs.`,
+          1000: `<span class="scenario-number">1,000</span> <span class="scenario-emphasis">sensors</span>. <span class="scenario-highlight">499,500 pattern matches</span>. Predictive maintenance catches failures <span class="scenario-number">weeks before</span> they happen.`,
+          10000: `<span class="scenario-number">10,000</span> <span class="scenario-emphasis">IoT devices</span> across a smart city. <span class="scenario-highlight">49.9M+ correlations</span>. Traffic, energy, water, emergency response—<span class="scenario-number">all synchronized</span>.`
+        }
+      }
+    };
+
+    let currentDomain = 'healthcare';
+    let currentNodes = 10;
+
+    // ==================== NETWORK CANVAS ====================
+    class NetworkVisualizer {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.particles = [];
+        this.connections = [];
+        this.targetNodes = 10;
+        this.animationProgress = 1;
+        
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        this.init();
+        this.animate();
+      }
+
+      resize() {
+        const rect = this.canvas.getBoundingClientRect();
+        this.canvas.width = rect.width * window.devicePixelRatio;
+        this.canvas.height = rect.height * window.devicePixelRatio;
+        this.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        this.width = rect.width;
+        this.height = rect.height;
+      }
+
+      init() {
+        this.particles = [];
+        const count = Math.min(this.targetNodes, 100);
+        const centerX = this.width / 2;
+        const centerY = this.height / 2;
+        const maxRadius = Math.min(this.width, this.height) * 0.4;
+
+        for (let i = 0; i < count; i++) {
+          const angle = (Math.PI * 2 * i) / count + Math.random() * 0.3;
+          const radius = maxRadius * (0.3 + Math.random() * 0.7);
+          
+          this.particles.push({
+            x: centerX + Math.cos(angle) * radius,
+            y: centerY + Math.sin(angle) * radius,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            radius: 3 + Math.random() * 2,
+            opacity: 0.8,
+            hue: 180 + Math.random() * 30,
+            scale: 0,
+            targetScale: 1,
+            delay: i * 10
+          });
+        }
+      }
+
+      setNodes(count, animate = true) {
+        this.targetNodes = count;
+        if (animate) {
+          this.animationProgress = 0;
+          this.init();
+        } else {
+          this.init();
+          this.particles.forEach(p => p.scale = 1);
+        }
+      }
+
+      update() {
+        const time = Date.now();
+
+        this.particles.forEach((particle, i) => {
+          // Animate scale on creation
+          if (particle.scale < particle.targetScale) {
+            const elapsed = time - (this.animationProgress * 1000 + particle.delay);
+            if (elapsed > 0) {
+              particle.scale = Math.min(particle.targetScale, elapsed / 200);
+            }
+          }
+
+          // Gentle movement
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+
+          // Bounce off edges
+          if (particle.x < 20 || particle.x > this.width - 20) particle.vx *= -1;
+          if (particle.y < 20 || particle.y > this.height - 20) particle.vy *= -1;
+
+          // Keep in bounds
+          particle.x = Math.max(20, Math.min(this.width - 20, particle.x));
+          particle.y = Math.max(20, Math.min(this.height - 20, particle.y));
+        });
+
+        // Update connections
+        this.connections = [];
+        const maxDistance = 100;
+        const maxConnections = 200;
+
+        for (let i = 0; i < this.particles.length && this.connections.length < maxConnections; i++) {
+          for (let j = i + 1; j < this.particles.length && this.connections.length < maxConnections; j++) {
+            const dx = this.particles[i].x - this.particles[j].x;
+            const dy = this.particles[i].y - this.particles[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < maxDistance) {
+              this.connections.push({
+                p1: this.particles[i],
+                p2: this.particles[j],
+                opacity: (1 - distance / maxDistance) * 0.5 * Math.min(this.particles[i].scale, this.particles[j].scale)
+              });
+            }
+          }
+        }
+
+        this.animationProgress = Math.min(1, this.animationProgress + 0.016);
+      }
+
+      draw() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+
+        // Draw connections
+        this.connections.forEach(conn => {
+          this.ctx.strokeStyle = `rgba(0, 190, 234, ${conn.opacity})`;
+          this.ctx.lineWidth = 1;
+          this.ctx.beginPath();
+          this.ctx.moveTo(conn.p1.x, conn.p1.y);
+          this.ctx.lineTo(conn.p2.x, conn.p2.y);
+          this.ctx.stroke();
+        });
+
+        // Draw particles
+        this.particles.forEach(particle => {
+          if (particle.scale <= 0) return;
+
+          const actualRadius = particle.radius * particle.scale;
+
+          // Glow
+          const gradient = this.ctx.createRadialGradient(
+            particle.x, particle.y, 0,
+            particle.x, particle.y, actualRadius * 4
+          );
+          gradient.addColorStop(0, `hsla(${particle.hue}, 100%, 60%, ${particle.opacity * particle.scale})`);
+          gradient.addColorStop(1, `hsla(${particle.hue}, 100%, 60%, 0)`);
+
+          this.ctx.beginPath();
+          this.ctx.arc(particle.x, particle.y, actualRadius * 4, 0, Math.PI * 2);
+          this.ctx.fillStyle = gradient;
+          this.ctx.fill();
+
+          // Core
+          this.ctx.beginPath();
+          this.ctx.arc(particle.x, particle.y, actualRadius, 0, Math.PI * 2);
+          this.ctx.fillStyle = `hsla(${particle.hue}, 100%, 70%, ${particle.opacity * particle.scale})`;
+          this.ctx.fill();
+        });
+
+        // Node count overlay for large numbers
+        if (this.targetNodes > 100) {
+          this.ctx.fillStyle = 'rgba(0, 217, 255, 0.15)';
+          this.ctx.font = `bold ${Math.min(120, this.width / 4)}px Orbitron`;
+          this.ctx.textAlign = 'center';
+          this.ctx.textBaseline = 'middle';
+          this.ctx.fillText(formatNumber(this.targetNodes), this.width / 2, this.height / 2);
+        }
+      }
+
+      animate() {
+        this.update();
+        this.draw();
+        requestAnimationFrame(() => this.animate());
+      }
+    }
+
+    // ==================== UTILITY FUNCTIONS ====================
+    function calculateSynthesis(n) {
+      return Math.floor(n * (n - 1) / 2);
+    }
+
+    function calculateLogHops(n) {
+      return Math.max(1, Math.ceil(Math.log2(n)));
+    }
+
+    function formatNumber(n) {
+      if (n >= 1000000000) return (n / 1000000000).toFixed(2) + 'B';
+      if (n >= 1000000) return (n / 1000000).toFixed(2) + 'M';
+      if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+      return n.toLocaleString();
+    }
+
+    function animateValue(element, start, end, duration = 500) {
+      const startTime = Date.now();
+      const isString = typeof element.textContent === 'string' && element.textContent.includes('~');
+      
+      function update() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (end - start) * easeOut);
+        
+        if (isString) {
+          element.textContent = '~' + current;
+        } else {
+          element.textContent = formatNumber(current);
+        }
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      
+      update();
+    }
+
+    // ==================== UPDATE FUNCTIONS ====================
+    function updateDisplay(nodes, animate = true) {
+      currentNodes = nodes;
+      const synthesis = calculateSynthesis(nodes);
+      const hops = calculateLogHops(nodes);
+      const domain = domains[currentDomain];
+
+      // Update network
+      network.setNodes(nodes, animate);
+
+      // Update counters
+      const nodeEl = document.getElementById('nodeCount');
+      const synthEl = document.getElementById('synthesisCount');
+      
+      if (animate) {
+        animateValue(nodeEl, parseInt(nodeEl.textContent.replace(/[^\d]/g, '') || 0), nodes);
+        animateValue(synthEl, parseInt(synthEl.textContent.replace(/[^\d]/g, '') || 0), synthesis);
+      } else {
+        nodeEl.textContent = formatNumber(nodes);
+        synthEl.textContent = formatNumber(synthesis);
+      }
+
+      // Update labels
+      document.getElementById('nodeLabel').textContent = domain.nodeLabel;
+      document.getElementById('synthesisLabel').textContent = domain.synthesisLabel;
+
+      // Update efficiency
+      document.getElementById('effNodes').textContent = formatNumber(nodes);
+      document.getElementById('effSynthesis').textContent = formatNumber(synthesis);
+      document.getElementById('effMessages').textContent = '~' + hops;
+
+      // Update comparison table
+      updateComparisonTable(nodes);
+
+      // Update scenario
+      updateScenario(nodes);
+
+      // Update slider
+      document.getElementById('nodeSlider').value = nodes;
+
+      // Update active button
+      document.querySelectorAll('.slider-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.nodes) === nodes);
+      });
+    }
+
+    function updateComparisonTable(currentValue) {
+      const tbody = document.getElementById('comparisonBody');
+      const values = [10, 100, 1000, 10000];
+      
+      tbody.innerHTML = values.map(n => {
+        const synthesis = calculateSynthesis(n);
+        const gap = synthesis / n;
+        const isHighlight = n <= currentValue;
+        
+        return `
+          <tr class="${isHighlight ? 'highlight' : ''}">
+            <td class="nodes-col">${formatNumber(n)}</td>
+            <td class="linear-col">${formatNumber(n)}</td>
+            <td class="quadratic-col">
+              ${formatNumber(synthesis)}
+              <div class="gap-indicator">${gap.toFixed(0)}x linear</div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function updateScenario(nodes) {
+      const domain = domains[currentDomain];
+      document.getElementById('scenarioTitle').textContent = domain.title;
+      
+      // Find closest scenario
+      const thresholds = [10, 100, 500, 1000, 10000];
+      let scenario = domain.scenarios[10];
+      
+      for (const threshold of thresholds) {
+        if (nodes >= threshold) {
+          scenario = domain.scenarios[threshold];
+        }
+      }
+      
+      document.getElementById('scenarioContent').innerHTML = scenario;
+    }
+
+    function switchDomain(domain) {
+      currentDomain = domain;
+      const domainData = domains[domain];
+      
+      // Update tabs
+      document.querySelectorAll('.domain-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.domain === domain);
+      });
+      
+      // Refresh display
+      updateDisplay(currentNodes, false);
+    }
+
+    // ==================== INITIALIZATION ====================
+    let network;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize network visualizer
+      const canvas = document.getElementById('networkCanvas');
+      network = new NetworkVisualizer(canvas);
+      
+      // Initialize display
+      updateDisplay(10, false);
+      
+      // Slider buttons
+      document.querySelectorAll('.slider-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const nodes = parseInt(this.dataset.nodes);
+          updateDisplay(nodes, true);
+        });
+      });
+      
+      // Range slider
+      const slider = document.getElementById('nodeSlider');
+      let sliderTimeout;
+      slider.addEventListener('input', function() {
+        clearTimeout(sliderTimeout);
+        const nodes = parseInt(this.value);
+        
+        // Update numbers immediately
+        document.getElementById('nodeCount').textContent = formatNumber(nodes);
+        document.getElementById('synthesisCount').textContent = formatNumber(calculateSynthesis(nodes));
+        
+        // Debounce network update
+        sliderTimeout = setTimeout(() => {
+          updateDisplay(nodes, false);
+        }, 100);
+      });
+      
+      // Domain tabs
+      document.querySelectorAll('.domain-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+          switchDomain(this.dataset.domain);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
