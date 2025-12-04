@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QIS Protocol Emergency Response - Distributed crisis intelligence. 120,000-300,000 lives saved annually. 20-70% faster dispatch routing.">
+  <title>Emergency Response • QIS Protocol</title>
+  
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --orange-warning: #F59E0B;
+      --orange-emergency: #EA580C;
+      --red-alert: #EF4444;
+      --red-fire: #DC2626;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(234, 88, 12, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(239, 68, 68, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { width: 40px; height: 40px; filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5)); }
+    .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--cyan-bright); }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    /* Hero */
+    .hero {
+      padding: 160px 40px 80px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(234, 88, 12, 0.15);
+      border: 1px solid rgba(234, 88, 12, 0.4);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: var(--orange-emergency);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: pulse-badge 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-badge {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4); }
+      50% { box-shadow: 0 0 20px 5px rgba(234, 88, 12, 0.2); }
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--orange-emergency) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero .subtitle .highlight {
+      color: var(--orange-emergency);
+      font-weight: 600;
+    }
+
+    /* Content */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: var(--cyan-bright);
+      margin-bottom: 15px;
+    }
+
+    .section-header p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Problem Section */
+    .problem-section {
+      margin: 80px 0;
+    }
+
+    .failure-modes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .failure-card {
+      background: rgba(239, 68, 68, 0.08);
+      border: 2px solid rgba(239, 68, 68, 0.3);
+      border-radius: 20px;
+      padding: 35px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .failure-card:hover {
+      border-color: rgba(239, 68, 68, 0.6);
+      transform: translateY(-5px);
+    }
+
+    .failure-card .number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--red-alert);
+      opacity: 0.3;
+      margin-bottom: 10px;
+    }
+
+    .failure-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--red-alert);
+      margin-bottom: 15px;
+    }
+
+    .failure-card p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Disparity Grid */
+    .disparity-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .disparity-card {
+      background: rgba(0,0,0,0.5);
+      border: 2px solid rgba(234, 88, 12, 0.3);
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .disparity-card .icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .disparity-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--orange-emergency);
+      margin-bottom: 10px;
+    }
+
+    .disparity-card p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    /* Core Insight Box */
+    .core-insight {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(234, 88, 12, 0.1));
+      border: 2px solid rgba(239, 68, 68, 0.4);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .core-insight p {
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      line-height: 1.8;
+    }
+
+    .core-insight .emphasis {
+      color: var(--red-alert);
+    }
+
+    /* Impact Stats */
+    .impact-section {
+      margin: 100px 0;
+    }
+
+    .big-number-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .big-number-card {
+      background: rgba(0,0,0,0.5);
+      border: 2px solid rgba(234, 88, 12, 0.4);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .big-number-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--orange-emergency);
+      box-shadow: 0 10px 50px rgba(234, 88, 12, 0.3);
+    }
+
+    .big-number-card .number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--orange-emergency);
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    .big-number-card .label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Improvements Breakdown */
+    .improvements-breakdown {
+      background: rgba(0,0,0,0.5);
+      border: 2px solid rgba(0, 190, 234, 0.3);
+      border-radius: 24px;
+      padding: 50px;
+      margin: 50px 0;
+    }
+
+    .improvements-breakdown h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--cyan-bright);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .improvements-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .improvement-item {
+      text-align: center;
+      padding: 25px 15px;
+      background: rgba(234, 88, 12, 0.08);
+      border-radius: 16px;
+      border: 1px solid rgba(234, 88, 12, 0.2);
+    }
+
+    .improvement-item .metric {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .improvement-item .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .improvement-item .value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--orange-emergency);
+    }
+
+    .improvement-item .context {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    /* Solution Section */
+    .solution-section {
+      margin: 100px 0;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .solution-card {
+      background: rgba(0,0,0,0.5);
+      border: 2px solid rgba(0, 190, 234, 0.3);
+      border-radius: 20px;
+      padding: 35px;
+      transition: all 0.4s ease;
+    }
+
+    .solution-card:hover {
+      border-color: var(--cyan-bright);
+      box-shadow: 0 0 40px rgba(0, 190, 234, 0.2);
+    }
+
+    .solution-card .icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .solution-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      color: var(--cyan-bright);
+      margin-bottom: 15px;
+    }
+
+    .solution-card p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .solution-card .highlight {
+      color: var(--orange-emergency);
+      font-weight: 600;
+    }
+
+    /* Detection Speed */
+    .detection-section {
+      background: rgba(0,0,0,0.6);
+      border: 2px solid rgba(16, 185, 129, 0.4);
+      border-radius: 24px;
+      padding: 50px;
+      margin: 80px 0;
+    }
+
+    .detection-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--green-neural);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .detection-section > p {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      max-width: 900px;
+      margin: 0 auto 30px;
+      text-align: center;
+      line-height: 1.9;
+    }
+
+    .detection-examples {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .detection-example {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .detection-example .icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .detection-example .content {
+      flex: 1;
+    }
+
+    .detection-example .signal {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+
+    .detection-example .result {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--green-neural);
+    }
+
+    .detection-comparison {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .detection-card {
+      background: rgba(0,0,0,0.4);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .detection-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .detection-card.urban h4 { color: var(--cyan-bright); }
+    .detection-card.rural h4 { color: var(--orange-emergency); }
+
+    .detection-card .time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--green-neural);
+    }
+
+    .detection-card .note {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    /* Data Sources */
+    .data-sources {
+      background: rgba(0,0,0,0.5);
+      border: 2px solid rgba(245, 158, 11, 0.4);
+      border-radius: 24px;
+      padding: 50px;
+      margin: 80px 0;
+    }
+
+    .data-sources h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--orange-warning);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .data-sources > p {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      max-width: 800px;
+      margin: 0 auto 30px;
+      text-align: center;
+      line-height: 1.9;
+    }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+    .source-item {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 12px;
+      padding: 20px 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .source-item:hover {
+      border-color: var(--orange-warning);
+      transform: translateY(-3px);
+    }
+
+    .source-item .icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .source-item .name {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Case Study */
+    .case-study {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(234, 88, 12, 0.1));
+      border: 2px solid var(--red-fire);
+      border-radius: 24px;
+      padding: 50px;
+      margin: 80px 0;
+    }
+
+    .case-study-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .case-study-header .tag {
+      display: inline-block;
+      background: rgba(220, 38, 38, 0.2);
+      border: 1px solid rgba(220, 38, 38, 0.4);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--red-fire);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .case-study-header h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--text-primary);
+    }
+
+    .case-timeline {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .timeline-before, .timeline-after {
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .timeline-before {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .timeline-after {
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .timeline-before h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: var(--red-alert);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timeline-after h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: var(--green-neural);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timeline-before ul, .timeline-after ul {
+      list-style: none;
+    }
+
+    .timeline-before li, .timeline-after li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .timeline-before li::before {
+      content: '✗';
+      position: absolute;
+      left: 0;
+      color: var(--red-alert);
+    }
+
+    .timeline-after li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green-neural);
+    }
+
+    .timeline-after li .time-saved {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--green-neural);
+      font-weight: 600;
+    }
+
+    .case-outcome {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .outcome-stat {
+      text-align: center;
+    }
+
+    .outcome-stat .value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .outcome-stat .value.green { color: var(--green-neural); }
+    .outcome-stat .value.orange { color: var(--orange-emergency); }
+    .outcome-stat .value.cyan { color: var(--cyan-bright); }
+
+    .outcome-stat .label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Multi-Agency Section */
+    .multiagency {
+      margin: 80px 0;
+    }
+
+    .agency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .agency-item {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .agency-item:hover {
+      border-color: var(--purple-quantum);
+      background: rgba(139, 92, 246, 0.08);
+    }
+
+    .agency-item .icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .agency-item h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: var(--purple-quantum);
+      margin-bottom: 10px;
+    }
+
+    .agency-item p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .agency-insight {
+      background: rgba(139, 92, 246, 0.1);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .agency-insight p {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+    }
+
+    .agency-insight .highlight {
+      color: var(--purple-quantum);
+      font-weight: 600;
+    }
+
+    /* Who Benefits */
+    .beneficiaries {
+      margin: 80px 0;
+    }
+
+    .beneficiaries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .beneficiary-item {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(0, 190, 234, 0.2);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .beneficiary-item:hover {
+      border-color: var(--cyan-bright);
+      background: rgba(0, 190, 234, 0.05);
+    }
+
+    .beneficiary-item .icon {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .beneficiary-item p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .beneficiary-item .stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--orange-emergency);
+      margin-top: 8px;
+    }
+
+    /* Implementation Pathway */
+    .implementation {
+      background: rgba(0,0,0,0.5);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 24px;
+      padding: 50px;
+      margin: 80px 0;
+    }
+
+    .implementation h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--purple-quantum);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .phase-card {
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .phase-card .phase-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--purple-quantum);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .phase-card h4 {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .phase-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .phase-card .detail {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--cyan-bright);
+    }
+
+    .phase-card .cities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .phase-card .city {
+      background: rgba(234, 88, 12, 0.15);
+      border: 1px solid rgba(234, 88, 12, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--orange-emergency);
+    }
+
+    .regulatory-note {
+      margin-top: 40px;
+      padding: 25px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .regulatory-note p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .regulatory-note strong {
+      color: var(--purple-quantum);
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 60px 40px 100px;
+    }
+
+    .btn {
+      padding: 18px 45px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 2px solid var(--cyan-bright);
+      background: transparent;
+      color: var(--text-primary);
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      margin: 10px;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: var(--cyan-bright);
+      color: #000;
+      box-shadow: 0 0 40px rgba(0, 217, 255, 0.6);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--orange-emergency), #f97316);
+      border-color: var(--orange-emergency);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      box-shadow: 0 0 40px rgba(234, 88, 12, 0.6);
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      padding: 50px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    footer p { color: var(--text-secondary); margin-bottom: 10px; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .big-number-grid { grid-template-columns: 1fr; }
+      .improvements-grid { grid-template-columns: repeat(2, 1fr); }
+      .solution-grid { grid-template-columns: 1fr; }
+      .phase-grid { grid-template-columns: 1fr; }
+      .sources-grid { grid-template-columns: repeat(3, 1fr); }
+      .failure-modes { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 968px) {
+      .disparity-grid { grid-template-columns: 1fr; }
+      .case-timeline { grid-template-columns: 1fr; }
+      .case-outcome { grid-template-columns: repeat(2, 1fr); }
+      .agency-grid { grid-template-columns: 1fr; }
+      .beneficiaries-grid { grid-template-columns: repeat(2, 1fr); }
+      .detection-examples { grid-template-columns: 1fr; }
+      .detection-comparison { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .improvements-grid { grid-template-columns: 1fr; }
+      .beneficiaries-grid { grid-template-columns: 1fr; }
+      .sources-grid { grid-template-columns: repeat(2, 1fr); }
+      .case-outcome { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">🚨 Emergency Response & Disaster Management</div>
+    <h1>Seconds Save Lives</h1>
+    <p class="subtitle">
+      We're running 2025 emergencies with 1995 coordination logic. Climate disasters have quadrupled since the 1970s.
+      <span class="highlight">QIS gives every responder instant collective situational awareness—without central coordination.</span>
+    </p>
+  </section>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- ==================== SECTION 1: THE PROBLEM ==================== -->
+    <section class="problem-section">
+      <div class="section-header">
+        <h2>What's Broken Today</h2>
+        <p>Millions suffer not because we lack resources, but because we lack real-time distributed intelligence to put resources where they're needed.</p>
+      </div>
+
+      <div class="failure-modes">
+        <div class="failure-card">
+          <div class="number">01</div>
+          <h3>Fragmented Data</h3>
+          <p>Police, fire, EMS, hospitals, volunteers, drones, traffic systems—none share actionable situational vectors. Everyone operates in silos.</p>
+        </div>
+
+        <div class="failure-card">
+          <div class="number">02</div>
+          <h3>Slow Detection</h3>
+          <p>Crises detected only after 911 surges, social media fills with reports, or someone physically sees it. Critical minutes to hours lost.</p>
+        </div>
+
+        <div class="failure-card">
+          <div class="number">03</div>
+          <h3>Poor Allocation</h3>
+          <p>Even when responders know what's happening, they don't know blocked routes, trapped victims, idle equipment, or scarce medical resources.</p>
+        </div>
+      </div>
+
+      <div class="disparity-grid">
+        <div class="disparity-card">
+          <div class="icon">🏥</div>
+          <div>
+            <h4>Hospitals Don't Know Ambulance Load</h4>
+            <p>Ambulances don't know which ERs are overwhelmed. Fire units don't know where hydrants are failing. NGOs don't know which shelters are full.</p>
+          </div>
+        </div>
+
+        <div class="disparity-card">
+          <div class="icon">📡</div>
+          <div>
+            <h4>Drones Don't Know Ground Status</h4>
+            <p>Aerial search doesn't know where ground crews already searched. Volunteers don't know where professionals have already cleared.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="core-insight">
+        <p>Response is determined by <span class="emphasis">who has information, not who needs it</span>. Poor, rural, elderly, disabled, and minority communities die at disproportionately high rates because insight arrives too late.</p>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: THE IMPACT ==================== -->
+    <section class="impact-section">
+      <div class="section-header">
+        <h2>The Humanitarian Impact</h2>
+        <p>Conservative projections. These outcomes are due entirely to faster detection and better coordination.</p>
+      </div>
+
+      <div class="big-number-grid">
+        <div class="big-number-card">
+          <div class="number">120–300K</div>
+          <div class="label">Lives saved per year globally through faster response</div>
+        </div>
+        <div class="big-number-card">
+          <div class="number">30–60M</div>
+          <div class="label">People with improved outcomes annually</div>
+        </div>
+        <div class="big-number-card">
+          <div class="number">15–40%</div>
+          <div class="label">Mortality reduction depending on disaster type</div>
+        </div>
+      </div>
+
+      <div class="improvements-breakdown">
+        <h3>Response Time Improvements</h3>
+        <div class="improvements-grid">
+          <div class="improvement-item">
+            <div class="icon">🚒</div>
+            <div class="metric">Dispatch Routing</div>
+            <div class="value">20–70%</div>
+            <div class="context">faster</div>
+          </div>
+          <div class="improvement-item">
+            <div class="icon">🏥</div>
+            <div class="metric">Triage Throughput</div>
+            <div class="value">30–90 min</div>
+            <div class="context">faster</div>
+          </div>
+          <div class="improvement-item">
+            <div class="icon">🎯</div>
+            <div class="metric">On-Scene Confusion</div>
+            <div class="value">15–40%</div>
+            <div class="context">reduction</div>
+          </div>
+          <div class="improvement-item">
+            <div class="icon">🆘</div>
+            <div class="metric">Stranded Victims</div>
+            <div class="value">60–90%</div>
+            <div class="context">reduction</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: EARLY DETECTION ==================== -->
+    <section class="detection-section">
+      <h3>⚡ Detecting Crises Before Traditional Systems Notice</h3>
+      <p>
+        QIS detects early signals across millions of distributed devices by matching anomaly vectors to historical crisis signatures. 
+        This is the biggest breakthrough—<strong>pattern matching at population scale</strong>.
+      </p>
+
+      <div class="detection-examples">
+        <div class="detection-example">
+          <div class="icon">🌡️</div>
+          <div class="content">
+            <div class="signal">Cluster of phones detect rising heat stress</div>
+            <div class="result">→ Heatstroke zone flagged automatically</div>
+          </div>
+        </div>
+        <div class="detection-example">
+          <div class="icon">🚗</div>
+          <div class="content">
+            <div class="signal">Traffic slows in unusual pattern</div>
+            <div class="result">→ Early accident detection triggered</div>
+          </div>
+        </div>
+        <div class="detection-example">
+          <div class="icon">🔥</div>
+          <div class="content">
+            <div class="signal">Smoke particulate signatures match wildfire onset</div>
+            <div class="result">→ Fire crews alerted 20+ min earlier</div>
+          </div>
+        </div>
+        <div class="detection-example">
+          <div class="icon">⚡</div>
+          <div class="content">
+            <div class="signal">Smart meters show unusual voltage drops</div>
+            <div class="result">→ Grid failure predicted 1–3 hours ahead</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detection-comparison">
+        <div class="detection-card urban">
+          <h4>Urban Disasters</h4>
+          <div class="time">5–30 min</div>
+          <div class="note">faster detection than traditional systems</div>
+        </div>
+        <div class="detection-card rural">
+          <h4>Rural / Infrastructure</h4>
+          <div class="time">1–3 hours</div>
+          <div class="note">faster detection for remote areas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: THE SOLUTION ==================== -->
+    <section class="solution-section">
+      <div class="section-header">
+        <h2>How QIS Transforms Emergency Response</h2>
+        <p>Every device becomes part of the emergency network. No privacy violations. No central surveillance. Just patterns.</p>
+      </div>
+
+      <div class="solution-grid">
+        <div class="solution-card">
+          <div class="icon">👁️</div>
+          <h3>Millions of Eyes Without Surveillance</h3>
+          <p>Phones, traffic cameras, drones, weather stations, smart home sensors, 911 logs, EMS tablets—all send <span class="highlight">curated vectors, not raw data</span>. Privacy preserved.</p>
+        </div>
+
+        <div class="solution-card">
+          <div class="icon">🔄</div>
+          <h3>Quadratic Collective Awareness</h3>
+          <p>Traditional systems scale linearly. QIS scales quadratically. 10,000 devices = <span class="highlight">49.9 million match combinations</span>. Every responder sees what every relevant responder has seen—automatically.</p>
+        </div>
+
+        <div class="solution-card">
+          <div class="icon">🎯</div>
+          <h3>Real-Time Resource Optimization</h3>
+          <p>By matching incident vectors to millions of historical situations, QIS predicts <span class="highlight">best dispatch, routing, evacuation, shelter allocation, and emerging triage bottlenecks</span>.</p>
+        </div>
+
+        <div class="solution-card">
+          <div class="icon">🤝</div>
+          <h3>Multi-Agency Without Data Sharing</h3>
+          <p>Police don't share data with fire. Fire doesn't share with hospitals. NGOs don't share with government. <span class="highlight">They share patterns—not data.</span> This solves 30 years of interoperability failures.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: DATA SOURCES ==================== -->
+    <section class="data-sources">
+      <h3>📡 Every Device Becomes Part of the Emergency Network</h3>
+      <p>
+        QIS transforms existing infrastructure into a distributed crisis intelligence network. 
+        Each device sends curated vectors—no raw data, no surveillance, no privacy violations.
+      </p>
+
+      <div class="sources-grid">
+        <div class="source-item">
+          <div class="icon">📱</div>
+          <div class="name">Phones</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">📹</div>
+          <div class="name">Traffic Cameras</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">🛸</div>
+          <div class="name">Drones</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">🌤️</div>
+          <div class="name">Weather Stations</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">🏠</div>
+          <div class="name">Smart Home</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">📞</div>
+          <div class="name">911 Logs</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">🚑</div>
+          <div class="name">EMS Tablets</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">🚗</div>
+          <div class="name">Vehicle Telematics</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">💨</div>
+          <div class="name">Air Quality</div>
+        </div>
+        <div class="source-item">
+          <div class="icon">⚡</div>
+          <div class="name">Power Grid</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: CASE STUDY ==================== -->
+    <section class="case-study">
+      <div class="case-study-header">
+        <div class="tag">🔥 Real-World Scenario</div>
+        <h3>Early-Stage Wildfire Detection in California</h3>
+      </div>
+
+      <div class="case-timeline">
+        <div class="timeline-before">
+          <h4>❌ Before QIS</h4>
+          <ul>
+            <li>Fires detected once visible from roads or satellites</li>
+            <li>Response delayed by confirmation requirements</li>
+            <li>Evacuations chaotic, routes unknown</li>
+            <li>Fatality spikes occur during wind shifts</li>
+            <li>Resources misdirected due to lack of intel</li>
+          </ul>
+        </div>
+
+        <div class="timeline-after">
+          <h4>✓ With QIS</h4>
+          <ul>
+            <li>Smart meters detect unusual line voltages</li>
+            <li>Wildlife cameras show elevated infrared signatures</li>
+            <li>12 phones detect "burning smell" VOC signatures</li>
+            <li>Traffic slows irregularly in area</li>
+            <li>DHT matches to <span class="time-saved">243 similar pre-fire signatures</span></li>
+            <li>Fire crews dispatched <span class="time-saved">22 minutes earlier</span></li>
+            <li>Evacuation routes optimized dynamically</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-outcome">
+        <div class="outcome-stat">
+          <div class="value green">40–70%</div>
+          <div class="label">Fatality reduction</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="value orange">22 min</div>
+          <div class="label">Earlier dispatch</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="value cyan">243</div>
+          <div class="label">Historical patterns matched</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="value green">Thousands</div>
+          <div class="label">Evacuated safely</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 7: MULTI-AGENCY ==================== -->
+    <section class="multiagency">
+      <div class="section-header">
+        <h2>Multi-Agency Cooperation—Finally</h2>
+        <p>QIS creates neutral ground that solves 30 years of interoperability failures.</p>
+      </div>
+
+      <div class="agency-grid">
+        <div class="agency-item">
+          <div class="icon">🚔</div>
+          <h4>Police</h4>
+          <p>Share situational patterns without revealing investigation data</p>
+        </div>
+        <div class="agency-item">
+          <div class="icon">🚒</div>
+          <h4>Fire</h4>
+          <p>Share resource status without exposing internal logistics</p>
+        </div>
+        <div class="agency-item">
+          <div class="icon">🏥</div>
+          <h4>Hospitals</h4>
+          <p>Share capacity patterns without HIPAA violations</p>
+        </div>
+        <div class="agency-item">
+          <div class="icon">🚑</div>
+          <h4>EMS</h4>
+          <p>Share load patterns without PHI exposure</p>
+        </div>
+        <div class="agency-item">
+          <div class="icon">🤝</div>
+          <h4>NGOs</h4>
+          <p>Share shelter status without donor data</p>
+        </div>
+        <div class="agency-item">
+          <div class="icon">👥</div>
+          <h4>Volunteers</h4>
+          <p>Coordinate without giving up privacy</p>
+        </div>
+      </div>
+
+      <div class="agency-insight">
+        <p>They share <span class="highlight">patterns—not data</span>. This is the neutral ground that finally enables true interoperability.</p>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 8: WHO BENEFITS ==================== -->
+    <section class="beneficiaries">
+      <div class="section-header">
+        <h2>Who Benefits Most</h2>
+        <p>Populations that die at disproportionately high rates because insight arrives too late.</p>
+      </div>
+
+      <div class="beneficiaries-grid">
+        <div class="beneficiary-item">
+          <div class="icon">🏘️</div>
+          <p>Rural & remote communities</p>
+          <div class="stat">1–3 hours faster detection</div>
+        </div>
+        <div class="beneficiary-item">
+          <div class="icon">👴</div>
+          <p>Elderly populations</p>
+          <div class="stat">Heatwave early warning</div>
+        </div>
+        <div class="beneficiary-item">
+          <div class="icon">♿</div>
+          <p>Disabled individuals</p>
+          <div class="stat">Prioritized evacuation routing</div>
+        </div>
+        <div class="beneficiary-item">
+          <div class="icon">💵</div>
+          <p>Low-income communities</p>
+          <div class="stat">Equal access to intel</div>
+        </div>
+        <div class="beneficiary-item">
+          <div class="icon">🏝️</div>
+          <p>Pacific Island nations</p>
+          <div class="stat">Highest climate risk regions</div>
+        </div>
+        <div class="beneficiary-item">
+          <div class="icon">🌊</div>
+          <p>Flood-prone regions</p>
+          <div class="stat">Dynamic evacuation routes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 9: IMPLEMENTATION ==================== -->
+    <section class="implementation">
+      <h3>Implementation Pathway</h3>
+      
+      <div class="phase-grid">
+        <div class="phase-card">
+          <div class="phase-num">Phase 1 — Pilot</div>
+          <h4>3 Diverse-Risk Cities</h4>
+          <p>Phones, traffic systems, selected drones, smart meters</p>
+          <p>Focus: early anomaly detection, faster routing, multi-agency pattern sharing</p>
+          <div class="cities">
+            <span class="city">Phoenix (heat + wildfire)</span>
+            <span class="city">Miami (hurricanes)</span>
+            <span class="city">Nairobi (urban + floods)</span>
+          </div>
+          <div class="detail" style="margin-top: 15px;">6–9 months</div>
+        </div>
+        
+        <div class="phase-card">
+          <div class="phase-num">Phase 2 — National</div>
+          <h4>Single Country Deployment</h4>
+          <p>Partner with national emergency agency</p>
+          <p>Police, fire, hospitals, grid operators, telecom carriers</p>
+          <div class="detail">12–18 months</div>
+        </div>
+        
+        <div class="phase-card">
+          <div class="phase-num">Phase 3 — Global</div>
+          <h4>NGO Deployment</h4>
+          <p>Red Cross, MSF, UN OCHA, UNICEF</p>
+          <p>Pacific Island nations priority</p>
+          <div class="detail">3–5 years</div>
+        </div>
+      </div>
+
+      <div class="regulatory-note">
+        <p><strong>Cost of deployment:</strong> ~$0.01–$0.05 per device per year. No new infrastructure needed. ROI (humanitarian): unmatched.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <a href="how-it-works.html" class="btn primary">Learn How It Works</a>
+    <a href="healthcare.html" class="btn">Healthcare Deep Dive</a>
+    <a href="agriculture.html" class="btn">Agriculture Deep Dive</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html">Home</a> • <a href="https://github.com/YonderZenith/QIS-protocol">GitHub</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 15px; opacity: 0.5; font-size: 0.9rem;">39 Patents Pending • Math is Public</p>
+  </footer>
+</body>
+</html>
