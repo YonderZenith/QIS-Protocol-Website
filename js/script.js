@@ -461,10 +461,10 @@ function copyToClipboard() {
 
 // Share functions
 function share(platform) {
-  const text = "Just discovered QIS Protocol – Quadratic Intelligence Swarm with Θ(N²) scaling and O(log N) communication. This changes everything. https://qisprotocol.com";
-  const url = "https://qisprotocol.com";
+  const text = "Just discovered QIS Protocol – Quadratic Intelligence Swarm with Θ(N²) scaling and O(log N) communication. This changes everything. https://yonderzenith.com";
+  const url = "https://yonderzenith.com";
   const subject = "QIS Protocol - Quadratic Intelligence Scaling";
-  const body = "I just discovered the QIS Protocol - a revolutionary breakthrough in distributed intelligence that scales quadratically (N²) while keeping communication logarithmic (log N). This is the TCP/IP moment for distributed AI. Check it out: https://qisprotocol.com";
+  const body = "I just discovered the QIS Protocol - a revolutionary breakthrough in distributed intelligence that scales quadratically (N²) while keeping communication logarithmic (log N). This is the TCP/IP moment for distributed AI. Check it out: https://yonderzenith.com";
 
   if (platform === 'x') {
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
