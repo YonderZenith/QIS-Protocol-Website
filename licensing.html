@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QIS Protocol Licensing - Free for research and humanitarian use. Commercial licenses available. 39 Patents Pending.">
+  <title>Licensing • QIS Protocol</title>
+  
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --orange-warning: #F59E0B;
+      --red-alert: #EF4444;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.6);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { width: 40px; height: 40px; filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5)); }
+    .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--cyan-bright); }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    /* Container */
+    .license-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 40px 80px;
+    }
+
+    /* Header */
+    .license-header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid rgba(0, 190, 234, 0.3);
+    }
+
+    .license-badge {
+      display: inline-block;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--purple-quantum);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .license-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    .license-header .version {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .license-header .meta {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    .license-header .meta strong {
+      color: var(--cyan-bright);
+    }
+
+    /* Quick Summary */
+    .quick-summary {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 190, 234, 0.1));
+      border: 2px solid rgba(16, 185, 129, 0.4);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 50px;
+    }
+
+    .quick-summary h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--green-neural);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .summary-card {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .summary-card .tier {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--purple-quantum);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .summary-card .price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .summary-card .price.free { color: var(--green-neural); }
+    .summary-card .price.paid { color: var(--orange-warning); }
+
+    .summary-card .desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    /* Notice Box */
+    .notice-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 2px solid rgba(245, 158, 11, 0.4);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .notice-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--orange-warning);
+      margin-bottom: 15px;
+    }
+
+    .notice-box p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .notice-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Section Styling */
+    .section {
+      margin-bottom: 50px;
+    }
+
+    .section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--cyan-bright);
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--purple-quantum);
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    .section h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      color: var(--green-neural);
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .section p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }
+
+    .section strong {
+      color: var(--text-primary);
+    }
+
+    /* Lists */
+    .section ul, .section ol {
+      margin: 15px 0 20px 25px;
+      color: var(--text-secondary);
+    }
+
+    .section li {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .section li strong {
+      color: var(--cyan-bright);
+    }
+
+    /* Permitted/Restricted Lists */
+    .permitted-list, .restricted-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .permitted-list li, .restricted-list li {
+      padding-left: 30px;
+      position: relative;
+    }
+
+    .permitted-list li::before {
+      content: '✅';
+      position: absolute;
+      left: 0;
+    }
+
+    .restricted-list li::before {
+      content: '🔒';
+      position: absolute;
+      left: 0;
+    }
+
+    .examples-yes li::before { content: '✅'; }
+    .examples-no li::before { content: '❌'; }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 25px 0;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 190, 234, 0.3);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background: rgba(0, 190, 234, 0.15);
+      color: var(--cyan-bright);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 15px 12px;
+      text-align: left;
+      border-bottom: 2px solid rgba(0, 190, 234, 0.3);
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+    }
+
+    tr:hover td {
+      background: rgba(0, 190, 234, 0.05);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--purple-quantum);
+      padding: 20px 25px;
+      margin: 25px 0;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .callout p {
+      margin-bottom: 0;
+      font-size: 1.05rem;
+    }
+
+    .callout.warning {
+      background: rgba(239, 68, 68, 0.1);
+      border-left-color: var(--red-alert);
+    }
+
+    .callout.warning h4 {
+      color: var(--red-alert);
+      margin-top: 0;
+    }
+
+    .callout.info {
+      background: rgba(0, 190, 234, 0.1);
+      border-left-color: var(--cyan-bright);
+    }
+
+    .callout.success {
+      background: rgba(16, 185, 129, 0.1);
+      border-left-color: var(--green-neural);
+    }
+
+    /* Tier Cards */
+    .tier-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 20px;
+      padding: 35px;
+      margin: 30px 0;
+    }
+
+    .tier-card h3 {
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .tier-card .price-tag {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--green-neural);
+    }
+
+    .tier-card .price-tag.paid {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--orange-warning);
+    }
+
+    /* Legal Text */
+    .legal-text {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Contact Box */
+    .contact-box {
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));
+      border: 2px solid rgba(0, 190, 234, 0.4);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .contact-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--cyan-bright);
+      margin-bottom: 20px;
+    }
+
+    .contact-box p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .contact-box a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-box .email {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      color: var(--cyan-bright);
+      margin: 20px 0;
+    }
+
+    /* Download Section */
+    .download-section {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(139, 92, 246, 0.4);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .download-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--purple-quantum);
+      margin-bottom: 15px;
+    }
+
+    .download-section p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      padding: 18px 45px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 2px solid var(--purple-quantum);
+      background: linear-gradient(135deg, var(--purple-quantum), #a78bfa);
+      color: #fff;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* Version History */
+    .version-history {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .version-history h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    .version-history p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .license-footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .license-footer p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Site Footer */
+    footer {
+      background: #000;
+      padding: 50px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    footer p { color: var(--text-secondary); margin-bottom: 10px; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .license-container { padding: 100px 20px 60px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      table { font-size: 0.8rem; }
+      th, td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="license-container">
+
+    <!-- Header -->
+    <header class="license-header">
+      <div class="license-badge">📜 License Agreement</div>
+      <h1>QIS Protocol License v1.0</h1>
+      <p class="version">Effective Date: November 2025</p>
+      <p class="meta">
+        <strong>Licensor:</strong> Christopher Thomas Trevethan / Yonder Zenith LLC<br>
+        <strong>Contact:</strong> contactyz@pm.me
+      </p>
+    </header>
+
+    <!-- Quick Summary -->
+    <section class="quick-summary">
+      <h2>📋 License Tiers at a Glance</h2>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="tier">Tier 1</div>
+          <div class="price free">FREE</div>
+          <div class="desc">Research & Education</div>
+        </div>
+        <div class="summary-card">
+          <div class="tier">Tier 2</div>
+          <div class="price free">FREE</div>
+          <div class="desc">Humanitarian Use</div>
+        </div>
+        <div class="summary-card">
+          <div class="tier">Tier 3</div>
+          <div class="price paid">PAID</div>
+          <div class="desc">Commercial Use</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notice -->
+    <section class="notice-box">
+      <h3>⚠️ NOTICE</h3>
+      <p>
+        This license governs all use of the Quadratic Intelligence Swarm (QIS) Protocol, including the protocol specification, reference implementation code, simulation software, documentation, and all related materials in this repository (collectively, the "Protocol").
+      </p>
+      <p>
+        <strong>This is NOT an open-source license.</strong> Reading and citing the Protocol specification is permitted without registration. All other uses—including running code, implementing the Protocol, contributing, or deploying in any environment—require a license obtained through the application process described herein.
+      </p>
+    </section>
+
+    <!-- Part 1: IP Coverage -->
+    <section class="section">
+      <h2>Part 1: Intellectual Property Coverage</h2>
+
+      <h3>1.1 Scope of Rights</h3>
+      <p>This license covers:</p>
+      <ul>
+        <li><strong>Copyright</strong> in all code, documentation, specifications, and materials in this repository</li>
+        <li><strong>Patent Rights</strong> under US Provisional Patent Applications including 63/827,815 and 38 additional filings (39 total) covering distributed pattern synthesis methods, architectures, and algorithms</li>
+        <li><strong>Trade Secrets</strong> related to undisclosed implementation details</li>
+        <li><strong>Trademark Rights</strong> in "QIS Protocol," "Quadratic Intelligence Swarm," and related marks</li>
+      </ul>
+
+      <h3>1.2 Patent Notice</h3>
+      <div class="callout warning">
+        <h4>⚠️ CRITICAL: Patent-Protected Technology</h4>
+        <p>
+          The distributed pattern synthesis methods described in this Protocol are covered by pending US patent applications. Under US patent law, independent invention is NOT a defense to patent infringement. Any implementation of the patented methods—whether developed independently, derived from these specifications, or otherwise—may constitute infringement.
+        </p>
+        <p style="margin-top: 15px;">
+          Your access to these public specifications constitutes constructive notice of the patent applications. Commercial implementation without a license may be deemed willful infringement, subjecting you to enhanced damages up to 3x actual damages under 35 U.S.C. § 284.
+        </p>
+      </div>
+
+      <h3>1.3 Prior Art Publications</h3>
+      <p>
+        Portions of this Protocol have been published on IP.com's Prior Art Database as defensive publications. These publications create prior art that prevents others from patenting the disclosed technology but do not grant any rights to implement the Protocol commercially.
+      </p>
+    </section>
+
+    <!-- Part 2: Permitted Uses -->
+    <section class="section">
+      <h2>Part 2: Permitted Uses Without Registration</h2>
+      <p>The following activities are permitted without obtaining a license:</p>
+      <ul class="permitted-list">
+        <li>Reading the Protocol specification and documentation</li>
+        <li>Citing this work in academic publications, articles, or presentations</li>
+        <li>Discussing the Protocol's concepts, architecture, and theoretical foundations</li>
+        <li>Reviewing the source code for educational understanding</li>
+        <li>Linking to this repository in bibliographies and reference lists</li>
+      </ul>
+      <div class="callout info">
+        <p><strong>Important:</strong> These permissions do not extend to running code, implementing the Protocol, or any commercial activity.</p>
+      </div>
+    </section>
+
+    <!-- Part 3: Uses Requiring License -->
+    <section class="section">
+      <h2>Part 3: Uses Requiring a License</h2>
+      <p>All of the following activities require obtaining a license through the application process:</p>
+      <ul class="restricted-list">
+        <li>Running the simulation code or any implementation</li>
+        <li>Deploying any system based on the Protocol (commercial, non-commercial, or experimental)</li>
+        <li>Implementing the Protocol methods in any form</li>
+        <li>Integrating Protocol concepts into products or services</li>
+        <li>Forking this repository for development purposes</li>
+        <li>Contributing code, documentation, or substantial content</li>
+        <li>Using in research that will result in publication</li>
+        <li>Building applications, tools, or services that incorporate the Protocol</li>
+        <li>ANY deployment in ANY domain (healthcare, agriculture, industrial, financial, etc.)</li>
+      </ul>
+    </section>
+
+    <!-- Part 4: License Tiers -->
+    <section class="section">
+      <h2>Part 4: License Tiers</h2>
+
+      <div class="tier-card">
+        <h3>4.1 TIER 1: Research & Education License <span class="price-tag">FREE</span></h3>
+        
+        <h4>Eligibility:</h4>
+        <ul>
+          <li>University researchers conducting non-commercial basic research</li>
+          <li>Graduate and undergraduate students in academic programs</li>
+          <li>Educators teaching courses that reference the Protocol</li>
+          <li>Independent researchers with no commercial affiliation</li>
+        </ul>
+
+        <h4>Permitted Uses:</h4>
+        <ul>
+          <li>Running simulations for academic research</li>
+          <li>Publishing research papers analyzing the Protocol</li>
+          <li>Classroom demonstrations and educational exercises</li>
+          <li>Thesis and dissertation work</li>
+        </ul>
+
+        <h4>Restrictions:</h4>
+        <ul>
+          <li>No commercial use or revenue generation</li>
+          <li>No integration into commercial products</li>
+          <li>No deployment in production environments</li>
+          <li>Must acknowledge patent protection in all publications</li>
+          <li>Must notify Licensor of any publications</li>
+        </ul>
+
+        <h4>Application Requirements:</h4>
+        <ul>
+          <li>Institutional affiliation (if applicable)</li>
+          <li>Research description and intended use</li>
+          <li>Confirmation of non-commercial purpose</li>
+          <li>Agreement to license terms</li>
+        </ul>
+
+        <p><strong>License Duration:</strong> 2 years, renewable upon application</p>
+      </div>
+
+      <div class="tier-card">
+        <h3>4.2 TIER 2: Humanitarian License <span class="price-tag">FREE</span></h3>
+
+        <h4>Eligibility:</h4>
+        <ul>
+          <li>Registered non-profit organizations (501(c)(3) or international equivalent)</li>
+          <li>Humanitarian health applications in underserved regions</li>
+          <li>Animal welfare and conservation organizations</li>
+          <li>Wildlife sanctuaries and rescue operations</li>
+          <li>Disaster response and emergency services</li>
+          <li>Educational institutions for deployed (not just teaching) use</li>
+        </ul>
+
+        <h4>Examples of Qualified Organizations:</h4>
+        <ul class="permitted-list">
+          <li>Rural clinic in Sub-Saharan Africa serving subsistence farmers</li>
+          <li>Non-profit mobile health unit in underserved communities</li>
+          <li>Doctors Without Borders field deployments</li>
+          <li>Wildlife conservation tracking networks</li>
+          <li>Animal rescue and sanctuary operations</li>
+          <li>Open-source humanitarian projects</li>
+        </ul>
+
+        <h4>Examples NOT Qualified (require Commercial License):</h4>
+        <ul class="restricted-list examples-no">
+          <li>For-profit hospitals, even if serving some charity patients</li>
+          <li>Commercial veterinary clinics</li>
+          <li>For-profit "social enterprises"</li>
+          <li>Organizations with commercial revenue streams</li>
+        </ul>
+
+        <h4>Permitted Uses:</h4>
+        <ul>
+          <li>Full deployment in humanitarian contexts</li>
+          <li>Integration into non-profit operational systems</li>
+          <li>Publication and sharing of results</li>
+        </ul>
+
+        <h4>Restrictions:</h4>
+        <ul>
+          <li>No revenue generation from Protocol use</li>
+          <li>Annual impact reporting required</li>
+          <li>License review every 2 years</li>
+        </ul>
+
+        <h4>Application Requirements:</h4>
+        <ul>
+          <li>Proof of non-profit status (501(c)(3) letter, registration documents)</li>
+          <li>Mission statement and description of intended use</li>
+          <li>Explanation of populations or animals served</li>
+          <li>Agreement to annual reporting</li>
+        </ul>
+
+        <p><strong>License Duration:</strong> 2 years, renewable with impact report</p>
+      </div>
+
+      <div class="tier-card">
+        <h3>4.3 TIER 3: Commercial License <span class="price-tag paid">PAID</span></h3>
+
+        <h4>Who Requires a Commercial License:</h4>
+        <p>ALL for-profit entities regardless of domain, including:</p>
+        <ul>
+          <li><strong>Healthcare:</strong> hospitals, pharmaceutical companies, medical device manufacturers, health insurance, telehealth providers, biotech companies</li>
+          <li><strong>Agriculture:</strong> farms, agribusiness, precision agriculture companies, livestock operations</li>
+          <li><strong>Technology:</strong> software companies, cloud providers, IoT manufacturers, AI/ML companies</li>
+          <li><strong>Industrial:</strong> manufacturing, logistics, energy, transportation, supply chain</li>
+          <li><strong>Financial:</strong> banks, investment firms, insurance companies, fintech</li>
+          <li>Any other commercial entity</li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Key Principle:</strong> Even if using the Protocol for beneficial purposes (sustainable agriculture, healthcare improvement), for-profit companies pay. Classification is based on organizational status, not mission.</p>
+        </div>
+
+        <h4>Licensing Terms:</h4>
+        <ul>
+          <li>RAND (Reasonable And Non-Discriminatory) terms</li>
+          <li>Tiered by company size and deployment scale</li>
+          <li>Options include: Annual licensing fees, Revenue share model, Per-deployment fees</li>
+          <li>Terms negotiated on case-by-case basis</li>
+        </ul>
+
+        <h4>Application Requirements:</h4>
+        <ul>
+          <li>Company information and registration</li>
+          <li>Description of intended use and deployment scope</li>
+          <li>Revenue/size information for tier assessment</li>
+          <li>Technical contact for implementation support</li>
+        </ul>
+
+        <p><strong>License Duration:</strong> Negotiated (typically 1-3 years with renewal options)</p>
+
+        <div class="callout success">
+          <p><strong>Revenue Allocation:</strong> Proceeds from commercial licensing fund continued R&D, free licensing program administration, grants for humanitarian applications, reference implementation maintenance, and global health equity initiatives.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Part 5: Application Process -->
+    <section class="section">
+      <h2>Part 5: Application Process</h2>
+
+      <h3>5.1 How to Apply</h3>
+      <p>All license applications submitted to: <strong>contactyz@pm.me</strong></p>
+      <p>Subject Line Format: <code>[LICENSE APPLICATION] [Tier] - [Organization Name]</code></p>
+
+      <h3>5.2 Required Information (All Applicants)</h3>
+      <ol>
+        <li>Applicant name and contact information</li>
+        <li>Organization name and type</li>
+        <li>Intended use description</li>
+        <li>Deployment scope (number of nodes, users, geographic reach)</li>
+        <li>Confirmation of agreement to license terms</li>
+      </ol>
+
+      <h3>5.3 Tier-Specific Requirements</h3>
+      <p><strong>Research/Education:</strong> Institutional affiliation letter or student ID, Faculty sponsor (for students), Research abstract</p>
+      <p><strong>Humanitarian:</strong> Non-profit registration documentation, Mission statement, Description of beneficiary populations</p>
+      <p><strong>Commercial:</strong> Company registration information, Revenue/employee count (for tier assessment), Technical deployment plan</p>
+
+      <h3>5.4 Processing Timeline</h3>
+      <ul>
+        <li><strong>Research/Education:</strong> 5 business days</li>
+        <li><strong>Humanitarian:</strong> 10 business days (verification required)</li>
+        <li><strong>Commercial:</strong> 15-30 business days (negotiation period)</li>
+      </ul>
+
+      <h3>5.5 License Grant</h3>
+      <p>Upon approval, Licensor will provide a signed License Agreement specifying: Scope of permitted use, Duration and renewal terms, Any specific conditions or restrictions, and Reporting requirements (if applicable).</p>
+    </section>
+
+    <!-- Part 6: Contribution Terms -->
+    <section class="section">
+      <h2>Part 6: Contribution Terms</h2>
+
+      <h3>6.1 Two-Track Contribution Model</h3>
+      <p>We welcome contributions under a two-track system designed to balance openness with the licensing requirements that fund humanitarian deployment.</p>
+
+      <h3>6.2 TRACK A: Lightweight Contributions (No CLA Required)</h3>
+      <p>The following contributions do NOT require signing a Contributor License Agreement:</p>
+      <ul class="permitted-list">
+        <li>Bug reports (GitHub Issues)</li>
+        <li>Feature requests and suggestions</li>
+        <li>Documentation typos and minor fixes (under 10 lines)</li>
+        <li>Discussion and feedback (GitHub Discussions)</li>
+        <li>Mathematical verification and validation reports</li>
+        <li>Testing results and simulation reports</li>
+      </ul>
+
+      <h3>6.3 TRACK B: Substantial Contributions (CLA Required)</h3>
+      <p>The following contributions REQUIRE signing a Contributor License Agreement:</p>
+      <ul class="restricted-list">
+        <li>Code contributions (new features, bug fixes, optimizations)</li>
+        <li>Significant documentation (new guides, technical writing over 10 lines)</li>
+        <li>Simulation improvements and new scenarios</li>
+        <li>Domain-specific implementations</li>
+        <li>Algorithm improvements or extensions</li>
+      </ul>
+
+      <h3>6.4 Contributor License Agreement Terms</h3>
+      <p>By signing the CLA and submitting a contribution, you agree:</p>
+      
+      <h4>Grant of Rights:</h4>
+      <ol>
+        <li>You grant Yonder Zenith LLC a perpetual, worldwide, non-exclusive, royalty-free license to use, reproduce, modify, display, perform, sublicense, and distribute your contribution.</li>
+        <li>You grant Yonder Zenith LLC the right to license your contribution under commercial terms to third parties, with proceeds supporting humanitarian deployment.</li>
+        <li>You grant Yonder Zenith LLC a patent license for any patent claims you control that are necessarily infringed by your contribution.</li>
+      </ol>
+
+      <h4>What You Retain:</h4>
+      <ul>
+        <li>You RETAIN ownership of your contribution</li>
+        <li>You MAY use your contribution in your own projects</li>
+        <li>You WILL be credited in CONTRIBUTORS.md and release notes</li>
+      </ul>
+
+      <div class="callout success">
+        <p><strong>Why This Structure:</strong> Your contribution helps fund free deployment to underserved communities. Commercial licensing revenue enables humanitarian applications that would otherwise be impossible. Your code literally helps end suffering at scale.</p>
+      </div>
+
+      <h3>6.5 CLA Signature Process</h3>
+      <ol>
+        <li>Request CLA form: contactyz@pm.me with subject [CLA REQUEST]</li>
+        <li>Complete and sign the CLA (electronic signature accepted)</li>
+        <li>Reference your signed CLA in pull request description</li>
+        <li>CLA remains valid for all future contributions</li>
+      </ol>
+    </section>
+
+    <!-- Part 7: Conditions and Restrictions -->
+    <section class="section">
+      <h2>Part 7: License Conditions and Restrictions</h2>
+
+      <h3>7.1 General Conditions</h3>
+      <p>All licensees agree to:</p>
+      <ol>
+        <li><strong>Attribution:</strong> Include appropriate attribution in any publications, products, or services using the Protocol</li>
+        <li><strong>Patent Notice:</strong> Maintain patent pending notices in any distributed implementations</li>
+        <li><strong>No Trademark Use:</strong> Not use Yonder Zenith LLC trademarks without separate written permission</li>
+        <li><strong>Compliance:</strong> Comply with all applicable laws and regulations</li>
+        <li><strong>No Harmful Use:</strong> Not use the Protocol for applications that harm humans or animals</li>
+      </ol>
+
+      <h3>7.2 Prohibited Uses</h3>
+      <p>The Protocol may NOT be used for:</p>
+      <ul>
+        <li>Weapons systems or military applications designed to harm</li>
+        <li>Surveillance systems violating human rights</li>
+        <li>Applications facilitating discrimination or oppression</li>
+        <li>Circumventing safety systems or security measures</li>
+        <li>Any use violating applicable law</li>
+      </ul>
+
+      <h3>7.3 No Sublicensing</h3>
+      <p>Licensees may NOT sublicense, transfer, or assign their license rights to third parties without prior written consent from Licensor.</p>
+
+      <h3>7.4 Audit Rights</h3>
+      <p>For commercial licensees, Licensor reserves the right to audit compliance with license terms upon reasonable notice.</p>
+    </section>
+
+    <!-- Part 8: Defensive Termination -->
+    <section class="section">
+      <h2>Part 8: Defensive Termination</h2>
+
+      <h3>8.1 Automatic Termination</h3>
+      <p>Your license automatically terminates if you:</p>
+      <ol>
+        <li><strong>File Patent Claims:</strong> Initiate patent infringement litigation against Yonder Zenith LLC or any other QIS Protocol licensee based on claims related to the Protocol</li>
+        <li><strong>Breach Terms:</strong> Materially breach any term of this license and fail to cure within 30 days of written notice</li>
+        <li><strong>Misrepresent Status:</strong> Obtain a free license through misrepresentation of organizational status or intended use</li>
+        <li><strong>Exceed Scope:</strong> Use the Protocol beyond the scope of your granted license</li>
+      </ol>
+
+      <h3>8.2 Effect of Termination</h3>
+      <p>Upon termination:</p>
+      <ul>
+        <li>All rights granted under the license immediately cease</li>
+        <li>You must discontinue all use of the Protocol</li>
+        <li>You must destroy or return all copies of Protocol materials</li>
+        <li>Termination does not affect Licensor's right to seek damages for breach</li>
+      </ul>
+
+      <h3>8.3 Survival</h3>
+      <p>Sections 1 (IP Coverage), 7.2 (Prohibited Uses), 8 (Defensive Termination), 9 (Disclaimers), and 10 (Limitation of Liability) survive termination.</p>
+    </section>
+
+    <!-- Part 9: Disclaimers -->
+    <section class="section">
+      <h2>Part 9: Disclaimers</h2>
+
+      <h3>9.1 No Warranty</h3>
+      <div class="legal-text">
+        THE PROTOCOL IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+      </div>
+
+      <h3>9.2 No Medical/Safety Warranty</h3>
+      <div class="legal-text">
+        THE PROTOCOL IS NOT CERTIFIED FOR MEDICAL, SAFETY-CRITICAL, OR LIFE-SUSTAINING APPLICATIONS. LICENSEES DEPLOYING IN SUCH CONTEXTS ASSUME ALL RESPONSIBILITY FOR OBTAINING APPROPRIATE CERTIFICATIONS AND ENSURING SAFETY.
+      </div>
+
+      <h3>9.3 Research Status</h3>
+      <p>The Protocol represents ongoing research. Licensees acknowledge that:</p>
+      <ul>
+        <li>The technology is under active development</li>
+        <li>Performance may vary across applications</li>
+        <li>Updates may change Protocol behavior</li>
+        <li>Validation in specific domains is the licensee's responsibility</li>
+      </ul>
+    </section>
+
+    <!-- Part 10: Limitation of Liability -->
+    <section class="section">
+      <h2>Part 10: Limitation of Liability</h2>
+
+      <h3>10.1 Limitation</h3>
+      <div class="legal-text">
+        IN NO EVENT SHALL LICENSOR BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES, LOSS OF USE, DATA, OR PROFITS, OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THE PROTOCOL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+      </div>
+
+      <h3>10.2 Cap on Liability</h3>
+      <div class="legal-text">
+        LICENSOR'S TOTAL LIABILITY FOR ALL CLAIMS ARISING FROM OR RELATED TO THIS LICENSE SHALL NOT EXCEED THE AMOUNTS PAID BY LICENSEE TO LICENSOR IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR ONE HUNDRED DOLLARS ($100) FOR FREE LICENSES.
+      </div>
+    </section>
+
+    <!-- Part 11: General Provisions -->
+    <section class="section">
+      <h2>Part 11: General Provisions</h2>
+
+      <h3>11.1 Governing Law</h3>
+      <p>This license is governed by the laws of the State of Delaware, United States, without regard to conflict of law principles.</p>
+
+      <h3>11.2 Dispute Resolution</h3>
+      <p>Any disputes arising under this license shall be resolved through binding arbitration under the rules of the American Arbitration Association, with arbitration taking place in Delaware or remotely at Licensor's option.</p>
+
+      <h3>11.3 Severability</h3>
+      <p>If any provision of this license is held unenforceable, the remaining provisions shall continue in full force and effect.</p>
+
+      <h3>11.4 Entire Agreement</h3>
+      <p>This license constitutes the entire agreement between the parties concerning the Protocol and supersedes all prior agreements and understandings.</p>
+
+      <h3>11.5 Amendments</h3>
+      <p>Licensor may update this license from time to time. Continued use after notification of changes constitutes acceptance. Material changes will be communicated to active licensees.</p>
+
+      <h3>11.6 No Waiver</h3>
+      <p>Failure to enforce any provision of this license does not constitute waiver of that provision or any other provision.</p>
+    </section>
+
+    <!-- Part 12: Contact -->
+    <section class="section">
+      <h2>Part 12: Contact Information</h2>
+
+      <div class="contact-box">
+        <h3>License Applications & Questions</h3>
+        <p><strong>Christopher Thomas Trevethan</strong></p>
+        <p class="email">contactyz@pm.me</p>
+        <p>Twitter/X: <a href="https://twitter.com/chris_trevethan">@chris_trevethan</a></p>
+        <p style="margin-top: 20px;"><strong>Patent Information:</strong></p>
+        <p>US Provisional Patent 63/827,815 (June 2025)<br>38 additional provisional filings across healthcare, agriculture, industrial IoT, and other domains</p>
+        <p style="margin-top: 15px;"><strong>Yonder Zenith LLC</strong><br>Delaware, United States</p>
+      </div>
+    </section>
+
+    <!-- Summary Table -->
+    <section class="section">
+      <h2>Summary Table</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>User Type</th>
+              <th>License Required?</th>
+              <th>Cost</th>
+              <th>Application Process</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Reader/Researcher (no code execution)</td>
+              <td>No</td>
+              <td>FREE</td>
+              <td>None required</td>
+            </tr>
+            <tr>
+              <td>Academic researcher</td>
+              <td>Yes</td>
+              <td>FREE</td>
+              <td>Apply → confirm non-commercial</td>
+            </tr>
+            <tr>
+              <td>Graduate student</td>
+              <td>Yes</td>
+              <td>FREE</td>
+              <td>Apply → faculty sponsor</td>
+            </tr>
+            <tr>
+              <td>Non-profit humanitarian org</td>
+              <td>Yes</td>
+              <td>FREE</td>
+              <td>Apply → verify 501(c)(3)</td>
+            </tr>
+            <tr>
+              <td>Animal conservation org</td>
+              <td>Yes</td>
+              <td>FREE</td>
+              <td>Apply → verify mission</td>
+            </tr>
+            <tr>
+              <td>Wildlife sanctuary</td>
+              <td>Yes</td>
+              <td>FREE</td>
+              <td>Apply → verify status</td>
+            </tr>
+            <tr>
+              <td>Small for-profit startup</td>
+              <td>Yes</td>
+              <td>PAID</td>
+              <td>Apply → negotiate terms</td>
+            </tr>
+            <tr>
+              <td>Large hospital system</td>
+              <td>Yes</td>
+              <td>PAID</td>
+              <td>Apply → negotiate terms</td>
+            </tr>
+            <tr>
+              <td>Pharmaceutical company</td>
+              <td>Yes</td>
+              <td>PAID</td>
+              <td>Apply → negotiate terms</td>
+            </tr>
+            <tr>
+              <td>Agriculture business</td>
+              <td>Yes</td>
+              <td>PAID</td>
+              <td>Apply → negotiate terms</td>
+            </tr>
+            <tr>
+              <td>Technology company</td>
+              <td>Yes</td>
+              <td>PAID</td>
+              <td>Apply → negotiate terms</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout success">
+        <p><strong>Core Principle:</strong> Everyone using the Protocol beyond reading needs a license. Many qualify for free licenses. Commercial entities pay. Revenue funds humanitarian deployment.</p>
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+      <h3>📥 Download Full License</h3>
+      <p>Download the complete QIS Protocol License v1.0 as a PDF for your records.</p>
+      <a href="pdfs/qis-licensing-terms.pdf" class="btn" target="_blank">Download PDF</a>
+    </section>
+
+    <!-- Version History -->
+    <div class="version-history">
+      <h3>Version History</h3>
+      <p><strong>v1.0 (November 2025):</strong> Initial license framework</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="license-footer">
+      <p>© 2025 Christopher Thomas Trevethan / Yonder Zenith LLC. All rights reserved.</p>
+    </div>
+
+  </div>
+
+  <!-- Site Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html">Home</a> • <a href="https://github.com/YonderZenith/QIS-protocol">GitHub</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 15px; opacity: 0.5; font-size: 0.9rem;">39 Patents Pending • Math is Public</p>
+  </footer>
+</body>
+</html>
