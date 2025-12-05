@@ -845,9 +845,11 @@ cite {
   border-radius: 24px;
   padding: 80px !important;
   position: relative;
+  text-align: center;
 }
 
 #copyPrompt {
+  display: block;
   width: 100%;
   max-width: 1000px;
   height: 160px;
@@ -859,12 +861,13 @@ cite {
   border: 3px solid var(--cyan-primary);
   border-radius: 16px;
   margin: 40px auto 30px auto;
-  box-shadow: 
+  box-shadow:
     0 0 30px rgba(0, 190, 234, 0.4),
     inset 0 0 30px rgba(0, 190, 234, 0.05);
   resize: vertical;
   line-height: 1.7;
   transition: all 0.3s ease;
+  text-align: left;
 }
 
 #copyPrompt:focus {
