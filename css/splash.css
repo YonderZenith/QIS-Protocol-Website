@@ -332,22 +332,67 @@
 
 @media (max-width: 640px) {
   .equation {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .main-title {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
   }
   .logo-container img {
-    width: 140px !important;
-    height: 140px !important;
+    width: 120px !important;
+    height: 120px !important;
   }
   #enterBtn {
-    padding: 20px 50px;
-    font-size: 1.2rem;
-    letter-spacing: 3px;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
   }
   .bottom-info {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+  .scaling-line {
+    font-size: 1rem;
+  }
+  .tagline {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+  .mission-line {
+    font-size: 0.9rem;
+    padding: 0 15px;
+  }
+  .stats-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  #clickHint {
+    font-size: 0.75rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .equation {
+    font-size: 1.6rem;
+  }
+  .main-title {
+    font-size: 1.8rem;
+  }
+  .logo-container img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  #enterBtn {
+    padding: 15px 35px;
+    font-size: 1rem;
+  }
+  .tagline {
+    font-size: 0.9rem;
   }
 }

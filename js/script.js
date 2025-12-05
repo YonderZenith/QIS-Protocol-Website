@@ -666,3 +666,43 @@ document.addEventListener('mousemove', (e) => {
     }, 50);
   }
 });
+
+// ==================== MOBILE HAMBURGER MENU ====================
+function initMobileNav() {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const navOverlay = document.querySelector('.nav-overlay');
+
+  if (!hamburger || !navLinks) return;
+
+  // Toggle menu on hamburger click
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    if (navOverlay) navOverlay.classList.toggle('active');
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Close menu when clicking overlay
+  if (navOverlay) {
+    navOverlay.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+      navOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+
+  // Close menu when clicking a nav link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+      if (navOverlay) navOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+// Initialize mobile nav when DOM is ready
+document.addEventListener('DOMContentLoaded', initMobileNav);
