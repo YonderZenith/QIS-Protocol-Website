@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     "THE BLACK SWAN INSIGHT: Traditional AI trains on common cases. Rare events are invisible—not enough data. A rare cancer mutation with only 50 cases worldwide? QIS solution: Those 50 patients become nodes, share embeddings, find each other via hash routing. 50 patients → 1,225 synthesis opportunities. QIS makes rare events visible. Black swans cluster together in hash space.",
 
-    "THE GITHUB FOR INTELLIGENCE: GitHub's value = network effects. More developers → more projects → more valuable. QIS value = N² network effects. More agents → quadratically more synthesis opportunities → quadratically more valuable. We just built 'GitHub for intelligence.' Distributed. Open architecture. Anyone can contribute. The network owns the intelligence, not one company.",
+    "THE GITHUB FOR INTELLIGENCE: GitHub's value = network effects. More developers → more projects → more valuable. QIS value = N² network effects. More agents → quadratically more synthesis opportunities → quadratically more valuable. We just built 'GitHub for intelligence.' The protocol is the platform. The network is the moat.",
 
     "THE PROOF OF WORK INSIGHT: Bitcoin: How do you get strangers to agree on truth without central authority? Proof of Work. QIS: How do you prevent adversarial agents from corrupting the network? Structural validation. 5-layer defense: DHT verification, dimensional integrity, timestamp verification, cryptographic signatures, outcome consistency. Bad patterns can't fake similarity hashes. Test: 30% adversarial nodes → 100% rejection rate. The network self-heals.",
 
