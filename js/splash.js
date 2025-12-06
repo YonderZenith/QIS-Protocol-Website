@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
       audioSystem.synth.cancel();
 
       // Speak welcome message
-      audioSystem.speak('Welcome to the swarm. The revolution begins.', {
+      audioSystem.speak('Welcome to the Intelligence Revolution.', {
         rate: 0.95,
         pitch: 1.1
       });
