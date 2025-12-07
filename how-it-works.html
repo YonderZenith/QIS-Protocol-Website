@@ -612,7 +612,7 @@
       <div class="step-body">
         <div class="step-content">
           <p>
-            Each agent (smartphone, IoT sensor, tractor, medical device) ingests data from 
+            Each agent (smartphone, IoT sensor, tractor, medical device, etc.) ingests data from 
             <span class="highlight">its own local sources</span>. This could be:
           </p>
           <ul>
@@ -620,6 +620,7 @@
             <li>Medical records (lab results, diagnoses, treatments)</li>
             <li>Sensor readings (soil pH, temperature, humidity)</li>
             <li>Transaction data, behavior patterns, any structured data</li>
+            <li>Any data source: IoT devices, APIs, databases, manual entry, and more</li>
           </ul>
           <p>
             <span class="highlight">Critical:</span> Raw data never leaves your device. 
@@ -628,14 +629,14 @@
         </div>
         <div class="step-visual">
           <div class="data-flow">
-            <div class="data-node source">📱</div>
-            <div class="arrow-down"></div>
             <div class="data-icons">
               <span>💓</span>
               <span>🧬</span>
               <span>💊</span>
               <span>📊</span>
             </div>
+            <div class="arrow-down"></div>
+            <div class="data-node source">📱</div>
           </div>
         </div>
       </div>
@@ -657,8 +658,13 @@
             patient_vector = [stage=3, KRAS=1, CEA=42, age=0.67, ...]
           </div>
           <p>
-            Domain experts design these vectors to capture what matters clinically (or agriculturally, 
-            financially, etc.). Each dimension has meaning and valid ranges.
+            <span class="highlight">Network-specific design:</span> Domain experts define the vector templates
+            for each network—oncologists for cancer networks, agronomists for crop networks, etc.
+            They determine which features matter and their valid ranges. This ensures the fingerprints
+            capture what's clinically (or agriculturally, financially) meaningful.
+          </p>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); font-style: italic;">
+            Note: Methods for creating vectors and hashes can vary—see the <a href="pdfs/core-spec.pdf" target="_blank" style="color: var(--purple-quantum);">Core Specification</a> for alternatives. This approach is my favorite for "teleporting to the right lung" every time.
           </p>
           <p>
             <span class="highlight">Privacy preserved:</span> Only this anonymized vector is shared — 
@@ -751,15 +757,16 @@
       <div class="step-body">
         <div class="step-content">
           <p>
-            After your treatment/intervention, you report your outcome back to the network. 
+            After your treatment/intervention, outcomes are reported back to the network.
             This is the <span class="highlight">compounding effect</span>.
           </p>
           <div class="formula">
             Accuracy(t) ≈ A₀ + α × log(t)
           </div>
           <p>
-            Each new outcome makes the network smarter for everyone. The first 100 patients 
-            get limited matches. Patient #100,000 benefits from all 99,999 previous outcomes.
+            Each new outcome makes the network smarter. The first 100 patients get limited cohort
+            matches. Patient #100,000 draws from a much larger pool—dramatically increasing the
+            odds of finding patients with nearly identical profiles and proven outcomes.
           </p>
           <p>
             <span class="highlight">Network value scales superlinearly:</span> 
