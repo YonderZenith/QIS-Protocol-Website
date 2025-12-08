@@ -715,7 +715,7 @@
             <span class="counter-synthesis" id="synthesisCount">45</span>
           </div>
           <div class="counter-label">
-            <span id="nodeLabel">patients</span> → <span id="synthesisLabel">pattern matches</span>
+            <span id="nodeLabel">patients</span> → <span id="synthesisLabel">synthesis opportunities (network-wide)</span>
           </div>
         </div>
         <div class="slider-container">
@@ -794,7 +794,7 @@
         <div class="efficiency-item">
           <div class="efficiency-value green" id="effSynthesis">45</div>
           <div class="efficiency-label">Synthesis Opportunities</div>
-          <div class="efficiency-note">O(N²)</div>
+          <div class="efficiency-note">N(N-1)/2 network-wide</div>
         </div>
         <div class="efficiency-item">
           <div class="efficiency-value purple" id="effMessages">~4</div>
@@ -803,8 +803,8 @@
         </div>
         <div class="efficiency-item">
           <div class="efficiency-value" style="color: var(--gold-accent); text-shadow: 0 0 15px rgba(245, 158, 11, 0.5);" id="effMatches">0</div>
-          <div class="efficiency-label">Live Matches</div>
-          <div class="efficiency-note">this session</div>
+          <div class="efficiency-label">Matches Found</div>
+          <div class="efficiency-note">demo session</div>
         </div>
       </div>
     </div>
@@ -838,7 +838,7 @@
       healthcare: {
         icon: '🏥',
         nodeLabel: 'patients',
-        synthesisLabel: 'pattern matches',
+        synthesisLabel: 'synthesis opportunities (network-wide)',
         title: 'Healthcare Scenario',
         scenarios: {
           10: `<span class="scenario-number">10</span> <span class="scenario-emphasis">cancer patients</span> sharing treatment patterns. <span class="scenario-highlight">45 possible pattern matches</span>. Your oncologist sees maybe <span class="scenario-number">5</span> similar cases per year.`,
@@ -851,7 +851,7 @@
       agriculture: {
         icon: '🌾',
         nodeLabel: 'farms',
-        synthesisLabel: 'pattern matches',
+        synthesisLabel: 'synthesis opportunities (network-wide)',
         title: 'Agriculture Scenario',
         scenarios: {
           10: `<span class="scenario-number">10</span> <span class="scenario-emphasis">smart farms</span> sharing soil data. <span class="scenario-highlight">45 pattern matches</span>. Your agronomist visits maybe <span class="scenario-number">3</span> similar farms per year.`,
@@ -864,7 +864,7 @@
       finance: {
         icon: '💰',
         nodeLabel: 'portfolios',
-        synthesisLabel: 'pattern correlations',
+        synthesisLabel: 'synthesis opportunities (network-wide)',
         title: 'Finance Scenario',
         scenarios: {
           10: `<span class="scenario-number">10</span> <span class="scenario-emphasis">trading desks</span> sharing risk patterns. <span class="scenario-highlight">45 correlation opportunities</span>. Your risk analyst monitors maybe <span class="scenario-number">5</span> comparable portfolios.`,
@@ -877,7 +877,7 @@
       iot: {
         icon: '📡',
         nodeLabel: 'sensors',
-        synthesisLabel: 'pattern correlations',
+        synthesisLabel: 'synthesis opportunities (network-wide)',
         title: 'IoT Scenario',
         scenarios: {
           10: `<span class="scenario-number">10</span> <span class="scenario-emphasis">sensors</span> in a smart factory. <span class="scenario-highlight">45 pattern correlations</span>. Traditional monitoring catches <span class="scenario-number">maybe 60%</span> of anomalies.`,
@@ -975,6 +975,10 @@
 
       setNodes(count, animate = true) {
         this.targetNodes = count;
+        matchCount = 0; // Reset match count when network changes
+        const matchEl = document.getElementById('effMatches');
+        if (matchEl) matchEl.textContent = '0';
+        
         if (animate) {
           this.animationProgress = 0;
           this.init();
@@ -982,6 +986,13 @@
           this.init();
           this.particles.forEach(p => p.scale = 1);
         }
+      }
+      
+      // Calculate scaling factor for proportional matches
+      getScaleFactor() {
+        const renderedNodes = Math.min(this.targetNodes, 100);
+        // Scale matches proportionally: if we're showing 100 of 10000, scale by 100
+        return Math.max(1, Math.round(this.targetNodes / renderedNodes));
       }
 
       // Run demo sequence
@@ -1067,9 +1078,12 @@
           p.id !== source.id && p.bucket === source.bucket
         );
         
+        const scaleFactor = this.getScaleFactor();
+        
         matches.forEach((match, i) => {
           setTimeout(() => {
-            matchCount++;
+            // Scale matches proportionally to network size
+            matchCount += scaleFactor;
             
             // Synthesis burst
             const midX = (source.x + match.x) / 2;
@@ -1091,13 +1105,17 @@
           }, i * 80);
         });
         
+        const scaledMatches = matches.length * scaleFactor;
         if (matches.length > 0) {
-          addLog(`Synthesis: ${matches.length} pattern matches found`, 'synthesis');
-          addLog(`Network intelligence +${matches.length} insights`, 'match');
+          addLog(`Synthesis: ${formatNumber(scaledMatches)} pattern matches found`, 'synthesis');
+          addLog(`Network intelligence +${formatNumber(scaledMatches)} insights`, 'match');
         }
         
-        const matchEl = document.getElementById('effMatches');
-        if (matchEl) matchEl.textContent = matchCount;
+        // Update display after all matches processed
+        setTimeout(() => {
+          const matchEl = document.getElementById('effMatches');
+          if (matchEl) matchEl.textContent = formatNumber(matchCount);
+        }, matches.length * 80 + 100);
       }
 
       highlightMechStep(num) {
@@ -1138,7 +1156,11 @@
         matchCount = 0;
         this.init();
         this.particles.forEach(p => p.scale = 1);
+        this.routingPaths = [];
+        this.synthesisBursts = [];
         document.querySelectorAll('.mech-step').forEach(s => s.classList.remove('active'));
+        const matchEl = document.getElementById('effMatches');
+        if (matchEl) matchEl.textContent = '0';
         document.getElementById('liveLog').innerHTML = `
           <div class="log-entry">
             <span class="log-time">00:00</span>
@@ -1326,7 +1348,7 @@
     function formatNumber(n) {
       if (n >= 1000000000) return (n / 1000000000).toFixed(2) + 'B';
       if (n >= 1000000) return (n / 1000000).toFixed(2) + 'M';
-      if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+      if (n >= 1000) return (n / 1000).toFixed(2) + 'K';
       return n.toLocaleString();
     }
 
