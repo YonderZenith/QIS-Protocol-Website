@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QIS Protocol Full Directory - All pages, documents, and resources">
-  <title>Directory • QIS Protocol</title>
+  <meta name="description" content="QIS Protocol Articles & Blog - Insights, updates, and deep dives into distributed intelligence">
+  <title>Articles • QIS Protocol</title>
 
   <link rel="icon" href="images/favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,67 +146,61 @@
       margin-bottom: 50px;
     }
 
-    /* Section */
-    .section {
-      margin-bottom: 50px;
-    }
-
-    .section h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: var(--cyan-bright);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section h2::before {
-      content: '';
-      width: 30px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cyan-bright), var(--purple-quantum));
-    }
-
-    .link-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 15px;
-    }
-
-    .link-item {
-      display: block;
-      padding: 20px;
+    /* Coming Soon */
+    .coming-soon {
+      text-align: center;
+      padding: 80px 40px;
       background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 24px;
+      margin: 40px 0;
     }
 
-    .link-item:hover {
-      border-color: var(--cyan-bright);
-      background: rgba(0, 190, 234, 0.1);
-      transform: translateY(-3px);
+    .coming-soon-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
     }
 
-    .link-item h3 {
+    .coming-soon h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      color: var(--text-primary);
-      margin-bottom: 5px;
-    }
-
-    .link-item p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      margin: 0;
-    }
-
-    .link-item.pdf h3::after {
-      content: ' (PDF)';
-      font-size: 0.75rem;
+      font-size: 1.8rem;
       color: var(--purple-quantum);
+      margin-bottom: 15px;
+    }
+
+    .coming-soon p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 2px solid var(--cyan-bright);
+      background: transparent;
+      color: var(--text-primary);
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.4s ease;
+    }
+
+    .btn:hover {
+      background: var(--cyan-bright);
+      color: #000;
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--purple-quantum), #a855f7);
+      border-color: var(--purple-quantum);
     }
 
     /* Footer */
@@ -250,7 +244,6 @@
       }
       .content { padding: 120px 20px 60px; }
       h1 { font-size: 2rem; }
-      .link-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -275,126 +268,21 @@
       <a href="index.html?skip=true#documents">Docs</a>
       <a href="healthcare.html">Healthcare</a>
       <a href="techrace.html">Tech Race</a>
-      <a href="articles.html">Articles</a>
       <a href="faq.html">FAQ</a>
       <a href="about.html">About</a>
     </div>
   </nav>
 
   <div class="content">
-    <h1>Full Directory</h1>
-    <p class="subtitle">All pages, documents, and resources in one place</p>
+    <h1>Articles & Blog</h1>
+    <p class="subtitle">Insights, updates, and deep dives into distributed intelligence</p>
 
-    <!-- Main Pages -->
-    <div class="section">
-      <h2>Main Pages</h2>
-      <div class="link-grid">
-        <a href="index.html?skip=true" class="link-item">
-          <h3>Home</h3>
-          <p>Main landing page with overview and epiphany generator</p>
-        </a>
-        <a href="how-it-works.html" class="link-item">
-          <h3>How It Works</h3>
-          <p>Step-by-step explanation of QIS Protocol technology</p>
-        </a>
-        <a href="comparison.html" class="link-item">
-          <h3>Technology Comparison</h3>
-          <p>QIS vs Centralized AI, Federated Learning, and Edge AI</p>
-        </a>
-        <a href="watch-demo.html" class="link-item">
-          <h3>Interactive Demo</h3>
-          <p>Live visualization of QIS Protocol in action</p>
-        </a>
-        <a href="techrace.html" class="link-item">
-          <h3>The Next Tech Race</h3>
-          <p>When companies compete to save lives</p>
-        </a>
-        <a href="faq.html" class="link-item">
-          <h3>FAQ</h3>
-          <p>Frequently asked questions about QIS Protocol</p>
-        </a>
-        <a href="articles.html" class="link-item">
-          <h3>Articles & Blog</h3>
-          <p>Insights, updates, and deep dives into distributed intelligence</p>
-        </a>
-        <a href="about.html" class="link-item">
-          <h3>About</h3>
-          <p>The story behind QIS Protocol and Yonder Zenith LLC</p>
-        </a>
-        <a href="licensing.html" class="link-item">
-          <h3>Licensing</h3>
-          <p>Licensing tiers and terms for QIS Protocol</p>
-        </a>
-        <a href="noveltyreport.html" class="link-item">
-          <h3>Novelty Report</h3>
-          <p>Comprehensive prior art analysis</p>
-        </a>
-      </div>
-    </div>
-
-    <!-- Industry Deep Dives -->
-    <div class="section">
-      <h2>Industry Deep Dives</h2>
-      <div class="link-grid">
-        <a href="healthcare.html" class="link-item">
-          <h3>Healthcare</h3>
-          <p>Precision medicine, early detection, treatment optimization</p>
-        </a>
-        <a href="agriculture.html" class="link-item">
-          <h3>Agriculture</h3>
-          <p>Crop optimization, disease detection, yield prediction</p>
-        </a>
-        <a href="emergency.html" class="link-item">
-          <h3>Emergency & Disaster Response</h3>
-          <p>Disaster coordination and emergency management</p>
-        </a>
-      </div>
-    </div>
-
-    <!-- Core Documents -->
-    <div class="section">
-      <h2>Core Documents</h2>
-      <div class="link-grid">
-        <a href="pdfs/core-spec.pdf" target="_blank" class="link-item pdf">
-          <h3>Core Specification</h3>
-          <p>Complete technical specification and mathematical proofs</p>
-        </a>
-        <a href="pdfs/qis-whitepaper-short.pdf" target="_blank" class="link-item pdf">
-          <h3>Whitepaper (Short)</h3>
-          <p>Condensed overview of the QIS Protocol</p>
-        </a>
-        <a href="pdfs/qis-whitepaper-full.pdf" target="_blank" class="link-item pdf">
-          <h3>Whitepaper (Full)</h3>
-          <p>Comprehensive protocol overview and applications</p>
-        </a>
-        <a href="pdfs/simulation-results.pdf" target="_blank" class="link-item pdf">
-          <h3>Simulation Results</h3>
-          <p>Validation of O(N²) scaling with 100+ simulations</p>
-        </a>
-        <a href="pdfs/qis-licensing-terms.pdf" target="_blank" class="link-item pdf">
-          <h3>Licensing Terms</h3>
-          <p>Full legal licensing documentation</p>
-        </a>
-      </div>
-    </div>
-
-    <!-- Interactive Features -->
-    <div class="section">
-      <h2>Interactive Features</h2>
-      <div class="link-grid">
-        <a href="index.html?skip=true#epiphany" class="link-item">
-          <h3>Epiphany Generator</h3>
-          <p>Generate mind-blowing explanations of how QIS works</p>
-        </a>
-        <a href="index.html?skip=true#industries" class="link-item">
-          <h3>Industry Applications</h3>
-          <p>Explore QIS applications across different industries</p>
-        </a>
-        <a href="index.html?skip=true#contact" class="link-item">
-          <h3>Get Involved</h3>
-          <p>Contact, licensing, and partnership opportunities</p>
-        </a>
-      </div>
+    <div class="coming-soon">
+      <div class="coming-soon-icon">📝</div>
+      <h2>Articles Loading...</h2>
+      <p>I've been working around the clock and have a wealth of articles, technical deep dives, and insights prepared. Check back daily—new content is being added as fast as I can publish it.</p>
+      <p style="margin-top: 15px; color: var(--text-secondary);">I'm working as fast as humanly possible to get this technology into the world. Every day matters.</p>
+      <a href="https://twitter.com/chris_trevethan" target="_blank" class="btn primary">Follow @chris_trevethan for Updates</a>
     </div>
 
   </div>
@@ -402,7 +290,7 @@
   <!-- Footer -->
   <footer>
     <p>QIS Protocol • Quadratic Intelligence Swarm</p>
-    <p><a href="index.html?skip=true">Home</a> • <a href="https://github.com/YonderZenith">GitHub</a> • Yonder Zenith LLC</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • Yonder Zenith LLC</p>
     <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
   </footer>
 
