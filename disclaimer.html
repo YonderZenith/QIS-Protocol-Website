@@ -7,12 +7,13 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'G-WMPC09C3R0');
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QIS Protocol Articles & Blog - Insights, updates, and deep dives into distributed intelligence">
-  <title>Articles • QIS Protocol</title>
+  <meta name="description" content="QIS Protocol Disclaimer - Important legal and informational notices">
+  <title>Disclaimer • QIS Protocol</title>
 
   <link rel="icon" href="images/favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +26,7 @@
       --cyan-bright: #00D9FF;
       --purple-quantum: #8B5CF6;
       --green-neural: #10B981;
+      --red-accent: #EF4444;
       --dark-bg: #0A0A0A;
       --text-primary: #E8F5E9;
       --text-secondary: rgba(232, 245, 233, 0.8);
@@ -89,130 +91,133 @@
     }
     .nav-links a:hover { color: var(--cyan-bright); }
 
-    /* Hamburger Menu */
+    /* Hamburger menu */
     .hamburger {
       display: none;
       flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 20px;
+      gap: 5px;
       cursor: pointer;
       z-index: 1001;
     }
     .hamburger span {
-      display: block;
-      width: 100%;
-      height: 3px;
+      width: 25px;
+      height: 2px;
       background: var(--cyan-bright);
-      border-radius: 3px;
       transition: all 0.3s ease;
     }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
     .nav-overlay {
       display: none;
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.5);
       z-index: 999;
     }
     .nav-overlay.active { display: block; }
 
-    /* Content */
-    .content {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 140px 40px 80px;
+    /* Hero */
+    .hero {
+      padding: 160px 40px 60px;
+      text-align: center;
       position: relative;
       z-index: 1;
     }
 
-    h1 {
+    .hero h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 10px;
-      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--cyan-bright), var(--purple-quantum));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 1.2rem;
-      margin-bottom: 50px;
-    }
-
-    /* Coming Soon */
-    .coming-soon {
-      text-align: center;
-      padding: 80px 40px;
-      background: rgba(0, 0, 0, 0.4);
-      border: 2px solid rgba(139, 92, 246, 0.3);
-      border-radius: 24px;
-      margin: 40px 0;
-    }
-
-    .coming-soon-icon {
-      font-size: 4rem;
+      background-clip: text;
       margin-bottom: 20px;
     }
 
-    .coming-soon h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      color: var(--purple-quantum);
-      margin-bottom: 15px;
-    }
-
-    .coming-soon p {
-      font-size: 1.2rem;
+    .hero .subtitle {
+      font-size: 1.3rem;
       color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 30px;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 15px 35px;
+    /* Content */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .disclaimer-section {
+      margin-bottom: 50px;
+    }
+
+    .disclaimer-section h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border: 2px solid var(--cyan-bright);
-      background: transparent;
-      color: var(--text-primary);
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.4s ease;
+      font-size: 1.5rem;
+      color: var(--cyan-bright);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 190, 234, 0.3);
     }
 
-    .btn:hover {
-      background: var(--cyan-bright);
-      color: #000;
-      box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+    .disclaimer-section p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.8;
     }
 
-    .btn.primary {
-      background: linear-gradient(135deg, var(--purple-quantum), #a855f7);
-      border-color: var(--purple-quantum);
+    .disclaimer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .disclaimer-section li {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .disclaimer-section li::before {
+      content: '•';
+      color: var(--cyan-bright);
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
     }
 
     /* Footer */
     footer {
-      background: #000;
-      padding: 50px 40px;
       text-align: center;
+      padding: 60px 40px;
       border-top: 1px solid rgba(0, 190, 234, 0.2);
+      position: relative;
+      z-index: 1;
     }
 
-    footer p { color: var(--text-secondary); margin-bottom: 10px; }
-    footer a { color: var(--cyan-bright); text-decoration: none; }
+    footer p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    footer a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -222,8 +227,10 @@
       .hamburger { display: flex; }
       .nav-links {
         position: fixed;
-        top: 0; right: -100%;
-        width: 75%; max-width: 300px;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 300px;
         height: 100vh;
         background: rgba(10, 10, 10, 0.98);
         flex-direction: column;
@@ -233,6 +240,7 @@
         padding: 60px 20px;
         transition: right 0.3s ease;
         border-left: 1px solid rgba(0, 190, 234, 0.3);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
         z-index: 1000;
       }
       .nav-links.active { right: 0; }
@@ -241,9 +249,12 @@
         padding: 10px 20px;
         width: 100%;
         text-align: center;
+        border-bottom: 1px solid rgba(0, 190, 234, 0.1);
       }
-      .content { padding: 120px 20px 60px; }
-      h1 { font-size: 2rem; }
+      .hero { padding: 140px 20px 40px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .subtitle { font-size: 1.1rem; }
+      .content { padding: 20px; }
     }
   </style>
 </head>
@@ -267,32 +278,55 @@
       <a href="watch-demo.html">Demo</a>
       <a href="index.html?skip=true#documents">Docs</a>
       <a href="healthcare.html">Healthcare</a>
-      <a href="techrace.html">Tech Race</a>
       <a href="faq.html">FAQ</a>
       <a href="about.html">About</a>
     </div>
   </nav>
 
-  <div class="content">
-    <h1>Articles & Blog</h1>
-    <p class="subtitle">Insights, updates, and deep dives into distributed intelligence</p>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Disclaimer</h1>
+    <p class="subtitle">Important legal and informational notices regarding QIS Protocol</p>
+  </section>
 
-    <div class="coming-soon">
-      <div class="coming-soon-icon">📝</div>
-      <h2>Articles Loading...</h2>
-      <p>I've been working around the clock and have a wealth of articles, technical deep dives, and insights prepared. Check back daily—new content is being added as fast as I can publish it.</p>
-      <p style="margin-top: 15px; color: var(--text-secondary);">I'm working as fast as humanly possible to get this technology into the world. Every day matters.</p>
-      <a href="https://twitter.com/chris_trevethan" target="_blank" class="btn primary">Follow @chris_trevethan for Updates</a>
+  <!-- Content -->
+  <div class="content">
+    <div class="disclaimer-section">
+      <h2>Framework Status</h2>
+      <p>The QIS Protocol represents a proposed next-generation distributed intelligence framework. All descriptions on this site illustrate the conceptual architecture and potential future applications of the protocol. They are not medical advice, diagnostic tools, treatment recommendations, or guaranteed performance claims.</p>
     </div>
 
+    <div class="disclaimer-section">
+      <h2>Development Stage</h2>
+      <p>The QIS Protocol is in an early conceptual and exploratory stage. As the ecosystem grows, third-party researchers, clinicians, institutions, and engineers may independently evaluate, test, validate, or challenge aspects of the system — and this open evaluation is encouraged.</p>
+    </div>
+
+    <div class="disclaimer-section">
+      <h2>Professional Consultation</h2>
+      <p>Users should consult licensed professionals for medical, legal, or financial decisions. All AI responses generated from prompts on this site are informational, independent, and non-advisory.</p>
+    </div>
+
+    <div class="disclaimer-section">
+      <h2>Content Nature</h2>
+      <p>All content and AI-generated analysis presented on this website is informational only and does not constitute:</p>
+      <ul>
+        <li>Medical advice or diagnosis</li>
+        <li>Legal counsel or recommendations</li>
+        <li>Financial or investment advice</li>
+        <li>Guaranteed performance or outcome predictions</li>
+      </ul>
+    </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
-    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
-    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+    <p>&copy; 2025 QIS Protocol | Yonder Zenith LLC</p>
+    <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.7;">
+      Christopher Thomas Trevethan | All Rights Reserved
+    </p>
+    <p style="font-size: 0.9rem; margin-top: 15px;">
+      <a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a>
+    </p>
   </footer>
-
 </body>
 </html>
