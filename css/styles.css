@@ -14,6 +14,28 @@
   --text-secondary: rgba(232, 245, 233, 0.8);
 }
 
+/* ==================== SVG ICON SYSTEM ==================== */
+.icon-svg {
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 5px currentColor);
+  margin: 0 auto 15px auto;
+  display: block;
+}
+
+.industry-card:hover .icon-svg {
+  stroke-width: 2;
+  filter: drop-shadow(0 0 10px currentColor);
+  transition: all 0.3s ease;
+}
+
 /* ==================== GLOBAL RESETS ==================== */
 * {
   margin: 0;
