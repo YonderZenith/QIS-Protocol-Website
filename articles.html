@@ -203,6 +203,102 @@
       border-color: var(--purple-quantum);
     }
 
+    /* Article Cards */
+    .articles-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .article-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      border-radius: 16px;
+      padding: 35px;
+      transition: all 0.4s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .article-card:hover {
+      border-color: var(--cyan-bright);
+      box-shadow: 0 0 40px rgba(0, 190, 234, 0.15);
+      transform: translateY(-3px);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .article-date {
+      background: rgba(139, 92, 246, 0.2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      color: var(--purple-quantum);
+      font-weight: 600;
+    }
+
+    .article-tag {
+      background: rgba(0, 190, 234, 0.15);
+      padding: 5px 12px;
+      border-radius: 20px;
+      color: var(--cyan-bright);
+      font-weight: 600;
+    }
+
+    .article-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .article-card .article-subtitle {
+      font-size: 1.15rem;
+      color: var(--cyan-bright);
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .article-card p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      color: var(--cyan-bright);
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .read-more::after {
+      content: '→';
+      transition: transform 0.3s ease;
+    }
+
+    .article-card:hover .read-more::after {
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 768px) {
+      .article-card { padding: 25px; }
+      .article-card h2 { font-size: 1.25rem; }
+      .article-meta { flex-wrap: wrap; gap: 10px; }
+    }
+
     /* Footer */
     footer {
       background: #000;
@@ -277,12 +373,17 @@
     <h1>Articles & Blog</h1>
     <p class="subtitle">Insights, updates, and deep dives into distributed intelligence</p>
 
-    <div class="coming-soon">
-      <div class="coming-soon-icon">📝</div>
-      <h2>Articles Loading...</h2>
-      <p>I've been working around the clock and have a wealth of articles, technical deep dives, and insights prepared. Check back daily—new content is being added as fast as I can publish it.</p>
-      <p style="margin-top: 15px; color: var(--text-secondary);">I'm working as fast as humanly possible to get this technology into the world. Every day matters.</p>
-      <a href="https://twitter.com/chris_trevethan" target="_blank" class="btn primary">Follow @chris_trevethan for Updates</a>
+    <div class="articles-grid">
+      <a href="article-mit-phonebook.html" class="article-card">
+        <div class="article-meta">
+          <span class="article-date">December 2025</span>
+          <span class="article-tag">Analysis</span>
+        </div>
+        <h2>MIT Built a Phonebook for AI Agents. I Built How They Think Together.</h2>
+        <p class="article-subtitle">How I discovered quadratic intelligence scaling three weeks before MIT published their agent protocol</p>
+        <p>A deep dive into the fundamental difference between agent discovery and agent synthesis—and why the timing of MIT's announcement validates everything QIS Protocol set out to prove.</p>
+        <span class="read-more">Read Article</span>
+      </a>
     </div>
 
   </div>
