@@ -472,6 +472,13 @@ function toggleIndustries() {
     moreIndustries.style.display = 'grid';
     toggleText.textContent = 'Show Less';
     toggleArrow.innerHTML = '&#9650;'; // Up arrow
+
+    // Force cards to be visible (fixes mobile rendering issue)
+    const cards = moreIndustries.querySelectorAll('.industry-card');
+    cards.forEach(card => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0) scale(1)';
+    });
   } else {
     moreIndustries.style.display = 'none';
     toggleText.textContent = 'Show 16 More Industries';
