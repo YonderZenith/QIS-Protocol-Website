@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QIS Protocol • Four Architectures Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --cyan-dark: #008BA3;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--dark-bg);
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--text-primary);
+      overflow: hidden;
+    }
+
+    .demo-wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 2vh;
+    }
+
+    .legend {
+      position: absolute;
+      top: 7vh;
+      right: 2vw;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .legend-bar {
+      width: 100px;
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(to right, var(--red-accent), var(--green-neural));
+    }
+
+    .metrics-panel {
+      position: absolute;
+      top: 6vh;
+      left: 2vw;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .metrics-panel .metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .metrics-panel .metric-label { color: var(--text-muted); }
+    .metrics-panel .metric-value { color: var(--cyan-bright); font-weight: 700; }
+    .metrics-panel .metric-value.green { color: var(--green-neural); }
+    .metrics-panel .metric-value.purple { color: var(--purple-quantum); }
+    .metrics-panel .metric-value.gold { color: var(--gold-accent); }
+    .metrics-panel .metric-value.red { color: var(--red-accent); }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+      background: linear-gradient(180deg, #ffffff 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+      letter-spacing: 0.05em;
+    }
+
+    canvas {
+      width: 90vw;
+      height: 70vh;
+      border-radius: 10px;
+    }
+
+    .baseline-bar {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .baseline-progress {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--purple-quantum), var(--cyan-bright));
+      transition: width 0.5s ease;
+    }
+
+    .baseline-text {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .status-label {
+      position: absolute;
+      bottom: 52px;
+      left: 5vw;
+      max-width: 90vw;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .step-box {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-right: 4px;
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .step-box.fingerprint { border-color: var(--cyan-primary); color: var(--cyan-bright); }
+    .step-box.routing { border-color: var(--purple-quantum); color: var(--purple-quantum); }
+    .step-box.synthesis { border-color: var(--gold-accent); color: var(--gold-accent); }
+    .step-box.baseline { border-color: var(--green-neural); color: var(--green-neural); }
+    .step-box.update { border-color: var(--cyan-dark); color: var(--cyan-primary); }
+    .step-arrow { margin-right: 4px; font-size: 1.2rem; color: var(--text-muted); }
+
+    /* ============================================================================
+       MODE SLIDER (5 positions: Intuitive → D2D → D2C → C2D → C2C)
+       ============================================================================ */
+    .mode-slider-container {
+      position: absolute;
+      top: 2vh;
+      right: 2vw;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .mode-labels {
+      display: flex;
+      gap: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.02em;
+    }
+
+    .mode-label {
+      padding: 5px 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      border-radius: 4px;
+      text-align: center;
+      min-width: 45px;
+    }
+
+    .mode-label:hover { color: var(--text-secondary); }
+    .mode-label.active {
+      color: var(--cyan-bright);
+      border-color: rgba(0, 190, 234, 0.4);
+      background: rgba(0, 190, 234, 0.1);
+    }
+
+    .mode-label[data-mode="intuitive"].active {
+      color: var(--cyan-bright);
+      border-color: rgba(0, 190, 234, 0.4);
+      background: rgba(0, 190, 234, 0.1);
+    }
+    .mode-label[data-mode="d2d"].active {
+      color: var(--green-neural);
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.1);
+    }
+    .mode-label[data-mode="d2c"].active {
+      color: var(--purple-quantum);
+      border-color: rgba(139, 92, 246, 0.4);
+      background: rgba(139, 92, 246, 0.1);
+    }
+    .mode-label[data-mode="c2d"].active {
+      color: var(--gold-accent);
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .mode-label[data-mode="c2c"].active {
+      color: var(--red-accent);
+      border-color: rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .slider-track {
+      width: 280px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .slider-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+      background: linear-gradient(90deg, var(--cyan-bright), var(--green-neural), var(--purple-quantum), var(--gold-accent), var(--red-accent));
+    }
+
+    .slider-thumb {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 190, 234, 0.5);
+      transition: left 0.3s ease;
+      cursor: grab;
+    }
+
+    .slider-thumb:active { cursor: grabbing; }
+
+    .mode-description {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-align: right;
+      max-width: 280px;
+      line-height: 1.3;
+    }
+
+    /* ============================================================================
+       SIMILARITY TYPE SUB-TOGGLE
+       ============================================================================ */
+    .similarity-toggle-container {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .similarity-toggle-container.visible { display: flex; }
+
+    .similarity-toggle-header {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .similarity-toggle {
+      display: flex;
+      gap: 0;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+      padding: 2px;
+    }
+
+    .similarity-btn {
+      padding: 5px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .similarity-btn:hover { color: var(--text-secondary); }
+    .similarity-btn.active { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
+
+    .similarity-btn[data-sim="exact"].active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--green-neural);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .similarity-btn[data-sim="approximate"].active {
+      background: rgba(139, 92, 246, 0.2);
+      color: var(--purple-quantum);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+    }
+
+    .similarity-description {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-align: right;
+      max-width: 260px;
+      line-height: 1.2;
+    }
+
+    /* ============================================================================
+       ARCHITECTURE COMPARISON CHART
+       ============================================================================ */
+    .comparison-toggle {
+      position: absolute;
+      bottom: 70px;
+      right: 2vw;
+      z-index: 100;
+    }
+
+    .comparison-btn {
+      padding: 6px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .comparison-btn:hover {
+      color: var(--cyan-bright);
+      border-color: rgba(0, 190, 234, 0.4);
+    }
+
+    .comparison-btn.active {
+      background: rgba(0, 190, 234, 0.15);
+      color: var(--cyan-bright);
+      border-color: rgba(0, 190, 234, 0.5);
+    }
+
+    .comparison-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(10, 10, 10, 0.97);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      border-radius: 12px;
+      padding: 20px 24px;
+      z-index: 200;
+      display: none;
+      max-width: 95vw;
+      max-height: 85vh;
+      overflow: auto;
+    }
+
+    .comparison-overlay.visible { display: block; }
+
+    .comparison-overlay h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--cyan-bright);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .comparison-table {
+      border-collapse: collapse;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      width: 100%;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .comparison-table th {
+      background: rgba(0, 190, 234, 0.1);
+      color: var(--cyan-bright);
+      font-weight: 600;
+    }
+
+    .comparison-table td { color: var(--text-secondary); }
+    .comparison-table tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+    .comparison-table .arch-header { font-weight: 700; color: var(--text-primary); text-align: left; }
+    .comparison-table .good { color: var(--green-neural); }
+    .comparison-table .moderate { color: var(--gold-accent); }
+    .comparison-table .poor { color: var(--red-accent); }
+
+    .comparison-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .comparison-close:hover { color: var(--text-primary); }
+
+    .comparison-footer {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.75rem;
+      color: var(--cyan-bright);
+    }
+
+    /* Central nodes (Hospital EMR, Cloud VectorDB) */
+    .central-node {
+      position: absolute;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    .central-node.visible { display: flex; }
+
+    .central-node-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .central-node-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+    }
+
+    .central-node.hospital .central-node-icon {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(239, 68, 68, 0.1));
+      border: 2px solid rgba(239, 68, 68, 0.6);
+    }
+
+    .central-node.cloud .central-node-icon {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.1));
+      border: 2px solid rgba(139, 92, 246, 0.6);
+    }
+
+    /* ============================================================================
+       FINALE CELEBRATION OVERLAY
+       ============================================================================ */
+    .finale-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+      z-index: 300;
+    }
+
+    .finale-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .finale-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(0, 20, 30, 0.7) 0%, rgba(10, 10, 10, 0.95) 100%);
+    }
+
+    .finale-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: finaleReveal 1.5s ease 0.5s forwards;
+    }
+
+    @keyframes finaleReveal {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .finale-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      animation: finaleIconPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes finaleIconPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.5)); }
+      50% { transform: scale(1.1); filter: drop-shadow(0 0 40px rgba(0, 217, 255, 0.8)); }
+    }
+
+    .finale-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #00D9FF 0%, #10B981 50%, #8B5CF6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 60px rgba(0, 217, 255, 0.4);
+    }
+
+    .finale-subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .finale-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .finale-stat {
+      text-align: center;
+      opacity: 0;
+      animation: statReveal 0.8s ease forwards;
+    }
+
+    .finale-stat:nth-child(1) { animation-delay: 1.2s; }
+    .finale-stat:nth-child(2) { animation-delay: 1.5s; }
+    .finale-stat:nth-child(3) { animation-delay: 1.8s; }
+
+    @keyframes statReveal {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .finale-stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .finale-stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .finale-reset-btn {
+      margin-top: 40px;
+      padding: 12px 32px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--cyan-bright);
+      background: transparent;
+      border: 2px solid var(--cyan-primary);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: statReveal 0.8s ease 2.2s forwards;
+    }
+
+    .finale-reset-btn:hover {
+      background: rgba(0, 190, 234, 0.15);
+      border-color: var(--cyan-bright);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .finale-tagline {
+      margin-top: 24px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+      opacity: 0;
+      animation: statReveal 0.8s ease 2s forwards;
+    }
+
+    /* Particle canvas for celebration */
+    #finaleParticles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* ============================================================================
+       SPEED CONTROL SLIDER
+       ============================================================================ */
+    .speed-control {
+      position: absolute;
+      bottom: 95px;
+      left: 2vw;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .patent-footnote {
+      position: absolute;
+      bottom: 8px;
+      right: 2vw;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      letter-spacing: 0.02em;
+    }
+
+    .speed-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .speed-slider {
+      width: 80px;
+      height: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .speed-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      background: var(--cyan-bright);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .speed-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .speed-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: var(--cyan-bright);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+    }
+
+    .speed-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--cyan-bright);
+      min-width: 32px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body class="mode-intuitive">
+  <div class="demo-wrapper">
+    <!-- Mode Slider (5 positions) -->
+    <div class="mode-slider-container">
+      <div class="mode-labels">
+        <span class="mode-label active" data-mode="intuitive" data-index="0">Intro</span>
+        <span class="mode-label" data-mode="d2d" data-index="1">D→D</span>
+        <span class="mode-label" data-mode="d2c" data-index="2">D→C</span>
+        <span class="mode-label" data-mode="c2d" data-index="3">C→D</span>
+        <span class="mode-label" data-mode="c2c" data-index="4">C→C</span>
+      </div>
+      <div class="slider-track" id="sliderTrack">
+        <div class="slider-fill" id="sliderFill" style="width: 0%"></div>
+        <div class="slider-thumb" id="sliderThumb" style="left: 0%"></div>
+      </div>
+      <div class="mode-description" id="modeDescription">
+        Find your tribe. Borrow their wins.
+      </div>
+
+      <!-- Similarity Type Sub-Toggle -->
+      <div class="similarity-toggle-container" id="similarityToggleContainer">
+        <div class="similarity-toggle-header">Similarity Method</div>
+        <div class="similarity-toggle">
+          <button class="similarity-btn active" data-sim="exact">Exact</button>
+          <button class="similarity-btn" data-sim="approximate">Approximate</button>
+        </div>
+        <div class="similarity-description" id="similarityDescription">
+          Expert-curated templates → deterministic hash
+        </div>
+      </div>
+    </div>
+
+    <h1 id="demoTitle">QIS Protocol: Quadratic Intelligence Scaling</h1>
+    <canvas id="demoCanvas"></canvas>
+
+    <!-- Central Nodes (shown in centralized modes) -->
+    <div class="central-node hospital" id="hospitalNode" style="top: 30%; left: 15%;">
+      <div class="central-node-icon">🏥</div>
+      <div class="central-node-label">EMR/Registry</div>
+    </div>
+    <div class="central-node cloud" id="cloudNode" style="top: 30%; right: 15%;">
+      <div class="central-node-icon">☁️</div>
+      <div class="central-node-label">VectorDB</div>
+    </div>
+
+    <div class="baseline-bar">
+      <div id="baselineProgress" class="baseline-progress"></div>
+    </div>
+    <div class="baseline-text">Network Baseline</div>
+
+    <div id="statusLabel" class="status-label"></div>
+
+    <div class="legend">
+      <span id="legendLow">Struggling</span>
+      <div class="legend-bar"></div>
+      <span id="legendHigh">Thriving</span>
+    </div>
+
+    <div class="metrics-panel" id="metricsPanel">
+      <div class="metric">
+        <span class="metric-label">Agents (N):</span>
+        <span class="metric-value" id="metricNodes">50</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Synthesis Θ(N²):</span>
+        <span class="metric-value green" id="metricSynthesis">1,225</span>
+      </div>
+    </div>
+
+    <!-- Speed Control -->
+    <div class="speed-control">
+      <span class="speed-label">Speed</span>
+      <input type="range" class="speed-slider" id="speedSlider" min="1" max="3" step="0.5" value="1">
+      <span class="speed-value" id="speedValue">1x</span>
+    </div>
+
+    <!-- Patent Footnote -->
+    <div class="patent-footnote">All architectures covered under 39 provisional patents</div>
+
+    <!-- Comparison Chart Toggle -->
+    <div class="comparison-toggle">
+      <button class="comparison-btn" id="comparisonBtn">Compare Architectures</button>
+    </div>
+
+    <!-- Comparison Overlay -->
+    <div class="comparison-overlay" id="comparisonOverlay">
+      <button class="comparison-close" id="comparisonClose">×</button>
+      <h2>Four Architectures, Same Θ(N²) Scaling</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th style="color: var(--green-neural)">D→D (Edge→DHT)</th>
+            <th style="color: var(--purple-quantum)">D→C (Edge→VectorDB)</th>
+            <th style="color: var(--gold-accent)">C→D (EMR→DHT)</th>
+            <th style="color: var(--red-accent)">C→C (EMR→VectorDB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="arch-header">⚡ Parallel Queries</td>
+            <td class="good">Unlimited (decoupled)</td>
+            <td class="moderate">~1-10K QPS/cluster</td>
+            <td class="moderate">EMR-limited; ∞ reads</td>
+            <td class="poor">min(EMR, VectorDB)</td>
+          </tr>
+          <tr>
+            <td class="arch-header">🔒 Privacy</td>
+            <td class="good">Maximum</td>
+            <td class="moderate">Moderate</td>
+            <td class="good">High</td>
+            <td class="poor">Lower</td>
+          </tr>
+          <tr>
+            <td class="arch-header">📤 Data Shared</td>
+            <td class="good">None (edge-only)</td>
+            <td class="moderate">Vectors only (no PHI/PII)</td>
+            <td class="poor">Full data → Registry</td>
+            <td class="poor">Full → EMR + vectors → DB</td>
+          </tr>
+          <tr>
+            <td class="arch-header">⛓️ Single Point of Failure</td>
+            <td class="good">None</td>
+            <td class="moderate">Provider</td>
+            <td class="moderate">Publisher only</td>
+            <td class="poor">Full</td>
+          </tr>
+          <tr>
+            <td class="arch-header">⚡ Real-time</td>
+            <td class="good">Yes (P2P gossip)</td>
+            <td class="moderate">Near (API latency)</td>
+            <td class="good">Yes (post-publish)</td>
+            <td class="moderate">Batch/Near</td>
+          </tr>
+          <tr>
+            <td class="arch-header">🔄 Routing</td>
+            <td>O(log N) DHT hops</td>
+            <td>O(1) server call</td>
+            <td>O(log N) DHT hops</td>
+            <td>O(1) server call</td>
+          </tr>
+          <tr>
+            <td class="arch-header">🌍 Scale Ceiling</td>
+            <td class="good">Billions (BitTorrent-class)</td>
+            <td class="moderate">High (pagination)</td>
+            <td class="good">Billions</td>
+            <td class="moderate">High (sharding)</td>
+          </tr>
+          <tr>
+            <td class="arch-header">💰 Cost</td>
+            <td class="good">Bandwidth only</td>
+            <td class="moderate">Storage + queries</td>
+            <td class="good">Minimal</td>
+            <td class="poor">Highest</td>
+          </tr>
+          <tr>
+            <td class="arch-header">📊 Synthesis</td>
+            <td>Fully P2P</td>
+            <td>Edge or serverless</td>
+            <td>Edge swarm</td>
+            <td>Client/serverless</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="comparison-footer">
+        All four architectures achieve Θ(N²) quadratic intelligence scaling.<br/>
+        <span style="color: var(--text-muted); font-size: 0.65rem;">
+          Key differentiators: <strong style="color: var(--green-neural);">privacy</strong>,
+          <strong style="color: var(--green-neural);">real-time propagation</strong>, and
+          <strong style="color: var(--green-neural);">fault tolerance</strong>.
+          D→D offers maximum privacy with zero data sharing and no single point of failure—ideal for sensitive, real-time use cases.
+          Other architectures trade these for operational simplicity, suiting different industries and requirements.
+        </span>
+      </div>
+    </div>
+
+    <!-- Finale Celebration Overlay -->
+    <div class="finale-overlay" id="finaleOverlay">
+      <canvas id="finaleParticles"></canvas>
+      <div class="finale-backdrop"></div>
+      <div class="finale-content">
+        <div class="finale-icon">🌐</div>
+        <div class="finale-title">PLANETARY INTELLIGENCE ACHIEVED</div>
+        <div class="finale-subtitle">You Just Witnessed 50 Nodes. Now Imagine Billions.</div>
+        <div class="finale-stats">
+          <div class="finale-stat">
+            <div class="finale-stat-value" id="finaleAgents">50</div>
+            <div class="finale-stat-label">Nodes Today</div>
+          </div>
+          <div class="finale-stat">
+            <div class="finale-stat-value">∞</div>
+            <div class="finale-stat-label">Domains Tomorrow</div>
+          </div>
+        </div>
+        <div class="finale-tagline">"Healthcare sharing what heals. Agriculture sharing what grows. Energy sharing what sustains.<br/>Every domain. Every survival insight. Inherited by all. No one struggling alone."</div>
+        <button class="finale-reset-btn" id="finaleResetBtn">↻ RUN SIMULATION AGAIN</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================================
+    // FIVE-MODE CONFIGURATION: Four Architectures + Intuitive Intro
+    // ============================================================================
+    const DEMO_CONFIGS = {
+      // ┌─────────────────────────────────────────────────────────────────────┐
+      // │  INTUITIVE MODE - Layman introduction                               │
+      // └─────────────────────────────────────────────────────────────────────┘
+      intuitive: {
+        description: "Find your tribe. Borrow their wins.",
+        showCentralNodes: { hospital: false, cloud: false },
+        ui: {
+          title: "Find Your Tribe. Borrow Their Wins.",
+          baselineLabel: "Collective Progress",
+          legendLow: "Struggling",
+          legendHigh: "Thriving"
+        },
+        phases: {
+          fingerprint: (fp) => `Shaping my signal…`,
+          routing: () => `Finding my tribe`,
+          synthesis: () => `Borrowing what works`,
+          baseline: () => `Inheriting breakthroughs ↑`
+        },
+        metrics: [
+          { label: "People:", getValue: (n) => n.toLocaleString(), colorClass: "" },
+          { label: "Connections:", getValue: (n) => Math.floor(n * (n - 1) / 2).toLocaleString(), colorClass: "green" },
+          { label: "Hops:", getValue: (n) => `~${Math.ceil(Math.log2(n))}`, colorClass: "purple" }
+        ],
+        timing: {
+          introDelay: 1500, prePingDuration: 2400, sendDuration: 3200,
+          extraPause: 900, upgradeDuration: 2200, orbDelayInterval: 130,
+          ringDuration: 1000, synthesisDuration: 2400
+        }
+      },
+
+      // ┌─────────────────────────────────────────────────────────────────────┐
+      // │  D2D: Decentralized → Decentralized (Edge → DHT)                    │
+      // │  Data origin: Edge devices. Synthesis: P2P. Routing: Kademlia DHT. │
+      // └─────────────────────────────────────────────────────────────────────┘
+      d2d: {
+        hasSimilarityModes: true,
+        showCentralNodes: { hospital: false, cloud: false },
+        exact: {
+          description: "Edge agents → SHA-256 → Kademlia DHT → P2P synthesis",
+          similarityDescription: "Expert-curated templates → SHA-256 hash → exact bucket match",
+          ui: {
+            title: "D→D: Edge Agents → DHT (Fully Decentralized)",
+            baselineLabel: "P2P Collective Baseline",
+            legendLow: "Untrained",
+            legendHigh: "Converged"
+          },
+          phases: {
+            fingerprint: (fp) => `SHA-256(template): 0x${fp}`,
+            routing: () => `Kademlia XOR → O(log N) hops`,
+            synthesis: () => `Consensus on outcome metadata`,
+            baseline: () => `Baseline ↑`,
+            update: () => `Gossip outcome → DHT bucket`
+          },
+          metrics: [
+            { label: "Agents (N):", getValue: (n) => n.toLocaleString(), colorClass: "" },
+            { label: "Insight Scaling:", getValue: (n) => `Θ(N²) = ${Math.floor(n * (n - 1) / 2).toLocaleString()}`, colorClass: "green" },
+            { label: "Parallel Queries:", getValue: () => `Unlimited (decoupled)`, colorClass: "green" },
+            { label: "Communication:", getValue: () => `O(log N) per agent`, colorClass: "purple" },
+            { label: "Latency:", getValue: (n) => `~${Math.ceil(Math.log2(n))} DHT hops`, colorClass: "purple" },
+            { label: "Real-time:", getValue: () => `Yes (P2P gossip)`, colorClass: "green" },
+            { label: "Privacy:", getValue: () => `Maximum`, colorClass: "green" },
+            { label: "Data Shared:", getValue: () => `None (edge-only)`, colorClass: "green" },
+            { label: "SPOF:", getValue: () => `None`, colorClass: "green" },
+            { label: "Auditability:", getValue: () => `Cryptographic`, colorClass: "green" },
+            { label: "Scale Ceiling:", getValue: () => `Billions`, colorClass: "green" },
+            { label: "Cost:", getValue: () => `Bandwidth only`, colorClass: "green" }
+          ],
+          timing: {
+            introDelay: 1200, prePingDuration: 1700, sendDuration: 2500,
+            extraPause: 550, upgradeDuration: 1500, orbDelayInterval: 85,
+            ringDuration: 700, synthesisDuration: 1700
+          }
+        },
+        approximate: {
+          description: "Edge agents → LSH embedding → DHT → consensus synthesis",
+          similarityDescription: "Neural embedding → LSH buckets → k-NN → rigorous consensus",
+          ui: {
+            title: "D→D: Edge Agents → DHT (LSH Approximate)",
+            baselineLabel: "Consensus Baseline",
+            legendLow: "Noisy",
+            legendHigh: "Converged"
+          },
+          phases: {
+            fingerprint: (fp) => `LSH(embed): bucket ${fp.slice(0, 6)}`,
+            routing: () => `Kademlia → k-NN lookup`,
+            synthesis: () => `Consensus + IQR on outcomes`,
+            baseline: () => `Baseline ↑`,
+            update: () => `Gossip validated → DHT`
+          },
+          metrics: [
+            { label: "Agents (N):", getValue: (n) => n.toLocaleString(), colorClass: "" },
+            { label: "Insight Scaling:", getValue: (n) => `Θ(N²) = ${Math.floor(n * (n - 1) / 2).toLocaleString()}`, colorClass: "green" },
+            { label: "Parallel Queries:", getValue: () => `Unlimited (decoupled)`, colorClass: "green" },
+            { label: "Communication:", getValue: () => `O(log N) per agent`, colorClass: "purple" },
+            { label: "Latency:", getValue: (n) => `~${Math.ceil(Math.log2(n))} DHT hops`, colorClass: "purple" },
+            { label: "Real-time:", getValue: () => `Yes (P2P gossip)`, colorClass: "green" },
+            { label: "Privacy:", getValue: () => `Maximum`, colorClass: "green" },
+            { label: "Data Shared:", getValue: () => `None (edge-only)`, colorClass: "green" },
+            { label: "SPOF:", getValue: () => `None`, colorClass: "green" },
+            { label: "Auditability:", getValue: () => `Cryptographic`, colorClass: "green" },
+            { label: "Scale Ceiling:", getValue: () => `Billions`, colorClass: "green" },
+            { label: "Cost:", getValue: () => `Bandwidth only`, colorClass: "green" }
+          ],
+          timing: {
+            introDelay: 1200, prePingDuration: 2000, sendDuration: 2800,
+            extraPause: 700, upgradeDuration: 1800, orbDelayInterval: 100,
+            ringDuration: 850, synthesisDuration: 2400
+          }
+        }
+      },
+
+      // ┌─────────────────────────────────────────────────────────────────────┐
+      // │  D2C: Decentralized → Centralized (Edge → VectorDB)                 │
+      // │  Data origin: Edge. Routing: Central VectorDB ANN query.            │
+      // └─────────────────────────────────────────────────────────────────────┘
+      d2c: {
+        hasSimilarityModes: true,
+        showCentralNodes: { hospital: false, cloud: true },
+        exact: {
+          description: "Edge agents → embed → VectorDB → ANN @ distance=0",
+          similarityDescription: "Deterministic embedding → exact vector match (distance=0)",
+          ui: {
+            title: "D→C: Edge Agents → VectorDB (Mostly Decentralized)",
+            baselineLabel: "Index Baseline",
+            legendLow: "Unindexed",
+            legendHigh: "Converged"
+          },
+          phases: {
+            fingerprint: (fp) => `Embed(template) → 768-dim`,
+            routing: () => `Upload → ANN query (d=0)`,
+            synthesis: () => `Consensus on outcome metadata`,
+            baseline: () => `Baseline ↑`,
+            update: () => `Publish outcome (vector) → index`
+          },
+          metrics: [
+            { label: "Agents (N):", getValue: (n) => n.toLocaleString(), colorClass: "" },
+            { label: "Insight Scaling:", getValue: (n) => `Θ(N²) = ${Math.floor(n * (n - 1) / 2).toLocaleString()}`, colorClass: "green" },
+            { label: "Parallel Queries:", getValue: () => `~1-10K QPS/cluster`, colorClass: "gold" },
+            { label: "Communication:", getValue: () => `O(1) per agent`, colorClass: "purple" },
+            { label: "Latency:", getValue: () => `1 API round-trip`, colorClass: "purple" },
+            { label: "Real-time:", getValue: () => `Near (API latency)`, colorClass: "gold" },
+            { label: "Privacy:", getValue: () => `Moderate`, colorClass: "gold" },
+            { label: "Data Shared:", getValue: () => `Vectors only (no PHI/PII)`, colorClass: "gold" },
+            { label: "SPOF:", getValue: () => `Provider outage`, colorClass: "gold" },
+            { label: "Auditability:", getValue: () => `Provider logs`, colorClass: "gold" },
+            { label: "Scale Ceiling:", getValue: () => `High (pagination)`, colorClass: "green" },
+            { label: "Cost:", getValue: () => `Storage + queries`, colorClass: "gold" }
+          ],
+          timing: {
+            introDelay: 1300, prePingDuration: 1900, sendDuration: 2600,
+            extraPause: 650, upgradeDuration: 1700, orbDelayInterval: 95,
+            ringDuration: 800, synthesisDuration: 1900
+          }
+        },
+        approximate: {
+          description: "Edge agents → neural embed → VectorDB top-k",
+          similarityDescription: "Neural embedding → top-k ANN (cosine > τ) → consensus voting",
+          ui: {
+            title: "D→C: Edge → VectorDB (Mostly Decentralized)",
+            baselineLabel: "Consensus Index",
+            legendLow: "Sparse",
+            legendHigh: "Dense"
+          },
+          phases: {
+            fingerprint: (fp) => `Neural embed → 768-dim`,
+            routing: () => `ANN top-k (cos > τ)`,
+            synthesis: () => `Consensus vote + IQR filter`,
+            baseline: () => `Baseline ↑`,
+            update: () => `Publish validated (vector) → index`
+          },
+          metrics: [
+            { label: "Agents (N):", getValue: (n) => n.toLocaleString(), colorClass: "" },
+            { label: "Insight Scaling:", getValue: (n) => `Θ(N²) = ${Math.floor(n * (n - 1) / 2).toLocaleString()}`, colorClass: "green" },
+            { label: "Parallel Queries:", getValue: () => `~1-10K QPS/cluster`, colorClass: "gold" },
+            { label: "Communication:", getValue: () => `O(1) per agent`, colorClass: "purple" },
+            { label: "Latency:", getValue: () => `O(log N) HNSW`, colorClass: "purple" },
+            { label: "Real-time:", getValue: () => `Near (API latency)`, colorClass: "gold" },
+            { label: "Privacy:", getValue: () => `Moderate`, colorClass: "gold" },
+            { label: "Data Shared:", getValue: () => `Vectors only (no PHI/PII)`, colorClass: "gold" },
+            { label: "SPOF:", getValue: () => `Provider outage`, colorClass: "gold" },
+            { label: "Auditability:", getValue: () => `Provider logs`, colorClass: "gold" },
+            { label: "Scale Ceiling:", getValue: () => `High (sharding)`, colorClass: "green" },
+            { label: "Cost:", getValue: () => `Storage + queries`, colorClass: "gold" }
+          ],
+          timing: {
+            introDelay: 1300, prePingDuration: 2100, sendDuration: 2900,
+            extraPause: 750, upgradeDuration: 1900, orbDelayInterval: 105,
+            ringDuration: 900, synthesisDuration: 2500
+          }
+        }
+      },
+
+      // ┌─────────────────────────────────────────────────────────────────────┐
+      // │  C2D: Centralized → Decentralized (EMR/Registry → DHT)              │
+      // │  Data origin: Central EMR. Publishes to DHT. Edge queries.          │
+      // └─────────────────────────────────────────────────────────────────────┘
+      c2d: {
+        hasSimilarityModes: true,
+        showCentralNodes: { hospital: true, cloud: false },
+        exact: {
+          description: "EMR parser → SHA-256 → publish to DHT → edge synthesis",
+          similarityDescription: "Central EMR extracts curated templates → publishes signed outcomes to DHT",
+          ui: {
+            title: "C→D: EMR/Registry → DHT (Mostly Centralized)",
+            baselineLabel: "Published Baseline",
+            legendLow: "Unpublished",
+            legendHigh: "Converged"
+          },
+          phases: {
+            fingerprint: (fp) => `EMR parse → SHA-256: 0x${fp}`,
+            routing: () => `Publish to DHT bucket`,
+            synthesis: () => `Consensus on outcome metadata`,
+            baseline: () => `Baseline ↑`,
+            update: () => `Edge gossip → DHT`
+          },
+          metrics: [
+            { label: "EMR Records (N):", getValue: (n) => n.toLocaleString(), colorClass: "" },
+            { label: "Insight Scaling:", getValue: (n) => `Θ(N²) = ${Math.floor(n * (n - 1) / 2).toLocaleString()}`, colorClass: "green" },
+            { label: "Parallel Queries:", getValue: () => `EMR-limited publish; ∞ reads`, colorClass: "gold" },
+            { label: "Communication:", getValue: () => `O(log N) per agent`, colorClass: "purple" },
+            { label: "Latency:", getValue: (n) => `~${Math.ceil(Math.log2(n))} DHT hops`, colorClass: "purple" },
+            { label: "Real-time:", getValue: () => `Yes (post-publish)`, colorClass: "green" },
+            { label: "Privacy:", getValue: () => `High`, colorClass: "green" },
+            { label: "Data Shared:", getValue: () => `Full data → Registry`, colorClass: "red" },
+            { label: "SPOF:", getValue: () => `Publisher only`, colorClass: "gold" },
+            { label: "Auditability:", getValue: () => `Cryptographic`, colorClass: "green" },
+            { label: "Scale Ceiling:", getValue: () => `Billions`, colorClass: "green" },
+            { label: "Cost:", getValue: () => `Minimal`, colorClass: "green" }
+          ],
+          timing: {
+            introDelay: 1400, prePingDuration: 2000, sendDuration: 2700,
+            extraPause: 600, upgradeDuration: 1600, orbDelayInterval: 90,
+            ringDuration: 750, synthesisDuration: 1800
+          }
+        },
+        approximate: {
+          description: "EMR parser → LSH embed → publish to DHT → edge k-NN",
+          similarityDescription: "EMR embeddings → LSH → publish → edge agents query k-NN",
+          ui: {
+            title: "C→D: EMR → DHT (Mostly Centralized)",
+            baselineLabel: "Consensus Baseline",
+            legendLow: "Noisy",
+            legendHigh: "Validated"
+          },
+          phases: {
+            fingerprint: (fp) => `EMR → LSH bucket ${fp.slice(0, 6)}`,
+            routing: () => `Publish → edge k-NN`,
+            synthesis: () => `Consensus + IQR on outcomes`,
+            baseline: () => `Baseline ↑`,
+            update: () => `Edge gossip validated → DHT`
+          },
+          metrics: [
+            { label: "EMR Records (N):", getValue: (n) => n.toLocaleString(), colorClass: "" },
+            { label: "Insight Scaling:", getValue: (n) => `Θ(N²) = ${Math.floor(n * (n - 1) / 2).toLocaleString()}`, colorClass: "green" },
+            { label: "Parallel Queries:", getValue: () => `EMR-limited publish; ∞ reads`, colorClass: "gold" },
+            { label: "Communication:", getValue: () => `O(log N) per agent`, colorClass: "purple" },
+            { label: "Latency:", getValue: (n) => `~${Math.ceil(Math.log2(n))} DHT hops`, colorClass: "purple" },
+            { label: "Real-time:", getValue: () => `Yes (post-publish)`, colorClass: "green" },
+            { label: "Privacy:", getValue: () => `High`, colorClass: "green" },
+            { label: "Data Shared:", getValue: () => `Full data → Registry`, colorClass: "red" },
+            { label: "SPOF:", getValue: () => `Publisher only`, colorClass: "gold" },
+            { label: "Auditability:", getValue: () => `Cryptographic`, colorClass: "green" },
+            { label: "Scale Ceiling:", getValue: () => `Billions`, colorClass: "green" },
+            { label: "Cost:", getValue: () => `Minimal`, colorClass: "green" }
+          ],
+          timing: {
+            introDelay: 1400, prePingDuration: 2200, sendDuration: 2900,
+            extraPause: 700, upgradeDuration: 1800, orbDelayInterval: 100,
+            ringDuration: 850, synthesisDuration: 2300
+          }
+        }
+      },
+
+      // ┌─────────────────────────────────────────────────────────────────────┐
+      // │  C2C: Centralized → Centralized (EMR → VectorDB)                    │
+      // │  Data origin: Central EMR. Routes via central VectorDB.             │
+      // └─────────────────────────────────────────────────────────────────────┘
+      c2c: {
+        hasSimilarityModes: true,
+        showCentralNodes: { hospital: true, cloud: true },
+        exact: {
+          description: "EMR parser → embed → VectorDB → ANN @ distance=0",
+          similarityDescription: "Central EMR → deterministic embed → central VectorDB exact match",
+          ui: {
+            title: "C→C: EMR → VectorDB (Fully Centralized)",
+            baselineLabel: "Network Baseline",
+            legendLow: "Unindexed",
+            legendHigh: "Indexed"
+          },
+          phases: {
+            fingerprint: (fp) => `EMR → Embed: 768-dim`,
+            routing: () => `Upload → ANN (d=0)`,
+            synthesis: () => `Consensus on outcome metadata`,
+            baseline: () => `Baseline ↑`,
+            update: () => `Publish outcome (vector) → index`
+          },
+          metrics: [
+            { label: "EMR Records (N):", getValue: (n) => n.toLocaleString(), colorClass: "" },
+            { label: "Insight Scaling:", getValue: (n) => `Θ(N²) = ${Math.floor(n * (n - 1) / 2).toLocaleString()}`, colorClass: "green" },
+            { label: "Parallel Queries:", getValue: () => `min(EMR, VectorDB)`, colorClass: "red" },
+            { label: "Communication:", getValue: () => `O(1) per agent`, colorClass: "purple" },
+            { label: "Latency:", getValue: () => `1 API round-trip`, colorClass: "purple" },
+            { label: "Real-time:", getValue: () => `Batch/Near`, colorClass: "gold" },
+            { label: "Privacy:", getValue: () => `Lower`, colorClass: "red" },
+            { label: "Data Shared:", getValue: () => `Full → EMR + vectors → DB`, colorClass: "red" },
+            { label: "SPOF:", getValue: () => `Full (EMR + VectorDB)`, colorClass: "red" },
+            { label: "Auditability:", getValue: () => `Provider logs`, colorClass: "gold" },
+            { label: "Scale Ceiling:", getValue: () => `High (sharding)`, colorClass: "green" },
+            { label: "Cost:", getValue: () => `Highest`, colorClass: "red" }
+          ],
+          timing: {
+            introDelay: 1300, prePingDuration: 1800, sendDuration: 2500,
+            extraPause: 600, upgradeDuration: 1600, orbDelayInterval: 90,
+            ringDuration: 750, synthesisDuration: 1800
+          }
+        },
+        approximate: {
+          description: "EMR parser → neural embed → VectorDB top-k",
+          similarityDescription: "EMR neural embeddings → top-k ANN → consensus synthesis",
+          ui: {
+            title: "C→C: EMR → VectorDB (Top-k)",
+            baselineLabel: "Network Baseline",
+            legendLow: "Sparse",
+            legendHigh: "Dense"
+          },
+          phases: {
+            fingerprint: (fp) => `EMR → Neural embed`,
+            routing: () => `ANN top-k query`,
+            synthesis: () => `Consensus + IQR on outcomes`,
+            baseline: () => `Baseline ↑`,
+            update: () => `Publish validated (vector) → index`
+          },
+          metrics: [
+            { label: "EMR Records (N):", getValue: (n) => n.toLocaleString(), colorClass: "" },
+            { label: "Insight Scaling:", getValue: (n) => `Θ(N²) = ${Math.floor(n * (n - 1) / 2).toLocaleString()}`, colorClass: "green" },
+            { label: "Parallel Queries:", getValue: () => `min(EMR, VectorDB)`, colorClass: "red" },
+            { label: "Communication:", getValue: () => `O(1) per agent`, colorClass: "purple" },
+            { label: "Latency:", getValue: () => `O(log N) HNSW`, colorClass: "purple" },
+            { label: "Real-time:", getValue: () => `Batch/Near`, colorClass: "gold" },
+            { label: "Privacy:", getValue: () => `Lower`, colorClass: "red" },
+            { label: "Data Shared:", getValue: () => `Full → EMR + vectors → DB`, colorClass: "red" },
+            { label: "SPOF:", getValue: () => `Full (EMR + VectorDB)`, colorClass: "red" },
+            { label: "Auditability:", getValue: () => `Provider logs`, colorClass: "gold" },
+            { label: "Scale Ceiling:", getValue: () => `High (sharding)`, colorClass: "green" },
+            { label: "Cost:", getValue: () => `Highest`, colorClass: "red" }
+          ],
+          timing: {
+            introDelay: 1300, prePingDuration: 2000, sendDuration: 2700,
+            extraPause: 700, upgradeDuration: 1800, orbDelayInterval: 100,
+            ringDuration: 850, synthesisDuration: 2400
+          }
+        }
+      }
+    };
+
+    // ============================================================================
+    // MODE MANAGER
+    // ============================================================================
+    const MODE_ORDER = ['intuitive', 'd2d', 'd2c', 'c2d', 'c2c'];
+    let currentMode = 'intuitive';
+    let currentModeIndex = 0;
+    let currentSimilarity = 'exact';
+    let completedPhases = [];
+
+    function getBaseConfig() {
+      return DEMO_CONFIGS[currentMode];
+    }
+
+    function getConfig() {
+      const baseConfig = DEMO_CONFIGS[currentMode];
+      if (baseConfig.hasSimilarityModes) {
+        return baseConfig[currentSimilarity];
+      }
+      return baseConfig;
+    }
+
+    // Speed control
+    let speedMultiplier = 1;
+
+    function getTiming(key) {
+      return getConfig().timing[key] / speedMultiplier;
+    }
+
+    function getPauseDuration() {
+      return 2000 / speedMultiplier;
+    }
+
+    function refreshStatusBar() {
+      if (completedPhases.length === 0) return;
+      const config = getConfig();
+      statusLabelEl.innerHTML = '';
+      statusLabelEl.style.display = 'flex';
+
+      completedPhases.forEach((phase, idx) => {
+        if (idx > 0) {
+          const arrow = document.createElement('span');
+          arrow.className = 'step-arrow';
+          arrow.textContent = '›';
+          statusLabelEl.appendChild(arrow);
+        }
+
+        let text = '';
+        if (phase === 'fingerprint') text = config.phases.fingerprint(currentFingerprint);
+        else if (phase === 'routing') text = config.phases.routing();
+        else if (phase === 'synthesis') text = config.phases.synthesis();
+        else if (phase === 'baseline') text = config.phases.baseline();
+        else if (phase === 'update' && config.phases.update) text = config.phases.update();
+
+        if (!text) return; // Skip if phase doesn't exist in this config
+
+        const step = document.createElement('span');
+        step.className = 'step-box ' + phase;
+        step.textContent = text;
+        statusLabelEl.appendChild(step);
+      });
+    }
+
+    function switchSimilarity(newSim) {
+      if (newSim !== 'exact' && newSim !== 'approximate') return;
+      currentSimilarity = newSim;
+
+      document.querySelectorAll('.similarity-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.sim === newSim);
+      });
+
+      const config = getConfig();
+      document.getElementById('similarityDescription').textContent = config.similarityDescription || '';
+      applyConfigToUI();
+      refreshStatusBar();
+    }
+
+    function applyConfigToUI() {
+      const config = getConfig();
+      document.getElementById('demoTitle').textContent = config.ui.title;
+      document.querySelector('.baseline-text').textContent = config.ui.baselineLabel;
+      document.getElementById('legendLow').textContent = config.ui.legendLow;
+      document.getElementById('legendHigh').textContent = config.ui.legendHigh;
+      document.getElementById('modeDescription').textContent = config.description;
+      updateMetricsPanelFromConfig();
+    }
+
+    function updateCentralNodes() {
+      const baseConfig = getBaseConfig();
+      const hospitalNode = document.getElementById('hospitalNode');
+      const cloudNode = document.getElementById('cloudNode');
+
+      if (baseConfig.showCentralNodes) {
+        hospitalNode.classList.toggle('visible', baseConfig.showCentralNodes.hospital);
+        cloudNode.classList.toggle('visible', baseConfig.showCentralNodes.cloud);
+      } else {
+        hospitalNode.classList.remove('visible');
+        cloudNode.classList.remove('visible');
+      }
+    }
+
+    function switchMode(newMode) {
+      if (!DEMO_CONFIGS[newMode]) return;
+      currentMode = newMode;
+      currentModeIndex = MODE_ORDER.indexOf(newMode);
+
+      document.body.className = `mode-${newMode}`;
+
+      // Show/hide similarity toggle
+      const simContainer = document.getElementById('similarityToggleContainer');
+      const baseConfig = DEMO_CONFIGS[newMode];
+      if (baseConfig.hasSimilarityModes) {
+        simContainer.classList.add('visible');
+        currentSimilarity = 'exact';
+        document.querySelectorAll('.similarity-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.sim === 'exact');
+        });
+        const config = getConfig();
+        document.getElementById('similarityDescription').textContent = config.similarityDescription || '';
+      } else {
+        simContainer.classList.remove('visible');
+      }
+
+      // Update central nodes visibility
+      updateCentralNodes();
+
+      // Update slider position
+      const percent = (currentModeIndex / (MODE_ORDER.length - 1)) * 100;
+      document.getElementById('sliderFill').style.width = `${percent}%`;
+      document.getElementById('sliderThumb').style.left = `${percent}%`;
+
+      // Update active label
+      document.querySelectorAll('.mode-label').forEach(label => {
+        label.classList.remove('active');
+        if (label.dataset.mode === newMode) label.classList.add('active');
+      });
+
+      applyConfigToUI();
+      refreshStatusBar();
+    }
+
+    function updateMetricsPanelFromConfig() {
+      const config = getConfig();
+      const panel = document.getElementById('metricsPanel');
+      const n = typeof nodes !== 'undefined' ? nodes.length : 50;
+
+      panel.innerHTML = config.metrics.map((m, i) => `
+        <div class="metric">
+          <span class="metric-label">${m.label}</span>
+          <span class="metric-value ${m.colorClass}" id="metric-${i}">${m.getValue(n)}</span>
+        </div>
+      `).join('');
+    }
+
+    // Wire up interactions
+    document.addEventListener('DOMContentLoaded', () => {
+      const labels = document.querySelectorAll('.mode-label');
+      const track = document.getElementById('sliderTrack');
+      const thumb = document.getElementById('sliderThumb');
+
+      labels.forEach(label => {
+        label.addEventListener('click', () => switchMode(label.dataset.mode));
+      });
+
+      track.addEventListener('click', (e) => {
+        const rect = track.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percent = x / rect.width;
+        const index = Math.round(percent * (MODE_ORDER.length - 1));
+        switchMode(MODE_ORDER[index]);
+      });
+
+      let isDragging = false;
+      thumb.addEventListener('mousedown', () => { isDragging = true; });
+      document.addEventListener('mouseup', () => { isDragging = false; });
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const rect = track.getBoundingClientRect();
+        const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+        const percent = x / rect.width;
+        const index = Math.round(percent * (MODE_ORDER.length - 1));
+        switchMode(MODE_ORDER[index]);
+      });
+
+      const simButtons = document.querySelectorAll('.similarity-btn');
+      simButtons.forEach(btn => {
+        btn.addEventListener('click', () => switchSimilarity(btn.dataset.sim));
+      });
+
+      // Comparison chart toggle
+      const compBtn = document.getElementById('comparisonBtn');
+      const compOverlay = document.getElementById('comparisonOverlay');
+      const compClose = document.getElementById('comparisonClose');
+
+      compBtn.addEventListener('click', () => {
+        compOverlay.classList.toggle('visible');
+        compBtn.classList.toggle('active');
+      });
+
+      compClose.addEventListener('click', () => {
+        compOverlay.classList.remove('visible');
+        compBtn.classList.remove('active');
+      });
+
+      // Speed slider
+      const speedSlider = document.getElementById('speedSlider');
+      const speedValueEl = document.getElementById('speedValue');
+      speedSlider.addEventListener('input', (e) => {
+        speedMultiplier = parseFloat(e.target.value);
+        speedValueEl.textContent = speedMultiplier + 'x';
+      });
+
+      switchMode('intuitive');
+    });
+
+    // ============================================================================
+    // CANVAS & ANIMATION
+    // ============================================================================
+    const canvas = document.getElementById('demoCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', () => {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      resizeCanvas();
+    });
+
+    class Node {
+      constructor(x, y, baseline) {
+        this.x = x;
+        this.y = y;
+        this.baseline = baseline;
+        this.upgraded = baseline >= 0.8;
+        this.ringStart = null;
+        this.ringEnd = null;
+      }
+      computeColor() {
+        const startColor = [239, 68, 68];
+        const endColor = [16, 185, 129];
+        const t = this.baseline;
+        const r = Math.round(startColor[0] * (1 - t) + endColor[0] * t);
+        const g = Math.round(startColor[1] * (1 - t) + endColor[1] * t);
+        const b = Math.round(startColor[2] * (1 - t) + endColor[2] * t);
+        const alpha = 0.3 + 0.7 * t;
+        return `rgba(${r},${g},${b},${alpha})`;
+      }
+      draw(ctx) {
+        const radius = 8 + this.baseline * 14;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.computeColor();
+        ctx.fill();
+      }
+      setBaseline(newBaseline) {
+        this.baseline = Math.min(newBaseline, 1.0);
+        this.upgraded = this.baseline >= 0.8;
+      }
+    }
+
+    class Orb {
+      constructor(startX, startY, endX, endY, startTime, travelTime, color = 'rgba(245, 158, 11, 0.85)') {
+        this.startX = startX;
+        this.startY = startY;
+        this.endX = endX;
+        this.endY = endY;
+        this.startTime = startTime;
+        this.travelTime = travelTime;
+        this.color = color;
+        this.done = false;
+        this.currX = startX;
+        this.currY = startY;
+      }
+      update(now) {
+        if (this.done) return;
+        const elapsed = now - this.startTime;
+        if (elapsed < 0) return;
+        const t = Math.min(elapsed / this.travelTime, 1);
+        this.currX = this.startX + (this.endX - this.startX) * t;
+        this.currY = this.startY + (this.endY - this.startY) * t;
+        if (t >= 1) this.done = true;
+      }
+      draw(ctx) {
+        if (this.done) return;
+        ctx.beginPath();
+        ctx.arc(this.currX, this.currY, 4, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    const nodes = [];
+    const totalNodes = 50;
+    for (let i = 0; i < totalNodes; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      let baseline = Math.random() * 0.5 + 0.2;
+      if (Math.random() < 0.15) baseline = 0.8 + Math.random() * 0.2;
+      nodes.push(new Node(x, y, baseline));
+    }
+
+    const queryOrder = nodes
+      .map((node, idx) => ({ idx, baseline: node.baseline }))
+      .filter(item => !nodes[item.idx].upgraded)
+      .sort((a, b) => a.baseline - b.baseline)
+      .map(item => item.idx);
+
+    let currentQueryIndex = 0;
+    let queryNode = null;
+    let orbs = [];
+    let sendCompleteTime = 0;
+    let upgradeStart = 0;
+    let state = 'idle';
+    let upgradeStarted = false;
+    let synthesisStart = 0;
+    let currentFingerprint = '';
+
+    const progressEl = document.getElementById('baselineProgress');
+    const statusLabelEl = document.getElementById('statusLabel');
+
+    function updateStatus(text, phase) {
+      if (!text) return;
+      if (phase && !completedPhases.includes(phase)) completedPhases.push(phase);
+
+      statusLabelEl.style.display = 'flex';
+      if (statusLabelEl.children.length > 0) {
+        const arrow = document.createElement('span');
+        arrow.className = 'step-arrow';
+        arrow.textContent = '›';
+        statusLabelEl.appendChild(arrow);
+      }
+      const step = document.createElement('span');
+      step.className = 'step-box' + (phase ? ` ${phase}` : '');
+      step.textContent = text;
+      statusLabelEl.appendChild(step);
+    }
+
+    function computeAvgBaseline() {
+      let total = 0;
+      for (const n of nodes) total += n.baseline;
+      return total / nodes.length;
+    }
+
+    function updateProgress() {
+      const avg = computeAvgBaseline();
+      progressEl.style.width = `${Math.max(0.03, avg * 100)}%`;
+    }
+
+    function nextQuery() {
+      if (currentQueryIndex >= queryOrder.length) {
+        startFinale();
+        return;
+      }
+      const idx = queryOrder[currentQueryIndex];
+      currentQueryIndex++;
+      queryNode = nodes[idx];
+      if (queryNode.upgraded) {
+        nextQuery();
+        return;
+      }
+
+      for (const n of nodes) {
+        n.ringStart = null;
+        n.ringEnd = null;
+        n.ringColor = null;  // Reset custom ring color
+      }
+      // Reset cloud pulse
+      cloudPulseStart = null;
+      cloudPulseEnd = null;
+
+      statusLabelEl.innerHTML = '';
+      statusLabelEl.style.display = 'none';
+      completedPhases = [];
+      state = 'preping';
+      queryNode.preStart = performance.now();
+      queryNode.preEnd = queryNode.preStart + getTiming('prePingDuration');
+      orbs = [];
+      upgradeStarted = false;
+
+      const hexChars = '0123456789ABCDEF';
+      currentFingerprint = Array.from({ length: 12 }, () =>
+        hexChars[Math.floor(Math.random() * 16)]
+      ).join('');
+
+      updateStatus(getConfig().phases.fingerprint(currentFingerprint), 'fingerprint');
+    }
+
+    // Track cloud pulse state for D→C visualization
+    let cloudPulseStart = null;
+    let cloudPulseEnd = null;
+
+    function startSending() {
+      state = 'sending';
+      updateStatus(getConfig().phases.routing(), 'routing');
+      const startTime = performance.now();
+
+      const potentialTargets = nodes.filter((node) => node !== queryNode);
+      const minTargets = 3;
+      const maxTargets = Math.min(10, potentialTargets.length);
+      const numTargets = Math.floor(Math.random() * (maxTargets - minTargets + 1)) + minTargets;
+      const shuffled = potentialTargets.sort(() => Math.random() - 0.5);
+      const targets = shuffled.slice(0, numTargets);
+
+      const orbInterval = getTiming('orbDelayInterval');
+      const travelTime = getTiming('sendDuration');
+      const ringTime = getTiming('ringDuration');
+      const pauseTime = getTiming('extraPause');
+
+      // Get central node positions for routing visualization
+      const baseConfig = getBaseConfig();
+      const hospitalEl = document.getElementById('hospitalNode');
+      const cloudEl = document.getElementById('cloudNode');
+      const hospitalRect = hospitalEl.getBoundingClientRect();
+      const cloudRect = cloudEl.getBoundingClientRect();
+      const canvasRect = canvas.getBoundingClientRect();
+
+      const hospitalPos = {
+        x: hospitalRect.left + hospitalRect.width / 2 - canvasRect.left,
+        y: hospitalRect.top + hospitalRect.height / 2 - canvasRect.top
+      };
+      const cloudPos = {
+        x: cloudRect.left + cloudRect.width / 2 - canvasRect.left,
+        y: cloudRect.top + cloudRect.height / 2 - canvasRect.top
+      };
+
+      // Reset cloud pulse
+      cloudPulseStart = null;
+      cloudPulseEnd = null;
+
+      // Different routing patterns based on architecture
+      if (currentMode === 'd2c' && baseConfig.showCentralNodes.cloud) {
+        // ═══════════════════════════════════════════════════════════════════
+        // D→C: Edge → Cloud (single query) → Cloud pulses matched nodes → return
+        // The VectorDB already has all embeddings stored - no orbs TO nodes
+        // ═══════════════════════════════════════════════════════════════════
+
+        const queryToCloudTime = travelTime * 0.6;
+        const cloudProcessTime = travelTime * 0.8;  // Time for cloud to "process" and pulse matches
+        const cloudToQueryTime = travelTime * 0.6;
+
+        // Step 1: Single orb from query node → cloud (the query)
+        orbs.push(new Orb(
+          queryNode.x, queryNode.y,
+          cloudPos.x, cloudPos.y,
+          startTime,
+          queryToCloudTime,
+          'rgba(139, 92, 246, 0.9)'  // Purple for cloud
+        ));
+
+        // Step 2: Cloud pulses when it receives the query
+        const cloudReceiveTime = startTime + queryToCloudTime;
+        cloudPulseStart = cloudReceiveTime;
+        cloudPulseEnd = cloudReceiveTime + cloudProcessTime;
+
+        // Step 3: Matched nodes pulse (staggered) - NO orbs sent to them
+        // This signifies: "these stored patterns are being used for consensus"
+        // Purple color to show they're being "accessed" by the central DB
+        targets.forEach((target, idx) => {
+          const pulseDelay = idx * (orbInterval * 0.5);  // Stagger the pulses
+          const nodePulseStart = cloudReceiveTime + 200 + pulseDelay;  // Small delay after cloud receives
+          target.ringStart = nodePulseStart;
+          target.ringEnd = nodePulseStart + ringTime * 1.5;  // Longer pulse to be visible
+          target.ringColor = 'rgba(139, 92, 246, ALPHA)';  // Purple - "accessed by DB"
+        });
+
+        // Step 4: Single orb from cloud → query node (aggregated result)
+        const returnStart = cloudReceiveTime + cloudProcessTime;
+        orbs.push(new Orb(
+          cloudPos.x, cloudPos.y,
+          queryNode.x, queryNode.y,
+          returnStart,
+          cloudToQueryTime,
+          'rgba(16, 185, 129, 0.9)'  // Green for result
+        ));
+
+        sendCompleteTime = returnStart + cloudToQueryTime;
+
+      } else if (currentMode === 'c2d' && baseConfig.showCentralNodes.hospital) {
+        // ═══════════════════════════════════════════════════════════════════
+        // C→D: Query Node → EMR → DHT nodes → EMR → Query Node
+        // 4-step flow: query to EMR, EMR fans out, nodes respond to EMR, EMR returns result
+        // ═══════════════════════════════════════════════════════════════════
+
+        const queryToEmrTime = travelTime * 0.5;
+        const emrToNodesTime = travelTime * 0.6;
+        const nodesToEmrTime = travelTime * 0.6;
+        const emrToQueryTime = travelTime * 0.5;
+
+        // Step 1: Query node sends orb to EMR (the query request)
+        orbs.push(new Orb(
+          queryNode.x, queryNode.y,
+          hospitalPos.x, hospitalPos.y,
+          startTime,
+          queryToEmrTime,
+          'rgba(245, 158, 11, 0.9)'  // Gold for query
+        ));
+
+        // Step 2: EMR fans out to DHT nodes (after receiving query)
+        const emrReceiveTime = startTime + queryToEmrTime;
+        targets.forEach((target, idx) => {
+          const delay = idx * orbInterval * 0.7;
+          orbs.push(new Orb(
+            hospitalPos.x, hospitalPos.y,
+            target.x, target.y,
+            emrReceiveTime + delay,
+            emrToNodesTime,
+            'rgba(239, 68, 68, 0.85)'  // Red for EMR origin
+          ));
+        });
+
+        // Nodes pulse when they receive from EMR
+        targets.forEach((target, idx) => {
+          const arrivalTime = emrReceiveTime + idx * orbInterval * 0.7 + emrToNodesTime;
+          target.ringStart = arrivalTime;
+          target.ringEnd = arrivalTime + ringTime;
+        });
+
+        // Step 3: Nodes send responses back to EMR
+        const lastNodeArrival = emrReceiveTime + (targets.length - 1) * orbInterval * 0.7 + emrToNodesTime;
+        const returnToEmrStart = lastNodeArrival + pauseTime * 0.5;
+        targets.forEach((target, idx) => {
+          const retDelay = idx * orbInterval * 0.7;
+          orbs.push(new Orb(
+            target.x, target.y,
+            hospitalPos.x, hospitalPos.y,
+            returnToEmrStart + retDelay,
+            nodesToEmrTime,
+            'rgba(16, 185, 129, 0.85)'  // Green for responses
+          ));
+        });
+
+        // Step 4: EMR sends aggregated result back to query node
+        const emrAggregateTime = returnToEmrStart + (targets.length - 1) * orbInterval * 0.7 + nodesToEmrTime + pauseTime * 0.3;
+        orbs.push(new Orb(
+          hospitalPos.x, hospitalPos.y,
+          queryNode.x, queryNode.y,
+          emrAggregateTime,
+          emrToQueryTime,
+          'rgba(16, 185, 129, 0.9)'  // Green for final result
+        ));
+
+        sendCompleteTime = emrAggregateTime + emrToQueryTime;
+
+      } else if (currentMode === 'c2c' && baseConfig.showCentralNodes.hospital && baseConfig.showCentralNodes.cloud) {
+        // C→C: Hospital → Cloud → pulse matched patterns → return
+        // Similar to D→C but originating from hospital
+
+        const hospitalToCloudTime = travelTime * 0.5;
+        const cloudProcessTime = travelTime * 0.8;
+        const cloudToHospitalTime = travelTime * 0.5;
+
+        // Hospital → Cloud
+        orbs.push(new Orb(
+          hospitalPos.x, hospitalPos.y,
+          cloudPos.x, cloudPos.y,
+          startTime,
+          hospitalToCloudTime,
+          'rgba(239, 68, 68, 0.9)'  // Red for hospital
+        ));
+
+        // Cloud pulses
+        const cloudReceiveTime = startTime + hospitalToCloudTime;
+        cloudPulseStart = cloudReceiveTime;
+        cloudPulseEnd = cloudReceiveTime + cloudProcessTime;
+
+        // Matched nodes pulse - purple to show accessed by DB
+        targets.forEach((target, idx) => {
+          const pulseDelay = idx * (orbInterval * 0.5);
+          const nodePulseStart = cloudReceiveTime + 200 + pulseDelay;
+          target.ringStart = nodePulseStart;
+          target.ringEnd = nodePulseStart + ringTime * 1.5;
+          target.ringColor = 'rgba(139, 92, 246, ALPHA)';  // Purple - "accessed by DB"
+        });
+
+        // Cloud → Hospital (result)
+        const returnStart = cloudReceiveTime + cloudProcessTime;
+        orbs.push(new Orb(
+          cloudPos.x, cloudPos.y,
+          hospitalPos.x, hospitalPos.y,
+          returnStart,
+          cloudToHospitalTime,
+          'rgba(16, 185, 129, 0.9)'
+        ));
+
+        sendCompleteTime = returnStart + cloudToHospitalTime;
+
+      } else {
+        // D→D or default: Direct P2P gossip
+        targets.forEach((target, idx) => {
+          const delay = idx * orbInterval;
+          orbs.push(new Orb(queryNode.x, queryNode.y, target.x, target.y, startTime + delay, travelTime));
+        });
+
+        targets.forEach((target, idx) => {
+          const arrivalTime = startTime + idx * orbInterval + travelTime;
+          target.ringStart = arrivalTime;
+          target.ringEnd = arrivalTime + ringTime;
+        });
+
+        const globalReturnStart = startTime + (targets.length - 1) * orbInterval + travelTime + pauseTime;
+        targets.forEach((target, idx) => {
+          const retDelay = idx * orbInterval;
+          orbs.push(new Orb(target.x, target.y, queryNode.x, queryNode.y, globalReturnStart + retDelay, travelTime));
+        });
+
+        let latest = 0;
+        orbs.forEach((orb) => {
+          const finish = orb.startTime + orb.travelTime;
+          if (finish > latest) latest = finish;
+        });
+        sendCompleteTime = latest;
+      }
+    }
+
+    function startUpgrading() {
+      state = 'upgrading';
+      upgradeStart = performance.now();
+      queryNode.upgradeStartBaseline = queryNode.baseline;
+      upgradeStarted = true;
+      queryNode.ringStart = upgradeStart;
+      queryNode.ringEnd = upgradeStart + getTiming('ringDuration');
+      updateStatus(getConfig().phases.baseline(), 'baseline');
+    }
+
+    function startSynthesizing() {
+      state = 'synthesizing';
+      synthesisStart = performance.now();
+      updateStatus(getConfig().phases.synthesis(), 'synthesis');
+    }
+
+    function drawFrame(now) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const node of nodes) node.draw(ctx);
+
+      for (const node of nodes) {
+        if (node.ringStart !== null && node.ringEnd !== null) {
+          if (now >= node.ringStart && now <= node.ringEnd) {
+            const progressRing = (now - node.ringStart) / (node.ringEnd - node.ringStart);
+            const baseR = 8 + node.baseline * 14;
+            const ringRadius = baseR + 6 + progressRing * 12;
+            const alphaRing = 0.9 * (1.0 - progressRing);
+
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, ringRadius, 0, Math.PI * 2);
+
+            // Use custom ring color if set (e.g., purple for D→C "accessed" nodes)
+            if (node.ringColor) {
+              ctx.strokeStyle = node.ringColor.replace('ALPHA', alphaRing.toFixed(2));
+            } else {
+              ctx.strokeStyle = `rgba(245, 158, 11, ${alphaRing})`;  // Default gold
+            }
+
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+        }
+      }
+
+      if (state === 'preping' && queryNode) {
+        const elapsed = now - queryNode.preStart;
+        const t = Math.min(elapsed / getTiming('prePingDuration'), 1);
+        const pulse = 0.5 + 0.5 * Math.sin(t * Math.PI * 4);
+        const radius = 12 + queryNode.baseline * 14 + pulse * 6;
+        ctx.beginPath();
+        ctx.arc(queryNode.x, queryNode.y, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(245, 158, 11, 0.8)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        if (now >= queryNode.preEnd) startSending();
+      }
+
+      if (state === 'sending') {
+        for (const orb of orbs) {
+          orb.update(now);
+          orb.draw(ctx);
+        }
+
+        // Draw cloud pulse effect for D→C and C→C modes
+        if (cloudPulseStart !== null && cloudPulseEnd !== null) {
+          if (now >= cloudPulseStart && now <= cloudPulseEnd) {
+            const cloudEl = document.getElementById('cloudNode');
+            const cloudRect = cloudEl.getBoundingClientRect();
+            const canvasRect = canvas.getBoundingClientRect();
+            const cloudX = cloudRect.left + cloudRect.width / 2 - canvasRect.left;
+            const cloudY = cloudRect.top + cloudRect.height / 2 - canvasRect.top;
+
+            const progress = (now - cloudPulseStart) / (cloudPulseEnd - cloudPulseStart);
+            const pulsePhase = (progress * 3) % 1;  // 3 pulses during the period
+
+            // Expanding ring effect
+            const baseRadius = 35;
+            const pulseRadius = baseRadius + pulsePhase * 40;
+            const pulseAlpha = 0.8 * (1 - pulsePhase);
+
+            ctx.beginPath();
+            ctx.arc(cloudX, cloudY, pulseRadius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(139, 92, 246, ${pulseAlpha})`;
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            // Inner glow
+            const gradient = ctx.createRadialGradient(cloudX, cloudY, 0, cloudX, cloudY, baseRadius);
+            gradient.addColorStop(0, 'rgba(139, 92, 246, 0.3)');
+            gradient.addColorStop(1, 'rgba(139, 92, 246, 0)');
+            ctx.beginPath();
+            ctx.arc(cloudX, cloudY, baseRadius, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+          }
+        }
+
+        if (now >= sendCompleteTime && !upgradeStarted && state === 'sending') {
+          startSynthesizing();
+        }
+      }
+
+      if (state === 'synthesizing') {
+        if (queryNode) {
+          const baseR = 8 + queryNode.baseline * 14;
+          const elapsedSynth = now - synthesisStart;
+          const period = 600;
+          const phase = ((elapsedSynth % period) / period);
+          const synthRadius = baseR + 10 + Math.sin(phase * 2 * Math.PI) * 6;
+          const synthAlpha = 0.5 + 0.3 * Math.sin(phase * 2 * Math.PI);
+          ctx.beginPath();
+          ctx.arc(queryNode.x, queryNode.y, synthRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(245, 158, 11, ${synthAlpha.toFixed(3)})`;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+        }
+        if (now >= synthesisStart + getTiming('synthesisDuration')) startUpgrading();
+      }
+
+      if (state === 'upgrading' && queryNode) {
+        const progress = Math.min((now - upgradeStart) / getTiming('upgradeDuration'), 1);
+        const newBaseline = queryNode.upgradeStartBaseline + (1.0 - queryNode.upgradeStartBaseline) * progress;
+        queryNode.setBaseline(newBaseline);
+        updateProgress();
+        if (progress >= 1) {
+          // Show the update phase if this config has it (publishing back to index)
+          const config = getConfig();
+          if (config.phases.update) {
+            updateStatus(config.phases.update(), 'update');
+          }
+          state = 'idle';
+          // Longer pause so user can read the full status bar
+          setTimeout(() => nextQuery(), getPauseDuration());
+        }
+      }
+
+      if (state !== 'done' && state !== 'finale') {
+        requestAnimationFrame(drawFrame);
+      } else if (state === 'done') {
+        updateProgress();
+      }
+    }
+
+    updateProgress();
+    updateMetricsPanelFromConfig();
+    setTimeout(() => {
+      nextQuery();
+      requestAnimationFrame(drawFrame);
+    }, getTiming('introDelay'));
+
+    // ============================================================================
+    // FINALE CELEBRATION
+    // ============================================================================
+    let finaleParticles = [];
+    let finaleAnimating = false;
+    const finaleCanvas = document.getElementById('finaleParticles');
+    const finaleCtx = finaleCanvas.getContext('2d');
+
+    class FinaleParticle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.vx = (Math.random() - 0.5) * 4;
+        this.vy = (Math.random() - 0.5) * 4 - 2;
+        this.life = 1.0;
+        this.decay = 0.008 + Math.random() * 0.012;
+        this.size = 2 + Math.random() * 4;
+        const colors = [
+          [0, 217, 255],    // Cyan
+          [16, 185, 129],   // Green
+          [139, 92, 246],   // Purple
+          [245, 158, 11],   // Gold
+        ];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.05; // gravity
+        this.life -= this.decay;
+      }
+      draw(ctx) {
+        if (this.life <= 0) return;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * this.life, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${this.life})`;
+        ctx.fill();
+      }
+    }
+
+    function resizeFinaleCanvas() {
+      finaleCanvas.width = finaleCanvas.offsetWidth;
+      finaleCanvas.height = finaleCanvas.offsetHeight;
+    }
+
+    function spawnFinaleParticles(x, y, count) {
+      for (let i = 0; i < count; i++) {
+        finaleParticles.push(new FinaleParticle(x, y));
+      }
+    }
+
+    function drawFinaleParticles() {
+      finaleCtx.clearRect(0, 0, finaleCanvas.width, finaleCanvas.height);
+
+      finaleParticles = finaleParticles.filter(p => p.life > 0);
+      for (const p of finaleParticles) {
+        p.update();
+        p.draw(finaleCtx);
+      }
+
+      if (finaleAnimating) {
+        requestAnimationFrame(drawFinaleParticles);
+      }
+    }
+
+    function startFinale() {
+      state = 'finale';
+
+      // Animate all nodes to full baseline
+      const finalizeNodes = () => {
+        let allDone = true;
+        for (const node of nodes) {
+          if (node.baseline < 1.0) {
+            node.setBaseline(Math.min(node.baseline + 0.02, 1.0));
+            allDone = false;
+          }
+        }
+        updateProgress();
+        if (!allDone) {
+          requestAnimationFrame(finalizeNodes);
+        } else {
+          // All nodes at 100%, show finale overlay
+          showFinaleOverlay();
+        }
+      };
+
+      // Continue main animation during finale ramp-up
+      const finaleRampFrame = (now) => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw all nodes with celebration glow
+        for (const node of nodes) {
+          node.draw(ctx);
+
+          // Add celebration ring effect
+          if (node.baseline >= 0.95) {
+            const pulse = 0.5 + 0.5 * Math.sin(now / 200 + node.x / 50);
+            const radius = 8 + node.baseline * 14 + 10 + pulse * 8;
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(0, 217, 255, ${0.3 * pulse})`;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+        }
+
+        if (state === 'finale') {
+          requestAnimationFrame(finaleRampFrame);
+        }
+      };
+
+      requestAnimationFrame(finaleRampFrame);
+      finalizeNodes();
+    }
+
+    function showFinaleOverlay() {
+      state = 'done';
+
+      // Update finale stats
+      document.getElementById('finaleAgents').textContent = nodes.length;
+
+      // Setup particle canvas
+      resizeFinaleCanvas();
+      finaleAnimating = true;
+
+      // Show overlay
+      const overlay = document.getElementById('finaleOverlay');
+      overlay.classList.add('visible');
+
+      // Start particle bursts
+      drawFinaleParticles();
+
+      // Burst particles from center
+      const centerX = finaleCanvas.width / 2;
+      const centerY = finaleCanvas.height / 2;
+
+      // Initial big burst
+      spawnFinaleParticles(centerX, centerY, 100);
+
+      // Continuous smaller bursts
+      let burstCount = 0;
+      const burstInterval = setInterval(() => {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 50 + Math.random() * 150;
+        const x = centerX + Math.cos(angle) * dist;
+        const y = centerY + Math.sin(angle) * dist;
+        spawnFinaleParticles(x, y, 20);
+        burstCount++;
+        if (burstCount > 15) {
+          clearInterval(burstInterval);
+        }
+      }, 300);
+
+      // Wire up reset button
+      document.getElementById('finaleResetBtn').onclick = resetSimulation;
+    }
+
+    function resetSimulation() {
+      // Hide overlay
+      const overlay = document.getElementById('finaleOverlay');
+      overlay.classList.remove('visible');
+      finaleAnimating = false;
+      finaleParticles = [];
+
+      // Reset speed to 1x
+      speedMultiplier = 1;
+      document.getElementById('speedSlider').value = 1;
+      document.getElementById('speedValue').textContent = '1x';
+
+      // Reset all nodes
+      for (let i = 0; i < nodes.length; i++) {
+        let baseline = Math.random() * 0.5 + 0.2;
+        if (Math.random() < 0.15) baseline = 0.8 + Math.random() * 0.2;
+        nodes[i].baseline = baseline;
+        nodes[i].upgraded = baseline >= 0.8;
+        nodes[i].ringStart = null;
+        nodes[i].ringEnd = null;
+        nodes[i].ringColor = null;
+      }
+
+      // Rebuild query order
+      queryOrder.length = 0;
+      const newOrder = nodes
+        .map((node, idx) => ({ idx, baseline: node.baseline }))
+        .filter(item => !nodes[item.idx].upgraded)
+        .sort((a, b) => a.baseline - b.baseline)
+        .map(item => item.idx);
+      queryOrder.push(...newOrder);
+
+      // Reset state
+      currentQueryIndex = 0;
+      queryNode = null;
+      orbs = [];
+      state = 'idle';
+      upgradeStarted = false;
+      completedPhases = [];
+      statusLabelEl.innerHTML = '';
+      statusLabelEl.style.display = 'none';
+      cloudPulseStart = null;
+      cloudPulseEnd = null;
+
+      // Reset progress bar
+      updateProgress();
+
+      // Restart animation
+      setTimeout(() => {
+        nextQuery();
+        requestAnimationFrame(drawFrame);
+      }, 500);
+    }
+
+    // Handle window resize for finale canvas
+    window.addEventListener('resize', () => {
+      if (finaleCanvas.offsetWidth > 0) {
+        resizeFinaleCanvas();
+      }
+    });
+  </script>
+</body>
+</html>
