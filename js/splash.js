@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
     agentsCounter.animate(0);
     synthesisCounter.animate(200);
     patentsCounter.animate(400);
-  }, 7000);
+  }, 2800);
 
   // Enter button functionality
   const enterBtn = document.getElementById('enterBtn');

@@ -67,7 +67,7 @@
   text-shadow:
     0 0 40px rgba(0, 217, 255, 1),
     0 0 80px rgba(0, 217, 255, 0.5);
-  animation: eqReveal 2.5s ease-out 0.5s forwards;
+  animation: eqReveal 1.5s ease-out 0s forwards;
 }
 
 .eq-2 {
@@ -75,7 +75,7 @@
   text-shadow:
     0 0 40px rgba(16, 185, 129, 1),
     0 0 80px rgba(16, 185, 129, 0.5);
-  animation: eqReveal 2.5s ease-out 3.5s forwards;
+  animation: eqReveal 1.5s ease-out 1.2s forwards;
 }
 
 @keyframes eqReveal {
@@ -111,7 +111,7 @@
   max-width: 1400px;
   padding: 0 40px;
   opacity: 0;
-  animation: contentFadeIn 1.2s ease-out 6.5s forwards;
+  animation: contentFadeIn 1s ease-out 2.2s forwards;
 }
 
 @keyframes contentFadeIn {

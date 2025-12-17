@@ -8,22 +8,52 @@ class PersistentNetwork {
     this.canvas.id = 'persistentNetwork';
     this.ctx = this.canvas.getContext('2d');
     document.body.insertBefore(this.canvas, document.body.firstChild);
-    
+
     this.particles = [];
     this.connections = [];
     this.mouse = { x: 0, y: 0 };
     this.time = 0;
-    
+    this.isRunning = true; // Controls animation loop
+
     this.resize();
     this.init();
-    
+    this.setupVisibilityOptimization();
+
     window.addEventListener('resize', () => this.resize());
     window.addEventListener('mousemove', (e) => {
       this.mouse.x = e.clientX;
       this.mouse.y = e.clientY;
     });
-    
+
     this.animate();
+  }
+
+  setupVisibilityOptimization() {
+    // Pause when tab is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.isRunning = false;
+      } else {
+        this.isRunning = true;
+        this.animate(); // Restart animation loop
+      }
+    });
+
+    // Pause when canvas is scrolled out of view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !document.hidden) {
+          if (!this.isRunning) {
+            this.isRunning = true;
+            this.animate(); // Restart animation loop
+          }
+        } else {
+          this.isRunning = false;
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(this.canvas);
   }
   
   resize() {
@@ -132,6 +162,7 @@ class PersistentNetwork {
   }
   
   animate() {
+    if (!this.isRunning) return; // Stop loop when not visible
     this.update();
     this.draw();
     requestAnimationFrame(() => this.animate());
@@ -430,6 +461,23 @@ document.addEventListener('DOMContentLoaded', function() {
 }); // End DOMContentLoaded
 
 // ==================== GLOBAL FUNCTIONS ====================
+
+// Toggle industries section
+function toggleIndustries() {
+  const moreIndustries = document.getElementById('moreIndustries');
+  const toggleText = document.getElementById('toggleText');
+  const toggleArrow = document.getElementById('toggleArrow');
+
+  if (moreIndustries.style.display === 'none') {
+    moreIndustries.style.display = 'grid';
+    toggleText.textContent = 'Show Less';
+    toggleArrow.innerHTML = '&#9650;'; // Up arrow
+  } else {
+    moreIndustries.style.display = 'none';
+    toggleText.textContent = 'Show 16 More Industries';
+    toggleArrow.innerHTML = '&#9660;'; // Down arrow
+  }
+}
 
 // Copy prompt function
 function copyToClipboard() {

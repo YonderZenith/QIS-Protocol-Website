@@ -27,7 +27,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -409,6 +409,10 @@ Do not hallucinate. If uncertain about any detail, refer to the core spec, websi
           <h3>Energy Grid</h3>
           <p>Smart meters, load balancing, outage prevention, renewable integration, demand prediction, grid resilience</p>
         </a>
+      </div>
+
+      <!-- Hidden industries (expandable) -->
+      <div id="moreIndustries" class="industry-grid" style="display: none; margin-top: 45px;">
         <a href="pdfs/industries/smart-cities.pdf" target="_blank" class="industry-card">
           <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M13 11V7"/><rect x="9" y="13" width="6" height="4"/></svg>
           <h3>Smart Cities & Logistics</h3>
@@ -489,6 +493,16 @@ Do not hallucinate. If uncertain about any detail, refer to the core spec, websi
           <h3>Global Supply Chain Integrity & Anti-Counterfeit Networks</h3>
           <p>Counterfeit detection, authenticity verification, supply chain tracking, brand protection, integrity pattern synthesis</p>
         </a>
+      </div>
+
+      <!-- Toggle button -->
+      <button id="toggleIndustries" class="btn secondary" style="margin-top: 50px;" onclick="toggleIndustries()">
+        <span id="toggleText">Show 16 More Industries</span>
+        <span id="toggleArrow" style="margin-left: 10px; transition: transform 0.3s;">&#9660;</span>
+      </button>
+
+      <!-- Universal card (always visible) -->
+      <div class="industry-grid" style="margin-top: 45px;">
         <a href="pdfs/industries/universal-applications.pdf" target="_blank" class="industry-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(0, 190, 234, 0.15)); border: 2px solid var(--purple-quantum);">
           <svg class="icon-svg" viewBox="0 0 24 24" style="margin: 0 auto 15px;"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><circle cx="5" cy="19" r="2"/><line x1="12" y1="12" x2="19" y2="5"/><line x1="12" y1="12" x2="5" y2="5"/><line x1="12" y1="12" x2="19" y2="19"/><line x1="12" y1="12" x2="5" y2="19"/></svg>
           <h3>Any Domain with Distributed Agents</h3>
