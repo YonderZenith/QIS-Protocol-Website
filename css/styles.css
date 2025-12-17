@@ -1118,8 +1118,12 @@ footer p {
   display: none !important;
 }
 
-/* Hide hamburger on desktop */
+/* Hide hamburger and overlay on desktop */
 .hamburger {
+  display: none;
+}
+
+.nav-overlay {
   display: none;
 }
 
