@@ -1118,6 +1118,11 @@ footer p {
   display: none !important;
 }
 
+/* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+}
+
 /* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 1200px) {
   h1 { font-size: 4rem; }
@@ -1415,11 +1420,6 @@ footer p {
   footer {
     padding: 50px 25px !important;
   }
-}
-
-/* Hide hamburger on desktop */
-.hamburger {
-  display: none;
 }
 
 @media (max-width: 480px) {
