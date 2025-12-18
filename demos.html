@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="QIS Protocol Interactive Demos - Experience quadratic intelligence scaling, pattern synthesis, and distributed AI in action">
+  <title>Demos • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(0, 190, 234, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { width: 40px; height: 40px; filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5)); }
+    .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--cyan-bright); }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--cyan-bright);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .nav-overlay.active { display: block; }
+
+    /* Content */
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 140px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 10px;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+    }
+
+    /* Demo Cards */
+    .demos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .demo-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(0, 190, 234, 0.3);
+      border-radius: 20px;
+      padding: 30px;
+      transition: all 0.4s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.05), transparent);
+      animation: shimmer 4s infinite;
+    }
+
+    @keyframes shimmer { to { left: 200%; } }
+
+    .demo-card:hover {
+      border-color: var(--cyan-bright);
+      box-shadow: 0 0 40px rgba(0, 190, 234, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .demo-card.featured {
+      border-color: var(--green-neural);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 190, 234, 0.05));
+    }
+
+    .demo-card.featured:hover {
+      border-color: var(--green-neural);
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+    }
+
+    .demo-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .demo-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .demo-tag {
+      background: rgba(0, 190, 234, 0.15);
+      padding: 5px 12px;
+      border-radius: 20px;
+      color: var(--cyan-bright);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .demo-tag.featured {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--green-neural);
+    }
+
+    .demo-tag.interactive {
+      background: rgba(139, 92, 246, 0.2);
+      color: var(--purple-quantum);
+    }
+
+    .demo-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .demo-card.featured h2 {
+      color: var(--green-neural);
+    }
+
+    .demo-card p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      flex-grow: 1;
+    }
+
+    .demo-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .feature-tag {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .launch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-bright));
+      border: none;
+      border-radius: 30px;
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .demo-card.featured .launch-btn {
+      background: linear-gradient(135deg, var(--green-neural), #34d399);
+    }
+
+    .launch-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.5);
+    }
+
+    .demo-card.featured .launch-btn:hover {
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      padding: 50px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    footer p { color: var(--text-secondary); margin-bottom: 10px; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { padding: 15px 20px; }
+      .nav-logo span { font-size: 1rem; }
+      .nav-logo img { width: 32px; height: 32px; }
+      .hamburger { display: flex !important; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%; max-width: 300px;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        padding: 60px 20px;
+        transition: right 0.3s ease;
+        border-left: 1px solid rgba(0, 190, 234, 0.3);
+        z-index: 1000;
+      }
+      .nav-links.active { right: 0; }
+      .nav-links a {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+      }
+      .content { padding: 120px 20px 60px; }
+      h1 { font-size: 2rem; }
+      .demos-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.nav-overlay').classList.toggle('active');">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-overlay" onclick="document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-links').classList.remove('active'); this.classList.remove('active');"></div>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="demos.html">Demos</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h1>Interactive Demos</h1>
+    <p class="subtitle">Experience quadratic intelligence scaling in action</p>
+
+    <div class="demos-grid">
+      <a href="demo-qis-four-architectures.html" class="demo-card featured">
+        <div class="demo-icon">🌐</div>
+        <div class="demo-meta">
+          <span class="demo-tag featured">Featured</span>
+          <span class="demo-tag interactive">Interactive</span>
+        </div>
+        <h2>QIS Four Architectures</h2>
+        <p>Explore four QIS Protocol configurations for emergent intelligence: D→D (fully decentralized), D→C (edge to cloud), C→D (cloud to edge), and C→C (fully centralized). See how exact vs. approximate similarity methods affect pattern synthesis across each architecture.</p>
+        <div class="demo-features">
+          <span class="feature-tag">D→D Fully Decentralized</span>
+          <span class="feature-tag">D→C Edge→Cloud</span>
+          <span class="feature-tag">C→D Cloud→Edge</span>
+          <span class="feature-tag">C→C Fully Centralized</span>
+        </div>
+        <span class="launch-btn">Launch Demo →</span>
+      </a>
+
+      <a href="watch-demo.html" class="demo-card">
+        <div class="demo-icon">📊</div>
+        <div class="demo-meta">
+          <span class="demo-tag">Core</span>
+          <span class="demo-tag interactive">Interactive</span>
+        </div>
+        <h2>Quadratic Scaling Visualizer</h2>
+        <p>Watch N agents create N(N-1)/2 synthesis opportunities in real-time. Adjust network size and see how intelligence scales quadratically while communication remains logarithmic.</p>
+        <div class="demo-features">
+          <span class="feature-tag">Θ(N²) Scaling</span>
+          <span class="feature-tag">O(log N) Comm</span>
+          <span class="feature-tag">Live Stats</span>
+        </div>
+        <span class="launch-btn">Launch Demo →</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

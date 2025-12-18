@@ -203,6 +203,40 @@
       border-color: var(--purple-quantum);
     }
 
+    /* Sort Toggle */
+    .sort-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .sort-btn {
+      padding: 10px 25px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.4);
+      color: var(--text-secondary);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .sort-btn:hover {
+      border-color: var(--cyan-bright);
+      color: var(--text-primary);
+    }
+
+    .sort-btn.active {
+      background: var(--cyan-bright);
+      border-color: var(--cyan-bright);
+      color: #000;
+    }
+
     /* Article Cards */
     .articles-grid {
       display: flex;
@@ -373,8 +407,13 @@
     <h1>Articles & Blog</h1>
     <p class="subtitle">Insights, updates, and deep dives into distributed intelligence</p>
 
+    <div class="sort-toggle">
+      <button class="sort-btn active" data-sort="importance">By Importance</button>
+      <button class="sort-btn" data-sort="date">By Date</button>
+    </div>
+
     <div class="articles-grid">
-      <a href="article-qis-scaling-law.html" class="article-card">
+      <a href="article-qis-scaling-law.html" class="article-card" data-importance="1" data-date="2025-12-01">
         <div class="article-meta">
           <span class="article-date">December 2025</span>
           <span class="article-tag">Flagship</span>
@@ -385,7 +424,18 @@
         <span class="read-more">Read Article</span>
       </a>
 
-      <a href="article-mit-phonebook.html" class="article-card">
+      <a href="article-quadratic-intelligence-discovery.html" class="article-card" data-importance="2" data-date="2025-12-18">
+        <div class="article-meta">
+          <span class="article-date">December 2025</span>
+          <span class="article-tag">Discovery</span>
+        </div>
+        <h2>I Discovered Quadratic Intelligence</h2>
+        <p class="article-subtitle">The scaling law that enables planetary-scale collective intelligence</p>
+        <p>While everyone else fights quadratic complexity, I discovered it's the key to planetary-scale intelligence. N agents create N(N-1)/2 synthesis opportunities. The math works across any architecture. Here's the proof.</p>
+        <span class="read-more">Read Article</span>
+      </a>
+
+      <a href="article-mit-phonebook.html" class="article-card" data-importance="3" data-date="2025-12-10">
         <div class="article-meta">
           <span class="article-date">December 2025</span>
           <span class="article-tag">Analysis</span>
@@ -410,5 +460,37 @@
     <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
   </footer>
 
+  <script>
+    // Article sorting functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const sortBtns = document.querySelectorAll('.sort-btn');
+      const grid = document.querySelector('.articles-grid');
+
+      sortBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Update active state
+          sortBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          // Get sort type
+          const sortType = this.dataset.sort;
+          const cards = Array.from(grid.querySelectorAll('.article-card'));
+
+          // Sort cards
+          cards.sort((a, b) => {
+            if (sortType === 'importance') {
+              return parseInt(a.dataset.importance) - parseInt(b.dataset.importance);
+            } else {
+              // Sort by date (newest first)
+              return new Date(b.dataset.date) - new Date(a.dataset.date);
+            }
+          });
+
+          // Re-append in sorted order
+          cards.forEach(card => grid.appendChild(card));
+        });
+      });
+    });
+  </script>
 </body>
 </html>
