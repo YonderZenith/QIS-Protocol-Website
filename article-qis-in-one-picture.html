@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="The simplest possible explanation of QIS Protocol. One picture. One metaphor. If you understand mailboxes, you understand QIS.">
+  <meta name="keywords" content="QIS Protocol, simple explanation, distributed intelligence, healthcare AI, Christopher Trevethan">
+  <meta name="author" content="Christopher Thomas Trevethan">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="QIS in One Picture • The 60-Second Explanation">
+  <meta property="og:description" content="If you understand mailboxes, you understand QIS. The simplest explanation of distributed intelligence you'll ever read.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qisprotocol.com/article-qis-in-one-picture.html">
+
+  <title>QIS in One Picture • The 60-Second Explanation</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 40px; height: 40px;
+      filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5));
+    }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--cyan-bright);
+      transition: all 0.3s ease;
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .nav-overlay.active { display: block; }
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 40px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(0, 190, 234, 0.2));
+      border: 1px solid var(--green-neural);
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--green-neural);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .subtitle {
+      font-size: 1.4rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .hero .meta {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    .hero .meta a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    /* Article Content */
+    .article-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .article-content p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+      line-height: 1.9;
+    }
+
+    .article-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--cyan-bright);
+      margin: 60px 0 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .article-content h2:first-of-type {
+      border-top: none;
+      margin-top: 20px;
+    }
+
+    .article-content strong { color: var(--text-primary); font-weight: 700; }
+
+    /* The Hook */
+    .hook-box {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(0, 0, 0, 0.3));
+      border: 2px solid var(--red-accent);
+      border-radius: 24px;
+      padding: 40px;
+      margin: 30px 0 50px;
+      text-align: center;
+    }
+    .hook-box p {
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+    .hook-box .scenario {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    /* The One Picture */
+    .the-picture {
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--cyan-bright);
+      border-radius: 24px;
+      padding: 40px;
+      margin: 50px 0;
+    }
+    .the-picture h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--cyan-bright);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* Mailbox Visual */
+    .mailbox-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .mailbox-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .mailbox-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: right;
+    }
+
+    .mailbox-content {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid var(--cyan-bright);
+    }
+    .mailbox-content p {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    .mailbox-icon {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    /* The Diagram */
+    .diagram-container {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      padding: 40px 30px;
+      margin: 40px 0;
+    }
+
+    .diagram-svg {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* What Moves */
+    .what-moves {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin: 40px 0;
+    }
+    .moves-box {
+      border-radius: 16px;
+      padding: 30px;
+    }
+    .moves-box.no {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .moves-box.yes {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .moves-box h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+    .moves-box.no h4 { color: var(--red-accent); }
+    .moves-box.yes h4 { color: var(--green-neural); }
+    .moves-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .moves-box li {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      padding-left: 25px;
+      position: relative;
+    }
+    .moves-box.no li::before {
+      content: '✗';
+      position: absolute;
+      left: 0;
+      color: var(--red-accent);
+      font-weight: bold;
+    }
+    .moves-box.yes li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green-neural);
+      font-weight: bold;
+    }
+
+    /* Test Yourself */
+    .test-box {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(0, 190, 234, 0.1));
+      border: 2px solid var(--purple-quantum);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+    }
+    .test-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--purple-quantum);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    .test-question {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 20px 25px;
+      margin-bottom: 15px;
+    }
+    .test-question p {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+    .test-question .q {
+      color: var(--cyan-bright);
+      font-weight: 600;
+    }
+    .reveal-btn {
+      background: var(--purple-quantum);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+    .reveal-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+    }
+    .answer {
+      display: none;
+      margin-top: 15px;
+      padding: 15px 20px;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--green-neural);
+    }
+    .answer p {
+      font-size: 1.05rem;
+      color: var(--green-neural);
+      margin-bottom: 0;
+    }
+    .answer.show {
+      display: block;
+    }
+
+    /* The Punchline */
+    .punchline {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(0, 190, 234, 0.15));
+      border: 2px solid var(--green-neural);
+      border-radius: 24px;
+      padding: 50px 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+    .punchline .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--green-neural);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+    .punchline p {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .punchline .big {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: var(--cyan-bright);
+      display: block;
+      margin-top: 20px;
+    }
+
+    /* Now You Can Go Deeper */
+    .deeper-section {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 50px 0;
+    }
+    .deeper-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--cyan-bright);
+      margin-bottom: 20px;
+    }
+    .deeper-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .deeper-link {
+      display: block;
+      padding: 15px 20px;
+      background: rgba(0, 190, 234, 0.1);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .deeper-link:hover {
+      background: rgba(0, 190, 234, 0.2);
+      transform: translateY(-2px);
+    }
+    .deeper-link .title {
+      font-size: 1.05rem;
+      color: var(--cyan-bright);
+      font-weight: 600;
+    }
+    .deeper-link .desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 190, 234, 0.2);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 50px 0 30px;
+    }
+    .contact-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--cyan-bright);
+      margin-bottom: 20px;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px 25px;
+    }
+    .contact-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .contact-links a:hover {
+      color: var(--cyan-bright);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    footer a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav { padding: 15px 20px; }
+      .nav-links { 
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      }
+      .nav-links.active { display: flex; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 120px 20px 30px; }
+      .hero h1 { font-size: 1.6rem; }
+      .hero .subtitle { font-size: 1.2rem; }
+
+      .article-content { padding: 30px 20px 60px; }
+      .article-content p { font-size: 1.15rem; }
+      .article-content h2 { font-size: 1.4rem; }
+
+      .mailbox-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .mailbox-label {
+        text-align: left;
+      }
+
+      .what-moves { grid-template-columns: 1fr; }
+      .deeper-grid { grid-template-columns: 1fr; }
+
+      .punchline p { font-size: 1.25rem; }
+      .punchline .big { font-size: 1.5rem; }
+
+      .contact-links { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+
+    <div class="hamburger"
+      onclick="this.classList.toggle('active');
+               document.querySelector('.nav-links').classList.toggle('active');
+               document.querySelector('.nav-overlay').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="nav-overlay"
+      onclick="document.querySelector('.hamburger').classList.remove('active');
+               document.querySelector('.nav-links').classList.remove('active');
+               this.classList.remove('active');"></div>
+
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="demos.html">Demo</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="techrace.html">Tech Race</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-badge">Start Here</div>
+    <h1>QIS in One Picture</h1>
+    <p class="subtitle">The 60-second explanation I should have written first. If you understand mailboxes, you understand QIS.</p>
+    <p class="meta">
+      By <a href="https://linkedin.com/in/christrevethan" target="_blank">Christopher Thomas Trevethan</a> · January 2, 2026
+    </p>
+  </header>
+
+  <!-- Article Content -->
+  <article class="article-content">
+
+    <!-- The Hook -->
+    <div class="hook-box">
+      <p><strong>Your mom has a rare cancer.</strong> Somewhere in the world, 10,000 people with the exact same diagnosis tried different treatments. Some worked. Some didn't. That knowledge exists—scattered across hospitals, clinics, devices—but there's no way to access it without violating everyone's privacy.</p>
+      <p class="scenario">What if you could instantly learn what worked for people like her—without anyone sharing their private medical records?</p>
+    </div>
+
+    <p>That's QIS. That's the whole thing. Everything else is details.</p>
+
+    <p>But let me make it even simpler.</p>
+
+    <h2>The Mailbox</h2>
+
+    <p>Forget technology for a second. Think about a neighborhood with mailboxes.</p>
+
+    <div class="the-picture">
+      <h3>🏠 The QIS Metaphor</h3>
+      
+      <div class="mailbox-visual">
+        <div class="mailbox-row">
+          <div class="mailbox-label">Your Address</div>
+          <div class="mailbox-content">
+            <p>Your medical situation—cancer type, stage, biomarkers, age—creates a unique "address." You didn't choose it. Your situation determined it.</p>
+          </div>
+        </div>
+        
+        <div class="mailbox-row">
+          <div class="mailbox-label">Your Neighborhood</div>
+          <div class="mailbox-content">
+            <p>Everyone with a similar situation lives in the same "neighborhood." You've never met them. You don't know their names. But you share an address range.</p>
+          </div>
+        </div>
+
+        <div class="mailbox-row">
+          <div class="mailbox-label">The Mail</div>
+          <div class="mailbox-content">
+            <p>Every person in your neighborhood who tried a treatment dropped a note in the shared mailbox: "I tried X, here's what happened." Not their whole medical file—just the outcome.</p>
+          </div>
+        </div>
+
+        <div class="mailbox-row">
+          <div class="mailbox-label">Opening the Box</div>
+          <div class="mailbox-content">
+            <p>When you query the network, you're opening that mailbox. All the notes from everyone like you are already there. You read them, count the votes, and see what worked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Diagram -->
+    <div class="diagram-container">
+      <svg class="diagram-svg" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="700" height="400" fill="rgba(0,0,0,0.3)" rx="20"/>
+        
+        <!-- Title -->
+        <text x="350" y="35" text-anchor="middle" fill="#00D9FF" font-family="Orbitron, sans-serif" font-size="16" font-weight="bold">HOW QIS WORKS</text>
+        
+        <!-- You (left side) -->
+        <circle cx="100" cy="200" r="45" fill="rgba(0,190,234,0.2)" stroke="#00BEEA" stroke-width="3"/>
+        <text x="100" y="195" text-anchor="middle" fill="#fff" font-size="24">👤</text>
+        <text x="100" y="220" text-anchor="middle" fill="#00D9FF" font-size="12" font-weight="bold">YOU</text>
+        <text x="100" y="270" text-anchor="middle" fill="rgba(232,245,233,0.6)" font-size="11">Stage 3, KRAS+</text>
+        <text x="100" y="285" text-anchor="middle" fill="rgba(232,245,233,0.6)" font-size="11">Age 58</text>
+        
+        <!-- Arrow 1: Your situation → Address -->
+        <path d="M 155 200 L 220 200" stroke="#F59E0B" stroke-width="3" marker-end="url(#arrow1)"/>
+        <text x="188" y="185" text-anchor="middle" fill="#F59E0B" font-size="10">situation</text>
+        <text x="188" y="220" text-anchor="middle" fill="#F59E0B" font-size="10">→ address</text>
+        
+        <!-- Mailbox (center) -->
+        <rect x="240" y="140" width="120" height="120" rx="12" fill="rgba(139,92,246,0.2)" stroke="#8B5CF6" stroke-width="3"/>
+        <text x="300" y="185" text-anchor="middle" fill="#fff" font-size="36">📬</text>
+        <text x="300" y="230" text-anchor="middle" fill="#8B5CF6" font-size="12" font-weight="bold">MAILBOX</text>
+        <text x="300" y="245" text-anchor="middle" fill="rgba(232,245,233,0.6)" font-size="10">"Similar patients"</text>
+        
+        <!-- Notes inside mailbox -->
+        <rect x="255" y="100" width="90" height="30" rx="5" fill="rgba(16,185,129,0.3)" stroke="#10B981" stroke-width="1"/>
+        <text x="300" y="120" text-anchor="middle" fill="#10B981" font-size="10">📝 outcomes</text>
+        
+        <!-- Arrow 2: Query → Results -->
+        <path d="M 370 200 L 440 200" stroke="#10B981" stroke-width="3" marker-end="url(#arrow2)"/>
+        <text x="405" y="185" text-anchor="middle" fill="#10B981" font-size="10">one query</text>
+        <text x="405" y="220" text-anchor="middle" fill="#10B981" font-size="10">→ all notes</text>
+        
+        <!-- Results (right side) -->
+        <rect x="460" y="130" width="200" height="140" rx="12" fill="rgba(16,185,129,0.15)" stroke="#10B981" stroke-width="2"/>
+        <text x="560" y="160" text-anchor="middle" fill="#10B981" font-size="12" font-weight="bold">WHAT YOU GET</text>
+        
+        <text x="480" y="190" fill="rgba(232,245,233,0.8)" font-size="11">✓ Treatment A: 78% success</text>
+        <text x="480" y="210" fill="rgba(232,245,233,0.8)" font-size="11">✓ Treatment B: 45% success</text>
+        <text x="480" y="230" fill="rgba(232,245,233,0.8)" font-size="11">✓ 312 similar patients</text>
+        <text x="480" y="250" fill="rgba(232,245,233,0.8)" font-size="11">✓ Avg duration: 18 months</text>
+        
+        <!-- Bottom note -->
+        <rect x="150" y="320" width="400" height="55" rx="10" fill="rgba(0,0,0,0.4)" stroke="rgba(0,190,234,0.3)"/>
+        <text x="350" y="345" text-anchor="middle" fill="#00D9FF" font-size="13" font-weight="bold">Raw data NEVER moves.</text>
+        <text x="350" y="365" text-anchor="middle" fill="rgba(232,245,233,0.7)" font-size="12">Only outcomes travel. Privacy preserved. Insight shared.</text>
+        
+        <!-- Arrow markers -->
+        <defs>
+          <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B"/>
+          </marker>
+          <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#10B981"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <h2>What Moves vs. What Doesn't</h2>
+
+    <p>This is the part that makes QIS different from everything else:</p>
+
+    <div class="what-moves">
+      <div class="moves-box no">
+        <h4>❌ Never Moves</h4>
+        <ul>
+          <li>Your medical records</li>
+          <li>Your CT scans or images</li>
+          <li>Your genome data</li>
+          <li>Your identity</li>
+          <li>Any raw data at all</li>
+        </ul>
+      </div>
+      <div class="moves-box yes">
+        <h4>✓ What Travels</h4>
+        <ul>
+          <li>"Treatment A worked"</li>
+          <li>"18 months progression-free"</li>
+          <li>"312 similar cases"</li>
+          <li>"78% success rate"</li>
+          <li>Just the outcome</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>That's it. The "mail" in the mailbox is tiny—just the result. Not the whole patient file. Not the scan. Not the history. Just: "I tried this. Here's what happened."</p>
+
+    <h2>Test Yourself</h2>
+
+    <p>If you can answer these questions, you understand QIS:</p>
+
+    <div class="test-box">
+      <h3>🧪 Quick Check</h3>
+      
+      <div class="test-question">
+        <p><span class="q">Q1:</span> Does your doctor need to share your medical records for QIS to work?</p>
+        <button class="reveal-btn" onclick="toggleAnswer('a1')">Reveal Answer</button>
+        <div class="answer" id="a1">
+          <p><strong>No.</strong> Only outcomes travel. Your records stay on your device. The network only sees "patient with this profile tried X, result was Y."</p>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <p><span class="q">Q2:</span> If 10,000 similar patients join the network, do you have to query each one individually?</p>
+        <button class="reveal-btn" onclick="toggleAnswer('a2')">Reveal Answer</button>
+        <div class="answer" id="a2">
+          <p><strong>No.</strong> You route directly to the right neighborhood—however that's implemented (DHT, vector database, or any index that routes by similarity)—and pull back small outcome packets from peers who match. All the synthesis happens locally on your device.</p>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <p><span class="q">Q3:</span> What determines which "neighborhood" you're in?</p>
+        <button class="reveal-btn" onclick="toggleAnswer('a3')">Reveal Answer</button>
+        <div class="answer" id="a3">
+          <p><strong>Your situation.</strong> An expert defines what variables matter (cancer type, stage, biomarkers, age). Those variables create your "address." Similar situations = same neighborhood.</p>
+        </div>
+      </div>
+
+      <div class="test-question">
+        <p><span class="q">Q4:</span> Can Google or anyone see your data?</p>
+        <button class="reveal-btn" onclick="toggleAnswer('a4')">Reveal Answer</button>
+        <div class="answer" id="a4">
+          <p><strong>No.</strong> There's no central database. It's peer-to-peer. Your data stays on your device. Only the hashed "address" and tiny outcome packets ever travel the network.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleAnswer(id) {
+        const answer = document.getElementById(id);
+        answer.classList.toggle('show');
+      }
+    </script>
+
+    <!-- The Punchline -->
+    <div class="punchline">
+      <div class="label">The Breakthrough</div>
+      <p>Every person who faces what you face has already voted with their outcome. QIS lets you count those votes—instantly, privately, at scale.</p>
+      <span class="big">That's collective intelligence without collective data.</span>
+    </div>
+
+    <h2>Why This Matters</h2>
+
+    <p>My father died because the pattern that would have saved him was trapped in someone else's records.</p>
+
+    <p>My brother was permanently damaged by a delayed diagnosis. The insight that could have helped existed somewhere—but the systems didn't talk.</p>
+
+    <p>QIS doesn't fix broken healthcare systems. It routes around them. It creates a parallel network where insight flows freely while data stays locked down.</p>
+
+    <p>100 agents = 4,950 synthesis opportunities.<br>
+    1,000 agents = 499,500 opportunities.<br>
+    10,000 agents = 50 million opportunities.</p>
+
+    <p>That's quadratic scaling. The more people join, the smarter everyone gets. And no one had to share their private information to make it happen.</p>
+
+    <h2>Now You Can Go Deeper</h2>
+
+    <p>You understand the core idea. Here's where to go next:</p>
+
+    <div class="deeper-section">
+      <h3>Choose Your Path</h3>
+      <div class="deeper-grid">
+        <a href="article-three-elections.html" class="deeper-link">
+          <div class="title">Three Elections Framework</div>
+          <div class="desc">How experts curate patterns, outcomes vote, and networks compete</div>
+        </a>
+        <a href="article-one-round-trip.html" class="deeper-link">
+          <div class="title">One Round-Trip</div>
+          <div class="desc">The technical trick that keeps compute flat while intelligence scales</div>
+        </a>
+        <a href="article-qis-scaling-law.html" class="deeper-link">
+          <div class="title">The QIS Scaling Law</div>
+          <div class="desc">The mathematics of quadratic intelligence growth</div>
+        </a>
+        <a href="article-what-i-saw.html" class="deeper-link">
+          <div class="title">What I Saw</div>
+          <div class="desc">The June 16th epiphany that started everything</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <h3>Questions?</h3>
+      <div class="contact-links">
+        <a href="mailto:contactyz@pm.me">Email: contactyz@pm.me</a>
+        <a href="https://twitter.com/chris_trevethan" target="_blank">X/Twitter: @chris_trevethan</a>
+        <a href="https://yonderzenith.com" target="_blank">Website: yonderzenith.com</a>
+        <a href="https://github.com/YonderZenith" target="_blank">GitHub: github.com/YonderZenith</a>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- CTA Section -->
+  <div style="text-align: center; margin: 50px 40px;">
+    <a href="how-it-works.html" style="display: inline-block; padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: linear-gradient(135deg, var(--purple-quantum), #a855f7); border-color: var(--purple-quantum); color: var(--text-primary); border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s ease; margin: 10px;">See How It Works</a>
+    <a href="article-qis-scaling-law.html" style="display: inline-block; padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: transparent; color: var(--text-primary); border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s ease; margin: 10px;">The Scaling Law</a>
+    <a href="articles.html" style="display: inline-block; padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: transparent; color: var(--text-primary); border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s ease; margin: 10px;">Back to Articles</a>
+    <a href="https://swarmtruth.substack.com/subscribe" target="_blank" style="display: inline-block; padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: transparent; color: var(--text-primary); border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s ease; margin: 10px;"><img src="images/substack.png" alt="Substack" style="height: 20px; vertical-align: middle; margin-right: 8px;">Subscribe for New Articles</a>
+  </div>
+
+  <!-- Footer -->
+  <footer style="background: #000; padding: 50px 40px; text-align: center; border-top: 1px solid rgba(0, 190, 234, 0.2);">
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
