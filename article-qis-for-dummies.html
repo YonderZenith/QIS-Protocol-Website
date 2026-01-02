@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="A plain-English explanation of how the QIS Protocol routes similar problems together without centralizing your data — and why the math says network intelligence can scale fast.">
+  <meta name="keywords" content="QIS Protocol, quadratic intelligence, distributed systems, peer-to-peer, DHT routing, outcome voting, Christopher Trevethan">
+  <meta name="author" content="Christopher Thomas Trevethan">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="QIS for Dummies">
+  <meta property="og:description" content="A plain-English explanation of how QIS routes similar problems together without centralizing your data.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qisprotocol.com/article-qis-for-dummies.html">
+
+  <title>QIS for Dummies • QIS Protocol</title>
+
+  <!-- Fonts (match site vibe) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-primary:#000;
+      --bg-soft: rgba(255,255,255,0.03);
+      --text-primary:#fff;
+      --text-secondary: rgba(255,255,255,0.78);
+      --text-muted: rgba(255,255,255,0.58);
+
+      --cyan-primary:#00beeA;
+      --cyan-bright:#00d9ff;
+      --purple-quantum:#8b5cf6;
+
+      --border: rgba(0, 190, 234, 0.22);
+      --shadow: 0 0 30px rgba(0, 217, 255, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* Subtle background glow */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background:
+        radial-gradient(800px 400px at 20% 10%, rgba(0, 217, 255, 0.10), transparent 60%),
+        radial-gradient(900px 500px at 80% 30%, rgba(139, 92, 246, 0.10), transparent 60%),
+        radial-gradient(800px 500px at 40% 90%, rgba(0, 190, 234, 0.08), transparent 60%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    /* Navigation */
+    .nav{
+      position:fixed; top:0; left:0; right:0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 20px 40px;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index:1000;
+    }
+    .nav-logo{
+      display:flex; align-items:center; gap:15px;
+      color:var(--text-primary);
+      text-decoration:none;
+    }
+    .nav-logo span{
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+    .nav-logo img{ width:40px; height:40px; filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5)); }
+
+    .nav-links{
+      display:flex; gap:30px; align-items:center;
+    }
+    .nav-links a{
+      color: var(--text-secondary);
+      text-decoration:none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover{
+      color: var(--cyan-bright);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--cyan-bright);
+      transition: all 0.3s ease;
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .nav-overlay.active { display: block; }
+
+    /* Hero */
+    .hero{
+      padding:160px 40px 40px;
+      text-align:center;
+      position:relative;
+      z-index:1;
+    }
+    .hero-badge{
+      display:inline-block;
+      padding:8px 20px;
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.20), rgba(139, 92, 246, 0.20));
+      border: 1px solid var(--cyan-primary);
+      border-radius: 30px;
+      font-family: Orbitron, sans-serif;
+      font-size:0.85rem;
+      color: var(--cyan-bright);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:28px;
+    }
+    .hero h1{
+      font-family: Orbitron, sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight:900;
+      background: linear-gradient(180deg, #ffffff 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin:0 auto 18px;
+      line-height:1.18;
+      max-width: 980px;
+    }
+    .hero .subtitle{
+      font-size:1.2rem;
+      color: var(--text-secondary);
+      max-width: 900px;
+      margin:0 auto 16px;
+      line-height:1.65;
+    }
+    .hero .meta{
+      font-size:1rem;
+      color: var(--text-muted);
+    }
+    .hero .meta a{
+      color: var(--cyan-bright);
+      text-decoration:none;
+    }
+
+    /* Article body */
+    .article-content{
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+      position:relative;
+      z-index:1;
+    }
+    .article-content p{
+      font-size:1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+      line-height: 1.9;
+    }
+    .article-content h2{
+      font-family: Orbitron, sans-serif;
+      font-size:1.7rem;
+      color: var(--cyan-bright);
+      margin: 58px 0 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .article-content h2:first-of-type{
+      border-top:none;
+      margin-top: 35px;
+    }
+    .article-content h3{
+      font-family: Orbitron, sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+      margin: 26px 0 10px;
+      color: rgba(255,255,255,0.92);
+    }
+    .article-content strong{ color: var(--text-primary); font-weight: 750; }
+    .article-content em{ color: var(--purple-quantum); font-style: italic; }
+
+    .highlight-box{
+      background: rgba(0, 190, 234, 0.10);
+      border-left: 4px solid var(--cyan-bright);
+      padding: 22px 26px;
+      border-radius: 16px;
+      margin: 28px 0 34px;
+      box-shadow: var(--shadow);
+    }
+    .highlight-box p{ margin:0; color: rgba(255,255,255,0.86); font-size: 1.08rem; }
+
+    .viz-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 18px 0 30px;
+    }
+    .viz-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0, 190, 234, 0.18);
+      border-radius: 18px;
+      padding: 18px 18px 24px;
+    }
+    .viz-card .caption{
+      margin-top: 30px;
+      padding-bottom: 10px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .viz-grid {
+      margin-bottom: 100px;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 14px 0 18px;
+    }
+    .pill{
+      border: 1px solid rgba(0, 190, 234, 0.22);
+      background: rgba(0, 217, 255, 0.06);
+      color: rgba(255,255,255,0.85);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      line-height: 1.1;
+    }
+
+    .steps{
+      margin: 10px 0 24px;
+      padding-left: 18px;
+      color: var(--text-secondary);
+      font-size: 1.08rem;
+      line-height: 1.85;
+    }
+    .steps li{ margin: 10px 0; }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(0, 190, 234, 0.18);
+      border-radius: 16px;
+      overflow:hidden;
+    }
+    th,td{
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      vertical-align: top;
+    }
+    th{
+      text-align:left;
+      color: rgba(255,255,255,0.92);
+      font-family: Orbitron, sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.7px;
+      background: rgba(0, 217, 255, 0.06);
+    }
+    td{ color: var(--text-secondary); font-size: 1.02rem; line-height: 1.7; }
+    tr:last-child td{ border-bottom:none; }
+
+    .callout{
+      background: rgba(139, 92, 246, 0.10);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin: 22px 0 28px;
+    }
+    .callout .title{
+      font-family: Orbitron, sans-serif;
+      color: rgba(255,255,255,0.92);
+      letter-spacing: 0.7px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+    .callout p{ margin:0; }
+
+    .codebox{
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(0, 190, 234, 0.18);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin: 14px 0 26px;
+      overflow:auto;
+    }
+    pre{
+      margin:0;
+      color: rgba(255,255,255,0.86);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    footer {
+      background: #000;
+      padding: 50px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+    footer p { color: var(--text-secondary); margin-bottom: 10px; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 768px){
+      .nav{ padding: 15px 20px; }
+      .nav-logo span{ font-size: 1rem; }
+      .nav-logo img{ width: 32px; height: 32px; }
+      .hamburger{ display:flex; }
+      .nav-links{
+        position:fixed;
+        top:0; right:-100%;
+        width:75%; max-width:300px;
+        height:100vh;
+        background: rgba(10,10,10,0.98);
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap: 24px;
+        padding: 60px 20px;
+        transition: right 0.3s ease;
+        border-left: 1px solid rgba(0, 190, 234, 0.30);
+        z-index:1000;
+      }
+      .nav-links.active{ right:0; }
+      .nav-links a{
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        width:100%;
+        text-align:center;
+      }
+      .hero{ padding: 130px 20px 30px; }
+      .hero .subtitle{ font-size: 1.1rem; }
+      .article-content{ padding: 30px 20px 60px; }
+      .article-content p{ font-size: 1.08rem; }
+      .article-content h2{ font-size: 1.35rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+
+    <div class="hamburger"
+      onclick="this.classList.toggle('active');
+               document.querySelector('.nav-links').classList.toggle('active');
+               document.querySelector('.nav-overlay').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="nav-overlay"
+      onclick="document.querySelector('.hamburger').classList.remove('active');
+               document.querySelector('.nav-links').classList.remove('active');
+               this.classList.remove('active');"></div>
+
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="demos.html">Demo</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="techrace.html">Tech Race</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">Plain-English Explainer</div>
+    <h1>QIS for Dummies</h1>
+    <p class="subtitle">
+      A plain-English explanation of how the QIS Protocol routes “similar problems” together
+      without centralizing your data — and why the math says network intelligence can scale fast.
+    </p>
+    <p class="meta">By <a href="https://linkedin.com/in/christrevethan" target="_blank">Christopher Thomas Trevethan</a> · January 2, 2026</p>
+  </section>
+
+  <!-- Article Content -->
+  <article class="article-content">
+
+    <div class="highlight-box">
+      <p>
+        <strong>One-sentence version:</strong> QIS is a way for millions of devices to find “others like me”
+        (similar symptoms, similar equipment failures, similar crop conditions) and share outcomes
+        <em>without</em> uploading a giant centralized dataset — using peer-to-peer routing plus local voting.
+      </p>
+    </div>
+
+    <h2>Start Here: The “Town With No Mayor” Analogy</h2>
+
+    <p>
+      Imagine a town where everybody keeps their own notebook at home.
+      No mayor collects everyone’s notebooks. No central library stores them.
+    </p>
+
+    <p>
+      But there’s a clever directory system: if you’re dealing with <strong>Problem X</strong>,
+      you can quickly find the people who have <strong>Problem X</strong> too, ask what happened to them,
+      and then make a better decision — without handing your whole notebook to anyone.
+    </p>
+
+    <p>
+      That “directory system” is the core idea in QIS: a peer-to-peer network where
+      devices can route to the right neighborhood in <strong>logarithmic</strong> steps,
+      then do <strong>local</strong> matching and voting in that neighborhood.    </p>
+
+    <div class="pill-row">
+      <div class="pill">No central server required</div>
+      <div class="pill">Find “similar cases” fast</div>
+      <div class="pill">Share outcomes, not raw private data</div>
+      <div class="pill">Local voting & confidence</div>
+    </div>
+
+    <h2>What QIS Actually Does</h2>
+
+    <p>
+      QIS breaks the job into two easy parts:
+    </p>
+
+    <ol class="steps">
+      <li>
+        <strong>Get you into the correct neighborhood.</strong>
+        If you’re not in the right neighborhood, the advice is noise.
+      </li>
+      <li>
+        <strong>Find the closest matches inside that neighborhood</strong> and combine outcomes (vote).
+      </li>
+    </ol>
+
+    <p>
+      In the core spec, that’s described as: <strong>categorical bucketing</strong> first (exact matching on the “must match” fields),
+      then <strong>continuous similarity</strong> inside the bucket (matching on the “close enough” numbers).    </p>
+
+    <div class="callout">
+      <div class="title">Why this matters</div>
+      <p>
+        This avoids the dumb failure mode where “kind of similar” collisions put you in the wrong group.
+        If a field must match (example: cancer stage), QIS treats that as a hard wall, not a suggestion.      </p>
+    </div>
+
+    <h2>The Two-Step Matching</h2>
+
+    <h3>Step 1: Exact Hash Routing (Get to the Right People)</h3>
+
+    <p>
+      First, your agent hashes the categorical fields—the things that <em>must</em> match exactly (disease type, stage, mutation status). This produces a deterministic routing key.
+    </p>
+
+    <div class="codebox">
+      <pre># Categorical (must match exactly)
+categorical = [disease, stage, mutation_status, msi]
+
+# Deterministic routing key
+dht_key = SHA256(serialize(categorical))</pre>
+    </div>
+
+    <p>
+      That hash routes you to the exact cohort in <strong>O(log N)</strong> hops. You're now connected to peers who match on the dimensions that matter—not "kind of similar," but <em>exactly right</em> for your problem.
+    </p>
+
+    <h3>Step 2: Local Synthesis (Extract and Compute Insight)</h3>
+
+    <p>
+      Once you're in the right cohort, each peer sends back packed metadata: outcomes, results, what worked and what didn't. Not raw records—just the insight payload.
+    </p>
+
+    <p>
+      All synthesis happens locally, on your device. Your agent receives the outcomes and applies whatever consensus mechanism fits the domain: weighted voting, similarity-based ranking, Byzantine-tolerant aggregation, threshold filtering, or any combination. The intelligence emerges right there—from the comparison of matched peers, computed under your control.
+    </p>
+
+    <div class="callout">
+      <div class="title">The key insight</div>
+      <p>
+        The exact hash gets you to the right people. The local consensus extracts the insight. No central authority decides—your agent synthesizes from real outcomes of peers who faced the same problem.
+      </p>
+    </div>
+
+    <h2>The "Quadratic" Part</h2>
+
+    <p>
+      Here’s the simple math idea: if there are <strong>N</strong> participants,
+      there are about <strong>N(N−1)/2</strong> unique pairs that can compare and synthesize patterns.
+      That’s why the “opportunity space” grows like <strong>Θ(N²)</strong>.    </p>
+
+    <div class="viz-grid">
+      <div class="viz-card">
+        <!-- Improved SVG chart: Centralized vs QIS scaling -->
+        <svg viewBox="0 0 820 340" width="100%" height="auto" role="img" aria-label="Centralized linear scaling vs QIS quadratic scaling">
+          <defs>
+            <linearGradient id="qisGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#00d9ff"/>
+              <stop offset="1" stop-color="#8b5cf6"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="820" height="340" rx="16" fill="rgba(0,0,0,0.3)"/>
+
+          <!-- Axes -->
+          <line x1="80" y1="280" x2="780" y2="280" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          <line x1="80" y1="50"  x2="80"  y2="280" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+
+          <!-- Axis Labels -->
+          <text x="420" y="320" fill="rgba(255,255,255,0.7)" font-size="15" text-anchor="middle" font-family="Orbitron, sans-serif">Participants (N)</text>
+          <text x="30" y="165" fill="rgba(255,255,255,0.7)" font-size="15" text-anchor="middle" font-family="Orbitron, sans-serif" transform="rotate(-90, 30, 165)">Synthesis Opportunities</text>
+
+          <!-- Grid lines -->
+          <line x1="80" y1="165" x2="780" y2="165" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="5,5"/>
+          <line x1="430" y1="50" x2="430" y2="280" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="5,5"/>
+
+          <!-- Centralized: Flatter linear line -->
+          <path d="M 80 280 L 780 220" fill="none" stroke="rgba(255,100,100,0.7)" stroke-width="4"/>
+          <rect x="600" y="195" width="170" height="28" rx="6" fill="rgba(255,100,100,0.15)" stroke="rgba(255,100,100,0.4)"/>
+          <text x="685" y="215" fill="rgba(255,150,150,1)" font-size="14" text-anchor="middle" font-family="Orbitron, sans-serif">Centralized: ~N</text>
+
+          <!-- QIS: True quadratic curve (accelerates toward end) -->
+          <path d="M 80 280
+                   C 160 278, 240 274, 320 264
+                   C 400 250, 480 226, 560 190
+                   C 640 144, 700 90, 780 50" fill="none" stroke="url(#qisGrad)" stroke-width="5"/>
+          <rect x="580" y="45" width="190" height="28" rx="6" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.4)"/>
+          <text x="675" y="65" fill="rgba(180,160,255,1)" font-size="14" text-anchor="middle" font-family="Orbitron, sans-serif">QIS Protocol: ~N²</text>
+
+          <!-- Scale markers -->
+          <text x="80" y="300" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle">0</text>
+          <text x="430" y="300" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle">1,000</text>
+          <text x="780" y="300" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle">10,000</text>
+        </svg>
+
+        <div class="caption">
+          <strong>The gap widens fast:</strong> Adding one participant to a centralized system adds one data point. Adding one participant to QIS creates new synthesis opportunities with <em>every existing participant</em>. At 10,000 nodes, that's ~50 million unique pairings vs 10,000 isolated records.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="title">Important clarification</div>
+      <p>
+        "Quadratic" here is about the number of potential synthesis opportunities across a network,
+        not a claim that every device must talk to every other device all the time.
+        The protocol routes you to the relevant slice first, then you do local work.
+      </p>
+      <p style="margin-top: 14px;">
+        The intelligence within any given bucket or vector space is also quadratic. For example, if another person with the exact same cancer profile joins that cohort, the insight opportunities grow quadratically within that bucket as nodes are added—each new participant creates synthesis opportunities with every existing member of that neighborhood.
+      </p>
+    </div>
+
+    <h2>“How is this not insanely expensive?” (The Routing Trick)</h2>
+
+    <p>
+      If you tried to brute-force “compare me to everybody,” that would be a disaster.
+      QIS avoids that by routing with a DHT so that finding the right bucket takes only about
+      <strong>O(log N)</strong> hops.    </p>
+
+    <p>
+      The core spec gives concrete scale examples like:
+      <strong>N=1,000 → ~10 hops</strong>, <strong>N=10,000 → ~13 hops</strong>, <strong>N=100,000 → ~17 hops</strong>.
+    </p>
+
+    <p style="font-size: 0.95rem; color: var(--text-muted);">
+      <em>Note: DHT is not the only method for semantic routing outlined within QIS.</em>
+    </p>
+
+    <div class="viz-grid">
+      <div class="viz-card">
+        <!-- Simple inline SVG chart: hops grow slowly -->
+        <svg viewBox="0 0 820 320" width="100%" height="auto" role="img" aria-label="Routing hops vs network size chart">
+          <!-- Axes -->
+          <line x1="70" y1="260" x2="780" y2="260" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+          <line x1="70" y1="40"  x2="70"  y2="260" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+
+          <!-- X labels -->
+          <text x="60" y="295" fill="rgba(255,255,255,0.6)" font-size="14">N</text>
+          <text x="160" y="295" fill="rgba(255,255,255,0.6)" font-size="14">1k</text>
+          <text x="380" y="295" fill="rgba(255,255,255,0.6)" font-size="14">10k</text>
+          <text x="620" y="295" fill="rgba(255,255,255,0.6)" font-size="14">100k</text>
+
+          <!-- Y labels -->
+          <text x="18" y="55" fill="rgba(255,255,255,0.6)" font-size="14">Hops</text>
+          <text x="35" y="260" fill="rgba(255,255,255,0.6)" font-size="14">0</text>
+          <text x="35" y="200" fill="rgba(255,255,255,0.6)" font-size="14">10</text>
+          <text x="35" y="140" fill="rgba(255,255,255,0.6)" font-size="14">15</text>
+          <text x="35" y="80"  fill="rgba(255,255,255,0.6)" font-size="14">20</text>
+
+          <!-- Points (approx from spec examples) -->
+          <!-- Map hops: 10, 13, 17 -->
+          <circle cx="170" cy="200" r="6" fill="rgba(0,217,255,0.95)"/>
+          <circle cx="400" cy="168" r="6" fill="rgba(0,217,255,0.95)"/>
+          <circle cx="640" cy="120" r="6" fill="rgba(0,217,255,0.95)"/>
+
+          <path d="M 170 200 Q 410 170 640 120" fill="none" stroke="rgba(0,217,255,0.70)" stroke-width="4"/>
+
+          <text x="185" y="195" fill="rgba(255,255,255,0.75)" font-size="13">~10</text>
+          <text x="415" y="163" fill="rgba(255,255,255,0.75)" font-size="13">~13</text>
+          <text x="655" y="115" fill="rgba(255,255,255,0.75)" font-size="13">~17</text>
+        </svg>
+
+        <div class="caption">
+          <strong>Meaning:</strong> going from 1,000 users to 100,000 users doesn’t make routing 100× harder.
+          It makes it a handful of steps harder. That’s the “log” part.        </div>
+      </div>
+    </div>
+
+    <h2>So… Does It Share My Private Data?</h2>
+
+    <p>
+      The design goal is: <strong>raw sensitive data stays local</strong>.
+      Devices broadcast hashes (and only curated, anonymized features when needed for matching),
+      not full identity-bearing records.    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Where the data lives</th>
+          <th>What QIS says happens there</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>On your device</strong></td>
+          <td>
+            Raw data, full local patterns, history, sensitive identifiers, keys — kept local.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Broadcast to the network</strong></td>
+          <td>
+            Semantic fingerprints—hashes, vectors, or any representation that routes by meaning—signed, no raw data.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Shared with matches (optional)</strong></td>
+          <td>
+            Curated feature subset + aggregated outcomes, never identifiers or raw data.          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="title">The “boring” reason privacy is easier here</div>
+      <p>
+        Centralization creates a single honeypot. QIS is designed so there isn’t one giant target with everyone’s data in it.
+        Privacy settings can also be tuned (e.g., optional differential privacy and k-anonymity).      </p>
+    </div>
+
+    <h2>What QIS Is (And What It’s Not)</h2>
+
+    <p>
+      People confuse QIS with other approaches, so here’s a blunt comparison:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Approach</th>
+          <th>What it’s good at</th>
+          <th>What it tends to struggle with</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Centralized AI</strong></td>
+          <td>Easy to run one big model in one place.</td>
+          <td>Central data risk, jurisdiction issues, cloud latency, single point of failure.</td>
+        </tr>
+        <tr>
+          <td><strong>Federated learning</strong></td>
+          <td>Training a shared model without raw data upload.</td>
+          <td>Typically needs an aggregator + synchronized rounds; scaling bottlenecks differ.        </tr>
+        <tr>
+          <td><strong>Edge AI (isolated)</strong></td>
+          <td>Fast local decisions.</td>
+          <td>No learning from other people’s outcomes.</td>
+        </tr>
+        <tr>
+          <td><strong>QIS Protocol</strong></td>
+          <td>
+            P2P coordination, privacy-preserving matching, local outcome voting; network value grows with participation.
+          </td>
+          <td>
+            High-stakes domains require real-world validation—embedding strategies (curated, neural, or hybrid) and trust layers evolve with deployment.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 20px;">
+      <em>Side note: The idea that anyone facing a given problem would be worse off with more insight from relevant peers defies basic logic. More signal from people who faced similar situations is strictly additive—the only questions are how to filter and weight it, and which experts are best suited to define similarity for a given issue within any domain. (Eventually AI can handle this without experts via neural embeddings—but for now, exact matching based on experts defining which metrics matter is my preferred method. Hybrid and AI-only approaches will eventually be better for certain industries, and are definitely in our future.)</em>
+    </p>
+
+    <h2>A Concrete Example: "Same Cancer, Different People"</h2>
+
+    <p>
+      In the spec, the healthcare example is: “every patient’s smartphone becomes a node.”
+      Devices use categorical bucketing (exact match) then continuous similarity (precision) and
+      do local outcome voting.    </p>
+
+    <p>
+      That means the question becomes:
+      <strong>“What happened to people like me?”</strong>
+      Not “What does the average patient do?”
+    </p>
+
+    <div class="codebox">
+      <pre>Query (conceptual):
+- Route: find the neighborhood of peers with your exact issue
+- Synthesize: vote on outcomes from that neighborhood</pre>
+    </div>
+
+    <h2>Okay, But What About Bad Actors / Garbage Data?</h2>
+
+    <p>
+      Any real network needs defenses. The core spec describes testing with a Byzantine fraction and
+      layered defenses (structural checks, filtering, thresholds, reputation, consensus voting).    </p>
+
+    <div class="callout">
+      <div class="title">Simple "dummy-proof" take</div>
+      <p>
+        Don't trust one random reply. Trust a <strong>crowd of close matches</strong>.
+        If you need medical-grade reliability, you require thresholds + multiple layers of checks.
+      </p>
+      <p style="margin-top: 14px;">
+        The synthesis mechanisms and defense mechanisms are secondary—no matter the methods chosen, they don't change the overall breakthrough. Companies will race to not only curate the best patterns for problems, but compete on the best voting mechanisms and defenses depending on their domains and use cases.
+      </p>
+    </div>
+
+    <h2>What’s Validated vs. What Still Needs Validation</h2>
+
+    <p>
+      This matters because serious people can smell over-claims instantly.
+      Here’s the clean split based on what’s written in the core spec:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>What it means</th>
+          <th>Examples in the spec</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Empirically validated (in simulation)</strong></td>
+          <td>Measured behavior in controlled simulations; still not a clinical trial.</td>
+          <td>
+            100,000-node simulation table: pattern syntheses, scaling fit, routing hops, and byzantine test outcomes are reported.          </td>
+        </tr>
+        <tr>
+          <td><strong>Theoretically grounded</strong></td>
+          <td>Math/architecture reasoning supports it; implementation details can vary.</td>
+          <td>
+            Quadratic synthesis opportunity counting argument (Θ(N²)).            DHT routing bound proof sketch (O(log N)).          </td>
+        </tr>
+        <tr>
+          <td><strong>Needs real-world validation</strong></td>
+          <td>Claims about saving lives depend on deployment, regulation, trials, and adoption.</td>
+          <td>
+            The spec itself calls out clinical validation and a regulatory pathway for medical decision support.          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The Bottom Line</h2>
+
+    <div class="highlight-box">
+      <p>
+        <strong>QIS is not magic.</strong> It’s a routing + matching + voting architecture:
+        <br><br>
+        1) Route you to the right neighborhood fast (log steps).        <br>
+        2) Match you precisely inside that neighborhood.
+        <br>
+        3) Decide locally using outcomes from close matches (vote), not one authority.        <br>
+        4) As participation grows, the “pairwise synthesis opportunity space” grows like N².        <br><br>
+        In plain English: it's a way to turn "other people's real outcomes" into usable guidance faster, without centralizing everyone's private data.      </p>
+    </div>
+
+    <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(0, 190, 234, 0.15)); border: 2px solid rgba(0, 190, 234, 0.4); border-radius: 20px; padding: 40px; margin: 60px 0 40px; text-align: center;">
+      <p style="font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0; line-height: 1.8;">
+        Find people with your exact problem. Learn what worked for them. Keep your data private. <strong>That's it. That's QIS.</strong>
+      </p>
+    </div>
+
+  </article>
+
+  <!-- CTA Section -->
+  <div style="text-align: center; margin: 50px 40px;">
+    <a href="how-it-works.html" style="display: inline-block; padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: linear-gradient(135deg, var(--purple-quantum), #a855f7); border-color: var(--purple-quantum); color: var(--text-primary); border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s ease; margin: 10px;">See How It Works</a>
+    <a href="article-qis-scaling-law.html" style="display: inline-block; padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: transparent; color: var(--text-primary); border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s ease; margin: 10px;">The Scaling Law</a>
+    <a href="articles.html" style="display: inline-block; padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: transparent; color: var(--text-primary); border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s ease; margin: 10px;">Back to Articles</a>
+    <a href="https://swarmtruth.substack.com/subscribe" target="_blank" style="display: inline-block; padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: transparent; color: var(--text-primary); border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s ease; margin: 10px;"><img src="images/substack.png" alt="Substack" style="height: 20px; vertical-align: middle; margin-right: 8px;">Subscribe for New Articles</a>
+  </div>
+
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+</body>
+</html>
