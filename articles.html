@@ -203,114 +203,77 @@
       border-color: var(--purple-quantum);
     }
 
-    /* Sort Toggle */
-    .sort-toggle {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 40px;
-    }
-
-    .sort-btn {
-      padding: 10px 25px;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      background: rgba(0, 0, 0, 0.4);
-      color: var(--text-secondary);
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .sort-btn:hover {
-      border-color: var(--cyan-bright);
-      color: var(--text-primary);
-    }
-
-    .sort-btn.active {
-      background: var(--cyan-bright);
-      border-color: var(--cyan-bright);
-      color: #000;
-    }
-
-    /* Article Cards */
-    .articles-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .article-card {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(0, 190, 234, 0.3);
-      border-radius: 16px;
-      padding: 35px;
-      transition: all 0.4s ease;
+    /* Hero Card */
+    .hero-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid var(--cyan-bright);
+      border-radius: 20px;
+      padding: 45px;
+      margin-bottom: 50px;
       text-decoration: none;
       display: block;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
     }
 
-    .article-card:hover {
-      border-color: var(--cyan-bright);
-      box-shadow: 0 0 40px rgba(0, 190, 234, 0.15);
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(0, 190, 234, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-card:hover {
+      box-shadow: 0 0 60px rgba(0, 190, 234, 0.25);
       transform: translateY(-3px);
     }
 
-    .article-meta {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
-    .article-date {
-      background: rgba(139, 92, 246, 0.2);
-      padding: 5px 12px;
-      border-radius: 20px;
-      color: var(--purple-quantum);
-      font-weight: 600;
-    }
-
-    .article-tag {
-      background: rgba(0, 190, 234, 0.15);
-      padding: 5px 12px;
-      border-radius: 20px;
-      color: var(--cyan-bright);
-      font-weight: 600;
-    }
-
-    .article-card h2 {
+    .hero-label {
+      display: inline-block;
+      background: var(--cyan-bright);
+      color: #000;
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
       color: var(--text-primary);
       margin-bottom: 12px;
-      line-height: 1.4;
+      line-height: 1.3;
     }
 
-    .article-card .article-subtitle {
-      font-size: 1.15rem;
+    .hero-card .hero-subtitle {
+      font-size: 1.25rem;
       color: var(--cyan-bright);
       margin-bottom: 15px;
       font-style: italic;
     }
 
-    .article-card p {
+    .hero-card p {
       color: var(--text-secondary);
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       line-height: 1.7;
+      max-width: 600px;
     }
 
-    .read-more {
+    .hero-card .read-more {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-top: 20px;
+      margin-top: 25px;
       color: var(--cyan-bright);
       font-weight: 600;
       font-size: 1rem;
@@ -318,19 +281,79 @@
       letter-spacing: 1px;
     }
 
-    .read-more::after {
+    .hero-card .read-more::after {
       content: '→';
       transition: transform 0.3s ease;
     }
 
-    .article-card:hover .read-more::after {
+    .hero-card:hover .read-more::after {
       transform: translateX(5px);
     }
 
+    /* Section Headers */
+    .section-header {
+      margin-top: 45px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .section-header h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cyan-bright);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Compact Article List */
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .article-item {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .article-item:last-child {
+      border-bottom: none;
+    }
+
+    .article-item:hover {
+      background: rgba(0, 190, 234, 0.08);
+      border-left-color: var(--cyan-bright);
+    }
+
+    .article-item h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .article-item:hover h3 {
+      color: var(--cyan-bright);
+    }
+
+    .article-item .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
     @media (max-width: 768px) {
-      .article-card { padding: 25px; }
-      .article-card h2 { font-size: 1.25rem; }
-      .article-meta { flex-wrap: wrap; gap: 10px; }
+      .hero-card { padding: 30px; }
+      .hero-card h2 { font-size: 1.5rem; }
+      .article-item { padding: 15px; }
+      .article-item h3 { font-size: 1rem; }
     }
 
     /* Footer */
@@ -394,7 +417,7 @@
       <a href="index.html?skip=true">Home</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="comparison.html">Compare</a>
-      <a href="demos.html">Demo</a>
+      <a href="watch-demo.html">Demo</a>
       <a href="index.html?skip=true#documents">Docs</a>
       <a href="healthcare.html">Healthcare</a>
       <a href="techrace.html">Tech Race</a>
@@ -407,47 +430,142 @@
     <h1>Articles & Blog</h1>
     <p class="subtitle">Insights, updates, and deep dives into Yonder Zenith and QIS Protocol</p>
 
-    <div class="sort-toggle">
-      <button class="sort-btn active" data-sort="importance">Featured First</button>
-      <button class="sort-btn" data-sort="date">By Date</button>
+    <!-- HERO: The One Article Everyone Should Start With -->
+    <a href="article-you-just-got-diagnosed.html" class="hero-card">
+      <span class="hero-label">Start Here</span>
+      <h2>You Just Got Diagnosed. WYD?</h2>
+      <p class="hero-subtitle">Two choices. One changes everything.</p>
+      <p>Months of waiting and stale data. Or instant access to what worked for everyone like you. This is the choice QIS creates. This is why it matters.</p>
+      <span class="read-more">Read Article</span>
+    </a>
+
+    <!-- SECTION: START HERE -->
+    <div class="section-header" id="start-here">
+      <h2>🚀 Start Here</h2>
     </div>
-
-    <div class="articles-grid">
-      <a href="article-qis-scaling-law.html" class="article-card" data-importance="1" data-date="2025-12-01">
-        <div class="article-meta">
-          <span class="article-date">December 2025</span>
-          <span class="article-tag">Flagship</span>
-        </div>
-        <h2>The QIS Scaling Law: Θ(N²) Emergent Intelligence with O(log N) Communication</h2>
-        <p class="article-subtitle">A protocol-level breakthrough in distributed systems</p>
-        <p>Agents don't just connect—they synthesize patterns, propagate outcomes, and get collectively smarter as the network grows. The math behind quadratic intelligence scaling.</p>
-        <span class="read-more">Read Article</span>
+    <div class="article-list">
+      <a href="article-qis-in-one-picture.html" class="article-item">
+        <h3>QIS in One Picture</h3>
+        <span class="subtitle">The 60-second explanation — if you understand mailboxes, you understand QIS</span>
       </a>
-
-      <a href="article-quadratic-intelligence-discovery.html" class="article-card" data-importance="2" data-date="2025-12-18">
-        <div class="article-meta">
-          <span class="article-date">December 2025</span>
-          <span class="article-tag">Discovery</span>
-        </div>
-        <h2>I Discovered Quadratic Intelligence</h2>
-        <p class="article-subtitle">The scaling law that enables planetary-scale collective intelligence</p>
-        <p>While everyone else fights quadratic complexity, I discovered it's the key to planetary-scale intelligence. N agents create N(N-1)/2 synthesis opportunities. The math works across any architecture. Here's the proof.</p>
-        <span class="read-more">Read Article</span>
+      <a href="article-qis-for-dummies.html" class="article-item">
+        <h3>QIS for Dummies</h3>
+        <span class="subtitle">A beginner-friendly deep dive with visuals</span>
       </a>
-
-      <a href="article-mit-phonebook.html" class="article-card" data-importance="3" data-date="2025-12-10">
-        <div class="article-meta">
-          <span class="article-date">December 2025</span>
-          <span class="article-tag">Analysis</span>
-        </div>
-        <h2>MIT Built a Phonebook for AI Agents. I Built How They Think Together.</h2>
-        <p class="article-subtitle">How I discovered quadratic intelligence scaling three weeks before MIT published their agent protocol</p>
-        <p>A deep dive into the fundamental difference between agent discovery and agent synthesis—and why the timing of MIT's announcement validates everything QIS Protocol set out to prove.</p>
-        <span class="read-more">Read Article</span>
+      <a href="article-what-i-saw.html" class="article-item">
+        <h3>What I Saw</h3>
+        <span class="subtitle">The step-by-step vision of how QIS works</span>
       </a>
     </div>
 
-    <div style="text-align: center; margin-top: 50px;">
+    <!-- SECTION: THE DISCOVERY -->
+    <div class="section-header" id="discovery">
+      <h2>💡 The Discovery</h2>
+    </div>
+    <div class="article-list">
+      <a href="article-june-16.html" class="article-item">
+        <h3>June 16</h3>
+        <span class="subtitle">The exact moment everything changed</span>
+      </a>
+      <a href="article-quadratic-intelligence-discovery.html" class="article-item">
+        <h3>I Discovered Quadratic Intelligence</h3>
+        <span class="subtitle">The scaling law that enables planetary-scale collective intelligence</span>
+      </a>
+    </div>
+
+    <!-- SECTION: CORE CONCEPTS -->
+    <div class="section-header" id="concepts">
+      <h2>🧠 Core Concepts</h2>
+    </div>
+    <div class="article-list">
+      <a href="article-whatisintelligence.html" class="article-item">
+        <h3>What Is Intelligence?</h3>
+        <span class="subtitle">And how does it actually scale?</span>
+      </a>
+      <a href="article-simplicity-paradox.html" class="article-item">
+        <h3>The Simplicity Paradox</h3>
+        <span class="subtitle">Why the most powerful solutions get dismissed first</span>
+      </a>
+    </div>
+
+    <!-- SECTION: TECHNICAL DEEP DIVES -->
+    <div class="section-header" id="technical">
+      <h2>📐 Technical Deep Dives</h2>
+    </div>
+    <div class="article-list">
+      <a href="article-qis-scaling-law.html" class="article-item">
+        <h3>The QIS Scaling Law</h3>
+        <span class="subtitle">Θ(N²) Emergent Intelligence with O(log N) Communication</span>
+      </a>
+      <a href="article-one-round-trip.html" class="article-item">
+        <h3>One Round-Trip</h3>
+        <span class="subtitle">How QIS keeps compute flat while intelligence scales quadratically</span>
+      </a>
+      <a href="article-three-elections.html" class="article-item">
+        <h3>The Three Elections</h3>
+        <span class="subtitle">The framework for curation, routing, and outcomes</span>
+      </a>
+    </div>
+
+    <!-- SECTION: COMPARISONS & VALIDATION -->
+    <div class="section-header" id="comparisons">
+      <h2>⚖️ Comparisons & Validation</h2>
+    </div>
+    <div class="article-list">
+      <a href="article-qis-vs-federated-learning.html" class="article-item">
+        <h3>QIS vs Federated Learning</h3>
+        <span class="subtitle">They solve different problems</span>
+      </a>
+      <a href="article-mit-phonebook.html" class="article-item">
+        <h3>MIT Built a Phonebook. I Built How They Think Together.</h3>
+        <span class="subtitle">Discovery vs synthesis</span>
+      </a>
+      <a href="article-5-trillion-to-1.html" class="article-item">
+        <h3>5 Trillion to 1</h3>
+        <span class="subtitle">How expert skeptics were convinced through pure logic</span>
+      </a>
+    </div>
+
+    <!-- SECTION: THE TECH RACE -->
+    <div class="section-header" id="tech-race">
+      <h2>🏁 The Tech Race</h2>
+    </div>
+    <div class="article-list">
+      <a href="article-who-moves-first.html" class="article-item">
+        <h3>Who Moves First?</h3>
+        <span class="subtitle">The strategic landscape of distributed intelligence</span>
+      </a>
+      <a href="article-adoption-inevitability.html" class="article-item">
+        <h3>Adoption Inevitability</h3>
+        <span class="subtitle">Why this happens with or without any single player</span>
+      </a>
+      <a href="article-musk-stack-nervous-system.html" class="article-item">
+        <h3>The Musk Stack Nervous System</h3>
+        <span class="subtitle">Tesla, xAI, Starlink, X—and the missing layer</span>
+      </a>
+      <a href="article-google-distributed-health-intelligence.html" class="article-item">
+        <h3>Google Distributed Health Intelligence</h3>
+        <span class="subtitle">Why Google should care about QIS</span>
+      </a>
+      <a href="article-apple-quadratic-health-intelligence.html" class="article-item">
+        <h3>Apple Quadratic Health Intelligence</h3>
+        <span class="subtitle">Why Apple's privacy-first approach is perfect for QIS</span>
+      </a>
+    </div>
+
+    <!-- SECTION: HUMAN IMPACT -->
+    <div class="section-header" id="impact">
+      <h2>❤️ Human Impact</h2>
+    </div>
+    <div class="article-list">
+      <a href="article-specialist-24-7.html" class="article-item">
+        <h3>What If You Had a Specialist 24/7?</h3>
+        <span class="subtitle">The average wait is 31 days. There's another way.</span>
+      </a>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="index.html?skip=true" class="btn">Home</a>
       <a href="https://swarmtruth.substack.com/subscribe" target="_blank" class="btn primary"><img src="images/substack.png" alt="Substack" style="height: 20px; vertical-align: middle; margin-right: 8px;">Subscribe for New Articles</a>
     </div>
 
@@ -460,37 +578,5 @@
     <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Article sorting functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const sortBtns = document.querySelectorAll('.sort-btn');
-      const grid = document.querySelector('.articles-grid');
-
-      sortBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          // Update active state
-          sortBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-
-          // Get sort type
-          const sortType = this.dataset.sort;
-          const cards = Array.from(grid.querySelectorAll('.article-card'));
-
-          // Sort cards
-          cards.sort((a, b) => {
-            if (sortType === 'importance') {
-              return parseInt(a.dataset.importance) - parseInt(b.dataset.importance);
-            } else {
-              // Sort by date (newest first)
-              return new Date(b.dataset.date) - new Date(a.dataset.date);
-            }
-          });
-
-          // Re-append in sorted order
-          cards.forEach(card => grid.appendChild(card));
-        });
-      });
-    });
-  </script>
 </body>
 </html>

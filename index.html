@@ -28,6 +28,196 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Article Carousel Styles -->
+  <style>
+    .article-carousel {
+      --card-gap: 1.25rem;
+      --cards-visible: 4;
+      padding: 60px 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(10,10,10,0.8) 100%);
+      border-top: 1px solid rgba(0, 190, 234, 0.1);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.1);
+    }
+
+    .carousel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 0 40px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .carousel-header h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      background: linear-gradient(180deg, #FFFFFF 0%, #00D9FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    .carousel-nav {
+      display: flex;
+      gap: 12px;
+    }
+
+    .carousel-arrow {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-arrow:hover:not(:disabled) {
+      border-color: #00BEEA;
+      box-shadow: 0 0 25px rgba(0, 190, 234, 0.4);
+      color: #00BEEA;
+    }
+
+    .carousel-arrow:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: var(--card-gap);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 10px 40px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-card {
+      flex: 0 0 calc((100% - (var(--cards-visible) - 1) * var(--card-gap)) / var(--cards-visible));
+      scroll-snap-align: start;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      min-height: 200px;
+    }
+
+    .carousel-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 10px 40px rgba(139, 92, 246, 0.15);
+    }
+
+    .carousel-card .card-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #00BEEA;
+      background: rgba(0, 190, 234, 0.12);
+      padding: 5px 12px;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    .carousel-card .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .carousel-card .card-subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(232, 245, 233, 0.6);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    .carousel-card .card-arrow {
+      color: #00BEEA;
+      font-size: 1.2rem;
+      margin-top: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-card:hover .card-arrow {
+      transform: translateX(5px);
+    }
+
+    .carousel-view-all {
+      text-align: center;
+      margin-top: 35px;
+    }
+
+    .carousel-view-all a {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: #00BEEA;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 12px 30px;
+      border: 1px solid rgba(0, 190, 234, 0.4);
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-view-all a:hover {
+      background: rgba(0, 190, 234, 0.1);
+      border-color: #00BEEA;
+      box-shadow: 0 0 20px rgba(0, 190, 234, 0.3);
+    }
+
+    @media (max-width: 1199px) {
+      .article-carousel { --cards-visible: 2; }
+      .carousel-header { padding: 0 30px; }
+      .carousel-track { padding: 10px 30px 20px; }
+    }
+
+    @media (max-width: 767px) {
+      .article-carousel { --cards-visible: 1.15; padding: 40px 0; }
+      .carousel-header { padding: 0 20px; }
+      .carousel-header h2 { font-size: 1.4rem; }
+      .carousel-track { padding: 10px 20px 20px; }
+      .carousel-nav { display: none; }
+      .carousel-card { padding: 22px; min-height: 180px; }
+      .carousel-card .card-title { font-size: 1rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -165,6 +355,93 @@
         <a href="how-it-works.html" class="btn secondary">How It Works</a>
         <a href="articles.html" class="btn secondary">Articles</a>
         <a href="#industries" class="btn secondary">Industries</a>
+      </div>
+    </section>
+
+    <!-- ==================== ARTICLE CAROUSEL ==================== -->
+    <section class="article-carousel" aria-label="Featured Articles">
+      <div class="carousel-header">
+        <h2>Articles</h2>
+        <div class="carousel-nav">
+          <button class="carousel-arrow carousel-prev" aria-label="Previous articles" disabled>&#8249;</button>
+          <button class="carousel-arrow carousel-next" aria-label="Next articles">&#8250;</button>
+        </div>
+      </div>
+
+      <div class="carousel-track">
+        <a href="article-you-just-got-diagnosed.html" class="carousel-card">
+          <span class="card-tag">Start Here</span>
+          <h3 class="card-title">You Just Got Diagnosed. WYD?</h3>
+          <p class="card-subtitle">Two choices. One changes everything.</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-qis-in-one-picture.html" class="carousel-card">
+          <span class="card-tag">Explainer</span>
+          <h3 class="card-title">QIS in One Picture</h3>
+          <p class="card-subtitle">The 60-second explanation. If you understand mailboxes, you understand QIS.</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-june-16.html" class="carousel-card">
+          <span class="card-tag">Origin</span>
+          <h3 class="card-title">June 16</h3>
+          <p class="card-subtitle">The exact moment everything changed. "End of disease?" in the subject line.</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-qis-scaling-law.html" class="carousel-card">
+          <span class="card-tag">Technical</span>
+          <h3 class="card-title">The QIS Scaling Law</h3>
+          <p class="card-subtitle">Θ(N²) Emergent Intelligence with O(log N) Communication</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-5-trillion-to-1.html" class="carousel-card">
+          <span class="card-tag">Validation</span>
+          <h3 class="card-title">5 Trillion to 1</h3>
+          <p class="card-subtitle">How expert skeptics were convinced through pure logic.</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-what-i-saw.html" class="carousel-card">
+          <span class="card-tag">Walkthrough</span>
+          <h3 class="card-title">What I Saw</h3>
+          <p class="card-subtitle">The step-by-step vision of how QIS works.</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-simplicity-paradox.html" class="carousel-card">
+          <span class="card-tag">Philosophy</span>
+          <h3 class="card-title">The Simplicity Paradox</h3>
+          <p class="card-subtitle">Why the most powerful solutions get dismissed first.</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-who-moves-first.html" class="carousel-card">
+          <span class="card-tag">Strategy</span>
+          <h3 class="card-title">Who Moves First?</h3>
+          <p class="card-subtitle">The strategic landscape of distributed intelligence.</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-specialist-24-7.html" class="carousel-card">
+          <span class="card-tag">Healthcare</span>
+          <h3 class="card-title">What If You Had a Specialist 24/7?</h3>
+          <p class="card-subtitle">The average wait is 31 days. There's another way.</p>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="article-quadratic-intelligence-discovery.html" class="carousel-card">
+          <span class="card-tag">Founding</span>
+          <h3 class="card-title">I Discovered Quadratic Intelligence</h3>
+          <p class="card-subtitle">The scaling law that enables planetary-scale collective intelligence.</p>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="carousel-view-all">
+        <a href="articles.html">View All 20 Articles →</a>
       </div>
     </section>
 
@@ -601,6 +878,46 @@ Do not hallucinate. If uncertain about any detail, refer to the core spec, websi
   </script>
   <script src="js/splash.js"></script>
   <script src="js/script.js"></script>
+
+  <!-- Article Carousel Script -->
+  <script>
+    (function() {
+      const carousel = document.querySelector('.article-carousel');
+      if (!carousel) return;
+
+      const track = carousel.querySelector('.carousel-track');
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+      const cards = carousel.querySelectorAll('.carousel-card');
+
+      function getVisibleCount() {
+        if (window.innerWidth >= 1200) return 4;
+        if (window.innerWidth >= 768) return 2;
+        return 1;
+      }
+
+      function updateButtons() {
+        const { scrollLeft, scrollWidth, clientWidth } = track;
+        prevBtn.disabled = scrollLeft <= 0;
+        nextBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 10;
+      }
+
+      function scroll(direction) {
+        const card = cards[0];
+        const gap = parseFloat(getComputedStyle(track).gap) || 20;
+        const cardWidth = card.offsetWidth;
+        const scrollAmount = (cardWidth + gap) * getVisibleCount();
+        track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
+
+      prevBtn.addEventListener('click', () => scroll(-1));
+      nextBtn.addEventListener('click', () => scroll(1));
+      track.addEventListener('scroll', updateButtons);
+      window.addEventListener('resize', updateButtons);
+
+      updateButtons();
+    })();
+  </script>
 
   <!-- Twitter Widget Script -->
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
