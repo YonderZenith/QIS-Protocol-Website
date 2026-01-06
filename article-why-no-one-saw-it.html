@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="Everyone chases vertical scaling—bigger models, more GPUs, hoarded data. The QIS Protocol scales horizontally: every device becomes a survival neuron, routing life-saving insights at planetary scale.">
+  <meta name="keywords" content="horizontal scaling, QIS Protocol, distributed AI, survival neuron, quadratic intelligence, planetary intelligence, Christopher Trevethan">
+  <meta name="author" content="Christopher Thomas Trevethan">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Why No One Saw It Coming • QIS Protocol">
+  <meta property="og:description" content="The QIS Protocol turns every device into a survival neuron—and scales intelligence horizontally across the planet.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qisprotocol.com/article-why-no-one-saw-it.html">
+
+  <title>Why No One Saw It Coming • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 40px; height: 40px;
+      filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5));
+    }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--cyan-bright);
+      transition: all 0.3s ease;
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .nav-overlay.active { display: block; }
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 40px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(139, 92, 246, 0.2));
+      border: 1px solid var(--gold-accent);
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 860px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .hero .meta {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    .hero .meta a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    /* Article Content */
+    .article-content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .article-content p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+      line-height: 1.9;
+    }
+
+    .article-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--cyan-bright);
+      margin: 60px 0 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .article-content h2:first-of-type {
+      border-top: none;
+      margin-top: 40px;
+    }
+
+    .article-content strong { color: var(--text-primary); font-weight: 700; }
+    .article-content em { color: var(--purple-quantum); font-style: italic; }
+
+    .highlight-box {
+      background: rgba(0, 190, 234, 0.1);
+      border-left: 4px solid var(--cyan-bright);
+      padding: 25px 30px;
+      margin: 35px 0;
+      border-radius: 0 12px 12px 0;
+    }
+    .highlight-box p {
+      margin-bottom: 0;
+      font-size: 1.15rem;
+      color: var(--text-primary);
+    }
+
+    .quote-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 0, 0, 0.3));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 40px 0;
+      text-align: center;
+    }
+    .quote-box p {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      color: var(--green-neural);
+      margin-bottom: 0;
+    }
+
+    .math {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--cyan-bright);
+      white-space: nowrap;
+    }
+
+    .loop-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 35px 0;
+    }
+    .loop-box h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--purple-quantum);
+      margin-bottom: 20px;
+    }
+    .loop-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+    }
+    .loop-step:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .loop-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cyan-bright);
+      background: rgba(0, 190, 234, 0.15);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .loop-text {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    .loop-text strong {
+      color: var(--text-primary);
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 35px 0;
+    }
+    .comparison-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .comparison-item.qis {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.05);
+    }
+    .comparison-item h5 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      color: var(--red-accent);
+      margin-bottom: 10px;
+    }
+    .comparison-item.qis h5 {
+      color: var(--green-neural);
+    }
+    .comparison-item p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 190, 234, 0.2);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 50px 0 30px;
+    }
+    .contact-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--cyan-bright);
+      margin-bottom: 20px;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px 25px;
+    }
+    .contact-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .contact-links a:hover {
+      color: var(--cyan-bright);
+    }
+
+    .final-quote {
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.15), rgba(139, 92, 246, 0.1));
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+    .final-quote p {
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 190, 234, 0.5);
+      background: transparent;
+      color: var(--cyan-bright);
+    }
+    .btn:hover {
+      background: rgba(0, 190, 234, 0.15);
+      border-color: var(--cyan-bright);
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--cyan-primary), var(--purple-quantum));
+      border: none;
+      color: #fff;
+    }
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 190, 234, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    footer a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav { padding: 15px 20px; }
+      .nav-links { 
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      }
+      .nav-links.active { display: flex; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 120px 20px 30px; }
+      .hero h1 { font-size: 1.6rem; }
+      .hero .subtitle { font-size: 1.1rem; }
+
+      .article-content { padding: 30px 20px 60px; }
+      .article-content p { font-size: 1.1rem; }
+      .article-content h2 { font-size: 1.4rem; }
+
+      .comparison-grid { grid-template-columns: 1fr; }
+      .loop-step { flex-direction: column; gap: 10px; }
+
+      .contact-links { flex-direction: column; gap: 10px; }
+      .cta-section { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS Protocol</span>
+    </a>
+    <div class="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="techrace.html">Tech Race</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('active');
+      document.getElementById('navOverlay').classList.toggle('active');
+    }
+  </script>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-badge">Perspective</div>
+    <h1>Why No One Saw It Coming</h1>
+    <p class="subtitle">The QIS Protocol turns every device into a survival neuron—and scales intelligence horizontally across the planet.</p>
+    <p class="meta">
+      By <a href="https://linkedin.com/in/christrevethan" target="_blank">Christopher Thomas Trevethan</a> · January 6, 2026 · Founder, Yonder Zenith LLC
+    </p>
+  </header>
+
+  <!-- Article Content -->
+  <article class="article-content">
+
+    <p>Everyone is chasing scaling laws the wrong way.</p>
+
+    <p>They build bigger models, rent more GPUs, hoard more data—believing intelligence comes from stacking compute vertically. More parameters. More training. More centralized control.</p>
+
+    <p>The QIS Protocol takes the opposite path: it scales <em>horizontally</em>.</p>
+
+    <p>Every phone, tractor, wearable, sensor, or hospital system becomes an agent. Each turns its local survival pattern into a semantic fingerprint. Those fingerprints route—by similarity—directly to the peers that matter. Outcomes flow back. The baseline rises.</p>
+
+    <p>Result: network-wide intelligence grows quadratically (<span class="math">Θ(N²)</span> pairwise synthesis opportunities) while per-device routing cost stays logarithmic (<span class="math">O(log N)</span>). No central server. No data honeypot. Economics shift from centralized GPU clusters to distributed edge compute.</p>
+
+    <p>It feels obvious in hindsight. Yet nobody built it—until now.</p>
+
+    <h2>The Core Insight Everyone Missed</h2>
+
+    <p>Real intelligence doesn't come from one giant brain trying to know everything.</p>
+
+    <p>It comes from billions of small ones routing survival insight to exactly who needs it, right now.</p>
+
+    <p>A cancer patient doesn't need the world's raw medical records. They need: <em>"Patients exactly like me—same stage, same mutations, same biomarkers—who took this treatment combination had significantly better outcomes."</em></p>
+
+    <p>A farmer doesn't need every soil sample on Earth. They need: <em>"Farms with my exact soil pH, rainfall pattern, and crop variety that used this approach yielded substantially more."</em></p>
+
+    <p>QIS makes that routing automatic, private, and instantaneous—across any architecture.</p>
+
+    <div class="highlight-box">
+      <p><strong>The key:</strong> Route by semantic similarity to exactly what the query needs. Synthesize outcomes from matched peers. Privacy preserved. Silos bridged. The insight gap closed.</p>
+    </div>
+
+    <h2>The Universal Loop</h2>
+
+    <p>The same pattern works everywhere—oncology, precision farming, predictive maintenance, climate monitoring, early diagnosis, emergency response. Any domain where success depends on learning from similar cases. We call these "survival patterns"—proven solutions to recurring problems, propagated to everyone facing the same challenge:</p>
+
+    <div class="loop-box">
+      <h4>The QIS Loop</h4>
+      <div class="loop-step">
+        <span class="loop-number">1</span>
+        <span class="loop-text"><strong>Curate the pattern.</strong> Domain experts define the features that matter. Age, stage, mutations, biomarkers. Soil pH, nitrogen, rainfall, crop type. Vibration signature, temperature, maintenance history.</span>
+      </div>
+      <div class="loop-step">
+        <span class="loop-number">2</span>
+        <span class="loop-text"><strong>Create the semantic fingerprint.</strong> Transform the pattern into a routable representation—vector embedding, structured encoding, or any format that preserves meaning.</span>
+      </div>
+      <div class="loop-step">
+        <span class="loop-number">3</span>
+        <span class="loop-text"><strong>Route by similarity.</strong> The fingerprint finds its semantic neighbors—through DHT, vector database, registry, or any similarity-based routing mechanism. Logarithmic lookup cost.</span>
+      </div>
+      <div class="loop-step">
+        <span class="loop-number">4</span>
+        <span class="loop-text"><strong>Pull outcomes from matches.</strong> Matched peers share what happened: treatment response, yield result, failure avoided, survival achieved.</span>
+      </div>
+      <div class="loop-step">
+        <span class="loop-number">5</span>
+        <span class="loop-text"><strong>Synthesize locally.</strong> Your device decides—vote, average, update. Pattern quality improves. The network gets smarter with every outcome shared.</span>
+      </div>
+    </div>
+
+    <p>That's it. The specific routing and consensus mechanisms are implementation details. The principle is universal.</p>
+
+    <h2>Why "Someone Must Already Be Doing This" Is Wrong</h2>
+
+    <div class="comparison-grid">
+      <div class="comparison-item">
+        <h5>Centralized AI</h5>
+        <p>One model, one company, one data lake. Scales with money. Creates honeypots. Concentrates power.</p>
+      </div>
+      <div class="comparison-item">
+        <h5>Federated Learning</h5>
+        <p>Trains models without moving data—but aggregates results at a central coordinator, not peer-to-peer. Optimizes model parameters, not real-time outcome sharing.</p>
+      </div>
+      <div class="comparison-item">
+        <h5>Edge AI</h5>
+        <p>Local intelligence, but isolated. No sharing, no compounding. Each device learns alone.</p>
+      </div>
+      <div class="comparison-item">
+        <h5>Vector Databases</h5>
+        <p>Great similarity search—but nobody wired them for survival propagation at planetary scale.</p>
+      </div>
+    </div>
+
+    <div class="comparison-grid">
+      <div class="comparison-item qis" style="grid-column: span 2;">
+        <h5>QIS Protocol</h5>
+        <p>Treats outcome packets as the currency, not parameters or raw data. Routes by semantic meaning. Works across any architecture—decentralized, centralized, hybrid, permissioned, permissionless. Systems that would otherwise be incompatible can finally share life-saving insights without sharing raw data.</p>
+      </div>
+    </div>
+
+    <p>Interoperability has been the unsolvable problem for decades. QIS dissolves it. The protocol works across systems that don't talk to each other—without anyone exposing their underlying data.</p>
+
+    <p><strong>The moat is no longer compute or data. It's who curates the sharpest survival patterns fastest.</strong></p>
+
+    <h2>Where It Came From</h2>
+
+    <p>It started with a diagnosis.</p>
+
+    <p>While building Verve Elevate AI and Compass—Verve Elevate AI was a multi-agent AI operating system that allowed multiple agents to coordinate and share insights; Compass was a personal survival assistant for a loved one with cancer—the pattern lit up. Not in code. In a flash: millions of agents routing not raw records, but outcomes. <em>"This worked for me."</em> Propagating across semantic neighborhoods. Baselines rising together. One insight. The entire protocol.</p>
+
+    <p>Since then: six months refining, 39 provisional patents filed, every industry mapped. Same loop, endless domains.</p>
+
+    <div class="quote-box">
+      <p>"From coughs to crops to cars and beyond—the survival of one becomes the survival of all."</p>
+    </div>
+
+    <h2>The Race Starts Now</h2>
+
+    <p>We're not competing on bigger models anymore.</p>
+
+    <p>We're competing on sharper patterns.</p>
+
+    <p>The network that curates the best survival templates fastest wins—for healthcare, agriculture, climate, manufacturing, emergency response, and everything else.</p>
+
+    <p>The math is public. The protocol is ready. Devices are waiting.</p>
+
+    <div class="final-quote">
+      <p>Every phone, every tractor, every wearable—quietly raising humanity's baseline intelligence. Every major company competing on who curates the best patterns for life-saving insights across healthcare, agriculture, climate, and beyond. <strong>Everyone benefits from it.</strong></p>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <h3>Contact</h3>
+      <div class="contact-links">
+        <a href="mailto:contactyz@pm.me">Email: contactyz@pm.me</a>
+        <a href="https://twitter.com/chris_trevethan" target="_blank">X/Twitter: @chris_trevethan</a>
+        <a href="https://yonderzenith.com" target="_blank">Website: yonderzenith.com</a>
+        <a href="https://github.com/YonderZenith" target="_blank">GitHub: github.com/YonderZenith</a>
+        <a href="https://linkedin.com/in/christrevethan" target="_blank">LinkedIn: linkedin.com/in/christrevethan</a>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <a href="https://swarmtruth.substack.com/subscribe" target="_blank" class="btn primary">Subscribe on Substack</a>
+      <a href="article-quadratic-intelligence-discovery.html" class="btn">Read the Founding Document</a>
+      <a href="article-qis-scaling-law.html" class="btn">The QIS Scaling Law</a>
+      <a href="articles.html" class="btn">Back to Articles</a>
+    </div>
+
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved. 39 Provisional Patents Pending.</p>
+  </footer>
+
+</body>
+</html>
