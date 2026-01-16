@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="World models teach AI to imagine. QIS teaches AI what actually happened. Together, they complete the vision for embodied intelligence.">
+  <title>World Models Dream. QIS Remembers. • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { width: 40px; height: 40px; filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5)); }
+    .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--cyan-bright); }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--cyan-bright);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* Article Content */
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 140px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .article-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .article-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.3;
+    }
+
+    .article-subtitle {
+      font-size: 1.4rem;
+      color: var(--purple-quantum);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .article-meta {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .article-body h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--cyan-bright);
+      margin: 50px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(0, 190, 234, 0.3);
+    }
+
+    .article-body h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--purple-quantum);
+      margin: 35px 0 15px;
+    }
+
+    .article-body p {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 20px 0 20px 30px;
+      font-size: 1.15rem;
+    }
+
+    .article-body li {
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .article-body a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .article-body a:hover {
+      border-bottom-color: var(--cyan-bright);
+    }
+
+    blockquote {
+      border-left: 4px solid var(--purple-quantum);
+      padding: 20px 30px;
+      margin: 30px 0;
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+    }
+
+    blockquote p {
+      margin-bottom: 10px;
+    }
+
+    blockquote cite {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 10px;
+      font-style: normal;
+    }
+
+    .highlight-box {
+      background: rgba(0, 190, 234, 0.1);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      border-radius: 12px;
+      padding: 25px 30px;
+      margin: 30px 0;
+    }
+
+    .highlight-box.purple {
+      background: rgba(139, 92, 246, 0.1);
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .highlight-box.green {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .highlight-box h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cyan-bright);
+      margin-bottom: 15px;
+    }
+
+    .highlight-box.purple h4 {
+      color: var(--purple-quantum);
+    }
+
+    .highlight-box.green h4 {
+      color: var(--green-neural);
+    }
+
+    .player-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 190, 234, 0.2);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+
+    .player-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      color: var(--cyan-bright);
+      margin-bottom: 10px;
+    }
+
+    .player-card .leader {
+      color: var(--purple-quantum);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .player-card p {
+      font-size: 1.05rem;
+      margin-bottom: 0;
+    }
+
+    .formula-display {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid var(--cyan-bright);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .formula-display .formula {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.8rem;
+      color: var(--cyan-bright);
+      margin-bottom: 15px;
+    }
+
+    .formula-display .explanation {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(0, 190, 234, 0.2));
+      border: 2px solid var(--purple-quantum);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 2px solid var(--cyan-bright);
+      background: transparent;
+      color: var(--text-primary);
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      margin: 5px;
+    }
+
+    .btn:hover {
+      background: var(--cyan-bright);
+      color: #000;
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--purple-quantum), #a855f7);
+      border-color: var(--purple-quantum);
+    }
+
+    .btn.primary:hover {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { padding: 15px 20px; }
+      .nav-links { 
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      }
+      .nav-links.active { display: flex; }
+      .hamburger { display: flex; }
+      .article-content { padding: 120px 20px 60px; }
+      .article-header h1 { font-size: 1.8rem; }
+      .article-subtitle { font-size: 1.2rem; }
+      .formula-display .formula { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="techrace.html">Tech Race</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <article class="article-content">
+    <header class="article-header">
+      <h1>World Models Dream. QIS Remembers.</h1>
+      <p class="article-subtitle">AI is learning to imagine the physical world. Here's the missing piece that grounds imagination in reality.</p>
+      <p class="article-meta">By <a href="https://linkedin.com/in/christrevethan" target="_blank" style="color: var(--cyan-bright);">Christopher Thomas Trevethan</a> • January 15, 2026</p>
+    </header>
+
+    <div class="article-body">
+
+      <p>Something remarkable is happening in AI research right now. The smartest minds in the field—Yann LeCun at Meta, Fei-Fei Li at World Labs, teams at NVIDIA, DeepMind, Wayve, and 1X—have all converged on the same insight: <strong>AI needs to understand the physical world, not just language.</strong></p>
+
+      <p>They're right. And they're building incredible systems to make it happen.</p>
+
+      <p>But there's a missing piece. Not a flaw in their work—a gap in the architecture. Something none of these systems can do alone, no matter how sophisticated they become.</p>
+
+      <p>They can teach AI to imagine. They can't teach AI what actually happened when imagination met reality—at scale, across millions of agents, in real time.</p>
+
+      <p>That's what QIS does. And it's designed to work with everything they're building.</p>
+
+      <h2>What Are World Models?</h2>
+
+      <p>Before diving into the players, let's be clear about what "world models" means. The term gets used three different ways, and understanding this matters:</p>
+
+      <div class="highlight-box">
+        <h4>Three Meanings of "World Model"</h4>
+        <p><strong>1. Internal learned dynamics model</strong> — An AI system's internal representation of how the world works, learned from data. LeCun's JEPA falls here.</p>
+        <p><strong>2. External simulator</strong> — A physics engine or game engine that simulates reality. Traditional robotics simulators.</p>
+        <p><strong>3. Learned world simulator</strong> — A neural network that generates realistic future scenarios from current observations. NVIDIA Cosmos, DeepMind Genie, World Labs Marble.</p>
+      </div>
+
+      <p>All three approaches share a common goal: give AI the ability to "imagine" what will happen before it acts. A robot that can simulate dropping a plate before it actually drops it. An autonomous vehicle that can envision a pedestrian stepping into traffic before it happens.</p>
+
+      <p>This is genuinely important work. It's also genuinely incomplete.</p>
+
+      <h2>The Landscape: Five Approaches to World Models</h2>
+
+      <p>Here's what the major players are building. Each approach is brilliant in its own way. Each is also learning in isolation.</p>
+
+      <div class="player-card">
+        <h4>Meta AI — JEPA (Joint Embedding Predictive Architecture)</h4>
+        <p class="leader">Developed under Yann LeCun (now at AMI Labs)</p>
+        <p>LeCun's core thesis: Large Language Models are "wordsmiths in the dark"—they predict tokens but don't understand the world. His solution: predict in abstract representation space, not pixel space. V-JEPA 2 can now do zero-shot robot planning, meaning a robot can figure out how to accomplish a task it's never seen before by reasoning in learned representations.</p>
+        <p style="margin-top: 12px;"><strong>What it does well:</strong> Learns efficient internal representations. Ignores irrelevant visual details. Enables "thinking before acting."</p>
+      </div>
+
+      <div class="player-card">
+        <h4>World Labs — Spatial Intelligence</h4>
+        <p class="leader">Led by Fei-Fei Li</p>
+        <p>Fei-Fei Li's vision: "Spatial intelligence is the frontier beyond language." World Labs builds systems that generate explorable 3D worlds from text, images, or video. Their product Marble creates environments you can navigate through—not just images, but spaces with depth, physics, and persistence.</p>
+        <p style="margin-top: 12px;"><strong>What it does well:</strong> Creates rich 3D environments. Enables spatial reasoning. Bridges perception and generation.</p>
+      </div>
+
+      <div class="player-card">
+        <h4>NVIDIA — Cosmos World Foundation Models</h4>
+        <p class="leader">Led by Jensen Huang's Physical AI initiative</p>
+        <p>NVIDIA's bet: physical AI needs synthetic data at massive scale. Cosmos is trained on 20 million hours of video—9 quadrillion tokens. It generates realistic scenarios for robotics training, with partners including Boston Dynamics, Tesla, and 1X. Cosmos Predict generates video futures; Cosmos Transfer handles sim-to-real style conversion; Cosmos Reason adds physical understanding.</p>
+        <p style="margin-top: 12px;"><strong>What it does well:</strong> Scale. Quality. Integration with robotics simulation pipelines. Downloaded over 3 million times.</p>
+      </div>
+
+      <div class="player-card">
+        <h4>Google DeepMind — Genie 2 & 3</h4>
+        <p class="leader">Building on the Dreamer lineage</p>
+        <p>DeepMind's insight: create unlimited training environments by learning to generate playable worlds. Genie 3 produces 24fps, 720p interactive environments from a single image or text prompt. They use these generated worlds to train SIMA, a generalist game-playing agent that transfers to new games zero-shot.</p>
+        <p style="margin-top: 12px;"><strong>What it does well:</strong> Interactive world generation. Agent training in imagination. Procedural environment diversity.</p>
+      </div>
+
+      <div class="player-card">
+        <h4>Wayve — GAIA for Autonomous Driving</h4>
+        <p class="leader">Focused on safety-critical scenarios</p>
+        <p>Wayve's problem: dangerous driving scenarios are rare and, well, dangerous to collect. GAIA-3 (15 billion parameters, 10x more data than GAIA-2) generates edge cases—sudden cut-ins, pedestrians appearing unexpectedly, adverse weather—so autonomous vehicles can train on scenarios that would be unsafe to encounter deliberately.</p>
+        <p style="margin-top: 12px;"><strong>What it does well:</strong> Domain-specific world modeling. Edge case generation. Safety validation through simulation.</p>
+      </div>
+
+      <h2>The Shared Challenge: Imagination Without Memory</h2>
+
+      <p>Here's what all five approaches have in common: <strong>they learn from curated datasets, not from distributed real-world outcomes.</strong></p>
+
+      <p>When NVIDIA Cosmos learns about physics, that knowledge doesn't transfer to DeepMind Genie. When a Wayve-trained vehicle discovers that a particular edge case plays out differently in reality than in simulation, that correction stays with Wayve. When a 1X humanoid robot learns that a simulated plate-drop doesn't match real-world physics, that insight dies with that robot.</p>
+
+      <p>Each system imagines the future. None of them share what actually happened when imagination met reality.</p>
+
+      <p>The field knows this is a problem. 1X, the humanoid robotics company, acknowledged it directly in their world model announcement:</p>
+
+      <blockquote>
+        <p>"There are many instances where generations fail to adhere to physical laws, such as... the plate remains suspended in the air."</p>
+        <cite>— 1X Robotics, World Model Technical Report</cite>
+      </blockquote>
+
+      <p>World models hallucinate physics. Not because the teams building them aren't brilliant—they are—but because models trained on video learn what things <em>look</em> like, not what actually <em>works</em>.</p>
+
+      <h2>The Sim-to-Real Gap</h2>
+
+      <p>Ask any roboticist what the hardest problem in their field is, and most will give the same answer: <strong>sim-to-real transfer.</strong></p>
+
+      <p>A robot trained in simulation often fails in the real world. The friction coefficients are different. The lighting changes. Objects behave unexpectedly. Edge cases that weren't in training appear constantly.</p>
+
+      <p>The current solutions all have the same limitation:</p>
+
+      <ul>
+        <li><strong>Domain randomization</strong> — Vary simulation parameters hoping to cover real-world variation. But you're still guessing what might go wrong.</li>
+        <li><strong>Human correction</strong> — Have humans correct robot mistakes. Doesn't scale. Expensive. Slow.</li>
+        <li><strong>Better physics engines</strong> — Build more accurate simulators. But reality will always have details you didn't model.</li>
+      </ul>
+
+      <p>Every approach tries to improve the imagination. None of them systematically learn from what actually happened when thousands of robots faced similar challenges in the real world.</p>
+
+      <h2>What QIS Adds: The Outcome Layer</h2>
+
+      <p>QIS (Quadratic Intelligence Swarm) is a protocol for distributed outcome synthesis. It's not a replacement for world models—it's the layer that grounds them in reality.</p>
+
+      <p>Here's how it works:</p>
+
+      <div class="highlight-box purple">
+        <h4>The QIS Contribution to World Models</h4>
+        <p><strong>World models generate possible futures.</strong> Robot sees plate on edge of table → simulates what might happen → plans action.</p>
+        <p><strong>QIS captures what actually happens.</strong> Robot faces scenario → scenario becomes the semantic fingerprint → route to that exact space → instantly receive outcomes from every agent who faced the same situation. The problem you need insight on IS the address. Route there, get the fix. And the applications are endless: real-time coordination across fleets, continuous model training from live outcomes, understanding what actually works in the real world—all scalable, all private, no raw data shared.</p>
+        <p><strong>Together:</strong> Imagination informed by distributed reality. A robot doesn't just simulate what might happen—it knows what happened to every similar robot in similar situations.</p>
+      </div>
+
+      <p>The key insight: when simulation meets reality and reality wins, that correction signal is valuable. QIS routes it to everyone who needs it.</p>
+
+      <div class="formula-display">
+        <div class="formula">N(N-1)/2 synthesis opportunities</div>
+        <div class="explanation">100 robots = 4,950 pairwise outcome comparisons<br>10,000 robots = 50 million continuous synthesis opportunities</div>
+      </div>
+
+      <p>For a robotics company, this means every deployment becomes a distributed experiment. When 10,000 robots encounter real-world conditions, you're not collecting 10,000 data points—you're enabling 50 million potential network-wide insights through outcome synthesis.</p>
+
+      <p>And critically: <strong>raw data never leaves the agent.</strong> Only the semantic fingerprint and compact representations of outcomes—the insight itself, ready to synthesize locally for your exact issue—are shared. Not proprietary training data. Privacy-preserving by design.</p>
+
+      <h2>How It Would Work: A Concrete Example</h2>
+
+      <p>Imagine a fleet of autonomous vehicles, each running a world model trained on NVIDIA Cosmos or similar synthetic data.</p>
+
+      <p>Vehicle A encounters an edge case: a cyclist in a blind spot at a specific intersection geometry, in rain, with particular lighting. The world model predicted one outcome. Reality was different. Vehicle A logs the discrepancy.</p>
+
+      <p>Without QIS: This correction stays with Vehicle A. Maybe it gets uploaded to a central database. Maybe, months later, it contributes to the next training run. Most likely, it's noise in a massive dataset.</p>
+
+      <p>With QIS: Vehicle A's scenario—intersection geometry, weather, lighting, obstacle type—becomes the semantic fingerprint. That's the address. Vehicle A stores its outcome (predicted X, actually Y happened) at that address. Now Vehicle B approaches a similar intersection in similar conditions. Its scenario hashes to the same fingerprint. Route there, instantly receive every outcome from every vehicle that faced that exact situation. Vehicle B synthesizes locally and learns <em>before</em> it makes the same mistake.</p>
+
+      <p><a href="article-mit-phonebook.html">MIT's NANDA project</a> enables agent discovery—finding who's out there. QIS does discovery too, but discovery informed by quadratic insight. You're not just finding agents; you're routing directly to agents whose real-world outcomes match your exact scenario. Discovery + insight + synthesis in one operation. Everything NANDA does, plus the intelligence layer that makes it useful.</p>
+
+      <h2>Why This Hasn't Been Built</h2>
+
+      <p>The world models teams aren't missing this because they're not smart enough. They're missing it because it's outside their frame.</p>
+
+      <p>LeCun is asking: <em>How should AI represent the world internally?</em></p>
+
+      <p>Fei-Fei is asking: <em>How do we give AI spatial understanding?</em></p>
+
+      <p>NVIDIA is asking: <em>How do we generate enough training data?</em></p>
+
+      <p>None of them are asking: <em>How do we create quadratic synthesis across distributed real-world outcomes?</em></p>
+
+      <p>That's not their job. It's a different problem—an <a href="article-quadratic-intelligence-discovery.html">infrastructure problem</a> that sits beneath all of their work.</p>
+
+      <p>QIS is that infrastructure.</p>
+
+      <h2>The Integration Vision</h2>
+
+      <p>Here's what this looks like in practice:</p>
+
+      <div class="highlight-box green">
+        <h4>World Models + QIS Architecture</h4>
+        <p><strong>Layer 1: World Model</strong> — JEPA, Cosmos, Genie, GAIA, or any future architecture. Generates predictions about what will happen.</p>
+        <p><strong>Layer 2: Real-World Execution</strong> — Agent acts in the physical world. Outcomes occur.</p>
+        <p><strong>Layer 3: QIS Outcome Synthesis</strong> — Scenario becomes the semantic fingerprint. Outcomes get stored at that address. Agents facing similar scenarios route to the same fingerprint and receive all outcomes instantly. Corrections propagate at network speed.</p>
+        <p><strong>Layer 4: Grounded Imagination</strong> — World model predictions are weighted by distributed outcome data. Imagination becomes informed by collective reality.</p>
+        <p style="margin-top: 20px; margin-bottom: 0; text-align: center; font-size: 1.2rem;"><strong>Collective Intelligence (QIS) meets world models and robotics.</strong></p>
+      </div>
+
+      <p>The world model imagines. QIS remembers. Together, they create something neither can achieve alone: <strong>imagination grounded in distributed truth.</strong></p>
+
+      <h2>What This Enables</h2>
+
+      <p>Consider the applications:</p>
+
+      <p><strong>Robotics:</strong> Every humanoid robot shares what actually worked when simulation met reality. The sim-to-real gap closes not through better simulation, but through collective experience synthesis.</p>
+
+      <p><strong>Autonomous Vehicles:</strong> Edge cases stop being rare. When one vehicle encounters an unusual scenario, every similar vehicle learns immediately. <a href="article-rob-van-kranenburg.html">Rob van Kranenburg called QIS</a> "a perfect underlying system for when we have full coverage of self driving cars." This is why.</p>
+
+      <p><strong>Healthcare:</strong> Same principle, different domain. <a href="article-you-just-got-diagnosed.html">When a treatment works for one patient</a>, semantically similar patients learn immediately. The world models insight—AI needs to understand the physical world—applies just as much to the human body.</p>
+
+      <p><strong>Agriculture:</strong> Drones, sensors, automated systems—all learning from distributed real-world outcomes, not just simulated futures.</p>
+
+      <h2>The Collaborative Frame</h2>
+
+      <p>I want to be clear about something: the teams building world models are doing essential work. LeCun is right that AI needs better representations. Fei-Fei is right that spatial intelligence matters. NVIDIA is right that physical AI needs massive-scale simulation. DeepMind is right that interactive world generation enables new training paradigms.</p>
+
+      <p>QIS doesn't replace any of this. It completes it.</p>
+
+      <p>World models teach AI to imagine. QIS teaches AI what actually happened. Imagination without reality is just dreaming. Together, they're something new: <strong>grounded imagination at planetary scale.</strong></p>
+
+      <h2>The Offer</h2>
+
+      <p>The QIS Protocol is specified, patented for implementation protection, and available for integration. The core insight—quadratic synthesis through semantic routing—works with any world model architecture.</p>
+
+      <p>To the teams at Meta AI, World Labs, NVIDIA, DeepMind, Wayve, 1X, and every other group working on world models:</p>
+
+      <p>You've built the imagination layer. Here's the memory layer that makes it real.</p>
+
+      <p>Check the math. Read the <a href="pdfs/core-spec.pdf" target="_blank">technical specification</a>. See how <a href="article-qis-scaling-law.html">quadratic intelligence scaling</a> applies to your architecture.</p>
+
+      <p>The components exist. The mathematics work. The integration is straightforward.</p>
+
+      <p>World models dream and simulate. QIS adds the real-time, scalable, real-world intelligence layer. Let's build them together.</p>
+
+      <h2>Further Reading</h2>
+
+      <ul>
+        <li><a href="article-qis-scaling-law.html">The QIS Scaling Law</a> — Why quadratic intelligence scales faster than any single model</li>
+        <li><a href="article-one-round-trip.html">One Round-Trip</a> — How QIS keeps compute flat while intelligence scales quadratically</li>
+        <li><a href="article-how-big-ai-wins-with-qis.html">How Big AI Wins with QIS</a> — Why the major AI labs need distributed outcome synthesis</li>
+        <li><a href="article-every-component-exists.html">Every Component Exists</a> — No new technology required—just configuration</li>
+      </ul>
+
+    </div>
+  </article>
+
+  <!-- CTA Section -->
+  <section class="cta-section" style="text-align:center; padding:60px 40px; margin-top:40px; border-top: 1px solid rgba(0, 190, 234, 0.2);">
+    <h2 style="font-family:'Orbitron', sans-serif; font-size:1.6rem; margin-bottom:20px; color: var(--text-primary);">Ready to Explore Integration?</h2>
+    <p style="color:var(--text-secondary); max-width:600px; margin:0 auto 25px;">The QIS Protocol is designed to work with existing world model architectures. Let's discuss how distributed outcome synthesis could ground your system in collective reality.</p>
+    <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://qisprotocol.substack.com" target="_blank" style="padding:14px 32px; border-radius:8px; text-decoration:none; font-weight:700; background: linear-gradient(135deg, var(--cyan-primary), var(--purple-quantum)); color:white;">Subscribe on Substack</a>
+      <a href="how-it-works.html" style="padding:14px 32px; border-radius:8px; text-decoration:none; font-weight:700; border:2px solid var(--cyan-primary); color:var(--cyan-bright); background:transparent;">Technical Overview</a>
+      <a href="about.html" style="padding:14px 32px; border-radius:8px; text-decoration:none; font-weight:700; border:2px solid var(--cyan-primary); color:var(--cyan-bright); background:transparent;">Contact</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC • 39 Provisional Patents</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
