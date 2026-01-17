@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The old paradigm is 3 words: Data to analyze. QIS inverts this—the analysis IS the routing. Experts compete to define similarity. That definition becomes the key. Insight arrives pre-distilled. Analytics without compute.">
+  <meta name="keywords" content="QIS Protocol, analytics without compute, distributed intelligence, semantic routing, pattern curation, expert templates, Christopher Trevethan">
+  <meta name="author" content="Christopher Thomas Trevethan">
+  
+  <meta property="og:title" content="Analytics Without Compute • QIS Protocol">
+  <meta property="og:description" content="Three words created the old paradigm. Three words replace it.">
+  <meta property="og:type" content="article">
+  
+  <title>Analytics Without Compute • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { width: 40px; height: 40px; }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--cyan-bright);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .nav-overlay.active { display: block; }
+
+    /* Hero */
+    .hero {
+      padding: 160px 40px 50px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid var(--purple-quantum);
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      color: var(--purple-quantum);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--cyan-bright), var(--purple-quantum));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 0 auto 20px;
+    }
+
+    .hero .meta {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .hero .meta a {
+      color: var(--cyan-primary);
+      text-decoration: none;
+    }
+
+    /* Article Content */
+    .article-content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 30px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .article-content p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+      line-height: 1.85;
+    }
+
+    .article-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--cyan-bright);
+      margin: 45px 0 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .article-content h2:first-of-type {
+      border-top: none;
+      margin-top: 25px;
+    }
+
+    .article-content strong { color: var(--text-primary); }
+    .article-content em { color: var(--gold-accent); font-style: normal; }
+
+    /* The Four Words Box */
+    .four-words {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid var(--red-accent);
+      border-radius: 16px;
+      padding: 35px;
+      text-align: center;
+      margin: 35px 0;
+    }
+
+    .four-words .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      color: var(--red-accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .four-words .words {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .four-words p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    /* Cost Grid */
+    .cost-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 25px 0;
+    }
+
+    .cost-tag {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 0.95rem;
+      color: var(--red-accent);
+    }
+
+    /* The Flip Box */
+    .flip-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(0, 190, 234, 0.1));
+      border: 2px solid var(--green-neural);
+      border-radius: 16px;
+      padding: 35px;
+      text-align: center;
+      margin: 35px 0;
+    }
+
+    .flip-box .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      color: var(--green-neural);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .flip-box .statement {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .flip-box p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    /* Where Analysis Lives */
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+    .analysis-card {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .analysis-card .where {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--green-neural);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .analysis-card .what {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+
+    .analysis-card .cost {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--cyan-bright);
+    }
+
+    /* Contrast Box */
+    .contrast-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .contrast-side {
+      padding: 25px;
+      border-radius: 14px;
+    }
+
+    .contrast-side.old {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .contrast-side.qis {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .contrast-side h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .contrast-side.old h4 { color: var(--red-accent); }
+    .contrast-side.qis h4 { color: var(--green-neural); }
+
+    .contrast-side p {
+      font-size: 1rem;
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+
+    .contrast-side.old p { color: var(--text-muted); }
+    .contrast-side.qis p { color: var(--text-secondary); }
+
+    /* Punchline */
+    .punchline {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(0, 190, 234, 0.15));
+      border: 2px solid var(--purple-quantum);
+      border-radius: 20px;
+      padding: 45px 35px;
+      text-align: center;
+      margin: 45px 0 35px;
+    }
+
+    .punchline .big {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .punchline p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* The Full Loop Diagram */
+    .loop-diagram {
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid var(--cyan-primary);
+      border-radius: 20px;
+      padding: 35px;
+      margin: 40px 0;
+    }
+
+    .loop-diagram h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--cyan-bright);
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .loop-container {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .loop-side {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .loop-side.store {
+      border: 1px solid var(--purple-quantum);
+    }
+
+    .loop-side.retrieve {
+      border: 1px solid var(--green-neural);
+    }
+
+    .loop-side h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .loop-side.store h4 { color: var(--purple-quantum); }
+    .loop-side.retrieve h4 { color: var(--green-neural); }
+
+    .loop-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .loop-step:last-child { margin-bottom: 0; }
+
+    .loop-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .loop-side.store .loop-num {
+      background: var(--purple-quantum);
+      color: #000;
+    }
+
+    .loop-side.retrieve .loop-num {
+      background: var(--green-neural);
+      color: #000;
+    }
+
+    .loop-step p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .loop-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 15px;
+    }
+
+    .address-space {
+      width: 80px;
+      height: 80px;
+      border: 3px solid var(--cyan-bright);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 190, 234, 0.1);
+      margin-bottom: 15px;
+    }
+
+    .address-space span {
+      font-size: 2rem;
+    }
+
+    .loop-center p {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--cyan-bright);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .loop-arrows {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .arrow-in, .arrow-out {
+      font-size: 1.5rem;
+    }
+
+    .arrow-in { color: var(--purple-quantum); }
+    .arrow-out { color: var(--green-neural); }
+
+    /* Mailbox Visualization */
+    .mailbox-viz {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(139, 92, 246, 0.1));
+      border: 2px solid var(--gold-accent);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+
+    .mailbox-viz h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--gold-accent);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .mailbox-viz .subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .mailbox-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .timeline-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .timeline-time {
+      width: 100px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .timeline-event {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 12px 18px;
+      border-left: 3px solid var(--purple-quantum);
+    }
+
+    .timeline-event.query {
+      border-left-color: var(--green-neural);
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .timeline-event p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .timeline-event strong {
+      color: var(--text-primary);
+    }
+
+    .envelope-count {
+      display: inline-block;
+      background: var(--purple-quantum);
+      color: #000;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 8px;
+    }
+
+    .mailbox-insight {
+      margin-top: 25px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .mailbox-insight p {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .mailbox-insight em {
+      color: var(--gold-accent);
+      font-style: normal;
+    }
+
+    /* Key Insight Box */
+    .key-insight {
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.15), rgba(16, 185, 129, 0.1));
+      border: 2px solid var(--cyan-bright);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 35px 0;
+      text-align: center;
+    }
+
+    .key-insight .big {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .key-insight p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Responsive for new elements */
+    @media (max-width: 768px) {
+      .loop-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      .loop-center {
+        flex-direction: row;
+        padding: 15px;
+      }
+      .loop-arrows {
+        flex-direction: row;
+        margin-top: 0;
+        margin-left: 15px;
+      }
+      .timeline-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .timeline-time {
+        text-align: left;
+        width: auto;
+      }
+    }
+
+    /* Final Words */
+    .final-contrast {
+      text-align: center;
+      margin: 40px 0;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+    }
+
+    .final-contrast .old-words {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--red-accent);
+      margin-bottom: 10px;
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+
+    .final-contrast .new-words {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--green-neural);
+      font-weight: 700;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+
+    .cta-btn {
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .cta-btn.primary {
+      background: linear-gradient(135deg, var(--cyan-primary), var(--purple-quantum));
+      color: var(--dark-bg);
+    }
+
+    .cta-btn:not(.primary) {
+      background: transparent;
+      border: 1px solid var(--cyan-primary);
+      color: var(--cyan-bright);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a { color: var(--cyan-primary); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { padding: 15px 20px; }
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%; max-width: 300px;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        transition: right 0.3s ease;
+        border-left: 1px solid rgba(0, 190, 234, 0.3);
+        z-index: 1000;
+      }
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 1.1rem; padding: 10px 20px; }
+      .hero { padding: 130px 20px 40px; }
+      .hero h1 { font-size: 1.8rem; }
+      .article-content { padding: 25px 20px 60px; }
+      .four-words .words { font-size: 1.5rem; }
+      .analysis-grid { grid-template-columns: 1fr; }
+      .contrast-box { grid-template-columns: 1fr; }
+      .punchline .big { font-size: 1.3rem; }
+      .final-contrast .new-words { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.nav-overlay').classList.toggle('active');">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-overlay" onclick="document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-links').classList.remove('active'); this.classList.remove('active');"></div>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="index.html?skip=true#documents">Docs</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="techrace.html">Tech Race</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-badge">Paradigm Shift</div>
+    <h1>Analytics Without Compute</h1>
+    <p class="subtitle">Three words created the old paradigm. Three words replace it.</p>
+    <p class="meta">
+      By <a href="https://linkedin.com/in/christrevethan" target="_blank" style="color: var(--cyan-bright);">Christopher Thomas Trevethan</a> · January 16, 2026
+    </p>
+  </header>
+
+  <!-- Article Content -->
+  <article class="article-content">
+
+    <div class="four-words">
+      <div class="label">The Old Paradigm</div>
+      <div class="words">"Data to analyze"</div>
+      <p>Three words. The assumption baked into every traditional system. Raw input requires processing. Processing requires compute.</p>
+    </div>
+
+    <p>Centralized AI. Federated learning. Data lakes. All follow the same logic: collect data, process it, extract patterns, generate insight. The "analysis" happens at scale, in data centers, burning compute.</p>
+
+    <p>That compute likely costs you:</p>
+
+    <div class="cost-grid">
+      <span class="cost-tag">Linear scaling</span>
+      <span class="cost-tag">Privacy violations</span>
+      <span class="cost-tag">Massive expense</span>
+      <span class="cost-tag">Black box results</span>
+      <span class="cost-tag">Centralized control</span>
+      <span class="cost-tag">Batch latency</span>
+      <span class="cost-tag">Stale data</span>
+      <span class="cost-tag">Single point of failure</span>
+    </div>
+
+    <p>Every cost flows from the same assumption: data is raw material that requires transformation.</p>
+
+    <p>What if that assumption is wrong?</p>
+
+    <h2>The Inversion</h2>
+
+    <div class="final-contrast" style="margin: 25px 0 35px;">
+      <div class="old-words">"Data to analyze"</div>
+      <div class="new-words">Route the insight.</div>
+    </div>
+
+    <div class="flip-box">
+      <div class="label">The QIS Paradigm</div>
+      <div class="statement">The analysis IS the routing.</div>
+      <p>Experts compete to define similarity. That definition becomes the key. Insight arrives pre-distilled.</p>
+    </div>
+
+    <p>In QIS, networks don't analyze data. They compete to hire the best experts who define what "similarity" means for a given problem. That expert's definition—<em>their mental model of the problem space</em>—becomes the routing key.</p>
+
+    <p>The expert's mind IS the pattern recognition. Their template IS the feature extraction. Their definition of similarity IS the classification.</p>
+
+    <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 16px; padding: 30px; margin: 35px 0;">
+      <div style="font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--purple-quantum); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Example: How It Works</div>
+      <p style="margin-bottom: 15px;"><strong>Expert A</strong> is the world's best at solving <strong>Problem X</strong>. She defines what makes two cases "similar"—the variables that actually matter. That definition becomes the routing key.</p>
+      <p style="margin-bottom: 15px;">Everyone who faces Problem X fills in Expert A's template. Same template → same semantic fingerprint → same bucket. The bucket fills with outcomes: "This worked." "This didn't." "Still thriving 24 months later."</p>
+      <p style="margin-bottom: 0;"><strong>You</strong> show up with Problem X. You fill the same template. You route to the same bucket. You instantly receive outcomes from <em>everyone</em> who faced your exact situation. No compute. Just retrieval.</p>
+    </div>
+
+    <p>Once that template exists, no compute is needed. Only routing.</p>
+
+    <h2>Where "Analysis" Actually Lives</h2>
+
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="where">Expert Mind</div>
+        <div class="what">Defines what variables matter. Stage, mutations, biomarkers. This IS the analysis.</div>
+        <div class="cost">Cost: Done once</div>
+      </div>
+      <div class="analysis-card">
+        <div class="where">Local Extraction</div>
+        <div class="what">Each node fills the template with its own values. Read, don't compute.</div>
+        <div class="cost">Cost: &lt;50ms on smartphone</div>
+      </div>
+      <div class="analysis-card">
+        <div class="where">Semantic Routing</div>
+        <div class="what">Template → hash/vector → route to matching cohort. Lookup, not calculation.</div>
+        <div class="cost">Cost: O(log N) hops</div>
+      </div>
+      <div class="analysis-card">
+        <div class="where">Outcome Packets</div>
+        <div class="what">What returns is pre-distilled insight. "This worked." The answer, not data to process.</div>
+        <div class="cost">Cost: Already done at edge</div>
+      </div>
+    </div>
+
+    <p>The expensive step—extracting patterns from raw data at scale—doesn't exist. The expert front-loaded it. The edges pre-distilled it. The network just routes to it.</p>
+
+    <h2>But Wait—How Did the Insight Get There?</h2>
+
+    <p>This is the part most people miss on first read. When you query for insight, you're not asking the network to compute anything. <strong>You're retrieving outcomes that others already deposited.</strong></p>
+
+    <p>Every participant plays two roles:</p>
+
+    <div class="loop-diagram">
+      <h3>The Full Loop: Store & Retrieve</h3>
+      <div class="loop-container">
+        <div class="loop-side store">
+          <h4>When You Experience</h4>
+          <div class="loop-step">
+            <div class="loop-num">1</div>
+            <p>You live through something—treatment, adjustment, decision</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-num">2</div>
+            <p>Your situation matches expert-defined criteria → that's your routing key</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-num">3</div>
+            <p>Your outcome ("this worked" / "24 months") becomes a packet</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-num">4</div>
+            <p>Packet stored at your fingerprint address</p>
+          </div>
+        </div>
+
+        <div class="loop-center">
+          <div class="address-space">
+            <span>📫</span>
+          </div>
+          <p>Semantic<br>Address<br>Space</p>
+          <div class="loop-arrows">
+            <span class="arrow-in">→</span>
+            <span class="arrow-out">←</span>
+          </div>
+        </div>
+
+        <div class="loop-side retrieve">
+          <h4>When You Need Help</h4>
+          <div class="loop-step">
+            <div class="loop-num">1</div>
+            <p>You face a situation—newly diagnosed, new problem</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-num">2</div>
+            <p>Your situation matches expert-defined criteria → that's your routing key</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-num">3</div>
+            <p>Route to that fingerprint address</p>
+          </div>
+          <div class="loop-step">
+            <div class="loop-num">4</div>
+            <p>Retrieve all packets already stored there → synthesize locally</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <div class="big">Same fingerprint process. Different direction.</div>
+      <p>Store uses it to find WHERE to deposit your outcome. Retrieve uses it to find WHERE to collect others' outcomes. The fingerprint IS the address. Similar situations → same address.</p>
+    </div>
+
+    <p>This is why there's no compute at query time. The insight was pre-computed by each edge node when they <em>lived it</em>. You're checking a mailbox that's already full.</p>
+
+    <h2>The Mailbox Is Already Full</h2>
+
+    <p>Think of the semantic address space as a post office with millions of PO boxes. Each box is labeled with a fingerprint—a specific situation defined by the expert template.</p>
+
+    <div class="mailbox-viz">
+      <h3>PO Box #7f3a9c2b — "Stage III Colorectal, KRAS+, Age 55-65"</h3>
+      <p class="subtitle">Watch the mailbox fill over time:</p>
+
+      <div class="mailbox-timeline">
+        <div class="timeline-row">
+          <div class="timeline-time">March 2024</div>
+          <div class="timeline-event">
+            <p><strong>Patient A</strong> finishes treatment. Drops envelope: "FOLFOX worked, 24 months progression-free" <span class="envelope-count">1</span></p>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">June 2024</div>
+          <div class="timeline-event">
+            <p><strong>Patient B</strong> completes therapy. Drops envelope: "FOLFOX + Bevacizumab, 31 months" <span class="envelope-count">2</span></p>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">October 2024</div>
+          <div class="timeline-event">
+            <p><strong>Patient C</strong> reports outcome. Drops envelope: "Immunotherapy failed, switched to FOLFOX, 18 months" <span class="envelope-count">3</span></p>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">...</div>
+          <div class="timeline-event">
+            <p><strong>311 more patients</strong> with identical fingerprints deposit their outcomes over months and years <span class="envelope-count">314</span></p>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-time">Jan 2026</div>
+          <div class="timeline-event query">
+            <p><strong>YOU</strong> are newly diagnosed. Same fingerprint. You open the mailbox. <strong>314 sealed envelopes waiting.</strong> Synthesize locally: 73% responded to FOLFOX-based regimens.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mailbox-insight">
+        <p>You didn't ask for computation. You <em>checked the mail</em>.</p>
+      </div>
+    </div>
+
+    <p>The envelopes were deposited before you ever needed them. The insight existed before your question. Query time is retrieval time—not processing time.</p>
+
+    <h2>Same Question, Two Paradigms</h2>
+
+    <p>A cancer patient asks: <strong>"What worked for patients like me?"</strong></p>
+
+    <div class="contrast-box">
+      <div class="contrast-side old">
+        <h4>Traditional</h4>
+        <p>Collect millions of records. Move to data lake. Train ML models on centralized cluster. Run inference. Return prediction. <em>Compute at every step.</em> Maybe it becomes a study. Maybe your doctor reads it. Maybe before it's too late.</p>
+      </div>
+      <div class="contrast-side qis">
+        <h4>QIS</h4>
+        <p>The best oncologist already defined "like me"—that's the routing key. Device fills template, routes to cohort. Returns: "312 patients, 73% responded to Treatment A." <em>Insight already there.</em></p>
+      </div>
+    </div>
+
+    <p>The traditional system computed the answer. QIS routed to it.</p>
+
+    <p>The metadata isn't a pointer to go fetch something. It IS the outcome packet—the insight for your exact situation, defined by <a href="article-three-elections.html" style="color: var(--cyan-bright);">the best experts competing</a>. The mailbox was already full—you just checked it.</p>
+
+    <div class="punchline">
+      <div class="big">Analytics without compute.</div>
+      <p>The expert front-loads the analysis. Every edge pre-deposits their insight. The network just routes you to the mailbox. Open it. The answers are already inside.</p>
+    </div>
+
+    <div class="final-contrast">
+      <div class="old-words">"Data to analyze"</div>
+      <div class="new-words">Route the insight.</div>
+    </div>
+
+    <p>The math is public. The components are battle-tested. The only question is who builds this first—and who gets left running compute while their competitors route directly to the answer.</p>
+
+    <p style="margin-top: 30px;"><a href="article-routing-vs-computing.html" style="color: var(--cyan-bright);">Deep dive: Routing vs. Computing</a> — why there's no central compute, and how that changes everything.</p>
+
+  </article>
+
+  <!-- Read Deeper Section -->
+  <section style="max-width: 780px; margin: 60px auto 40px; padding: 0 40px;">
+    <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.4rem; color: var(--cyan-bright); text-align: center; margin-bottom: 30px;">Read Deeper</h2>
+
+    <div style="display: grid; gap: 15px;">
+      <a href="article-one-round-trip.html" style="display: block; padding: 20px 25px; background: rgba(0,0,0,0.4); border: 1px solid rgba(0, 190, 234, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px;">One Round-Trip: The Trick That Makes QIS Work</div>
+        <div style="font-size: 0.95rem; color: var(--text-secondary);">The query routes. The payload IS the insight. One hop. No explosion.</div>
+      </a>
+
+      <a href="article-every-component-exists.html" style="display: block; padding: 20px 25px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px;">Every Component Already Exists</div>
+        <div style="font-size: 0.95rem; color: var(--text-secondary);">The capstone proof. Every piece is battle-tested at planetary scale. Named and cited.</div>
+      </a>
+
+      <a href="article-three-elections.html" style="display: block; padding: 20px 25px; background: rgba(0,0,0,0.4); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px;">The Three Elections</div>
+        <div style="font-size: 0.95rem; color: var(--text-secondary);">The framework for curation, routing, and outcomes. Who defines similarity? Who routes? Who votes?</div>
+      </a>
+
+      <a href="article-11-flips.html" style="display: block; padding: 20px 25px; background: rgba(0,0,0,0.4); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px;">The 11 Flips</div>
+        <div style="font-size: 0.95rem; color: var(--text-secondary);">Everything you think about AI is backwards. 11 paradigm inversions that change everything.</div>
+      </a>
+
+      <a href="article-you-just-got-diagnosed.html" style="display: block; padding: 20px 25px; background: rgba(0,0,0,0.4); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px;">You Just Got Diagnosed. WYD?</div>
+        <div style="font-size: 0.95rem; color: var(--text-secondary);">Two choices. Months of waiting—or instant access to what worked for everyone like you.</div>
+      </a>
+
+      <a href="article-qis-scaling-law.html" style="display: block; padding: 20px 25px; background: rgba(0,0,0,0.4); border: 1px solid rgba(0, 190, 234, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px;">The QIS Scaling Law</div>
+        <div style="font-size: 0.95rem; color: var(--text-secondary);">Θ(N²) emergent intelligence with O(log N) communication. The math that makes it work.</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <a href="https://qisprotocol.substack.com" target="_blank" class="cta-btn primary">Subscribe on Substack</a>
+    <a href="articles.html" class="cta-btn">All Articles</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC • 39 Provisional Patents</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
