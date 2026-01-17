@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="The complete QIS architecture in one diagram. Data sources, edge nodes, semantic routing, outcome packets, local synthesis, and external AI augmentation. Every layer, every component, one picture.">
+  <meta name="keywords" content="QIS Protocol, architecture diagram, distributed intelligence, edge AI, semantic routing, DHT, vector database, outcome packets, synthesis, AI augmentation, IoT, API, data ingestion">
+  <meta name="author" content="Christopher Thomas Trevethan">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Complete QIS Architecture • One Diagram">
+  <meta property="og:description" content="Every layer. Every component. One picture. The full technical architecture of distributed intelligence.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qisprotocol.com/article-architecture-diagram.html">
+
+  <title>One Diagram: The Complete QIS Architecture • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --orange-accent: #F97316;
+      --blue-data: #3B82F6;
+      --pink-accent: #EC4899;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 40px; height: 40px;
+      filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5));
+    }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--cyan-bright);
+      transition: all 0.3s ease;
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .nav-overlay.active { display: block; }
+
+    /* Hero Section */
+    .hero {
+      padding: 140px 40px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.2), rgba(139, 92, 246, 0.2));
+      border: 1px solid var(--cyan-bright);
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--cyan-bright);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 900px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .hero .meta {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    .hero .meta a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    /* Main Diagram Container */
+    .diagram-section {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .main-diagram {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid var(--cyan-primary);
+      border-radius: 24px;
+      padding: 30px;
+      margin-bottom: 40px;
+      overflow-x: auto;
+    }
+
+    .main-diagram h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--cyan-bright);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .diagram-svg {
+      width: 100%;
+      min-width: 1400px;
+      height: auto;
+    }
+
+    /* Legend */
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+    }
+
+    .legend-color {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .legend-item span {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Layer Breakdown */
+    .layers-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .layers-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--cyan-bright);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .layer-grid {
+      display: grid;
+      gap: 25px;
+    }
+
+    .layer-card {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 25px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 16px;
+      padding: 30px;
+      border-left: 4px solid;
+    }
+
+    .layer-card.sources { border-color: var(--blue-data); }
+    .layer-card.edge { border-color: var(--green-neural); }
+    .layer-card.fingerprint { border-color: var(--gold-accent); }
+    .layer-card.routing { border-color: var(--purple-quantum); }
+    .layer-card.packets { border-color: var(--cyan-bright); }
+    .layer-card.synthesis { border-color: var(--orange-accent); }
+    .layer-card.external { border-color: var(--red-accent); }
+
+    .layer-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .layer-card.sources .layer-icon { background: rgba(59, 130, 246, 0.2); }
+    .layer-card.edge .layer-icon { background: rgba(16, 185, 129, 0.2); }
+    .layer-card.fingerprint .layer-icon { background: rgba(245, 158, 11, 0.2); }
+    .layer-card.routing .layer-icon { background: rgba(139, 92, 246, 0.2); }
+    .layer-card.packets .layer-icon { background: rgba(0, 190, 234, 0.2); }
+    .layer-card.synthesis .layer-icon { background: rgba(249, 115, 22, 0.2); }
+    .layer-card.external .layer-icon { background: rgba(239, 68, 68, 0.2); }
+
+    .layer-content h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .layer-card.sources .layer-content h3 { color: var(--blue-data); }
+    .layer-card.edge .layer-content h3 { color: var(--green-neural); }
+    .layer-card.fingerprint .layer-content h3 { color: var(--gold-accent); }
+    .layer-card.routing .layer-content h3 { color: var(--purple-quantum); }
+    .layer-card.packets .layer-content h3 { color: var(--cyan-bright); }
+    .layer-card.synthesis .layer-content h3 { color: var(--orange-accent); }
+    .layer-card.external .layer-content h3 { color: var(--red-accent); }
+
+    .layer-content p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+
+    .layer-examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .example-tag {
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Key Insight Box */
+    .key-insight {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(0, 190, 234, 0.1));
+      border: 2px solid var(--purple-quantum);
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .key-insight h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--purple-quantum);
+      margin-bottom: 20px;
+    }
+
+    .key-insight p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .key-insight p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Example Flow Box */
+    .example-flow {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid var(--green-neural);
+      border-radius: 20px;
+    }
+
+    .example-flow h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--green-neural);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .example-flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .example-source {
+      padding: 8px 14px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid var(--blue-data);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--blue-data);
+    }
+
+    .example-arrow {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+    }
+
+    .example-node {
+      padding: 12px 20px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid var(--green-neural);
+      border-radius: 10px;
+      font-size: 1rem;
+      color: var(--green-neural);
+      font-weight: bold;
+    }
+
+    .example-flow p {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 60px 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .cta-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      color: var(--cyan-bright);
+      margin-bottom: 30px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 2px solid var(--cyan-bright);
+      background: transparent;
+      color: var(--text-primary);
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--cyan-bright);
+      color: #000;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--purple-quantum), var(--cyan-primary));
+      border-color: transparent;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      padding: 50px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+    footer p { color: var(--text-secondary); margin-bottom: 10px; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav { padding: 15px 20px; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      }
+      .nav-links.active { display: flex; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 120px 20px 30px; }
+      .hero h1 { font-size: 1.6rem; }
+      .hero .subtitle { font-size: 1.1rem; }
+
+      .main-diagram { padding: 20px 15px; }
+
+      .layer-card {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .layer-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .legend { grid-template-columns: 1fr; }
+
+      .example-flow-diagram {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+
+    <div class="hamburger"
+      onclick="this.classList.toggle('active');
+               document.querySelector('.nav-links').classList.toggle('active');
+               document.querySelector('.nav-overlay').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="nav-overlay"
+      onclick="document.querySelector('.hamburger').classList.remove('active');
+               document.querySelector('.nav-links').classList.remove('active');
+               this.classList.remove('active');"></div>
+
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="healthcare.html">Healthcare</a>
+      <a href="techrace.html">Tech Race</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-badge">Technical Reference</div>
+    <h1>One Diagram: The Complete QIS Architecture</h1>
+    <p class="subtitle">From raw data sources through edge processing to real-time, scalable, distributed intelligence. Every layer. Every component. One diagram.</p>
+    <p class="meta">
+      By <a href="https://linkedin.com/in/christrevethan" target="_blank" style="color: var(--cyan-bright);">Christopher Thomas Trevethan</a> · January 17, 2026
+    </p>
+  </header>
+
+  <!-- Main Diagram Section -->
+  <section class="diagram-section">
+    <div class="main-diagram">
+      <h2>QIS Protocol: Full System Architecture</h2>
+
+      <svg class="diagram-svg" viewBox="0 -12 1400 957" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="1400" height="945" fill="#050505"/>
+
+        <!-- Grid pattern -->
+        <defs>
+          <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(0,190,234,0.05)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="1400" height="945" fill="url(#grid)"/>
+
+        <!-- ===== LAYER 0: DATA SOURCES (Far Left) ===== -->
+        <g id="data-sources-layer">
+          <!-- Layer background -->
+          <rect x="20" y="80" width="165" height="680" rx="16" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.3)" stroke-width="2"/>
+          <text x="102" y="108" text-anchor="middle" fill="#3B82F6" font-family="Orbitron, sans-serif" font-size="13" font-weight="bold">DATA SOURCES</text>
+          <text x="102" y="125" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="10">Raw inputs from anywhere</text>
+
+          <!-- Source types - Column 1 -->
+          <g transform="translate(30, 145)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">IoT Sensors</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Temperature, motion, biometric</text>
+          </g>
+
+          <g transform="translate(30, 193)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">APIs</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">FHIR, REST, GraphQL, HL7</text>
+          </g>
+
+          <g transform="translate(30, 241)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Databases</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">EHR, SQL, NoSQL, Graph</text>
+          </g>
+
+          <g transform="translate(30, 289)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Wearables</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Apple Watch, Fitbit, Oura</text>
+          </g>
+
+          <g transform="translate(30, 337)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Voice Input</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Speech-to-text, commands</text>
+          </g>
+
+          <g transform="translate(30, 385)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Manual Entry</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Forms, surveys, symptoms</text>
+          </g>
+
+          <g transform="translate(30, 433)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Medical Devices</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">CGM, BP monitor, ECG</text>
+          </g>
+
+          <g transform="translate(30, 481)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Lab Results</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Blood work, imaging, pathology</text>
+          </g>
+
+          <g transform="translate(30, 529)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Genomics</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">23andMe, WGS, panels</text>
+          </g>
+
+          <g transform="translate(30, 577)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Vehicle Telemetry</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">CAN bus, OBD-II, sensors</text>
+          </g>
+
+          <g transform="translate(30, 625)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Industrial SCADA</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">PLCs, HMIs, historians</text>
+          </g>
+
+          <g transform="translate(30, 673)">
+            <rect width="145" height="38" rx="6" fill="rgba(59,130,246,0.15)" stroke="#3B82F6"/>
+            <text x="72" y="17" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Environmental</text>
+            <text x="72" y="31" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Weather, soil, air quality</text>
+          </g>
+
+          <text x="102" y="735" text-anchor="middle" fill="#3B82F6" font-family="JetBrains Mono" font-size="9">ANYTHING THAT</text>
+          <text x="102" y="748" text-anchor="middle" fill="#3B82F6" font-family="JetBrains Mono" font-size="9">PRODUCES DATA</text>
+        </g>
+
+        <!-- Convergence Arrows: Sources to Edge -->
+        <g id="convergence-arrows">
+          <!-- Multiple arrows converging -->
+          <path d="M 185 165 Q 210 165 220 230" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 212 Q 210 212 220 260" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 260 Q 210 260 220 300" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 308 Q 210 308 220 350" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 356 Q 210 356 220 400" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 404 Q 210 404 220 430" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 452 Q 210 452 220 470" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 500 Q 210 500 220 510" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 548 Q 210 548 220 550" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 596 Q 210 596 220 590" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 644 Q 210 644 220 630" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M 185 692 Q 210 692 220 670" stroke="#3B82F6" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+          <!-- Label -->
+          <text x="200" y="420" text-anchor="middle" fill="#3B82F6" font-size="9" transform="rotate(-90, 200, 420)">INGEST</text>
+        </g>
+
+        <!-- ===== LAYER 1: EDGE NODES ===== -->
+        <g id="edge-layer">
+          <!-- Layer background -->
+          <rect x="225" y="80" width="175" height="680" rx="16" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.3)" stroke-width="2"/>
+          <text x="312" y="108" text-anchor="middle" fill="#10B981" font-family="Orbitron, sans-serif" font-size="13" font-weight="bold">EDGE NODES</text>
+          <text x="312" y="125" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="10">Any compute that can process</text>
+
+          <!-- Node types -->
+          <g transform="translate(240, 150)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Smartphone</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">iOS / Android app</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">LOCAL PROCESSING</text>
+          </g>
+
+          <g transform="translate(240, 215)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Edge AI Device</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">NVIDIA Jetson, Coral TPU</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">ON-PREM ML</text>
+          </g>
+
+          <g transform="translate(240, 280)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Cloud AI Model</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">GPT, Claude, Gemini, Grok</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">API-BASED AGENT</text>
+          </g>
+
+          <g transform="translate(240, 345)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Local LLM</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Llama, Mistral, Phi</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">PRIVATE INFERENCE</text>
+          </g>
+
+          <g transform="translate(240, 410)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Smart Sensor</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">ESP32, Raspberry Pi</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">EMBEDDED LOGIC</text>
+          </g>
+
+          <g transform="translate(240, 475)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Hospital System</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Epic, Cerner integration</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">INSTITUTION NODE</text>
+          </g>
+
+          <g transform="translate(240, 540)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Vehicle Computer</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Tesla FSD, AV stack</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">FLEET NODE</text>
+          </g>
+
+          <g transform="translate(240, 605)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Industrial PLC</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Factory automation</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">OPERATIONAL NODE</text>
+          </g>
+
+          <g transform="translate(240, 670)">
+            <rect width="145" height="50" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+            <text x="72" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Browser / PWA</text>
+            <text x="72" y="35" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">WebAssembly, WASM</text>
+            <text x="72" y="47" text-anchor="middle" fill="#10B981" font-size="8">ZERO INSTALL</text>
+          </g>
+
+          <!-- What it does -->
+          <text x="312" y="740" text-anchor="middle" fill="#10B981" font-family="JetBrains Mono" font-size="9">AGGREGATE → DISTILL</text>
+          <text x="312" y="753" text-anchor="middle" fill="#10B981" font-family="JetBrains Mono" font-size="9">→ ROUTE → SYNTHESIZE</text>
+        </g>
+
+        <!-- Arrow: Edge to Fingerprint -->
+        <g>
+          <path d="M 400 420 L 445 420" stroke="#F59E0B" stroke-width="3" marker-end="url(#arrowGold)"/>
+          <text x="422" y="408" text-anchor="middle" fill="#F59E0B" font-size="10">determine</text>
+        </g>
+
+        <!-- ===== LAYER 2: SEMANTIC FINGERPRINT ===== -->
+        <g id="fingerprint-layer">
+          <rect x="455" y="165" width="165" height="495" rx="16" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.3)" stroke-width="2"/>
+          <text x="537" y="190" text-anchor="middle" fill="#F59E0B" font-family="Orbitron, sans-serif" font-size="13" font-weight="bold">SEMANTIC</text>
+          <text x="537" y="208" text-anchor="middle" fill="#F59E0B" font-family="Orbitron, sans-serif" font-size="13" font-weight="bold">FINGERPRINT</text>
+          <text x="537" y="225" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Any method of defining similar</text>
+          <text x="537" y="237" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Similarity = your address</text>
+
+          <!-- Similarity Definition -->
+          <rect x="470" y="250" width="135" height="110" rx="8" fill="rgba(245,158,11,0.15)" stroke="#F59E0B"/>
+          <text x="537" y="270" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Similarity Definition</text>
+          <text x="537" y="288" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Expert template</text>
+          <text x="537" y="302" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">AI-determined</text>
+          <text x="537" y="316" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Doctor-assigned</text>
+          <text x="537" y="330" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Network-inferred</text>
+          <text x="537" y="352" text-anchor="middle" fill="#F59E0B" font-size="9" font-weight="bold">ANALYSIS IS HERE</text>
+
+          <!-- Arrow down -->
+          <path d="M 537 365 L 537 375" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+          <!-- Situation = Address -->
+          <rect x="470" y="380" width="135" height="70" rx="8" fill="rgba(245,158,11,0.1)" stroke="#F59E0B" stroke-dasharray="4,2"/>
+          <text x="537" y="400" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">Your Situation</text>
+          <text x="537" y="418" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="bold">= Your Address</text>
+          <text x="537" y="438" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">However determined</text>
+
+          <!-- Arrow down -->
+          <path d="M 537 455 L 537 480" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+          <!-- Hash/Vector output -->
+          <rect x="470" y="485" width="135" height="70" rx="8" fill="rgba(245,158,11,0.15)" stroke="#F59E0B"/>
+          <text x="537" y="510" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Routing Key</text>
+          <text x="537" y="528" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Hash, Vector, ID, any key</text>
+          <text x="537" y="545" text-anchor="middle" fill="#F59E0B" font-family="JetBrains Mono" font-size="9">0x7f3a9c2b...</text>
+
+          <!-- Curation note -->
+          <text x="537" y="585" text-anchor="middle" fill="#F59E0B" font-size="9">Experts compete</text>
+          <text x="537" y="600" text-anchor="middle" fill="#F59E0B" font-size="9">to define templates</text>
+          <text x="537" y="620" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">(Three Elections)</text>
+          <text x="537" y="645" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Same key = same bucket</text>
+        </g>
+
+        <!-- ===== DEPOSIT BOX: How insights get INTO the network ===== -->
+        <g id="deposit-concept">
+          <!-- Arrow from Edge Node to Deposit box -->
+          <path d="M 400 710 L 430 710" stroke="#00BEEA" stroke-width="2" marker-end="url(#arrowCyan)"/>
+          <text x="415" y="700" text-anchor="middle" fill="#00BEEA" font-size="8">post</text>
+
+          <rect x="435" y="668" width="195" height="100" rx="10" fill="rgba(0,190,234,0.1)" stroke="rgba(0,190,234,0.5)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="532" y="686" text-anchor="middle" fill="#00BEEA" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">DEPOSIT</text>
+          <text x="532" y="701" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">Insight distilled at edge node</text>
+          <text x="532" y="716" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">→ Distill into outcome packet</text>
+          <text x="532" y="731" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="9">→ Post to your address in routing</text>
+          <text x="532" y="748" text-anchor="middle" fill="#00BEEA" font-size="8" font-weight="bold">Baseline rises for this situation</text>
+          <text x="532" y="762" text-anchor="middle" fill="#00BEEA" font-size="8" font-weight="bold">Propagates to all who need it</text>
+        </g>
+
+        <!-- Arrow: Fingerprint to Routing -->
+        <g>
+          <path d="M 620 420 L 665 420" stroke="#8B5CF6" stroke-width="3" marker-end="url(#arrowPurple)"/>
+          <text x="642" y="408" text-anchor="middle" fill="#8B5CF6" font-size="10">route</text>
+        </g>
+
+        <!-- ===== LAYER 3: ROUTING LAYER ===== -->
+        <g id="routing-layer">
+          <rect x="675" y="100" width="185" height="640" rx="16" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.3)" stroke-width="2"/>
+          <text x="767" y="128" text-anchor="middle" fill="#8B5CF6" font-family="Orbitron, sans-serif" font-size="13" font-weight="bold">ROUTING LAYER</text>
+          <text x="767" y="145" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="10">Any infrastructure that routes</text>
+          <text x="767" y="158" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="10">by similarity</text>
+
+          <!-- Routing methods -->
+          <g transform="translate(690, 165)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">DHT (Kademlia)</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">BitTorrent: 28M concurrent</text>
+          </g>
+
+          <g transform="translate(690, 217)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Vector Database</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Pinecone, FAISS, Weaviate</text>
+          </g>
+
+          <g transform="translate(690, 269)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Service Registry</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Consul, etcd, Zookeeper</text>
+          </g>
+
+          <g transform="translate(690, 321)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Gossip Protocol</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">SWIM, Serf, Memberlist</text>
+          </g>
+
+          <g transform="translate(690, 373)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">IPFS / libp2p</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Content-addressed P2P</text>
+          </g>
+
+          <g transform="translate(690, 425)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Skip Graph</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">O(log N) range queries</text>
+          </g>
+
+          <g transform="translate(690, 477)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Pub/Sub (MQTT)</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">100M+ connections proven</text>
+          </g>
+
+          <g transform="translate(690, 529)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Chord / Pastry</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Ring-based DHTs</text>
+          </g>
+
+          <g transform="translate(690, 581)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Central Vector DB</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Managed option (simpler)</text>
+          </g>
+
+          <g transform="translate(690, 633)">
+            <rect width="155" height="42" rx="6" fill="rgba(139,92,246,0.15)" stroke="#8B5CF6"/>
+            <text x="77" y="18" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Hybrid / Custom</text>
+            <text x="77" y="33" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Mix methods as needed</text>
+          </g>
+
+          <!-- Cost label -->
+          <text x="767" y="700" text-anchor="middle" fill="#8B5CF6" font-family="JetBrains Mono" font-size="11">O(log N) hops</text>
+          <text x="767" y="718" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Same fingerprint = same bucket</text>
+          <text x="767" y="732" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Everyone comparable</text>
+        </g>
+
+        <!-- Arrow: Routing to Packets -->
+        <g>
+          <path d="M 860 420 L 905 420" stroke="#00BEEA" stroke-width="3" marker-end="url(#arrowCyan)"/>
+          <text x="882" y="408" text-anchor="middle" fill="#00BEEA" font-size="10">retrieve</text>
+        </g>
+
+        <!-- ===== LAYER 4: OUTCOME PACKETS ===== -->
+        <g id="packets-layer">
+          <rect x="915" y="180" width="155" height="480" rx="16" fill="rgba(0,190,234,0.08)" stroke="rgba(0,190,234,0.3)" stroke-width="2"/>
+          <text x="992" y="210" text-anchor="middle" fill="#00BEEA" font-family="Orbitron, sans-serif" font-size="13" font-weight="bold">OUTCOME</text>
+          <text x="992" y="228" text-anchor="middle" fill="#00BEEA" font-family="Orbitron, sans-serif" font-size="13" font-weight="bold">PACKETS</text>
+          <text x="992" y="244" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">The insight itself, any domain</text>
+
+          <!-- Packet visualization -->
+          <rect x="930" y="250" width="125" height="120" rx="8" fill="rgba(0,190,234,0.15)" stroke="#00BEEA"/>
+          <text x="992" y="272" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">~Bytes to KB</text>
+          <text x="992" y="292" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">treatment: "FOLFOX"</text>
+          <text x="992" y="308" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">outcome: "responded"</text>
+          <text x="992" y="324" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">duration: "24 months"</text>
+          <text x="992" y="340" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">confidence: 0.94, etc...</text>
+          <text x="992" y="360" text-anchor="middle" fill="#00BEEA" font-size="9" font-weight="bold">PRE-DISTILLED INSIGHT</text>
+
+          <!-- What moves -->
+          <rect x="930" y="390" width="125" height="85" rx="8" fill="rgba(16,185,129,0.15)" stroke="#10B981"/>
+          <text x="992" y="412" text-anchor="middle" fill="#10B981" font-size="11" font-weight="bold">WHAT MOVES</text>
+          <text x="992" y="430" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Distilled outcome</text>
+          <text x="992" y="445" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Ready to route</text>
+          <text x="992" y="460" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Privacy-safe</text>
+
+          <!-- What stays -->
+          <rect x="930" y="490" width="125" height="85" rx="8" fill="rgba(239,68,68,0.15)" stroke="#EF4444"/>
+          <text x="992" y="512" text-anchor="middle" fill="#EF4444" font-size="11" font-weight="bold">NEVER MOVES</text>
+          <text x="992" y="530" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">PII / PHI</text>
+          <text x="992" y="545" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Medical records</text>
+          <text x="992" y="560" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Raw sensor data</text>
+
+          <text x="992" y="600" text-anchor="middle" fill="#00BEEA" font-size="9">The insight was created</text>
+          <text x="992" y="615" text-anchor="middle" fill="#00BEEA" font-size="9">when the outcome occurred</text>
+          <text x="992" y="635" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Human, machine, or system</text>
+          <text x="992" y="650" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Now it routes to you</text>
+        </g>
+
+        <!-- Arrow: Packets to Synthesis -->
+        <g>
+          <path d="M 1070 420 L 1115 420" stroke="#F97316" stroke-width="3" marker-end="url(#arrowOrange)"/>
+          <text x="1092" y="408" text-anchor="middle" fill="#F97316" font-size="10">synth</text>
+        </g>
+
+        <!-- ===== LAYER 5: LOCAL SYNTHESIS (Back at Edge Node) ===== -->
+        <g id="synthesis-layer">
+          <!-- Main box with GREEN border to match Edge Node -->
+          <rect x="1125" y="220" width="130" height="400" rx="16" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.5)" stroke-width="2"/>
+          <!-- Inner accent showing it's synthesis -->
+          <rect x="1130" y="225" width="120" height="390" rx="14" fill="none" stroke="rgba(249,115,22,0.3)" stroke-width="1" stroke-dasharray="4,2"/>
+          <text x="1190" y="240" text-anchor="middle" fill="#10B981" font-family="Orbitron, sans-serif" font-size="12" font-weight="bold">LOCAL</text>
+          <text x="1190" y="258" text-anchor="middle" fill="#10B981" font-family="Orbitron, sans-serif" font-size="12" font-weight="bold">SYNTHESIS</text>
+          <text x="1190" y="274" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Any method of</text>
+          <text x="1190" y="286" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">combining outcomes</text>
+
+          <!-- Methods -->
+          <rect x="1140" y="290" width="100" height="180" rx="8" fill="rgba(249,115,22,0.1)" stroke="rgba(249,115,22,0.3)"/>
+          <text x="1190" y="315" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">Vote / Tally</text>
+          <text x="1190" y="335" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">Weighted Median</text>
+          <text x="1190" y="355" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">Bayesian Update</text>
+          <text x="1190" y="375" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">Ensemble</text>
+          <text x="1190" y="395" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">Confidence Filter</text>
+          <text x="1190" y="415" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">Outlier Detection</text>
+          <text x="1190" y="435" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">Meta-Learning</text>
+          <text x="1190" y="455" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">Custom Logic</text>
+
+          <!-- Result -->
+          <rect x="1140" y="485" width="100" height="55" rx="8" fill="rgba(16,185,129,0.2)" stroke="#10B981"/>
+          <text x="1190" y="507" text-anchor="middle" fill="#10B981" font-size="10" font-weight="bold">YOUR INSIGHT</text>
+          <text x="1190" y="525" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Personalized</text>
+
+          <!-- Cost -->
+          <text x="1190" y="560" text-anchor="middle" fill="#10B981" font-family="JetBrains Mono" font-size="10">O(K) local</text>
+          <text x="1190" y="578" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">~2ms / 1K packets</text>
+
+          <!-- Back at Edge Node indicator -->
+          <rect x="1140" y="592" width="100" height="22" rx="4" fill="rgba(16,185,129,0.2)" stroke="#10B981" stroke-width="1"/>
+          <text x="1190" y="607" text-anchor="middle" fill="#10B981" font-size="9" font-weight="bold">↩ BACK AT EDGE NODE</text>
+        </g>
+
+        <!-- Return arrow showing the loop back to Edge Node -->
+        <g id="return-loop">
+          <path d="M 1190 625 L 1190 788 L 312 788 L 312 758"
+                stroke="#10B981" stroke-width="2" fill="none" stroke-dasharray="6,3" opacity="0.6"/>
+          <polygon points="312,758 306,771 318,771" fill="#10B981" opacity="0.6"/>
+          <text x="750" y="783" text-anchor="middle" fill="#10B981" font-size="10" opacity="0.8">Insights return to your Edge Node for local synthesis</text>
+        </g>
+
+        <!-- ===== LAYER 6: EXTERNAL AI AUGMENTATION (Top) ===== -->
+        <g id="external-layer">
+          <rect x="225" y="-2" width="1030" height="65" rx="12" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+          <text x="740" y="18" text-anchor="middle" fill="#EF4444" font-family="Orbitron, sans-serif" font-size="12" font-weight="bold">EXTERNAL AUGMENTATION (Optional Network Layer)</text>
+          <text x="740" y="34" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="10">Supercomputer, cloud AI, or human analyst — any observer of the network</text>
+          <text x="740" y="50" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="10">Monitors outcomes • Spots correlations • Generates & tests hypotheses in real-time • Refines templates</text>
+
+          <!-- Arrows: Ingests packets (up), Refines templates (down), Queries edge nodes (down-left) -->
+          <path d="M 992 180 L 992 63" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrowRed)"/>
+          <text x="1005" y="120" fill="#EF4444" font-size="8" opacity="0.8">ingest</text>
+          <path d="M 537 63 L 537 165" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrowRed)"/>
+          <text x="550" y="120" fill="#EF4444" font-size="8" opacity="0.8">refine</text>
+          <path d="M 420 63 Q 430 85, 400 95" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrowRed)"/>
+          <text x="435" y="82" fill="#EF4444" font-size="8" opacity="0.8">query</text>
+        </g>
+
+        <!-- ===== SCALING VISUALIZATION ===== -->
+        <g id="scaling-note">
+          <!-- Main scaling box -->
+          <rect x="20" y="800" width="1235" height="130" rx="10" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.3)"/>
+
+          <!-- Title -->
+          <text x="637" y="822" text-anchor="middle" fill="#8B5CF6" font-family="Orbitron, sans-serif" font-size="14" font-weight="bold">QUADRATIC SCALING: Same situation = access to all who share it</text>
+
+          <!-- 3 nodes = 3 connections (ALL pairwise shown) -->
+          <g transform="translate(60, 838)">
+            <text x="35" y="0" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-weight="bold">3 nodes</text>
+            <!-- All 3 connections -->
+            <line x1="35" y1="15" x2="15" y2="50" stroke="#8B5CF6" stroke-width="1.5" opacity="0.6"/>
+            <line x1="35" y1="15" x2="55" y2="50" stroke="#8B5CF6" stroke-width="1.5" opacity="0.6"/>
+            <line x1="15" y1="50" x2="55" y2="50" stroke="#8B5CF6" stroke-width="1.5" opacity="0.6"/>
+            <!-- Nodes on top -->
+            <circle cx="35" cy="15" r="7" fill="#8B5CF6"/>
+            <circle cx="15" cy="50" r="7" fill="#8B5CF6"/>
+            <circle cx="55" cy="50" r="7" fill="#8B5CF6"/>
+            <text x="35" y="72" text-anchor="middle" fill="#8B5CF6" font-size="11" font-weight="bold">3 connections</text>
+          </g>
+
+          <!-- Arrow -->
+          <text x="138" y="875" fill="rgba(255,255,255,0.5)" font-size="18">→</text>
+
+          <!-- 5 nodes = 10 connections (ALL pairwise shown) -->
+          <g transform="translate(170, 838)">
+            <text x="40" y="0" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-weight="bold">5 nodes</text>
+            <!-- All 10 connections (5 choose 2 = 10) -->
+            <line x1="40" y1="12" x2="12" y2="32" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="40" y1="12" x2="68" y2="32" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="40" y1="12" x2="22" y2="58" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="40" y1="12" x2="58" y2="58" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="12" y1="32" x2="68" y2="32" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="12" y1="32" x2="22" y2="58" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="12" y1="32" x2="58" y2="58" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="68" y1="32" x2="22" y2="58" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="68" y1="32" x2="58" y2="58" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <line x1="22" y1="58" x2="58" y2="58" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <!-- Nodes -->
+            <circle cx="40" cy="12" r="6" fill="#8B5CF6"/>
+            <circle cx="12" cy="32" r="6" fill="#8B5CF6"/>
+            <circle cx="68" cy="32" r="6" fill="#8B5CF6"/>
+            <circle cx="22" cy="58" r="6" fill="#8B5CF6"/>
+            <circle cx="58" cy="58" r="6" fill="#8B5CF6"/>
+            <text x="40" y="72" text-anchor="middle" fill="#8B5CF6" font-size="11" font-weight="bold">10 connections</text>
+          </g>
+
+          <!-- Arrow -->
+          <text x="268" y="875" fill="rgba(255,255,255,0.5)" font-size="18">→</text>
+
+          <!-- 7 nodes = 21 connections (ALL pairwise shown) -->
+          <g transform="translate(300, 838)">
+            <text x="45" y="0" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-weight="bold">7 nodes</text>
+            <!-- All 21 connections (7 choose 2 = 21) - hexagonal arrangement -->
+            <!-- Node positions: center + 6 around -->
+            <!-- Center: 45,38 | Top: 45,12 | TR: 70,25 | BR: 70,51 | Bottom: 45,64 | BL: 20,51 | TL: 20,25 -->
+            <!-- Connections from center to all 6 -->
+            <line x1="45" y1="38" x2="45" y2="12" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="38" x2="70" y2="25" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="38" x2="70" y2="51" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="38" x2="45" y2="64" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="38" x2="20" y2="51" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="38" x2="20" y2="25" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <!-- Outer ring connections (6 + 6 + 3 = 15 more) -->
+            <line x1="45" y1="12" x2="70" y2="25" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="70" y1="25" x2="70" y2="51" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="70" y1="51" x2="45" y2="64" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="64" x2="20" y2="51" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="20" y1="51" x2="20" y2="25" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="20" y1="25" x2="45" y2="12" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <!-- Cross connections -->
+            <line x1="45" y1="12" x2="70" y2="51" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="12" x2="20" y2="51" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="12" x2="45" y2="64" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="70" y1="25" x2="45" y2="64" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="70" y1="25" x2="20" y2="51" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="70" y1="25" x2="20" y2="25" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="70" y1="51" x2="20" y2="25" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="70" y1="51" x2="20" y2="51" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <line x1="45" y1="64" x2="20" y2="25" stroke="#8B5CF6" stroke-width="0.8" opacity="0.4"/>
+            <!-- Nodes -->
+            <circle cx="45" cy="38" r="5" fill="#8B5CF6"/>
+            <circle cx="45" cy="12" r="5" fill="#8B5CF6"/>
+            <circle cx="70" cy="25" r="5" fill="#8B5CF6"/>
+            <circle cx="70" cy="51" r="5" fill="#8B5CF6"/>
+            <circle cx="45" cy="64" r="5" fill="#8B5CF6"/>
+            <circle cx="20" cy="51" r="5" fill="#8B5CF6"/>
+            <circle cx="20" cy="25" r="5" fill="#8B5CF6"/>
+            <text x="45" y="82" text-anchor="middle" fill="#8B5CF6" font-size="11" font-weight="bold">21 connections</text>
+          </g>
+
+          <!-- Arrow -->
+          <text x="408" y="875" fill="rgba(255,255,255,0.5)" font-size="18">→</text>
+
+          <!-- 10 nodes = 45 connections (dense but shown) -->
+          <g transform="translate(440, 833)">
+            <text x="50" y="0" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-weight="bold">10 nodes</text>
+            <!-- Node positions in a rough circle -->
+            <!-- Positions: arranged for visibility -->
+            <!-- All 45 connections shown with low opacity -->
+            <g opacity="0.35" stroke="#8B5CF6" stroke-width="0.6">
+              <!-- From node 0 (50,15) to all others -->
+              <line x1="50" y1="15" x2="80" y2="22"/>
+              <line x1="50" y1="15" x2="92" y2="40"/>
+              <line x1="50" y1="15" x2="88" y2="60"/>
+              <line x1="50" y1="15" x2="70" y2="72"/>
+              <line x1="50" y1="15" x2="30" y2="72"/>
+              <line x1="50" y1="15" x2="12" y2="60"/>
+              <line x1="50" y1="15" x2="8" y2="40"/>
+              <line x1="50" y1="15" x2="20" y2="22"/>
+              <line x1="50" y1="15" x2="50" y2="45"/>
+              <!-- From node 1 (80,22) -->
+              <line x1="80" y1="22" x2="92" y2="40"/>
+              <line x1="80" y1="22" x2="88" y2="60"/>
+              <line x1="80" y1="22" x2="70" y2="72"/>
+              <line x1="80" y1="22" x2="30" y2="72"/>
+              <line x1="80" y1="22" x2="12" y2="60"/>
+              <line x1="80" y1="22" x2="8" y2="40"/>
+              <line x1="80" y1="22" x2="20" y2="22"/>
+              <line x1="80" y1="22" x2="50" y2="45"/>
+              <!-- From node 2 (92,40) -->
+              <line x1="92" y1="40" x2="88" y2="60"/>
+              <line x1="92" y1="40" x2="70" y2="72"/>
+              <line x1="92" y1="40" x2="30" y2="72"/>
+              <line x1="92" y1="40" x2="12" y2="60"/>
+              <line x1="92" y1="40" x2="8" y2="40"/>
+              <line x1="92" y1="40" x2="20" y2="22"/>
+              <line x1="92" y1="40" x2="50" y2="45"/>
+              <!-- From node 3 (88,60) -->
+              <line x1="88" y1="60" x2="70" y2="72"/>
+              <line x1="88" y1="60" x2="30" y2="72"/>
+              <line x1="88" y1="60" x2="12" y2="60"/>
+              <line x1="88" y1="60" x2="8" y2="40"/>
+              <line x1="88" y1="60" x2="20" y2="22"/>
+              <line x1="88" y1="60" x2="50" y2="45"/>
+              <!-- From node 4 (70,72) -->
+              <line x1="70" y1="72" x2="30" y2="72"/>
+              <line x1="70" y1="72" x2="12" y2="60"/>
+              <line x1="70" y1="72" x2="8" y2="40"/>
+              <line x1="70" y1="72" x2="20" y2="22"/>
+              <line x1="70" y1="72" x2="50" y2="45"/>
+              <!-- From node 5 (30,72) -->
+              <line x1="30" y1="72" x2="12" y2="60"/>
+              <line x1="30" y1="72" x2="8" y2="40"/>
+              <line x1="30" y1="72" x2="20" y2="22"/>
+              <line x1="30" y1="72" x2="50" y2="45"/>
+              <!-- From node 6 (12,60) -->
+              <line x1="12" y1="60" x2="8" y2="40"/>
+              <line x1="12" y1="60" x2="20" y2="22"/>
+              <line x1="12" y1="60" x2="50" y2="45"/>
+              <!-- From node 7 (8,40) -->
+              <line x1="8" y1="40" x2="20" y2="22"/>
+              <line x1="8" y1="40" x2="50" y2="45"/>
+              <!-- From node 8 (20,22) -->
+              <line x1="20" y1="22" x2="50" y2="45"/>
+            </g>
+            <!-- Nodes on top -->
+            <circle cx="50" cy="15" r="4" fill="#8B5CF6"/>
+            <circle cx="80" cy="22" r="4" fill="#8B5CF6"/>
+            <circle cx="92" cy="40" r="4" fill="#8B5CF6"/>
+            <circle cx="88" cy="60" r="4" fill="#8B5CF6"/>
+            <circle cx="70" cy="72" r="4" fill="#8B5CF6"/>
+            <circle cx="30" cy="72" r="4" fill="#8B5CF6"/>
+            <circle cx="12" cy="60" r="4" fill="#8B5CF6"/>
+            <circle cx="8" cy="40" r="4" fill="#8B5CF6"/>
+            <circle cx="20" cy="22" r="4" fill="#8B5CF6"/>
+            <circle cx="50" cy="45" r="4" fill="#8B5CF6"/>
+            <text x="50" y="92" text-anchor="middle" fill="#8B5CF6" font-size="11" font-weight="bold">45 connections</text>
+          </g>
+
+          <!-- Arrow -->
+          <text x="560" y="875" fill="rgba(255,255,255,0.5)" font-size="18">→</text>
+
+          <!-- Scale box: Billions -->
+          <g transform="translate(595, 838)">
+            <text x="70" y="0" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-weight="bold">SCALE TO ANY SIZE</text>
+            <rect x="10" y="10" width="120" height="55" rx="8" fill="rgba(139,92,246,0.4)" stroke="#8B5CF6" stroke-width="2"/>
+            <rect x="15" y="15" width="110" height="45" rx="6" fill="url(#nodeGlow)" opacity="0.9"/>
+            <text x="70" y="35" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">1,000 → 499K</text>
+            <text x="70" y="50" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">1M → BILLIONS</text>
+            <text x="70" y="82" text-anchor="middle" fill="#8B5CF6" font-size="10">Scales to billions — any method</text>
+          </g>
+
+          <!-- Key insight text -->
+          <g transform="translate(760, 840)">
+            <rect x="-10" y="-5" width="260" height="88" rx="8" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)"/>
+            <text x="0" y="12" fill="rgba(255,255,255,0.9)" font-size="11" font-weight="bold">Within each bucket:</text>
+            <text x="0" y="30" fill="#10B981" font-size="11">• Every node connects to every other</text>
+            <text x="0" y="46" fill="#10B981" font-size="11">• Routing did the filtering — all comparable</text>
+            <text x="0" y="62" fill="#10B981" font-size="11">• N² synthesis fully realized</text>
+            <text x="0" y="78" fill="rgba(255,255,255,0.6)" font-size="10">Add as many nodes as you want →</text>
+          </g>
+
+          <!-- Mini scaling chart: N² insight vs O(log N) cost -->
+          <g transform="translate(1035, 816)">
+            <rect x="-8" y="-8" width="175" height="115" rx="6" fill="rgba(0,0,0,0.4)" stroke="rgba(139,92,246,0.4)"/>
+
+            <!-- Chart area -->
+            <g transform="translate(22, -1)">
+              <!-- Axes -->
+              <line x1="0" y1="65" x2="130" y2="65" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <line x1="0" y1="0" x2="0" y2="65" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+
+              <!-- N² curve (cyan - insight/synthesis) -->
+              <path d="M 0 65 Q 65 58, 95 35 T 130 0"
+                    fill="none" stroke="#00BEEA" stroke-width="2.5" opacity="0.9"/>
+
+              <!-- O(log N) curve (green - cost/routing) -->
+              <path d="M 0 65 Q 30 50, 60 45 T 130 38"
+                    fill="none" stroke="#10B981" stroke-width="2" opacity="0.8"/>
+
+              <!-- Axis label -->
+              <text x="65" y="74" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7">Nodes (N)</text>
+            </g>
+
+            <!-- Legend -->
+            <g transform="translate(10, 81)">
+              <line x1="0" y1="0" x2="14" y2="0" stroke="#00BEEA" stroke-width="2"/>
+              <text x="18" y="3" fill="#00BEEA" font-size="7" font-weight="bold">N² INSIGHT</text>
+
+              <line x1="80" y1="0" x2="94" y2="0" stroke="#10B981" stroke-width="2"/>
+              <text x="98" y="3" fill="#10B981" font-size="7">O(log N) cost</text>
+            </g>
+
+            <!-- Clarification -->
+            <text x="80" y="96" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="6">Insight quadratic • Compute flat</text>
+          </g>
+        </g>
+
+        <!-- Gradient for dense node visualization -->
+        <defs>
+          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.3"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Arrow markers -->
+        <defs>
+          <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B"/>
+          </marker>
+          <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#8B5CF6"/>
+          </marker>
+          <marker id="arrowCyan" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#00BEEA"/>
+          </marker>
+          <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#F97316"/>
+          </marker>
+          <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#EF4444"/>
+          </marker>
+        </defs>
+      </svg>
+
+      <!-- Legend -->
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-color" style="background: #3B82F6;"></div>
+          <span>Data Sources — Raw inputs from anywhere</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #10B981;"></div>
+          <span>Edge Nodes — Any compute that can process</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #F59E0B;"></div>
+          <span>Semantic Fingerprint — Any method of defining similar</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #8B5CF6;"></div>
+          <span>Routing Layer — Any infrastructure that routes</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #00BEEA;"></div>
+          <span>Outcome Packets — Bytes to kilobytes of distilled insight</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: linear-gradient(135deg, #10B981, #F97316);"></div>
+          <span>Local Synthesis — Back at your Edge Node</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #EF4444; opacity: 0.7;"></div>
+          <span>External — Any observer of the network</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Example Flow -->
+  <div class="example-flow">
+    <h3>Example: One Edge Node, Many Data Sources</h3>
+    <div class="example-flow-diagram">
+      <span class="example-source">Apple Watch</span>
+      <span class="example-source">HealthKit API</span>
+      <span class="example-source">Hospital FHIR</span>
+      <span class="example-source">Lab Results</span>
+      <span class="example-source">Symptom Entry</span>
+      <span class="example-arrow">→</span>
+      <span class="example-node">Your AI Health Agent</span>
+      <span class="example-arrow">→</span>
+      <span class="example-source" style="background: rgba(0,190,234,0.15); border-color: #00BEEA; color: #00BEEA;">Outcome Packet</span>
+    </div>
+    <p>Multiple data sources feed into ONE edge node. The node aggregates, distills the outcome locally, the fingerprint/address is determined, and routes to the matching neighborhood for the insight needed. Synthesis happens locally. Raw data never leaves.</p>
+  </div>
+
+  <!-- Applications Breadth -->
+  <div class="example-flow" style="border-color: #8B5CF6;">
+    <h3 style="color: #8B5CF6;">Any Domain. Any Situation. Same Architecture.</h3>
+    <p style="margin-bottom: 25px;">The pattern is always the same: a node with a situation needs real-time insight on what's working from all similar situations.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+      <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">🏥 ONCOLOGY PATIENT</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Stage III colon, KRAS+, 58yo → <em>What treatments working for similar?</em></div>
+      </div>
+      <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">🚗 AUTONOMOUS VEHICLE</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Rain, highway, sensor degraded → <em>What worked in similar conditions?</em></div>
+      </div>
+      <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">🧬 CRISPR LAB</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Target gene, off-target risk profile → <em>What guide RNAs worked for similar?</em></div>
+      </div>
+      <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">🌾 PRECISION AGRICULTURE</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Soil pH 6.2, pest detected, corn V6 → <em>What interventions working nearby?</em></div>
+      </div>
+      <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">⚙️ CNC MACHINE</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Titanium, 0.02mm tolerance, tool wear → <em>What parameters working for similar?</em></div>
+      </div>
+      <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">⚡ POWER GRID</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Peak demand, renewable fluctuation → <em>What load balancing working now?</em></div>
+      </div>
+      <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">🚑 EMERGENCY RESPONSE</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Multi-car pileup, rural, limited resources → <em>What triage protocols working?</em></div>
+      </div>
+      <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">🛰️ SATELLITE CONSTELLATION</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Orbital debris detected, maneuver needed → <em>What avoidance worked for similar?</em></div>
+      </div>
+      <div style="background: rgba(139,92,246,0.25); border: 2px solid rgba(139,92,246,0.6); border-radius: 10px; padding: 15px;">
+        <div style="color: #8B5CF6; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">♾️ PRECISION EVERYTHING</div>
+        <div style="color: rgba(255,255,255,0.8); font-size: 0.95rem;">Real-time optimization • Precision coordination • Continuous adaptation • <em>Any node that needs insight on what's working</em></div>
+      </div>
+    </div>
+    <p style="margin-top: 20px; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.95rem;"><strong>Same architecture. Same protocol. Any domain where "what's working for similar" matters.</strong></p>
+  </div>
+
+  <!-- Layer Breakdown -->
+  <section class="layers-section">
+    <h2>Layer-by-Layer Breakdown</h2>
+
+    <div class="layer-grid">
+      <!-- Data Sources -->
+      <div class="layer-card sources">
+        <div class="layer-icon">📡</div>
+        <div class="layer-content">
+          <h3>0. Data Sources — Anything That Produces Data</h3>
+          <p>The raw inputs. IoT sensors streaming temperature. FHIR APIs pulling medical records. Wearables tracking heart rate. Voice commands. Manual symptom entry. Lab results arriving as HL7 messages. Genomic data from 23andMe. Vehicle telemetry from CAN bus. Industrial SCADA systems. Environmental sensors. <strong>Multiple sources can feed into a single edge node.</strong></p>
+          <div class="layer-examples">
+            <span class="example-tag">IoT Sensors</span>
+            <span class="example-tag">APIs</span>
+            <span class="example-tag">Databases</span>
+            <span class="example-tag">Wearables</span>
+            <span class="example-tag">Voice</span>
+            <span class="example-tag">Manual</span>
+            <span class="example-tag">Lab Results</span>
+            <span class="example-tag">Genomics</span>
+            <span class="example-tag">Vehicle</span>
+            <span class="example-tag">SCADA</span>
+            <span class="example-tag">Environmental</span>
+            <span class="example-tag">FHIR</span>
+            <span class="example-tag">HL7</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edge Nodes -->
+      <div class="layer-card edge">
+        <div class="layer-icon">🔌</div>
+        <div class="layer-content">
+          <h3>1. Edge Nodes — Any Compute That Can Process</h3>
+          <p>The processing unit — and the synthesis unit. Ingests from multiple data sources. Aggregates locally. The semantic fingerprint is determined — created locally, pre-assigned, or network-inferred. Routes to peers. <strong>Then receives outcome packets back and synthesizes locally.</strong> Could be your phone, an edge AI device, a cloud LLM acting as an agent, a smart sensor, a hospital system, a vehicle computer, or a browser running WebAssembly. <strong>The same node that asks the question synthesizes the answer. Full loop.</strong></p>
+          <div class="layer-examples">
+            <span class="example-tag">Smartphone</span>
+            <span class="example-tag">Edge AI</span>
+            <span class="example-tag">Cloud LLM</span>
+            <span class="example-tag">Local LLM</span>
+            <span class="example-tag">Smart Sensor</span>
+            <span class="example-tag">Hospital System</span>
+            <span class="example-tag">Vehicle Computer</span>
+            <span class="example-tag">Industrial PLC</span>
+            <span class="example-tag">Browser/PWA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Semantic Fingerprint -->
+      <div class="layer-card fingerprint">
+        <div class="layer-icon">🎯</div>
+        <div class="layer-content">
+          <h3>2. Semantic Fingerprint — Any Method of Defining Similar</h3>
+          <p>What makes two cases comparable? That's the fingerprint. <strong>Your situation IS your address</strong> — however that gets determined. Experts curate a template. An AI learns the mapping. A doctor assigns you. The network infers it. You self-select. A simple hash. A complex embedding. Doesn't matter WHO defines it or HOW. What matters: same situation = same address = same bucket = everyone comparable. <strong>The similarity logic IS the analysis. The network just routes.</strong></p>
+          <div class="layer-examples">
+            <span class="example-tag">Expert Template</span>
+            <span class="example-tag">AI-Determined</span>
+            <span class="example-tag">Doctor-Assigned</span>
+            <span class="example-tag">Network-Inferred</span>
+            <span class="example-tag">Self-Selected</span>
+            <span class="example-tag">Learned Embedding</span>
+            <span class="example-tag">Hash Function</span>
+            <span class="example-tag">Domain-Specific</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Routing Layer -->
+      <div class="layer-card routing">
+        <div class="layer-icon">🔀</div>
+        <div class="layer-content">
+          <h3>3. Routing Layer — Any Infrastructure That Routes by Similarity</h3>
+          <p>Decentralized or centralized. P2P or managed. Battle-tested or custom-built. DHT like BitTorrent (28M concurrent nodes). Vector databases like Pinecone (1.5T vectors). Service registries. Gossip protocols. IPFS. Skip graphs. MQTT pub/sub. Chord/Pastry. A simple central vector DB for quick deployments. A hybrid for scale. <strong>The protocol doesn't care which infrastructure — just that similar keys land in the same neighborhood.</strong></p>
+          <div class="layer-examples">
+            <span class="example-tag">Kademlia DHT</span>
+            <span class="example-tag">Pinecone</span>
+            <span class="example-tag">FAISS</span>
+            <span class="example-tag">Consul</span>
+            <span class="example-tag">MQTT</span>
+            <span class="example-tag">IPFS</span>
+            <span class="example-tag">Skip Graph</span>
+            <span class="example-tag">Chord</span>
+            <span class="example-tag">Gossip</span>
+            <span class="example-tag">Hybrid</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outcome Packets -->
+      <div class="layer-card packets">
+        <div class="layer-icon">📦</div>
+        <div class="layer-content">
+          <h3>4. Outcome Packets — The Insight Itself</h3>
+          <p>Bytes to kilobytes of distilled insight — the outcome packet IS the insight. "Treatment A worked. 24 months progression-free. Confidence 0.94." Or "Configuration B reduced latency by 40%." Or "Route C avoided the hazard." NOT raw data. NOT full records. The outcome IS the insight, created when it occurred — human, machine, or system. <strong>It already exists. It routes to you.</strong></p>
+          <div class="layer-examples">
+            <span class="example-tag">treatment: FOLFOX</span>
+            <span class="example-tag">outcome: responded</span>
+            <span class="example-tag">duration: 24mo</span>
+            <span class="example-tag">confidence: 0.94</span>
+            <span class="example-tag">Bytes to KB</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Local Synthesis -->
+      <div class="layer-card synthesis" style="border-color: #10B981; background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(249,115,22,0.05));">
+        <div class="layer-icon" style="background: linear-gradient(135deg, rgba(16,185,129,0.3), rgba(249,115,22,0.2));">⚡</div>
+        <div class="layer-content">
+          <h3 style="color: #10B981;">5. Local Synthesis — Back at Your Edge Node</h3>
+          <p>The loop completes. Outcome packets return to the SAME edge node that initiated the query. Your device does the final synthesis — any method of combining outcomes: vote, tally, weighted median, Bayesian update, confidence filter, outlier detection, ensemble, meta-learning, custom logic. Trivial compute — ~2ms for 1,000 packets. <strong>The edge node that sent the query is the edge node that synthesizes the answer. Privacy preserved. Full circle.</strong></p>
+          <div class="layer-examples">
+            <span class="example-tag">Vote/Tally</span>
+            <span class="example-tag">Weighted Median</span>
+            <span class="example-tag">Bayesian</span>
+            <span class="example-tag">Ensemble</span>
+            <span class="example-tag">Outlier Filter</span>
+            <span class="example-tag">jStat</span>
+            <span class="example-tag">TensorFlow.js</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- External AI -->
+      <div class="layer-card external">
+        <div class="layer-icon">🧠</div>
+        <div class="layer-content">
+          <h3>6. External Augmentation — Any Observer of the Network</h3>
+          <p>Could be a supercomputer processing millions of packets. Could be a cloud AI model spotting correlations. Could be a data analyst with a dashboard and spreadsheet. The mechanism is the same: ingest outcome packets across the network, spot patterns no individual node would see, generate and test hypotheses in real-time, query edge nodes to validate, refine similarity templates based on what actually works. <strong>The network learns from itself. Individual nodes serve users. The external layer serves the network.</strong></p>
+          <div class="layer-examples">
+            <span class="example-tag">Supercomputer</span>
+            <span class="example-tag">Cloud AI Model</span>
+            <span class="example-tag">Human Analyst</span>
+            <span class="example-tag">Pattern Discovery</span>
+            <span class="example-tag">Real-Time Hypothesis Testing</span>
+            <span class="example-tag">Template Refinement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Insight -->
+  <div class="key-insight">
+    <h3>The Paradigm Shift in One Sentence</h3>
+    <p><strong>The insight already exists. The outcome already occurred. Route to it.</strong></p>
+    <p>Data sources feed edge nodes. Your situation becomes your address — however determined. Routes to all who share it. Outcome packets return. Local synthesis produces YOUR insight. No central compute. No data movement. The similarity logic was defined upfront. The insight was pre-deposited by every entity — human, machine, or system — that experienced the outcome. <strong>The network is a post office, not a computer.</strong></p>
+    <p style="margin-top: 20px; font-size: 1.1rem;">One architectural decision inverts everything: <strong>private, cheap, real-time, transparent, adaptive, universal</strong> — not trade-offs, but consequences. <a href="article-11-flips.html">See the 11 Flips →</a></p>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Go Deeper</h2>
+    <div class="cta-buttons" style="margin-bottom: 20px;">
+      <a href="article-paradigm-shift-in-three-words.html" class="btn primary">The Paradigm Shift in Three Words</a>
+    </div>
+    <div class="cta-buttons">
+      <a href="https://qisprotocol.substack.com" class="btn" target="_blank">Subscribe on Substack</a>
+      <a href="article-three-elections.html" class="btn">The Three Elections</a>
+      <a href="article-11-flips.html" class="btn">The 11 Flips</a>
+      <a href="article-qis-scaling-law.html" class="btn">The QIS Scaling Law</a>
+      <a href="article-inevitability.html" class="btn">The Inevitability</a>
+      <a href="article-cure-already-exists.html" class="btn">The Cure Already Exists</a>
+      <a href="article-every-component-exists.html" class="btn">Every Component Exists</a>
+      <a href="articles.html" class="btn">All Articles</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">&copy; 2025 Yonder Zenith LLC. All rights reserved. 39 Provisional Patents Pending.</p>
+  </footer>
+
+</body>
+</html>
