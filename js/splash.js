@@ -176,10 +176,10 @@ class StatsCounter {
     this.currentValue = 0;
   }
 
-  animate(delay = 0) {
+  animate(delay = 0, fromValue = null) {
     setTimeout(() => {
       const startTime = Date.now();
-      const startValue = 0;
+      const startValue = fromValue !== null ? fromValue : 0;
       const endValue = this.targetValue;
 
       const updateCounter = () => {
@@ -196,13 +196,31 @@ class StatsCounter {
           requestAnimationFrame(updateCounter);
         } else {
           this.element.textContent = endValue.toLocaleString();
+          this.currentValue = endValue;
         }
       };
 
       updateCounter();
     }, delay);
   }
+
+  setTarget(newTarget) {
+    this.targetValue = newTarget;
+  }
+
+  getCurrentValue() {
+    return this.currentValue;
+  }
 }
+
+// ==================== SCALE EXAMPLES ====================
+const scaleExamples = [
+  { nodes: 10000, synthesis: 49995000, label: '10K nodes' },
+  { nodes: 100, synthesis: 4950, label: '100 nodes' },
+  { nodes: 1000, synthesis: 499500, label: '1K nodes' },
+  { nodes: 1000000, synthesis: 499999500000, label: '1M nodes' }
+];
+let currentScaleIndex = 0;
 
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', function() {
@@ -228,8 +246,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (splashEl) {
     splashEl.addEventListener('click', function introClick(e) {
-      // Don't trigger if clicking the enter button
-      if (e.target.id === 'enterBtn') return;
+      // Don't trigger if clicking the enter button or cycle button
+      if (e.target.id === 'enterBtn' || e.target.id === 'cycleScaleBtn') return;
 
       if (!introSpoken) {
         introSpoken = true;
@@ -257,6 +275,28 @@ document.addEventListener('DOMContentLoaded', function() {
     synthesisCounter.animate(200);
     patentsCounter.animate(400);
   }, 2800);
+
+  // Scale example cycler
+  const cycleBtn = document.getElementById('cycleScaleBtn');
+
+  if (cycleBtn) {
+    cycleBtn.addEventListener('click', function() {
+      // Move to next example
+      currentScaleIndex = (currentScaleIndex + 1) % scaleExamples.length;
+      const example = scaleExamples[currentScaleIndex];
+
+      // Get current values for smooth transition
+      const currentAgents = agentsCounter.getCurrentValue();
+      const currentSynthesis = synthesisCounter.getCurrentValue();
+
+      // Set new targets and animate from current values
+      agentsCounter.setTarget(example.nodes);
+      synthesisCounter.setTarget(example.synthesis);
+
+      agentsCounter.animate(0, currentAgents);
+      synthesisCounter.animate(100, currentSynthesis);
+    });
+  }
 
   // Enter button functionality
   const enterBtn = document.getElementById('enterBtn');

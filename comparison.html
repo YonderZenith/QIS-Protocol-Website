@@ -628,8 +628,9 @@
   <section class="hero">
     <h1>The Paradigm Shift</h1>
     <p class="subtitle">
-      Compare QIS Protocol to existing approaches. Understand why distributed intelligence 
+      Compare QIS Protocol to existing approaches. Understand why distributed intelligence
       is fundamentally superior to centralized alternatives.
+      <br><a href="article-paradigm-shift-in-three-words.html" style="color: var(--cyan-bright); font-size: 0.85em;">Read: The Paradigm Shift in Three Words →</a>
     </p>
   </section>
 
@@ -647,7 +648,7 @@
       
       <div class="approach-card">
         <div class="icon">🤝</div>
-        <h3>Federated Learning</h3>
+        <h3><a href="article-qis-vs-federated-learning.html" style="color: var(--cyan-bright); text-decoration: none;">Federated Learning</a></h3>
         <p>Models stay local, gradients shared. Requires trusted aggregator. Synchronization bottleneck.</p>
         <div class="formula bad">O(N) at best</div>
       </div>
@@ -662,8 +663,8 @@
       <div class="approach-card qis">
         <div class="icon">🌐</div>
         <h3>QIS Protocol</h3>
-        <p>Peer-to-peer pattern synthesis. No coordinator. Quadratic intelligence scaling.</p>
-        <div class="formula good">Θ(N²) scaling</div>
+        <p>Peer-to-peer pattern synthesis. No coordinator. <a href="article-qis-scaling-law.html" style="color: var(--green-neural); text-decoration: underline;">Quadratic intelligence scaling</a>.</p>
+        <div class="formula good"><a href="article-qis-scaling-law.html" style="color: var(--green-neural); text-decoration: none;">Θ(N²) scaling</a></div>
       </div>
     </div>
 
@@ -705,7 +706,7 @@
           <td><span class="rating poor"><span class="icon">❌</span> O(N) to cloud</span></td>
           <td><span class="rating moderate"><span class="icon">⚡</span> O(N) synchronous</span></td>
           <td><span class="rating excellent"><span class="icon">✓</span> Zero</span></td>
-          <td><span class="rating excellent"><span class="icon">✓</span> O(log N) async</span></td>
+          <td><span class="rating excellent"><span class="icon">✓</span> <a href="article-dht-deep-dive.html" style="color: var(--green-neural);">O(log N) async</a></span></td>
         </tr>
         <tr>
           <td>Latency</td>
@@ -729,11 +730,11 @@
           <td><span class="rating excellent"><span class="icon">✓</span> Superlinear (N² × accuracy)</span></td>
         </tr>
         <tr>
-          <td>Byzantine Fault Tolerance</td>
+          <td><a href="article-three-elections.html" style="color: var(--text-primary);">Byzantine Fault Tolerance</a></td>
           <td><span class="rating moderate"><span class="icon">⚡</span> Cloud-dependent</span></td>
           <td><span class="rating moderate"><span class="icon">⚡</span> Aggregator trust</span></td>
           <td><span class="rating excellent"><span class="icon">✓</span> N/A (isolated)</span></td>
-          <td><span class="rating excellent"><span class="icon">✓</span> 100% @ 30% adversarial</span></td>
+          <td><span class="rating excellent"><span class="icon">✓</span> <a href="article-three-elections.html" style="color: var(--green-neural);">100% @ 30% adversarial</a></span></td>
         </tr>
       </tbody>
     </table>
@@ -742,13 +743,13 @@
     <div class="key-insight">
       <h3>💡 The Core Insight</h3>
       <p>
-        Centralized systems compress N data points into one model. 
-        QIS finds <span class="emphasis">N(N-1)/2 pairwise patterns</span> across N agents.
+        Centralized systems compress N data points into one model.
+        QIS finds <a href="article-qis-scaling-law.html" style="color: var(--green-neural); text-decoration: underline;">N(N-1)/2 pairwise patterns</a> across N agents.
         <br><br>
-        For 10,000 agents: Centralized gets 10,000 data points. 
+        For 10,000 agents: Centralized gets 10,000 data points.
         <span class="emphasis">QIS gets 49,995,000 synthesis opportunities.</span>
         <br><br>
-        Distributed pattern finding is mathematically superior to centralized model training.
+        <a href="article-routing-vs-computing.html" style="color: var(--cyan-bright);">Distributed pattern finding</a> is mathematically superior to centralized model training.
       </p>
     </div>
 
@@ -791,7 +792,7 @@
               <div class="p2p-node">📱</div>
             </div>
             <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 15px;">
-              ↔️ Peer-to-peer via DHT (no coordinator)
+              ↔️ Peer-to-peer via <a href="article-dht-deep-dive.html" style="color: var(--green-neural);">DHT</a> (no coordinator)
             </p>
           </div>
           <div class="pros-cons">
@@ -805,6 +806,60 @@
     </section>
 
   </div>
+
+  <!-- Related Articles Section -->
+  <section style="max-width: 1000px; margin: 0 auto; padding: 60px 40px;">
+    <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--cyan-bright); text-align: center; margin-bottom: 15px;">Dive Deeper</h2>
+    <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 35px;">Technical deep dives on the concepts in this comparison</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+
+      <a href="article-qis-vs-federated-learning.html" style="display: block; padding: 20px 25px; background: rgba(139, 92, 246, 0.12); border: 2px solid rgba(139, 92, 246, 0.4); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--purple-quantum); margin-bottom: 6px;">QIS vs Federated Learning</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">They solve different problems — here's why.</p>
+      </a>
+
+      <a href="article-routing-vs-computing.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">Routing vs. Computing</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The architecture no one built because everyone assumes compute must happen.</p>
+      </a>
+
+      <a href="article-compute-cost-gap.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The Compute Gap: $100M+ vs. Zero</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">When routing replaces compute — the cost difference is staggering.</p>
+      </a>
+
+      <a href="article-qis-scaling-law.html" style="display: block; padding: 20px 25px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--green-neural); margin-bottom: 6px;">The QIS Scaling Law</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Θ(N²) emergent intelligence with O(log N) communication.</p>
+      </a>
+
+      <a href="article-dht-deep-dive.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">DHT: The Quiet Engine</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">BitTorrent, IPFS, Ethereum — 20 years of proof, pointed at survival.</p>
+      </a>
+
+      <a href="article-three-elections.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The Three Elections</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">How Byzantine fault tolerance actually works in QIS.</p>
+      </a>
+
+      <a href="article-11-flips.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The 11 Flips</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Every assumption inverted — everything you think about AI is backwards.</p>
+      </a>
+
+      <a href="article-architecture-diagram.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The QIS Architecture Diagram</h4>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The complete system in one visual — all 7 layers explained.</p>
+      </a>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="articles.html" style="padding: 15px 35px; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); background: transparent; color: var(--text-primary); border-radius: 50px; text-decoration: none; transition: all 0.4s ease; display: inline-block;">View All Articles</a>
+    </div>
+  </section>
 
   <!-- CTA -->
   <section class="cta-section">

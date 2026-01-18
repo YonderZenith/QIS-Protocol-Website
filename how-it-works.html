@@ -398,6 +398,126 @@
       color: var(--text-secondary);
     }
 
+    /* Featured Diagram */
+    .featured-diagram {
+      max-width: 800px;
+      margin: -40px auto 60px;
+      padding: 0 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .diagram-card {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      padding: 30px 35px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(0, 190, 234, 0.15));
+      border: 2px solid rgba(139, 92, 246, 0.4);
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+    }
+
+    .diagram-card:hover {
+      border-color: var(--purple-quantum);
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .diagram-icon {
+      font-size: 3rem;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .diagram-content h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--purple-quantum);
+      margin-bottom: 8px;
+    }
+
+    .diagram-content p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .diagram-link {
+      color: var(--cyan-bright);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Dive Deeper Section */
+    .dive-deeper {
+      max-width: 1000px;
+      margin: 80px auto 40px;
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .dive-deeper h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--cyan-bright);
+      margin-bottom: 30px;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .article-link {
+      display: block;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 190, 234, 0.2);
+      border-radius: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .article-link:hover {
+      border-color: var(--cyan-bright);
+      background: rgba(0, 190, 234, 0.1);
+    }
+
+    .article-link h4 {
+      color: var(--cyan-bright);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .article-link p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .featured-diagram {
+        padding: 0 20px;
+        margin: -20px auto 40px;
+      }
+
+      .diagram-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+      }
+
+      .diagram-icon {
+        min-width: auto;
+      }
+
+      .dive-deeper {
+        padding: 0 20px;
+      }
+    }
+
     /* CTA Section */
     .cta-section {
       text-align: center;
@@ -595,9 +715,21 @@
   <section class="hero">
     <h1>How QIS Protocol Works</h1>
     <p class="subtitle">
-      A 5-step journey from local data to quadratic intelligence. 
+      A 5-step journey from local data to quadratic intelligence.
       Understanding how distributed agents create compounding knowledge.
     </p>
+  </section>
+
+  <!-- Featured Architecture Diagram -->
+  <section class="featured-diagram">
+    <a href="article-architecture-diagram.html" class="diagram-card">
+      <div class="diagram-icon">🏗️</div>
+      <div class="diagram-content">
+        <h3>See the Full Architecture</h3>
+        <p>Visual breakdown of all 7 layers — from hardware to collective intelligence. Understand how the pieces fit together.</p>
+        <span class="diagram-link">View Architecture Diagram →</span>
+      </div>
+    </a>
   </section>
 
   <!-- Timeline -->
@@ -804,6 +936,37 @@
         <div class="value purple">100%</div>
         <div class="label">Data Stays Local</div>
       </div>
+    </div>
+  </section>
+
+  <!-- Dive Deeper -->
+  <section class="dive-deeper">
+    <h2>Dive Deeper</h2>
+    <div class="article-grid">
+      <a href="article-architecture-diagram.html" class="article-link">
+        <h4>🏗️ Full Architecture Diagram</h4>
+        <p>Visual breakdown of all 7 layers from hardware to collective intelligence</p>
+      </a>
+      <a href="article-every-component-exists.html" class="article-link">
+        <h4>🔧 Every Component Exists Today</h4>
+        <p>No new science needed — just novel composition of proven technology</p>
+      </a>
+      <a href="article-one-roundtrip-swarm.html" class="article-link">
+        <h4>🔄 One Round-Trip</h4>
+        <p>How emergent intelligence arises from simple local interactions</p>
+      </a>
+      <a href="article-11-flips.html" class="article-link">
+        <h4>🔀 The 11 Flips</h4>
+        <p>Every architectural inversion that makes QIS fundamentally different</p>
+      </a>
+      <a href="article-three-elections.html" class="article-link">
+        <h4>🗳️ Three Elections</h4>
+        <p>The triple-voting mechanism that ensures Byzantine fault tolerance</p>
+      </a>
+      <a href="article-qis-scaling-law.html" class="article-link">
+        <h4>📈 QIS Scaling Law</h4>
+        <p>Why N² intelligence growth with O(log N) cost changes everything</p>
+      </a>
     </div>
   </section>
 
