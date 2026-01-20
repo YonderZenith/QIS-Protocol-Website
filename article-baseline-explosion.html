@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="Why does everyone who joins a QIS network make everyone else smarter? The baseline explosion: how real-time insight propagation creates compounding collective intelligence. Not a database. A living system where outcomes flow and baselines rise.">
+  <meta name="keywords" content="QIS Protocol, baseline explosion, compounding intelligence, collective intelligence, quadratic scaling, network effects, distributed intelligence, Christopher Trevethan">
+  <meta name="author" content="Christopher Thomas Trevethan">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Baseline Explosion: Why Everyone Who Joins Makes Everyone Smarter">
+  <meta property="og:description" content="How real-time insight propagation creates compounding collective intelligence. The math behind the explosion.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qisprotocol.com/article-baseline-explosion.html">
+
+  <title>The Baseline Explosion: Why Everyone Who Joins Makes Everyone Smarter • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --orange-accent: #F97316;
+      --blue-data: #3B82F6;
+      --pink-accent: #EC4899;
+      --dark-bg: #0A0A0A;
+      --darker-bg: #050508;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { width: 40px; height: 40px; }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--cyan-bright);
+      transition: all 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 140px 40px 50px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(139, 92, 246, 0.2));
+      border: 1px solid var(--green-neural);
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--green-neural);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--green-neural) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .subtitle {
+      font-size: 1.35rem;
+      color: var(--text-secondary);
+      max-width: 750px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .hero .meta {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .hero .meta a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    /* Main Content */
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.7rem;
+      color: var(--cyan-bright);
+      margin: 60px 0 25px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .content h2:first-of-type {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .content h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      color: var(--green-neural);
+      margin: 40px 0 15px;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.85;
+    }
+
+    .content strong {
+      color: var(--text-primary);
+    }
+
+    /* Bridge Concept Box */
+    .bridge-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(0, 0, 0, 0.3));
+      border: 2px solid var(--green-neural);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+
+    .bridge-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--green-neural);
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+
+    .bridge-box p {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 15px;
+    }
+
+    .bridge-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Compound Interest Visual */
+    .compound-visual {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .compound-card {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .compound-card .year {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .compound-card .amount {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.8rem;
+      color: var(--green-neural);
+      margin-bottom: 5px;
+    }
+
+    .compound-card .growth {
+      font-size: 0.95rem;
+      color: var(--gold-accent);
+    }
+
+    /* Step Flow Diagram */
+    .step-flow {
+      background: var(--darker-bg);
+      border: 2px solid var(--purple-quantum);
+      border-radius: 24px;
+      padding: 50px 40px;
+      margin: 50px 0;
+    }
+
+    .step-flow h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--purple-quantum);
+      text-align: center;
+      margin: 0 0 40px 0;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 25px;
+      margin-bottom: 35px;
+      padding-bottom: 35px;
+      border-bottom: 1px dashed rgba(139, 92, 246, 0.3);
+    }
+
+    .flow-step:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--green-neural), var(--cyan-primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      color: var(--cyan-bright);
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    .step-content .highlight {
+      background: rgba(16, 185, 129, 0.15);
+      border-left: 3px solid var(--green-neural);
+      padding: 15px 20px;
+      margin-top: 15px;
+      border-radius: 0 8px 8px 0;
+      font-size: 1.05rem;
+    }
+
+    /* The Cascade Visualization */
+    .cascade-visual {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .cascade-visual h4 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--gold-accent);
+      margin-bottom: 20px;
+    }
+
+    .cascade-timeline {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      height: 200px;
+      padding: 0 20px;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      margin-bottom: 15px;
+    }
+
+    .cascade-bar {
+      width: 60px;
+      background: linear-gradient(180deg, var(--green-neural), var(--cyan-primary));
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 10px;
+      transition: height 0.3s ease;
+    }
+
+    .cascade-bar .value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .cascade-labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .cascade-labels span {
+      width: 60px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Key Insight Box */
+    .key-insight {
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.15), rgba(139, 92, 246, 0.1));
+      border: 2px solid var(--cyan-bright);
+      border-radius: 20px;
+      padding: 35px;
+      margin: 40px 0;
+    }
+
+    .key-insight h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--cyan-bright);
+      margin-bottom: 15px;
+    }
+
+    .key-insight p {
+      margin-bottom: 12px;
+    }
+
+    .key-insight p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Math Box */
+    .math-box {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 40px 0;
+    }
+
+    .math-box h4 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--purple-quantum);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .formula {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.3rem;
+      color: var(--cyan-bright);
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 190, 234, 0.1);
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .formula-explanation {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .formula-var {
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 8px;
+      padding: 15px;
+      border-left: 3px solid var(--purple-quantum);
+    }
+
+    .formula-var .var {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--purple-quantum);
+      margin-bottom: 5px;
+    }
+
+    .formula-var .desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    /* Comparison: Linear vs Compound */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .comparison-card {
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .comparison-card.old {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid var(--red-accent);
+    }
+
+    .comparison-card.new {
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid var(--green-neural);
+    }
+
+    .comparison-card .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .comparison-card.old .label { color: var(--red-accent); }
+    .comparison-card.new .label { color: var(--green-neural); }
+
+    .comparison-card .title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .comparison-card p {
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    /* Why Different Section */
+    .why-different {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(0, 0, 0, 0.3));
+      border: 2px solid var(--gold-accent);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+    }
+
+    .why-different h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--gold-accent);
+      margin: 0 0 25px 0;
+      text-align: center;
+    }
+
+    .not-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .not-item {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .not-item .x {
+      color: var(--red-accent);
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .not-item .word {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-bottom: 5px;
+    }
+
+    .not-item .why {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .is-box {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--green-neural);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .is-box .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--green-neural);
+      margin-bottom: 10px;
+    }
+
+    .is-box .words {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .is-box .word {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--green-neural);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 1rem;
+      color: var(--green-neural);
+    }
+
+    /* External AI Teaser */
+    .external-teaser {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(0, 190, 234, 0.1));
+      border: 2px dashed var(--purple-quantum);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .external-teaser h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--purple-quantum);
+      margin: 0 0 20px 0;
+    }
+
+    .external-teaser p {
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+
+    .external-teaser .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .external-teaser .feature {
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid var(--purple-quantum);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      color: var(--purple-quantum);
+    }
+
+    .external-teaser a.learn-more {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, var(--purple-quantum), var(--cyan-primary));
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .external-teaser a.learn-more:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+    }
+
+    /* Final CTA */
+    .final-section {
+      text-align: center;
+      padding: 60px 30px;
+      margin-top: 50px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .final-section h2 {
+      border: none;
+      margin: 0 0 20px;
+      padding: 0;
+    }
+
+    .final-section p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 190, 234, 0.5);
+      background: transparent;
+      color: var(--cyan-bright);
+    }
+
+    .btn:hover {
+      background: rgba(0, 190, 234, 0.15);
+      border-color: var(--cyan-bright);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--green-neural), var(--cyan-primary));
+      border: none;
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { padding: 15px 20px; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      }
+      .nav-links.active { display: flex; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 120px 20px 40px; }
+      .hero h1 { font-size: 1.6rem; }
+      .content { padding: 40px 20px; }
+      .compound-visual { grid-template-columns: 1fr; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .flow-step { grid-template-columns: 1fr; }
+      .step-number { margin-bottom: 15px; }
+      .step-flow { padding: 30px 20px; }
+      .bridge-box { padding: 30px 20px; }
+      .why-different { padding: 30px 20px; }
+      .external-teaser { padding: 30px 20px; }
+      .cascade-bar { width: 40px; }
+      .cascade-labels span { width: 40px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="articles.html">Articles</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-badge">The Core Epiphany</div>
+    <h1>The Baseline Explosion</h1>
+    <p class="subtitle">Why everyone who joins makes everyone smarter. How real-time insight propagation creates compounding collective intelligence — and why this changes everything.</p>
+    <p class="meta">
+      By <a href="https://linkedin.com/in/christrevethan" target="_blank">Christopher Thomas Trevethan</a> · January 20, 2026
+    </p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="content">
+
+    <h2>Start With Something You Already Understand</h2>
+
+    <p>Before we talk about networks and nodes, let's talk about something everyone knows: <strong>compound interest</strong>.</p>
+
+    <div class="bridge-box">
+      <h3>The Power of Compounding</h3>
+      <p>You deposit $1,000. It earns 10% interest. After year one: $1,100.</p>
+      <p>But here's the thing — year two's interest is calculated on $1,100, not $1,000. And year three on $1,210. The interest earns interest.</p>
+      <p><strong>This is compounding. Small improvements that build on each other create explosive growth.</strong></p>
+    </div>
+
+    <div class="compound-visual">
+      <div class="compound-card">
+        <div class="year">Year 1</div>
+        <div class="amount">$1,100</div>
+        <div class="growth">+10%</div>
+      </div>
+      <div class="compound-card">
+        <div class="year">Year 10</div>
+        <div class="amount">$2,594</div>
+        <div class="growth">+159%</div>
+      </div>
+      <div class="compound-card">
+        <div class="year">Year 30</div>
+        <div class="amount">$17,449</div>
+        <div class="growth">+1,645%</div>
+      </div>
+    </div>
+
+    <p>Einstein (allegedly) called compound interest the eighth wonder of the world. Whether he said it or not, the math is undeniable: small, consistent gains that build on themselves create results that feel impossible.</p>
+
+    <p><strong>Now imagine this happening with intelligence instead of money. With insights instead of dollars. With survival outcomes instead of interest payments.</strong></p>
+
+    <p>That's what QIS does. And that's why I call it the <strong>baseline explosion</strong>.</p>
+
+    <h2>What I Actually Saw</h2>
+
+    <p>On June 16, 2025, at 3 AM in my garage, I was building an AI agent to help my mother-in-law navigate cancer treatment. And in a single flash, I saw it.</p>
+
+    <p>Not one agent helping one patient. A <strong>network</strong> of agents — thousands of cancer patients, each with their own assistant, all facing situations exactly like hers.</p>
+
+    <p>I saw them sharing insights in real time. Not raw data. <strong>Outcomes.</strong> What worked. What didn't. Which treatments succeeded for people with her exact profile.</p>
+
+    <p>And then I saw a breakthrough drug get introduced somewhere in the network. I watched that insight <strong>propagate</strong> to her node. Her baseline rose — she now had access to better information than she had moments before.</p>
+
+    <p>But here's what made my face turn red, what made my head feel like it expanded two sizes:</p>
+
+    <p><strong>I saw all the other nodes improve at the same time.</strong></p>
+
+    <p>Not just her. Everyone similar to her. And then THEY deposited their improved outcomes. Which propagated to everyone similar to THEM. And the whole network's baseline kept rising, kept compounding, kept exploding.</p>
+
+    <p>I haven't been able to unsee it since.</p>
+
+    <h2>The Cascade — Step by Step</h2>
+
+    <p>Let me walk you through exactly what happens. This isn't abstract theory. This is the mechanism.</p>
+
+    <div class="step-flow">
+      <h3>How the Baseline Rises</h3>
+
+      <div class="flow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>One Node Queries</h4>
+          <p>A patient — let's call her Maria — needs help. She has Stage III colorectal cancer, KRAS mutation positive, age 58. Her edge node (phone, hospital system, AI agent) sends a query into the network: "What works for people exactly like me?"</p>
+          <div class="highlight">Her situation becomes her address. The similarity template — defined by the best oncology experts — determines which "neighborhood" she routes to.</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Insight Propagates</h4>
+          <p>The query routes to the semantic neighborhood of patients with matching profiles. Not raw medical records — <strong>outcome packets</strong>. Tiny structured summaries: "Treatment A, 24 months progression-free, confidence 0.92." Hundreds of them arrive in milliseconds.</p>
+          <div class="highlight">Maria didn't get a guess from a model trained on old data. She got real-time outcomes from real people who are biologically similar to her.</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Maria's Baseline Rises</h4>
+          <p>Her device synthesizes locally: 847 similar patients. 73% responded well to this combination therapy. Median survival: 28 months. The math is simple — vote, tally, weighted average. Done in 2 milliseconds.</p>
+          <div class="highlight"><strong>Maria is now BETTER than she was 3 seconds ago.</strong> Her baseline rose. She has information she didn't have before — real outcomes from her exact cohort.</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Maria Deposits Her Outcome</h4>
+          <p>Six months later, Maria tries the treatment. It works — she responds well. Her edge node creates an outcome packet: "Treatment A + B combination. Responded. 6 months progression-free. Confidence 0.95."</p>
+          <p>This packet gets deposited to her semantic neighborhood. It joins the pool of evidence.</p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h4>The Cascade Begins</h4>
+          <p><strong>Here's where the explosion happens.</strong></p>
+          <p>Maria's positive outcome doesn't just sit there. It routes to EVERYONE who matches her profile. Tomorrow, when another Stage III KRAS+ patient queries, they get Maria's outcome in their synthesis.</p>
+          <p><strong>Their baseline rises too.</strong></p>
+          <p>And when THEY respond well and deposit their outcomes? Those propagate to everyone similar to THEM. Who deposit. Who propagate. Who improve.</p>
+          <div class="highlight">Every positive outcome, everywhere, makes every similar agent smarter — automatically, continuously, without retraining any model.</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h4>The Baseline Explodes</h4>
+          <p>This isn't linear improvement. It's <strong>compounding</strong>.</p>
+          <p>Patient 100 has limited matches. Patient 10,000 benefits from the accumulated outcomes of the entire network. Patient 100,000 has so much evidence that the confidence intervals are razor-thin.</p>
+          <p>The first 100 patients were pioneers. Patient 1,000,000 inherits the survival intelligence of everyone who came before.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>The Numbers — Watch It Compound</h2>
+
+    <p>Let's make this concrete. Here's what happens to the network baseline as patients join and outcomes accumulate:</p>
+
+    <div class="cascade-visual">
+      <h4>Network Baseline Over Time (Illustrative)</h4>
+      <div class="cascade-timeline">
+        <div class="cascade-bar" style="height: 15%;"><span class="value">100</span></div>
+        <div class="cascade-bar" style="height: 25%;"><span class="value">167</span></div>
+        <div class="cascade-bar" style="height: 40%;"><span class="value">280</span></div>
+        <div class="cascade-bar" style="height: 60%;"><span class="value">460</span></div>
+        <div class="cascade-bar" style="height: 85%;"><span class="value">750</span></div>
+        <div class="cascade-bar" style="height: 100%;"><span class="value">1200+</span></div>
+      </div>
+      <div class="cascade-labels">
+        <span>Day 1</span>
+        <span>Month 1</span>
+        <span>Month 3</span>
+        <span>Month 6</span>
+        <span>Year 1</span>
+        <span>Year 2</span>
+      </div>
+    </div>
+
+    <p>This isn't speculation. It's the math of compounding applied to insight propagation. The components are proven. The only question is who builds it first.</p>
+
+    <h2>The Math Behind the Explosion</h2>
+
+    <p>For those who want the technical foundation:</p>
+
+    <div class="math-box">
+      <h4>Quadratic Scaling</h4>
+
+      <div class="formula">N(N-1)/2</div>
+
+      <p style="text-align: center; margin-top: 20px;">This is the number of unique synthesis opportunities in a network of N nodes.</p>
+
+      <div class="formula-explanation">
+        <div class="formula-var">
+          <div class="var">100 nodes</div>
+          <div class="desc">4,950 unique comparisons possible</div>
+        </div>
+        <div class="formula-var">
+          <div class="var">1,000 nodes</div>
+          <div class="desc">~500,000 unique comparisons</div>
+        </div>
+        <div class="formula-var">
+          <div class="var">10,000 nodes</div>
+          <div class="desc">~50 million unique comparisons</div>
+        </div>
+        <div class="formula-var">
+          <div class="var">1 million nodes</div>
+          <div class="desc">~500 billion unique comparisons</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The scaling is quadratic — double the nodes, quadruple the synthesis opportunities. But the compounding goes deeper: each synthesis produces better outcomes, which get deposited back, which improve the next round of synthesis. Growth builds on growth.</p>
+
+    <p>This is the same dynamic that makes compound interest powerful. Except instead of interest earning interest, it's insights improving insights. Survival intelligence spreading like a beneficial contagion.</p>
+
+    <h2>Why This Is Fundamentally Different</h2>
+
+    <p>When people first hear about QIS, their brain tries to categorize it. "Oh, it's like a database." "It's a recommendation engine." "It's AI."</p>
+
+    <p><strong>None of those capture what's actually happening.</strong></p>
+
+    <div class="comparison-grid">
+      <div class="comparison-card old">
+        <div class="label">What people think</div>
+        <div class="title">"Better Search"</div>
+        <p>Query a database. Get results. Static. One-directional. The database doesn't get smarter because you used it.</p>
+      </div>
+      <div class="comparison-card new">
+        <div class="label">What it actually is</div>
+        <div class="title">Compounding Ecosystem</div>
+        <p>Query → get insight → you improve → deposit outcome → network improves → next person queries → gets YOUR insight → they improve → deposit → network improves more...</p>
+      </div>
+    </div>
+
+    <div class="why-different">
+      <h3>Words That Block Understanding</h3>
+      <p style="text-align: center; margin-bottom: 25px;">Research shows these terms trigger the wrong mental models:</p>
+
+      <div class="not-list">
+        <div class="not-item">
+          <span class="x">✕</span>
+          <div>
+            <div class="word">Database</div>
+            <div class="why">Implies static storage. Misses the living, compounding nature.</div>
+          </div>
+        </div>
+        <div class="not-item">
+          <span class="x">✕</span>
+          <div>
+            <div class="word">Algorithm</div>
+            <div class="why">Implies mechanical procedure. Misses emergent properties.</div>
+          </div>
+        </div>
+        <div class="not-item">
+          <span class="x">✕</span>
+          <div>
+            <div class="word">AI / Artificial Intelligence</div>
+            <div class="why">Triggers sci-fi frameworks. This is collective intelligence, not artificial.</div>
+          </div>
+        </div>
+        <div class="not-item">
+          <span class="x">✕</span>
+          <div>
+            <div class="word">Recommendation Engine</div>
+            <div class="why">Implies Netflix suggestions. Misses the compounding, the survival stakes.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="is-box">
+        <div class="label">Better mental models:</div>
+        <div class="words">
+          <span class="word">Ecosystem</span>
+          <span class="word">Compounding</span>
+          <span class="word">Emergent</span>
+          <span class="word">Living Network</span>
+          <span class="word">Collective Intelligence</span>
+        </div>
+      </div>
+    </div>
+
+    <p>The network doesn't "have" intelligence. The network <strong>IS</strong> intelligence — emergent from distributed agents comparing outcomes and sharing what works.</p>
+
+    <h2>Why Linear Thinking Misses It</h2>
+
+    <p>Human brains are wired to think linearly. Research shows we systematically underestimate exponential growth — we anchor on early values and fail to adjust for acceleration.</p>
+
+    <p>This is why people hear "collective intelligence network" and think "better database." They're linearizing. They imagine: more data → somewhat better results.</p>
+
+    <p><strong>But that's not what happens.</strong></p>
+
+    <p>What happens is: more people → more outcomes deposited → better insights available → better outcomes achieved → MORE valuable outcomes deposited → even better insights → the baseline <strong>compounds</strong>.</p>
+
+    <div class="key-insight">
+      <h4>The Doubling Frame</h4>
+      <p>Research shows the "doubling" frame helps overcome exponential bias. So think of it this way:</p>
+      <p><strong>Every time the network doubles in relevant participants, the quality of insight MORE than doubles.</strong></p>
+      <p>Because it's not just more data — it's better data from participants who themselves had access to better insights. The improvement builds on itself.</p>
+      <p>Double the network → more than double the intelligence. That's the baseline explosion.</p>
+    </div>
+
+    <h2>What This Means</h2>
+
+    <p>Right now, somewhere in the world:</p>
+
+    <p>A cancer patient is making treatment decisions without knowing that someone with their exact profile tried the same treatment last month — and it worked. <a href="article-three-elections.html" style="color: var(--cyan-bright);">Those outcomes should be voting</a> — but right now they can't reach each other.</p>
+
+    <p>A farmer is losing crops to a pest that someone in another region already figured out how to handle.</p>
+
+    <p>A vehicle is approaching a hazard that another vehicle just navigated successfully.</p>
+
+    <p>The patterns that could save them <strong>exist</strong>. The insights are scattered across devices and institutions and individuals who will never directly communicate.</p>
+
+    <p>QIS bridges the gap. Not by centralizing data — but by routing insight. And because insights compound, because baselines rise, because every positive outcome everywhere makes every similar agent smarter:</p>
+
+    <p><strong>The first patients are pioneers. Future patients inherit the accumulated survival intelligence of everyone who came before.</strong></p>
+
+    <p>And here's what people miss: <a href="article-the-map.html" style="color: var(--cyan-bright);">the map is better even at 100</a>. A child in a rural clinic without access to specialists would be better off with real-time insight from 100 patients just like them than with no second opinion at all. For rare diseases, even a network of 2 could save a life — two families who found each other, sharing what worked. The explosion scales, but it doesn't require scale to start saving lives.</p>
+
+    <p>That's not incremental improvement. That's a <a href="article-first-principles.html" style="color: var(--cyan-bright);">paradigm shift</a>.</p>
+
+    <!-- External AI Teaser -->
+    <div class="external-teaser">
+      <h3>And This Doesn't Even Account For...</h3>
+      <p>Everything above describes the <strong>core QIS mechanism</strong> — peer-to-peer insight propagation with compounding baselines.</p>
+      <p>But there's another layer: <strong>External AI Augmentation</strong>. A real-time intelligence that sits on top of the network, ingests all the outcome packets, spots correlations no individual node would see, and pushes discoveries back to the network.</p>
+      
+      <div class="features">
+        <span class="feature">Cross-population pattern detection</span>
+        <span class="feature">Hypothesis generation + testing</span>
+        <span class="feature">Real-time similarity template refinement</span>
+        <span class="feature">Continuous network improvement</span>
+      </div>
+
+      <p style="margin-bottom: 0;">That's a separate article. But understand: what I've described here is the <strong>floor</strong>, not the ceiling.</p>
+      
+      <a href="article-ai-augmented-discovery.html" class="learn-more">Read: AI-Augmented Discovery →</a>
+    </div>
+
+  </main>
+
+  <!-- Final CTA -->
+  <section class="final-section">
+    <h2>The Math Is Public. The Mechanism Is Proven.</h2>
+    <p><a href="article-every-component-exists.html" style="color: var(--cyan-bright);">Every component of QIS exists</a> — deployed across countless implementations worldwide. Vector embeddings. Semantic routing. DHT networks. Local synthesis. No one has connected them for real-time, private, scalable insight sharing. Until now.</p>
+    <p>Outcomes distilled on edge devices, routed to exact similar people, synthesized locally. The math is proven. The architecture is sound. Now someone has to build it.</p>
+    <div class="cta-buttons">
+      <a href="article-architecture-diagram.html" class="btn primary">See the Full Architecture</a>
+      <a href="article-june-16.html" class="btn">The June 16th Story</a>
+      <a href="article-qis-scaling-law.html" class="btn">The Scaling Law</a>
+      <a href="article-11-flips.html" class="btn">The 11 Paradigm Inversions</a>
+      <a href="article-every-component-exists.html" class="btn">Every Component Exists</a>
+      <a href="article-three-elections.html" class="btn">The Three Elections</a>
+      <a href="article-first-principles.html" class="btn">First Principles</a>
+      <a href="article-the-map.html" class="btn">The Map</a>
+      <a href="article-ai-augmented-discovery.html" class="btn">AI-Augmented Discovery</a>
+      <a href="articles.html" class="btn">All Articles</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="articles.html">Articles</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">39 Provisional Patents Pending</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

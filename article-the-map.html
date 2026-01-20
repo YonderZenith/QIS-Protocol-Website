@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="When you see a doctor, they bring a map — their training, their patients, their studies. That map has edges. QIS expands it to everyone like you, curated by the world's best experts. Which map do you want?">
+  <meta name="keywords" content="QIS Protocol, healthcare, knowledge, doctor, expert, map, outcomes, distributed intelligence">
+  <meta name="author" content="Christopher Thomas Trevethan">
+
+  <meta property="og:title" content="The Map • QIS Protocol">
+  <meta property="og:description" content="Your doctor brings a map. That map has edges. What if the edges disappeared?">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qisprotocol.com/article-the-map.html">
+
+  <title>The Map • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.9;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(0, 190, 234, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img { width: 40px; height: 40px; }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--cyan-bright);
+      transition: all 0.3s ease;
+    }
+
+    .hero {
+      padding: 140px 40px 50px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(139, 92, 246, 0.2));
+      border: 1px solid var(--gold-accent);
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--gold-accent), var(--cyan-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 0 auto 20px;
+    }
+
+    .hero .meta {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .hero .meta a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    .article-container {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    .article-container p {
+      font-size: 1.2rem;
+      margin-bottom: 1.6rem;
+      color: var(--text-secondary);
+    }
+
+    .article-container h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--cyan-bright);
+      margin: 55px 0 25px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .map-box {
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      max-width: 520px;
+      margin: 30px auto;
+    }
+
+    .map-box.old {
+      background: rgba(239, 68, 68, 0.08);
+      border: 2px solid rgba(239, 68, 68, 0.4);
+    }
+
+    .map-box.new {
+      background: rgba(16, 185, 129, 0.08);
+      border: 2px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .map-box .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .map-box.old .label { color: var(--red-accent); }
+    .map-box.new .label { color: var(--green-neural); }
+
+    .map-item {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 1.05rem;
+    }
+
+    .map-item:last-child { border-bottom: none; }
+
+    .map-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .map-box.old .map-item strong { color: var(--red-accent); }
+    .map-box.new .map-item strong { color: var(--green-neural); }
+
+    .map-item span {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .edge-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px dashed rgba(239, 68, 68, 0.5);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .edge-box .title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--red-accent);
+      margin-bottom: 15px;
+    }
+
+    .edge-box p {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .upgrade-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 190, 234, 0.1));
+      border: 2px solid var(--green-neural);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 45px 0;
+    }
+
+    .upgrade-box .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--green-neural);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .upgrade-box p {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+    }
+
+    .upgrade-box p:last-child { margin-bottom: 0; }
+
+    .choice-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(139, 92, 246, 0.1));
+      border: 2px solid var(--gold-accent);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .choice-box .question {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--gold-accent);
+      margin-bottom: 25px;
+    }
+
+    .choice-options {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 25px;
+    }
+
+    .choice-option {
+      padding: 20px 30px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .choice-option.old {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid rgba(239, 68, 68, 0.4);
+      color: var(--red-accent);
+    }
+
+    .choice-option.new {
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid rgba(16, 185, 129, 0.4);
+      color: var(--green-neural);
+    }
+
+    .ready-box {
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));
+      border: 2px solid var(--cyan-primary);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .ready-box .headline {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--cyan-bright);
+      margin-bottom: 20px;
+    }
+
+    .ready-box p {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+    }
+
+    .ready-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 25px 0;
+      text-align: left;
+    }
+
+    .ready-item {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 8px;
+      padding: 12px 15px;
+      font-size: 1rem;
+    }
+
+    .ready-item::before {
+      content: "✓ ";
+      color: var(--green-neural);
+      font-weight: bold;
+    }
+
+    .final-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--gold-accent);
+      padding: 30px;
+      margin: 40px 0;
+      font-size: 1.2rem;
+    }
+
+    .final-box p {
+      margin-bottom: 0;
+      color: var(--text-primary);
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 60px 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+    }
+
+    .cta-section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--cyan-bright);
+      border: none;
+      padding: 0;
+    }
+
+    .cta-primary-large {
+      display: inline-block;
+      padding: 20px 45px;
+      background: linear-gradient(135deg, var(--cyan-primary), var(--purple-quantum));
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 25px 0 35px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(0, 190, 234, 0.3);
+    }
+
+    .cta-primary-large:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(0, 190, 234, 0.4);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s;
+      border: 2px solid var(--cyan-primary);
+      color: var(--cyan-bright);
+      background: transparent;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 15px 20px; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      }
+      .nav-links.active { display: flex; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 120px 20px 40px; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .subtitle { font-size: 1.1rem; }
+      .article-container { padding: 30px 20px; }
+      .article-container p { font-size: 1.1rem; }
+      .choice-options { flex-direction: column; gap: 15px; }
+      .ready-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="comparison.html">Compare</a>
+      <a href="watch-demo.html">Demo</a>
+      <a href="articles.html">Articles</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-badge">The Metaphor</div>
+    <h1>The Map</h1>
+    <p class="subtitle">When you see a doctor, they bring a map. That map has edges. What if the edges disappeared?</p>
+    <p class="meta">By <a href="https://linkedin.com/in/christrevethan" target="_blank">Christopher Thomas Trevethan</a> · January 20, 2026</p>
+  </header>
+
+  <article class="article-container">
+
+    <p>When you walk into a doctor's office with a problem, they bring something with them. Call it a map.</p>
+
+    <p>The map represents everything they can use to help you. Their training. Their experience. Their knowledge. The paths they know how to navigate.</p>
+
+    <p>And like every map, it has edges. Places where the territory ends and the unknown begins.</p>
+
+    <h2>The Current Map</h2>
+
+    <p>Here's what's on your doctor's map today:</p>
+
+    <div class="map-box old">
+      <div class="label">Today's Map</div>
+      
+      <div class="map-item">
+        <strong>Their Training</strong>
+        <span>Medical school, residency — often 10-30 years ago. The field has moved.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>Their Patients</strong>
+        <span>Maybe 50-500 people they've personally seen with something like your condition. Maybe fewer.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>Studies They've Read</strong>
+        <span>A fraction of what's published. No one can keep up. Most don't try.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>Drugs They Know</strong>
+        <span>The ones they prescribe often. The ones reps mentioned. Not the full landscape.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>Guidelines They Follow</strong>
+        <span>Often years behind current evidence. Updated slowly. Generic cohorts.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>Analytics (Maybe)</strong>
+        <span>Most doctors don't use advanced analytics. They use experience + intuition.</span>
+      </div>
+    </div>
+
+    <p>This is a good map. These are smart, dedicated people. They've spent decades building this knowledge.</p>
+
+    <p>But look at the edges.</p>
+
+    <div class="edge-box">
+      <div class="title">Where the Map Ends</div>
+      <p>Patients they haven't seen. Treatments they haven't tried.</p>
+      <p>Outcomes from last month that haven't been published yet.</p>
+      <p>The drug that's working for people exactly like you — in Seoul, in São Paulo, in Stockholm — right now.</p>
+      <p>The pattern that would save your life — existing across 10,000 patients, but none of them connected.</p>
+      <p style="margin-bottom: 0; color: var(--red-accent); font-weight: 600;">The map ends. Your problem doesn't.</p>
+    </div>
+
+    <h2>The New Map</h2>
+
+    <p>Now imagine the map expanded.</p>
+
+    <p>Everything above — the training, the experience, the studies, the intuition — stays. That's still valuable. That's still the foundation.</p>
+
+    <p>But now add something new:</p>
+
+    <div class="map-box new">
+      <div class="label">The New Map</div>
+      
+      <div class="map-item">
+        <strong>Everything Above</strong>
+        <span>Training, experience, studies, drugs, guidelines. All of it. Still there.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>+ Real-Time Global Outcomes</strong>
+        <span>What's working RIGHT NOW for everyone with your exact condition. Updated continuously.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>+ Expert-Curated Similarity</strong>
+        <span>"Who is like you" defined by the world's best specialists — competing to get it right.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>+ Pattern Detection at Scale</strong>
+        <span>Correlations no single doctor could see. Signals from thousands of cases.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>+ Treatment Outcomes by Your Profile</strong>
+        <span>Not generic averages. What worked for people with YOUR markers, YOUR age, YOUR history.</span>
+      </div>
+      
+      <div class="map-item">
+        <strong>+ Continuous Updates</strong>
+        <span>Every outcome adds to the map. The baseline rises every day.</span>
+      </div>
+    </div>
+
+    <p>Same doctor. Same appointment. But now they're navigating with a map that extends to the edges of human knowledge — updated in real time, curated by the best experts on Earth.</p>
+
+    <h2>The Key Upgrade</h2>
+
+    <div class="upgrade-box">
+      <div class="label">This Is What Changes Everything</div>
+      
+      <p>The old map's biggest limitation isn't your doctor's skill. It's who defines "similar."</p>
+      
+      <p>When your doctor thinks "patients like this one," they're limited to their mental model. Their 50 cases. Their training. Their cognitive bandwidth in a 15-minute visit.</p>
+      
+      <p>With the new map, "patients like you" is defined by <strong>the world's best experts — competing to get it right.</strong></p>
+
+      <p>The oncologist who's treated thousands of cases of your exact cancer type. The cardiologist who wrote the guidelines. The researcher who discovered the biomarker. They all <a href="article-three-elections.html" style="color: var(--green-neural);">compete to define similarity templates</a>.</p>
+
+      <p>Their expertise becomes your routing key. Their definition of "who is like you" determines which outcomes you see.</p>
+
+      <p style="margin-bottom: 0;"><strong>Best definition wins users. Competition optimizes the map.</strong></p>
+    </div>
+
+    <h2>The Choice</h2>
+
+    <div class="choice-box">
+      <div class="question">Which map do you want?</div>
+      
+      <div class="choice-options">
+        <div class="choice-option old">
+          Today's Map<br>
+          <span style="font-size: 0.9rem; font-weight: 400;">Limited to one doctor's knowledge</span>
+        </div>
+        <div class="choice-option new">
+          The New Map<br>
+          <span style="font-size: 0.9rem; font-weight: 400;">Expanded to everyone like you</span>
+        </div>
+      </div>
+      
+      <p style="font-size: 1.1rem; color: var(--text-secondary);">For yourself. For your kids. For your parents.</p>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 0;">Which map should exist?</p>
+    </div>
+
+    <h2>The Map Is Ready</h2>
+
+    <div class="ready-box">
+      <div class="headline">Every Component Is Built</div>
+      
+      <p>This isn't a vision. This isn't a roadmap. Every single piece exists today.</p>
+      
+      <div class="ready-list">
+        <div class="ready-item">Local data aggregation (HealthKit, wearables)</div>
+        <div class="ready-item">Expert similarity templates (guidelines, ICD codes)</div>
+        <div class="ready-item">Routing infrastructure (DHTs, vector DBs)</div>
+        <div class="ready-item">Tiny outcome packets (bytes, not gigabytes)</div>
+        <div class="ready-item">On-device synthesis (milliseconds)</div>
+        <div class="ready-item">Privacy preservation (raw data never moves)</div>
+        <div class="ready-item">Network protocols (proven at planetary scale)</div>
+        <div class="ready-item">Expert competition mechanisms (market-tested)</div>
+      </div>
+      
+      <p>The technology that streams Netflix to 200 million people. The protocols that route Bitcoin transactions. The infrastructure that powers every search engine on Earth.</p>
+
+      <p style="margin-bottom: 0;"><strong>All of it already works. We just haven't pointed it at this problem yet.</strong></p>
+
+      <p style="text-align: center; margin-top: 25px;"><a href="article-architecture-diagram.html" style="color: var(--cyan-bright); font-weight: 600;">See the full architecture →</a></p>
+    </div>
+
+    <p style="margin-top: 40px;">And this isn't just healthcare. <a href="article-first-principles.html" style="color: var(--cyan-bright);">Any problem where insight exists and is aggregatable to an edge node</a> — the map expands. Agriculture. Vehicles. Factories. Satellites. Any entity with a problem and a way to share outcomes.</p>
+
+    <div class="final-box">
+      <p>The new map is ready. 100% ready. <a href="article-every-component-exists.html" style="color: var(--gold-accent);">Every component exists. Every layer is proven.</a></p>
+      <p style="margin-top: 15px;">It's just a matter of someone connecting the dots. Someone breaking through the gatekeepers. Someone turning it on.</p>
+      <p style="margin-top: 15px;"><strong>The map is ready. The question is: when do we start using it?</strong></p>
+    </div>
+
+  </article>
+
+  <section class="cta-section">
+    <h2>See the Full Architecture</h2>
+    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Every layer of the map. Every component. How they connect.</p>
+    
+    <a href="article-architecture-diagram.html" class="cta-primary-large">View the Architecture →</a>
+    
+    <div class="cta-buttons">
+      <a href="article-first-principles.html">First Principles</a>
+      <a href="article-paradigm-shift-in-three-words.html">Paradigm Shift in Three Words</a>
+      <a href="article-11-flips.html">The 11 Flips</a>
+      <a href="article-three-elections.html">The Three Elections</a>
+      <a href="article-every-component-exists.html">Every Component Exists</a>
+      <a href="article-you-just-got-diagnosed.html">You Just Got Diagnosed</a>
+      <a href="article-already-running-qis.html">You're Already Running QIS</a>
+      <a href="article-simplicity-paradox.html">The Simplicity Paradox</a>
+      <a href="article-qis-scaling-law.html">The QIS Scaling Law</a>
+      <a href="articles.html">All Articles</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="articles.html">Articles</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">39 Provisional Patents Pending</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
