@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="A technical comparison of what distributed AI systems actually route: multi-agent frameworks route tasks, federated learning routes gradients, swarm algorithms route positions, decentralized AI routes services. QIS routes pre-distilled outcome packets by semantic similarity. The difference is fundamental.">
+  <meta name="keywords" content="QIS Protocol, distributed AI, multi-agent systems, federated learning, swarm intelligence, AutoGPT, CrewAI, AutoGen, MCP, A2A, SingularityNET, Bittensor, outcome routing, semantic similarity">
+  <meta name="author" content="Christopher Thomas Trevethan">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="What Distributed AI Systems Actually Route — And What QIS Does Differently">
+  <meta property="og:description" content="Multi-agent frameworks route tasks. Federated learning routes gradients. Swarm algorithms route positions. QIS routes pre-distilled insight by semantic similarity. A technical survey of the fundamental distinction.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qisprotocol.com/article-qis-vs-distributed-ai.html">
+
+  <title>What Distributed AI Systems Actually Route — And What QIS Does Differently • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --orange-accent: #F97316;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 40px; height: 40px;
+      filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5));
+    }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--cyan-bright);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .nav-overlay.active { display: block; }
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 40px 60px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(0, 190, 234, 0.2));
+      border: 1px solid var(--purple-quantum);
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--purple-quantum);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, var(--purple-quantum), var(--cyan-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      color: var(--text-secondary);
+      max-width: 950px;
+      margin: 0 auto 40px;
+    }
+
+    /* Content */
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--cyan-bright);
+      margin: 60px 0 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(0, 190, 234, 0.3);
+    }
+
+    h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--gold-accent);
+      margin: 35px 0 15px;
+    }
+
+    h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--purple-quantum);
+      margin: 25px 0 12px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    a { color: var(--cyan-bright); }
+    a:hover { color: var(--gold-accent); }
+
+    /* Summary Box */
+    .summary-box {
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));
+      border: 2px solid var(--cyan-primary);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 40px 0;
+    }
+
+    .summary-box h3 {
+      color: var(--cyan-bright);
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    /* Master Comparison Table */
+    .master-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      font-size: 0.95rem;
+    }
+
+    .master-table th {
+      background: rgba(139, 92, 246, 0.2);
+      color: var(--purple-quantum);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-align: left;
+      padding: 15px 12px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      font-size: 0.85rem;
+    }
+
+    .master-table td {
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+
+    .master-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .master-table .category-header {
+      background: rgba(0, 0, 0, 0.4);
+      font-weight: 700;
+      color: var(--gold-accent);
+    }
+
+    .master-table .qis-row {
+      background: rgba(0, 190, 234, 0.08);
+      border: 2px solid rgba(0, 190, 234, 0.3);
+    }
+
+    .master-table .qis-row td {
+      color: var(--text-primary);
+    }
+
+    /* System Cards */
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .system-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    .system-card h4 {
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .system-card .routes {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 3px solid var(--red-accent);
+      padding: 12px 15px;
+      margin: 15px 0;
+      font-size: 1rem;
+    }
+
+    .system-card .routes strong {
+      color: var(--red-accent);
+    }
+
+    .system-card .does-not {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid rgba(255, 255, 255, 0.2);
+      padding: 12px 15px;
+      margin: 15px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Key Insight Box */
+    .key-insight {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 190, 234, 0.1));
+      border-left: 4px solid var(--green-neural);
+      padding: 25px 30px;
+      margin: 40px 0;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .key-insight h4 {
+      color: var(--green-neural);
+      margin-top: 0;
+    }
+
+    .key-insight p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* The Shift Box */
+    .shift-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(0, 190, 234, 0.15));
+      border: 2px solid var(--gold-accent);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .shift-box h3 {
+      color: var(--gold-accent);
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+
+    .shift-comparison {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 30px;
+      align-items: center;
+      margin: 30px 0;
+    }
+
+    .shift-side {
+      padding: 25px;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .shift-side.others {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .shift-side.qis {
+      background: rgba(0, 190, 234, 0.1);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+    }
+
+    .shift-side h4 {
+      margin-top: 0;
+    }
+
+    .shift-side.others h4 { color: var(--red-accent); }
+    .shift-side.qis h4 { color: var(--cyan-bright); }
+
+    .shift-arrow {
+      font-size: 2.5rem;
+      color: var(--gold-accent);
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: rgba(255, 255, 255, 0.4); }
+    .code-block .key { color: var(--cyan-bright); }
+    .code-block .value { color: var(--green-neural); }
+    .code-block .highlight { color: var(--gold-accent); }
+
+    /* Complexity Box */
+    .complexity-box {
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+
+    .complexity-box h4 {
+      color: var(--purple-quantum);
+      margin-top: 0;
+    }
+
+    .complexity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .complexity-item {
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .complexity-item.cost {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .complexity-item.opportunity {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .complexity-item h5 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .complexity-item.cost h5 { color: var(--red-accent); }
+    .complexity-item.opportunity h5 { color: var(--green-neural); }
+
+    /* QIS Architecture Summary */
+    .qis-summary {
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.15), rgba(16, 185, 129, 0.15));
+      border: 2px solid var(--cyan-primary);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 50px 0;
+    }
+
+    .qis-summary h3 {
+      color: var(--cyan-bright);
+      margin-top: 0;
+    }
+
+    .qis-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+      margin: 25px 0;
+    }
+
+    .qis-flow-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 190, 234, 0.4);
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    .qis-flow-arrow {
+      color: var(--cyan-bright);
+      font-size: 1.3rem;
+    }
+
+    /* Bottom Line */
+    .bottom-line {
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid var(--green-neural);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .bottom-line h3 {
+      color: var(--green-neural);
+      margin-top: 0;
+      font-size: 1.6rem;
+    }
+
+    .bottom-line p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 60px 40px;
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));
+      border-radius: 20px;
+      margin-top: 60px;
+    }
+
+    .cta-section h2 {
+      border: none;
+      margin-top: 0;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      background: transparent;
+      border: 2px solid var(--cyan-primary);
+      color: var(--cyan-bright);
+    }
+
+    .btn:hover {
+      background: var(--cyan-primary);
+      color: var(--dark-bg);
+    }
+
+    .btn.primary {
+      background: var(--cyan-primary);
+      color: var(--dark-bg);
+    }
+
+    .btn.primary:hover {
+      background: var(--cyan-bright);
+      box-shadow: 0 0 20px rgba(0, 190, 234, 0.5);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--cyan-primary);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .shift-comparison {
+        grid-template-columns: 1fr;
+      }
+      .shift-arrow {
+        transform: rotate(90deg);
+      }
+      .complexity-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav { padding: 15px 20px; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; right: -100%;
+        height: 100vh; width: 70%;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        transition: right 0.3s ease;
+        border-left: 1px solid rgba(0, 190, 234, 0.3);
+        z-index: 1000;
+      }
+      .nav-links.active { right: 0; display: flex; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 140px 20px 40px; }
+      .content { padding: 0 20px 60px; }
+      .system-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html?skip=true" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.nav-overlay').classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-overlay" onclick="document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-links').classList.remove('active'); this.classList.remove('active');"></div>
+    <div class="nav-links">
+      <a href="index.html?skip=true">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="articles.html">Articles</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">Technical Comparison</div>
+    <p style="color: var(--text-muted); margin-bottom: 20px;">By <a href="https://linkedin.com/in/christrevethan" target="_blank" style="color: var(--cyan-bright);">Christopher Thomas Trevethan</a> • January 25, 2026</p>
+    <h1>What Distributed AI Systems Actually Route — And What QIS Does Differently</h1>
+    <p class="subtitle">Multi-agent frameworks route tasks. Federated learning routes gradients. Swarm algorithms route positions. Decentralized AI routes services. Agent protocols route tool calls. None route pre-distilled outcome packets by semantic similarity. This is a technical survey of what exists, what each system moves through its network, and where QIS occupies fundamentally different architectural ground.</p>
+  </section>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Executive Summary -->
+    <div class="summary-box">
+      <h3>The Technical Distinction in One Table</h3>
+      <table class="master-table">
+        <thead>
+          <tr>
+            <th>System Category</th>
+            <th>What Gets Routed</th>
+            <th>What Does NOT Get Routed</th>
+            <th>Central Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="category-header">
+            <td colspan="4">Multi-Agent Frameworks (AutoGPT, CrewAI, AutoGen, MetaGPT, ChatDev)</td>
+          </tr>
+          <tr>
+            <td>Task orchestration</td>
+            <td>Tasks, tool calls, messages, artifacts</td>
+            <td>Pre-distilled insight packets</td>
+            <td>Orchestrator / conversation manager</td>
+          </tr>
+          <tr class="category-header">
+            <td colspan="4">Agent Protocols (MCP, A2A, OpenAI Agents SDK)</td>
+          </tr>
+          <tr>
+            <td>Tool access &amp; coordination</td>
+            <td>Resources, tools, prompts, task lifecycle</td>
+            <td>Semantic similarity-matched outcomes</td>
+            <td>Client-server / peer discovery</td>
+          </tr>
+          <tr class="category-header">
+            <td colspan="4">Federated Learning (FedAvg, Google Gboard, Apple DP)</td>
+          </tr>
+          <tr>
+            <td>Distributed training</td>
+            <td>Model gradients / weights (MB-scale)</td>
+            <td>Pre-computed outcomes (requires training)</td>
+            <td>Central aggregation server</td>
+          </tr>
+          <tr class="category-header">
+            <td colspan="4">Swarm Algorithms (PSO, ACO)</td>
+          </tr>
+          <tr>
+            <td>Numerical optimization</td>
+            <td>Positions, velocities, pheromones</td>
+            <td>Semantic content or knowledge</td>
+            <td>Fitness function evaluation</td>
+          </tr>
+          <tr class="category-header">
+            <td colspan="4">Decentralized AI (SingularityNET, Ocean, Fetch.ai, Bittensor)</td>
+          </tr>
+          <tr>
+            <td>Marketplace / coordination</td>
+            <td>API calls, data access, inference outputs</td>
+            <td>Synthesized intelligence</td>
+            <td>Blockchain consensus / smart contracts</td>
+          </tr>
+          <tr class="qis-row">
+            <td><strong>QIS Protocol</strong></td>
+            <td><strong>Pre-distilled outcome packets (~512 bytes)</strong></td>
+            <td><strong>Raw data, gradients, model weights</strong></td>
+            <td><strong>None — local synthesis</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 30px; padding: 20px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green-neural); border-radius: 12px; text-align: center;">
+        <p style="margin: 0 0 15px; font-size: 1.1rem; color: var(--text-primary);"><strong>The gap:</strong> None of these systems enable truly distributed, real-time, scalable, quadratic, privacy-preserving intelligence routing. That's the white space QIS occupies.</p>
+        <p style="margin: 0;"><a href="article-11-flips.html" style="color: var(--cyan-bright);">Read the 11 Flips →</a></p>
+      </div>
+    </div>
+
+    <!-- Multi-Agent Frameworks -->
+    <h2>Multi-Agent Frameworks: Task Orchestration, Not Insight Synthesis</h2>
+
+    <p>The 2024-2026 landscape of AI agent frameworks—AutoGPT, BabyAGI, CrewAI, Microsoft AutoGen, LangChain, MetaGPT, and ChatDev—share a common architectural pattern: they orchestrate tasks and tool calls, passing messages and context between reasoning loops. None aggregate distributed intelligence into synthesized outcomes.</p>
+
+    <div class="system-grid">
+      <div class="system-card">
+        <h4>🤖 AutoGPT</h4>
+        <p>Recursive loop: goal analysis → task decomposition → action selection → execution → self-criticism.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Tool calls (JSON-structured), file operations, spawned sub-agent messages
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Cross-task intelligence synthesis. Results stored in vector DBs for retrieval, but each result remains discrete—storage, not synthesis.
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Known limitations: infinite loops, hallucination compounding, context window exhaustion—symptoms of coordination without synthesis.</p>
+      </div>
+
+      <div class="system-card">
+        <h4>👶 BabyAGI</h4>
+        <p>Three-agent architecture (execution, task creation, prioritization) around a task queue.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Task descriptions, embeddings to Pinecone/Chroma for context retrieval
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Synthesized insight. Results are stored artifacts, not compounded intelligence. Original form lacks real tool execution.
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h4>👥 CrewAI</h4>
+        <p>Role-based collaboration (Market Research Analyst, Writer, etc.) with explicit context parameters.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Task outputs via Delegate Work / Ask Question tools. Output of Task N → input to Task N+1.
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Intelligence aggregation. Information flows through predetermined chains—orchestration with verification, not distributed synthesis.
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h4>🔄 Microsoft AutoGen</h4>
+        <p>ConversableAgent base class, GroupChat architecture, nested conversations for hierarchical workflows.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Messages (JSON-RPC), tool calls, full conversation history within threads
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Cross-session learning. Each conversation is isolated—context building differs from intelligence aggregation.
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h4>📝 MetaGPT / ChatDev</h4>
+        <p>Software development specialization. MetaGPT: Standardized Operating Procedures via publish-subscribe. ChatDev: dual-agent chat chains.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Structured artifacts (PRDs, system designs, code) between role-specialized agents
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Synthesized insight. Intelligence flows through artifact handoffs, not outcome routing.
+        </div>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <h4>The Pattern Across All Multi-Agent Frameworks</h4>
+      <p>They route <strong>task descriptions, tool calls, messages, and artifacts</strong>. None route pre-distilled outcome packets matched by semantic similarity. The "intelligence" lives inside individual agents or LLMs; the framework coordinates their actions but doesn't synthesize their distributed knowledge into compounded insight.</p>
+    </div>
+
+    <!-- Agent Protocols -->
+    <h2>Agent Protocols: Tool Access and Coordination, Not Intelligence Fusion</h2>
+
+    <p>Three protocols define how agents connect and communicate in 2024-2026: Anthropic's Model Context Protocol (MCP), Google's Agent-to-Agent Protocol (A2A), and OpenAI's Agents SDK patterns.</p>
+
+    <div class="system-grid">
+      <div class="system-card">
+        <h4>🔌 MCP (Anthropic, Nov 2024)</h4>
+        <p>"USB-C port for AI." JSON-RPC 2.0 over STDIO or HTTP+SSE.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Resources (files, DB records, API responses), Tools (function calls), Prompts (templates)
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Synthesized intelligence. What flows is raw tool I/O; the LLM client performs all reasoning. Lacks native encryption, fine-grained access control, standardized discovery.
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Direction: <strong>Vertical</strong> (agent ↔ tools)</p>
+      </div>
+
+      <div class="system-card">
+        <h4>🤝 A2A (Google, April 2025)</h4>
+        <p>Three-layer architecture: data model, operations, protocol bindings. Agent Cards at /.well-known/agent.json.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Task lifecycle (working, completed, failed), Artifacts (task outputs), Messages
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Semantic similarity-matched outcomes. Artifacts are discrete outputs, not synthesized insight. Protocol preserves agent opacity.
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Direction: <strong>Horizontal</strong> (agent ↔ agent)</p>
+      </div>
+
+      <div class="system-card">
+        <h4>⚡ OpenAI Agents SDK</h4>
+        <p>Evolved from experimental Swarm framework. Patterns for handoffs, agents-as-tools, parallel execution.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Tool calls (function calling schemas), Handoff signals (function returns)
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Cross-vendor interoperability. No Agent Card equivalent. All coordination within OpenAI ecosystem.
+        </div>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <h4>MCP Routes Vertically, A2A Routes Horizontally — Neither Routes by Semantic Similarity</h4>
+      <p>Both treat communication as <strong>coordination infrastructure</strong>, not intelligence synthesis mechanism. The protocols enable agents to access tools and delegate tasks; they don't enable routing pre-distilled outcomes to semantically matched recipients. The intelligence happens inside agents—the protocols just connect them.</p>
+    </div>
+
+    <!-- Federated Learning -->
+    <h2>Federated Learning: Gradients and Weights, Not Pre-Computed Outcomes</h2>
+
+    <p>Federated learning represents the most mathematically rigorous approach to distributed AI. Its architecture fundamentally differs from outcome routing: it shares model gradients or weights through iterative training rounds, not pre-distilled insights.</p>
+
+    <h4>FedAvg Protocol (McMahan et al., 2017)</h4>
+
+    <div class="code-block">
+<span class="comment">// The FedAvg algorithm — what actually gets routed</span>
+
+<span class="highlight">Round t:</span>
+1. Server distributes current weights <span class="key">w_t</span> to sampled clients
+2. Each client trains locally: <span class="key">w^k</span> ← <span class="key">w^k</span> - η∇F_k(<span class="key">w^k</span>)
+3. Clients return <span class="value">full model weights</span> <span class="key">w^k_{t+1}</span> (not per-sample gradients)
+4. Server computes weighted average: <span class="key">w_{t+1}</span> = Σ(n_k/n)·<span class="key">w^k_{t+1}</span>
+
+<span class="comment">// Communication per round:</span>
+<span class="comment">// - CNN with 1.6M parameters: ~6.4MB per transmission</span>
+<span class="comment">// - LSTM language models: ~20MB per transmission</span>
+<span class="comment">// - Google Gboard: ~3000 rounds to converge</span>
+    </div>
+
+    <h4>What Federated Learning Cannot Do</h4>
+    <ul style="margin-left: 20px; color: var(--text-secondary);">
+      <li>Route pre-computed outcomes without iterative training</li>
+      <li>Eliminate central aggregation requirements (the server coordinates all rounds)</li>
+      <li>Provide instant insight delivery (convergence requires hundreds of rounds)</li>
+      <li>Work without synchronized training processes</li>
+    </ul>
+
+    <div class="key-insight">
+      <h4>The Core Limitation</h4>
+      <p>Federated learning treats <strong>communication as the bottleneck to minimize</strong>—achieving efficiency through fewer rounds, compressed gradients, and sparse participation. The "learning" still happens through optimization; outcomes aren't pre-computed and routed, they're iteratively derived from distributed training. Even with aggressive compression (quantization: 4×, sparsification: 100-1000×), the fundamental pattern persists: iterative rounds of weight exchange converging toward a shared model.</p>
+    </div>
+
+    <!-- Swarm Intelligence -->
+    <h2>Swarm Intelligence: Fitness Landscapes, Not Semantic Spaces</h2>
+
+    <p>Particle Swarm Optimization (PSO) and Ant Colony Optimization (ACO) are numerical optimization algorithms, not insight routing systems. Their mathematical foundations operate on fundamentally different primitives than semantic similarity matching.</p>
+
+    <div class="system-grid">
+      <div class="system-card">
+        <h4>🔄 PSO (Particle Swarm Optimization)</h4>
+        <p>Optimizes continuous functions f: ℝⁿ → ℝ through particle dynamics.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Position vectors (candidate solutions), Velocity vectors (search directions), Best known positions (personal and global)
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Semantic content. PSO operates on numerical fitness values—no mechanism for text, knowledge entities, or conceptual similarity. Useful for weight optimization, hyperparameter tuning—not insight synthesis.
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h4>🐜 ACO (Ant Colony Optimization)</h4>
+        <p>Stigmergy—indirect coordination through environment modification—for combinatorial optimization.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Pheromone deposits on graph edges. τ_{ij}(t+1) = (1-ρ)·τ_{ij}(t) + Δτ_{ij}
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Semantic matching. Applications: traveling salesman, vehicle routing, network optimization—all graph-structured problems, not meaning-based routing.
+        </div>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <h4>Most 2024-2026 "Swarm AI" Products Misuse the Term</h4>
+      <p><strong>OpenAI's Swarm framework:</strong> Multi-agent orchestration using handoffs—no pheromone dynamics, no particle physics. <strong>Unanimous AI's "Artificial Swarm Intelligence":</strong> Consensus-building through preference aggregation. <strong>Swarms.ai:</strong> Task distribution, not swarm optimization. Only academic robotics research implements genuine swarm intelligence principles.</p>
+      <p>The technical distinction: Swarm algorithms find optimal solutions through collective parallel search in <strong>fitness landscapes</strong>. Insight synthesis requires operations in <strong>semantic spaces</strong>—matching meanings, computing relevance, aggregating understanding. These are fundamentally different computational primitives.</p>
+    </div>
+
+    <!-- Decentralized AI -->
+    <h2>Decentralized AI Projects: Services, Data, and Inference — Not Synthesized Intelligence</h2>
+
+    <p>Four major blockchain-based AI projects claim decentralized intelligence but deliver coordination infrastructure:</p>
+
+    <div class="system-grid">
+      <div class="system-card">
+        <h4>🌐 SingularityNET</h4>
+        <p>Ethereum-based AI service marketplace. Smart contract registries, Multi-Party Escrow, daemon sidecars.</p>
+        <div class="routes">
+          <strong>Routes:</strong> AI service API calls (gRPC), AGIX token payments
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Synthesized distributed intelligence. Whitepaper: "Uber for AI" / "Airbnb for AI." Service composition = orchestration, not intelligence fusion.
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h4>🌊 Ocean Protocol</h4>
+        <p>Data tokenization: ERC721 Data NFTs (IP ownership), ERC20 Datatokens (access licenses). Compute-to-Data.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Access permissions, compute job specifications
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Intelligence synthesis. Protocol handles data routing; any ML work happens entirely outside the protocol.
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h4>🤖 Fetch.ai</h4>
+        <p>uAgents framework, Almanac registry. Autonomous Economic Agents coordinate negotiations.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Economic agent messages, service negotiations, payment transactions
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Protocol-level intelligence aggregation. No federated learning, no shared weights. "Intelligence" comes from external LLM backends.
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h4>⚡ Bittensor</h4>
+        <p>Presents as "neural network" / "hive mind." Actually: competitive inference marketplace.</p>
+        <div class="routes">
+          <strong>Routes:</strong> Inference outputs, quality scores (Yuma Consensus aggregates scores, not knowledge)
+        </div>
+        <div class="does-not">
+          <strong>Does NOT route:</strong> Shared training, model weight aggregation. Miners train independently off-chain. Consensus determines reward allocation, not intelligence synthesis. 64 largest validators control root emissions.
+        </div>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <h4>The Pattern Across All Decentralized AI Projects</h4>
+      <p><strong>SingularityNET</strong> routes API calls. <strong>Ocean</strong> routes data access. <strong>Fetch.ai</strong> routes economic negotiations. <strong>Bittensor</strong> routes inference outputs and scores. All operate as <strong>coordination/marketplace layers above the actual intelligence</strong>. None route pre-distilled outcome packets by semantic similarity.</p>
+    </div>
+
+    <!-- The Quadratic Complexity Inversion -->
+    <h2>Why Every System Treats Quadratic Complexity as Cost</h2>
+
+    <p>Distributed systems theory treats O(N²) coordination as a fundamental problem to minimize, not a resource to exploit. The Dolev-Reischuk lower bound proves any deterministic Byzantine consensus requires Θ(n²) communication in worst case—this is mathematical floor, not implementation choice.</p>
+
+    <div class="key-insight">
+      <h4>The Analogy: Phone Calls vs. Bulletin Boards</h4>
+      <p>Imagine 100 people need to share information. <strong>Full coordination</strong> (everyone calls everyone) requires 4,950 phone calls—quadratic overhead. Current systems avoid this by using <strong>hierarchies</strong> (everyone calls one coordinator) or <strong>sampling</strong> (only 10% participate each round). This reduces communication but <em>destroys pairwise information</em>. The coordinator averages; unique combinations are lost.</p>
+      <p><strong>QIS inverts this:</strong> Instead of calling 99 people, you post to a semantic bulletin board. The board routes your post to your exact cohort—logarithmic complexity or better, depending on infrastructure. The network still has access to all 4,950 potential synthesis opportunities—but through <em>routing</em>, not <em>calling</em>. Quadratic opportunity. Minimal communication. That's the inversion.</p>
+    </div>
+
+    <div class="complexity-box">
+      <h4>Practical Manifestations of Quadratic Overhead</h4>
+      <ul style="margin-left: 20px; color: var(--text-secondary);">
+        <li>PBFT's three-phase confirmation: O(n²) messages</li>
+        <li>Full mesh networks: n(n-1)/2 connections (10 nodes = 45 links; 150 nodes = 11,175 links)</li>
+        <li>Multi-agent coordination: "Doubling agents quadruples coordination overhead"</li>
+        <li>Chinchilla scaling laws: Gradient exchange "dwarfs the savings of computation time"</li>
+      </ul>
+
+      <div class="complexity-grid">
+        <div class="complexity-item cost">
+          <h5>How Current Systems Avoid Quadratic Cost</h5>
+          <ul style="margin-left: 15px; font-size: 0.95rem;">
+            <li>Hierarchical architectures: O(n²) → O(n log n)</li>
+            <li>Leader-based protocols: Paxos/Raft achieve O(n) with single coordinator</li>
+            <li>HotStuff: Linear O(n) via pipelined BFT</li>
+            <li>Ring All-Reduce: Optimal bandwidth, avoids all-to-all</li>
+            <li>Federated learning sampling: Only 10% participate per round</li>
+          </ul>
+        </div>
+
+        <div class="complexity-item opportunity">
+          <h5>The Universal Assumption</h5>
+          <p style="font-size: 0.95rem;">Communication is overhead to minimize. Pairwise interactions verify or synchronize but don't compound. Averaging destroys pairwise information deliberately.</p>
+          <p style="font-size: 0.95rem; margin-bottom: 0;"><strong>No current system extracts value proportional to O(N²) cost.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE SHIFT -->
+    <h2>The Fundamental Shift: What QIS Does Differently</h2>
+
+    <div class="shift-box">
+      <h3>Different Architectural Primitives</h3>
+
+      <div class="shift-comparison">
+        <div class="shift-side others">
+          <h4>Every Other System</h4>
+          <p><strong>Routes:</strong> Tasks, gradients, positions, services, API calls</p>
+          <p><strong>Requires:</strong> Central aggregation, iterative training, or orchestration</p>
+          <p><strong>Treats N(N-1)/2 as:</strong> Cost to minimize</p>
+          <p><strong>The insight:</strong> Computed during coordination</p>
+        </div>
+
+        <div class="shift-arrow">→</div>
+
+        <div class="shift-side qis">
+          <h4>QIS Protocol</h4>
+          <p><strong>Routes:</strong> Pre-distilled outcome packets (~512 bytes)</p>
+          <p><strong>Requires:</strong> Nothing central — local synthesis</p>
+          <p><strong>Treats N(N-1)/2 as:</strong> Synthesis opportunity to exploit</p>
+          <p><strong>The insight:</strong> Already exists — route to it</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="qis-summary">
+      <h3>QIS Architecture: What Actually Gets Routed</h3>
+
+      <div class="qis-flow">
+        <div class="qis-flow-item">Any Data Source</div>
+        <span class="qis-flow-arrow">→</span>
+        <div class="qis-flow-item">Edge Node (local aggregation)</div>
+        <span class="qis-flow-arrow">→</span>
+        <div class="qis-flow-item">Semantic Fingerprint</div>
+        <span class="qis-flow-arrow">→</span>
+        <div class="qis-flow-item">Routing Layer (DHT, Vector DB, any)</div>
+        <span class="qis-flow-arrow">→</span>
+        <div class="qis-flow-item" style="border-color: var(--green-neural);"><strong>Outcome Packets</strong></div>
+        <span class="qis-flow-arrow">→</span>
+        <div class="qis-flow-item">Local Synthesis</div>
+      </div>
+
+      <div class="code-block">
+<span class="comment">// What QIS routes — the outcome packet itself</span>
+{
+  <span class="key">"treatment"</span>: <span class="value">"FOLFOX + Bevacizumab"</span>,
+  <span class="key">"outcome"</span>: <span class="value">"progression_free"</span>,
+  <span class="key">"duration_months"</span>: <span class="value">18</span>,
+  <span class="key">"confidence"</span>: <span class="value">0.94</span>
+}
+
+<span class="comment">// ~512 bytes. The insight itself. Not a pointer. Not raw data.</span>
+<span class="comment">// Pre-distilled at the moment the outcome occurred.</span>
+<span class="comment">// Routes to whoever shares your semantic fingerprint.</span>
+
+<span class="comment">// What QIS does NOT route:</span>
+<span class="comment">// - Model weights or gradients (no iterative training)</span>
+<span class="comment">// - Raw data or PII/PHI (stays local)</span>
+<span class="comment">// - Task descriptions or API calls (not orchestration)</span>
+<span class="comment">// - Inference outputs for scoring (not a marketplace)</span>
+      </div>
+
+      <h4>The Key Distinctions</h4>
+
+      <p><strong>Outcome routing vs. parameter sharing:</strong> Where federated learning routes model weights requiring iterative training (hundreds to thousands of rounds, MB-scale), QIS routes pre-distilled outcomes—intelligence already computed when the outcome occurred. No training rounds. The insight exists and needs only delivery.</p>
+
+      <p><strong>Semantic similarity matching vs. task coordination:</strong> Where multi-agent frameworks route tasks to capability-matched agents, QIS matches outcome packets to exact cohorts based on semantic similarity. The routing decision itself embeds intelligence—determining who needs what insight based on meaning, not capability.</p>
+
+      <p><strong>Quadratic synthesis as feature:</strong> Where current systems minimize O(N²) communication as cost, QIS treats N(N-1)/2 pairwise synthesis opportunities as value. With N agents sharing outcome packets via semantic routing, you get N(N-1)/2 potential synthesis opportunities while maintaining O(log N) communication complexity per agent.</p>
+
+      <p><strong>Local synthesis, no central aggregation:</strong> The edge node that sends the query is the edge node that synthesizes the answer. Vote, tally, weighted median, Bayesian update—any consensus mechanism. O(K) computation where K is matched neighbors. ~2ms for 1,000 packets. No server coordinates. No rounds converge. The network is a post office, not a computer.</p>
+    </div>
+
+    <!-- What QIS Is NOT -->
+    <h2>What QIS Is NOT</h2>
+
+    <p>To claim the ground precisely, it's equally important to define what QIS is not:</p>
+
+    <table class="master-table">
+      <thead>
+        <tr>
+          <th>QIS Is NOT</th>
+          <th>Because</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A multi-agent orchestration framework</td>
+          <td>Doesn't coordinate tasks or tool calls between reasoning agents</td>
+        </tr>
+        <tr>
+          <td>A federated learning system</td>
+          <td>Doesn't route gradients or model weights; no iterative training</td>
+        </tr>
+        <tr>
+          <td>A swarm optimization algorithm</td>
+          <td>Doesn't search fitness landscapes; operates in semantic space, not numerical</td>
+        </tr>
+        <tr>
+          <td>An AI service marketplace</td>
+          <td>Doesn't route API calls for payment; routes insight directly</td>
+        </tr>
+        <tr>
+          <td>A data tokenization protocol</td>
+          <td>Doesn't route access permissions; raw data stays local</td>
+        </tr>
+        <tr>
+          <td>An inference competition network</td>
+          <td>Doesn't score outputs for rewards; synthesizes outcomes locally</td>
+        </tr>
+        <tr>
+          <td>A tool access protocol (like MCP)</td>
+          <td>Doesn't connect agents to external resources; routes insight between peers</td>
+        </tr>
+        <tr>
+          <td>A task delegation protocol (like A2A)</td>
+          <td>Doesn't manage task lifecycle; routes pre-computed outcomes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- What This Means in Practice -->
+    <h2>What This Means in Practice</h2>
+
+    <p>The architectural distinctions above aren't academic. They determine what's possible:</p>
+
+    <div class="system-grid">
+      <div class="system-card">
+        <h4>🏥 Healthcare</h4>
+        <p><strong>Multi-agent frameworks:</strong> Can coordinate care tasks. Cannot synthesize treatment outcomes across 10,000 patients.</p>
+        <p><strong>Federated learning:</strong> Requires hundreds to thousands of rounds to train a model. Cannot deliver insight instantly when a patient presents.</p>
+        <p><strong>QIS:</strong> 10,000 patients create 49,995,000 synthesis opportunities. Query with your clinical fingerprint, matched outcomes arrive instantly. No training rounds. No waiting for convergence. Real-time insight from those exactly like you.</p>
+      </div>
+
+      <div class="system-card">
+        <h4>🚗 Autonomous Vehicles</h4>
+        <p><strong>Decentralized AI:</strong> Can coordinate service calls or data access. Cannot synthesize driving outcomes across fleet.</p>
+        <p><strong>Swarm algorithms:</strong> Can optimize routes (combinatorial). Cannot match semantic scenarios.</p>
+        <p><strong>QIS:</strong> Vehicle encounters icy bridge + pedestrian + construction. Routes to all vehicles that faced similar scenario. Retrieves outcomes. Synthesizes locally. Real-time pattern matching across global fleet.</p>
+      </div>
+
+      <div class="system-card">
+        <h4>🌾 Agriculture</h4>
+        <p><strong>Agent protocols:</strong> Can connect to soil sensors and weather APIs. Cannot synthesize crop outcomes across similar farms.</p>
+        <p><strong>QIS:</strong> Your farm's fingerprint (soil type, climate zone, crop variety, irrigation) routes to farms with matching conditions. Not generic advice from aggregate data—precise outcomes from farms exactly like yours. What treatments worked for your exact soil, your exact climate, your exact crop? That insight exists. Route to it.</p>
+      </div>
+    </div>
+
+    <p>The pattern is consistent: existing systems coordinate, train, optimize, or market. None route pre-computed insight by semantic similarity. The gap isn't incremental—it's categorical.</p>
+
+    <!-- QIS as Meta-Layer -->
+    <div class="key-insight">
+      <h4>QIS Can Power Better Coordination</h4>
+      <p>Every system above needs to answer a routing question: <em>Which agent should handle this? Which node to coordinate with? Where to delegate this task?</em> They answer with capability matching, heuristics, or static rules.</p>
+      <p>QIS can provide the <strong>intelligence basis</strong> for those decisions. Instead of "route to agent with capability X," it becomes "route to agent that real-time outcomes show has 94% success for this exact problem type." Instead of coordinating based on declared capabilities, coordinate based on what's actually working right now for situations like yours.</p>
+      <p>QIS doesn't just compete with coordination infrastructure—it can <strong>enhance</strong> it by providing real-time, scaled insight as the reasoning layer underneath routing decisions.</p>
+    </div>
+
+    <!-- The Bottom Line -->
+    <div class="bottom-line">
+      <h3>The Technical White Space</h3>
+      <p>The 2024-2026 distributed AI landscape demonstrates sophisticated coordination infrastructure without true intelligence synthesis. Multi-agent frameworks orchestrate tasks. Federated learning aggregates gradients. Swarm algorithms optimize fitness functions. Decentralized projects build marketplaces. Agent protocols standardize tool access and task delegation.</p>
+      <p><strong>None deliver real-time optimization. None scale quadratically. None preserve privacy by design. None route pre-distilled insight by semantic similarity.</strong></p>
+      <p style="color: var(--green-neural); font-size: 1.3rem; margin-bottom: 0;"><strong>QIS does all four. That's the ground it occupies.</strong></p>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Go Deeper</h2>
+      <div class="cta-buttons">
+        <a href="article-architecture-diagram.html" class="btn primary">See the Full Architecture</a>
+      </div>
+      <div class="cta-buttons" style="margin-top: 15px;">
+        <a href="article-three-elections.html" class="btn">The Three Elections</a>
+        <a href="article-11-flips.html" class="btn">The 11 Flips</a>
+        <a href="article-qis-scaling-law.html" class="btn">The QIS Scaling Law</a>
+        <a href="article-every-component-exists.html" class="btn">Every Component Exists</a>
+        <a href="article-scaling-to-billions.html" class="btn">Scaling to Billions</a>
+        <a href="article-tcpip-of-intelligence.html" class="btn">The TCP/IP of Intelligence</a>
+        <a href="article-imagine-a-world.html" class="btn">Imagine a World</a>
+        <a href="articles.html" class="btn">All Articles</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html?skip=true">Home</a> • <a href="articles.html">Articles</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">39 Provisional Patents Pending</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+
+  
+</body>
+</html>
