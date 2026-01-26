@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="Netflix routes 250 million users to content using similarity-based infrastructure. QIS uses identical architecture to route insight. Same infrastructure. Different paradigm. Here's exactly how both work.">
+  <meta name="keywords" content="Netflix architecture, QIS Protocol, recommendation systems, distributed intelligence, K-NN, collaborative filtering, semantic routing, outcome packets, precision medicine">
+  <meta name="author" content="Christopher Thomas Trevethan">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Netflix vs QIS: Same Infrastructure, Different Paradigm">
+  <meta property="og:description" content="Netflix proved similarity-based routing works at planetary scale. QIS applies the same infrastructure to route insight instead of entertainment.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qisprotocol.com/article-netflix-qis-routing-comparison.html">
+
+  <title>Netflix vs QIS: Same Infrastructure, Different Paradigm • QIS Protocol</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA;
+      --cyan-bright: #00D9FF;
+      --purple-quantum: #8B5CF6;
+      --green-neural: #10B981;
+      --gold-accent: #F59E0B;
+      --red-accent: #EF4444;
+      --orange-accent: #F97316;
+      --netflix-red: #E50914;
+      --dark-bg: #0A0A0A;
+      --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(229, 9, 20, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 40px; height: 40px;
+      filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5));
+    }
+    .nav-logo span {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+    }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-bright); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1002;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--cyan-bright);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      z-index: 1001;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-overlay.active { display: flex; }
+    .nav-overlay-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    .nav-overlay-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+    }
+    .nav-overlay-links a:hover { color: var(--cyan-bright); }
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 40px 60px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(0, 190, 234, 0.2));
+      border: 1px solid var(--netflix-red);
+      border-radius: 30px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--netflix-red);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, var(--netflix-red), var(--cyan-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      color: var(--text-secondary);
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+
+    /* Content */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--cyan-bright);
+      margin: 60px 0 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(0, 190, 234, 0.3);
+    }
+
+    h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: var(--gold-accent);
+      margin: 35px 0 15px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    a { color: var(--cyan-bright); }
+    a:hover { color: var(--gold-accent); }
+
+    /* Stats Banner */
+    .stats-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.1), rgba(0, 190, 234, 0.1));
+      border-radius: 16px;
+      border: 1px solid rgba(229, 9, 20, 0.3);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--netflix-red);
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* Full Pipeline Diagrams */
+    .pipeline-section {
+      margin: 50px 0;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+      border: 2px solid rgba(229, 9, 20, 0.3);
+    }
+
+    .pipeline-section.qis {
+      border-color: rgba(0, 190, 234, 0.3);
+    }
+
+    .pipeline-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .pipeline-title.netflix {
+      color: var(--netflix-red);
+    }
+
+    .pipeline-title.qis {
+      color: var(--cyan-bright);
+    }
+
+    .pipeline-diagram {
+      width: 100%;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    .pipeline-diagram svg {
+      min-width: 1100px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Comparison Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      font-size: 1rem;
+    }
+
+    .comparison-table th {
+      background: rgba(0, 190, 234, 0.15);
+      color: var(--cyan-bright);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-align: left;
+      padding: 15px;
+      border: 1px solid rgba(0, 190, 234, 0.3);
+    }
+
+    .comparison-table td {
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .netflix-col {
+      background: rgba(229, 9, 20, 0.05);
+    }
+
+    .qis-col {
+      background: rgba(0, 190, 234, 0.05);
+    }
+
+    /* Key Insight Boxes */
+    .key-insight {
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));
+      border-left: 4px solid var(--cyan-bright);
+      padding: 25px 30px;
+      margin: 40px 0;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .key-insight h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cyan-bright);
+      margin-bottom: 10px;
+    }
+
+    .key-insight p {
+      margin-bottom: 0;
+    }
+
+    /* Paradigm Shift Box */
+    .paradigm-box {
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.15), rgba(0, 190, 234, 0.15));
+      border: 2px solid rgba(245, 158, 11, 0.5);
+      padding: 35px;
+      margin: 50px 0;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .paradigm-box h3 {
+      color: var(--gold-accent);
+      margin-top: 0;
+    }
+
+    .paradigm-comparison {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 30px;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .paradigm-side {
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .paradigm-side.netflix {
+      background: rgba(229, 9, 20, 0.1);
+      border: 1px solid rgba(229, 9, 20, 0.3);
+    }
+
+    .paradigm-side.qis {
+      background: rgba(0, 190, 234, 0.1);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+    }
+
+    .paradigm-side h4 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .paradigm-side.netflix h4 { color: var(--netflix-red); }
+    .paradigm-side.qis h4 { color: var(--cyan-bright); }
+
+    .paradigm-arrow {
+      font-size: 2rem;
+      color: var(--gold-accent);
+    }
+
+    /* Precision Section */
+    .precision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .precision-card {
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .precision-card.fuzzy {
+      background: rgba(229, 9, 20, 0.1);
+      border: 1px solid rgba(229, 9, 20, 0.3);
+    }
+
+    .precision-card.exact {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .precision-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 15px;
+    }
+
+    .precision-card.fuzzy h4 { color: var(--netflix-red); }
+    .precision-card.exact h4 { color: var(--green-neural); }
+
+    .precision-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .precision-card li {
+      padding: 8px 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .precision-card li::before {
+      content: "→ ";
+      color: var(--gold-accent);
+    }
+
+    /* Code Blocks */
+    .code-block {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    .code-block .comment { color: rgba(255, 255, 255, 0.4); }
+    .code-block .key { color: var(--cyan-bright); }
+    .code-block .value { color: var(--green-neural); }
+    .code-block .function { color: var(--gold-accent); }
+
+    /* Domain Grid */
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .domain-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .domain-card:hover {
+      border-color: var(--purple-quantum);
+      transform: translateY(-3px);
+    }
+
+    .domain-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--purple-quantum);
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .domain-card p {
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 60px 40px;
+      background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));
+      border-radius: 20px;
+      margin-top: 60px;
+    }
+
+    .cta-section h2 {
+      border: none;
+      margin-top: 0;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      background: transparent;
+      border: 2px solid var(--cyan-primary);
+      color: var(--cyan-bright);
+    }
+
+    .btn:hover {
+      background: var(--cyan-primary);
+      color: var(--dark-bg);
+    }
+
+    .btn.primary {
+      background: var(--cyan-primary);
+      color: var(--dark-bg);
+    }
+
+    .btn.primary:hover {
+      background: var(--cyan-bright);
+      box-shadow: 0 0 20px rgba(0, 190, 234, 0.5);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--cyan-primary);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .paradigm-comparison {
+        grid-template-columns: 1fr;
+      }
+      .paradigm-arrow {
+        transform: rotate(90deg);
+      }
+      .precision-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 140px 20px 40px; }
+      .content { padding: 0 20px 60px; }
+      .stats-banner { padding: 20px; }
+      .stat-value { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS Protocol">
+      <span>QIS PROTOCOL</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="articles.html">Articles</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="nav-overlay" id="navOverlay">
+    <div class="nav-overlay-links">
+      <a href="index.html" onclick="toggleMenu()">Home</a>
+      <a href="how-it-works.html" onclick="toggleMenu()">How It Works</a>
+      <a href="articles.html" onclick="toggleMenu()">Articles</a>
+      <a href="about.html" onclick="toggleMenu()">About</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">Infrastructure Comparison</div>
+    <h1>Netflix vs QIS: Same Infrastructure, Different Paradigm</h1>
+    <p class="subtitle">Netflix routes 250 million users to content using similarity-based infrastructure that processes 2 trillion events per day. QIS uses identical architectural patterns to route insight to people who need it. Same infrastructure. Different payload. Here's exactly how both work.</p>
+    <div class="hero-meta" style="display: flex; justify-content: center; gap: 15px; color: var(--text-muted); font-size: 1rem; margin-top: 20px;">
+      <span>By Christopher Thomas Trevethan</span>
+      <span>•</span>
+      <span>January 26, 2026</span>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Netflix Stats -->
+    <div class="stats-banner">
+      <div class="stat-item">
+        <div class="stat-value">250M+</div>
+        <div class="stat-label">Netflix Subscribers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">2T+</div>
+        <div class="stat-label">Events/Day (Keystone)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">&lt;100ms</div>
+        <div class="stat-label">Recommendation Latency</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">75-80%</div>
+        <div class="stat-label">Viewing from Recommendations</div>
+      </div>
+    </div>
+    <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 15px;">Sources: <a href="https://about.netflix.com/" target="_blank" style="color: var(--text-muted);">Netflix Investor Relations</a> · <a href="https://zhenzhongxu.com/the-four-innovation-phases-of-netflixs-trillions-scale-real-time-data-infrastructure-2370938d7f01" target="_blank" style="color: var(--text-muted);">Zhenzhong Xu, Netflix Engineering</a> · <a href="https://research.netflix.com/research-area/recommendations" target="_blank" style="color: var(--text-muted);">Netflix Research</a></p>
+
+    <p>Netflix didn't just build a streaming service. They built a planetary-scale similarity-routing engine. Every time you open Netflix, a massive distributed system computes which content you're most likely to enjoy by comparing you to users with similar viewing patterns.</p>
+
+    <p>The technical achievement is staggering: 2 trillion events per day processed through the Keystone data pipeline, collaborative filtering across 250 million user profiles, and personalized recommendations served in under 100 milliseconds. 75-80% of all viewing hours come from algorithmic recommendations.</p>
+
+    <p>QIS uses the same fundamental infrastructure patterns—similarity-based routing at scale—but for a different purpose: routing insight instead of entertainment. The architecture is nearly identical. The paradigm is fundamentally different.</p>
+
+    <!-- THE FULL NETFLIX LOOP -->
+    <h2>The Full Netflix Loop: End-to-End Architecture</h2>
+
+    <div class="pipeline-section">
+      <div class="pipeline-title netflix">
+        <span style="font-size: 1.5rem;">🎬</span>
+        Netflix Recommendation Pipeline
+      </div>
+
+      <div class="pipeline-diagram">
+        <svg viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="1100" height="540" fill="rgba(0,0,0,0.3)" rx="12"/>
+
+          <!-- Layer Labels -->
+          <text x="550" y="30" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Orbitron, sans-serif" font-size="11">DATA INGESTION → BATCH PROCESSING → MODEL TRAINING → SERVING → DELIVERY</text>
+          
+          <!-- LAYER 1: Data Sources -->
+          <g transform="translate(20, 50)">
+            <rect width="140" height="400" rx="8" fill="rgba(229,9,20,0.1)" stroke="rgba(229,9,20,0.4)"/>
+            <text x="70" y="25" text-anchor="middle" fill="#E50914" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">DATA SOURCES</text>
+            
+            <rect x="10" y="40" width="120" height="40" rx="4" fill="rgba(229,9,20,0.2)" stroke="rgba(229,9,20,0.5)"/>
+            <text x="70" y="58" text-anchor="middle" fill="#fff" font-size="10">User Events</text>
+            <text x="70" y="72" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">clicks, plays, pauses</text>
+            
+            <rect x="10" y="90" width="120" height="40" rx="4" fill="rgba(229,9,20,0.2)" stroke="rgba(229,9,20,0.5)"/>
+            <text x="70" y="108" text-anchor="middle" fill="#fff" font-size="10">Watch History</text>
+            <text x="70" y="122" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">duration, completion</text>
+            
+            <rect x="10" y="140" width="120" height="40" rx="4" fill="rgba(229,9,20,0.2)" stroke="rgba(229,9,20,0.5)"/>
+            <text x="70" y="158" text-anchor="middle" fill="#fff" font-size="10">Search Queries</text>
+            <text x="70" y="172" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">intent signals</text>
+            
+            <rect x="10" y="190" width="120" height="40" rx="4" fill="rgba(229,9,20,0.2)" stroke="rgba(229,9,20,0.5)"/>
+            <text x="70" y="208" text-anchor="middle" fill="#fff" font-size="10">Ratings</text>
+            <text x="70" y="222" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">explicit feedback</text>
+            
+            <rect x="10" y="240" width="120" height="40" rx="4" fill="rgba(229,9,20,0.2)" stroke="rgba(229,9,20,0.5)"/>
+            <text x="70" y="258" text-anchor="middle" fill="#fff" font-size="10">Device Context</text>
+            <text x="70" y="272" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">time, location, device</text>
+            
+            <rect x="10" y="290" width="120" height="40" rx="4" fill="rgba(229,9,20,0.2)" stroke="rgba(229,9,20,0.5)"/>
+            <text x="70" y="308" text-anchor="middle" fill="#fff" font-size="10">Content Metadata</text>
+            <text x="70" y="322" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">genres, actors, tags</text>
+            
+            <text x="70" y="365" text-anchor="middle" fill="rgba(229,9,20,0.8)" font-family="JetBrains Mono" font-size="9">2T+ events/day</text>
+            <text x="70" y="380" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">via Apache Kafka</text>
+          </g>
+          
+          <!-- Arrow 1 -->
+          <path d="M 165 250 L 190 250" stroke="#E50914" stroke-width="2" marker-end="url(#arrowRed)"/>
+          
+          <!-- LAYER 2: Keystone Pipeline -->
+          <g transform="translate(195, 50)">
+            <rect width="160" height="400" rx="8" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.4)"/>
+            <text x="80" y="25" text-anchor="middle" fill="#F59E0B" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">KEYSTONE PIPELINE</text>
+            
+            <rect x="10" y="45" width="140" height="55" rx="4" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)"/>
+            <text x="80" y="65" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Apache Kafka</text>
+            <text x="80" y="80" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">36 clusters</text>
+            <text x="80" y="93" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">700B+ events/day</text>
+            
+            <path d="M 80 105 L 80 115" stroke="#F59E0B" stroke-width="1.5"/>
+            
+            <rect x="10" y="120" width="140" height="55" rx="4" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)"/>
+            <text x="80" y="140" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Apache Flink</text>
+            <text x="80" y="155" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Stream processing</text>
+            <text x="80" y="168" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Real-time ETL</text>
+            
+            <path d="M 80 180 L 80 190" stroke="#F59E0B" stroke-width="1.5"/>
+            
+            <rect x="10" y="195" width="140" height="55" rx="4" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)"/>
+            <text x="80" y="215" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Feature Store</text>
+            <text x="80" y="230" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">User embeddings</text>
+            <text x="80" y="243" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Item embeddings</text>
+            
+            <path d="M 80 255 L 80 265" stroke="#F59E0B" stroke-width="1.5"/>
+            
+            <rect x="10" y="270" width="140" height="55" rx="4" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)"/>
+            <text x="80" y="290" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">S3 + Iceberg</text>
+            <text x="80" y="305" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Data lake storage</text>
+            <text x="80" y="318" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">3 PB/day ingested</text>
+            
+            <text x="80" y="360" text-anchor="middle" fill="rgba(245,158,11,0.8)" font-family="JetBrains Mono" font-size="9">NEARLINE</text>
+            <text x="80" y="375" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">seconds latency</text>
+          </g>
+          
+          <!-- Arrow 2 -->
+          <path d="M 360 250 L 385 250" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowGold)"/>
+          
+          <!-- LAYER 3: Model Training -->
+          <g transform="translate(390, 50)">
+            <rect width="160" height="400" rx="8" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.4)"/>
+            <text x="80" y="25" text-anchor="middle" fill="#8B5CF6" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">MODEL TRAINING</text>
+            
+            <rect x="10" y="45" width="140" height="65" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
+            <text x="80" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Matrix Factorization</text>
+            <text x="80" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">SVD, NMF</text>
+            <text x="80" y="91" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">User-Item → Latent factors</text>
+            <text x="80" y="104" text-anchor="middle" fill="#8B5CF6" font-size="7">Creates vector space</text>
+            
+            <path d="M 80 115 L 80 125" stroke="#8B5CF6" stroke-width="1.5"/>
+            
+            <rect x="10" y="130" width="140" height="65" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
+            <text x="80" y="148" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Collaborative Filter</text>
+            <text x="80" y="163" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">User-based (UBCF)</text>
+            <text x="80" y="176" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Item-based (IBCF)</text>
+            <text x="80" y="189" text-anchor="middle" fill="#8B5CF6" font-size="7">Similar users/items</text>
+            
+            <path d="M 80 200 L 80 210" stroke="#8B5CF6" stroke-width="1.5"/>
+            
+            <rect x="10" y="215" width="140" height="55" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
+            <text x="80" y="233" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Deep Neural Nets</text>
+            <text x="80" y="248" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">SemanticGNN</text>
+            <text x="80" y="261" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Content embeddings</text>
+            
+            <path d="M 80 275 L 80 285" stroke="#8B5CF6" stroke-width="1.5"/>
+            
+            <rect x="10" y="290" width="140" height="55" rx="4" fill="rgba(229,9,20,0.2)" stroke="rgba(229,9,20,0.5)"/>
+            <text x="80" y="308" text-anchor="middle" fill="#E50914" font-size="10" font-weight="bold">K-NN SIMILARITY</text>
+            <text x="80" y="323" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">K nearest neighbors</text>
+            <text x="80" y="336" text-anchor="middle" fill="#E50914" font-size="8">FUZZY MATCHING</text>
+            
+            <text x="80" y="370" text-anchor="middle" fill="rgba(139,92,246,0.8)" font-family="JetBrains Mono" font-size="9">OFFLINE</text>
+            <text x="80" y="385" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Apache Spark batch</text>
+          </g>
+          
+          <!-- Arrow 3 -->
+          <path d="M 555 250 L 580 250" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowPurple)"/>
+          
+          <!-- LAYER 4: Model Serving -->
+          <g transform="translate(585, 50)">
+            <rect width="160" height="400" rx="8" fill="rgba(0,190,234,0.1)" stroke="rgba(0,190,234,0.4)"/>
+            <text x="80" y="25" text-anchor="middle" fill="#00BEEA" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">MODEL SERVING</text>
+            
+            <rect x="10" y="45" width="140" height="55" rx="4" fill="rgba(0,190,234,0.15)" stroke="rgba(0,190,234,0.5)"/>
+            <text x="80" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Pre-computed Recs</text>
+            <text x="80" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Cached per user</text>
+            <text x="80" y="91" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Edge nodes</text>
+            
+            <path d="M 80 105 L 80 115" stroke="#00BEEA" stroke-width="1.5"/>
+            
+            <rect x="10" y="120" width="140" height="55" rx="4" fill="rgba(0,190,234,0.15)" stroke="rgba(0,190,234,0.5)"/>
+            <text x="80" y="138" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Zuul API Gateway</text>
+            <text x="80" y="153" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Request routing</text>
+            <text x="80" y="166" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Load balancing</text>
+            
+            <path d="M 80 180 L 80 190" stroke="#00BEEA" stroke-width="1.5"/>
+            
+            <rect x="10" y="195" width="140" height="55" rx="4" fill="rgba(0,190,234,0.15)" stroke="rgba(0,190,234,0.5)"/>
+            <text x="80" y="213" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Eureka Discovery</text>
+            <text x="80" y="228" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">1000+ microservices</text>
+            <text x="80" y="241" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Service registry</text>
+            
+            <path d="M 80 255 L 80 265" stroke="#00BEEA" stroke-width="1.5"/>
+            
+            <rect x="10" y="270" width="140" height="55" rx="4" fill="rgba(0,190,234,0.15)" stroke="rgba(0,190,234,0.5)"/>
+            <text x="80" y="288" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Real-time Re-ranking</text>
+            <text x="80" y="303" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Context-aware</text>
+            <text x="80" y="316" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Contextual bandits</text>
+            
+            <text x="80" y="360" text-anchor="middle" fill="rgba(0,190,234,0.8)" font-family="JetBrains Mono" font-size="9">ONLINE</text>
+            <text x="80" y="375" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">&lt;100ms latency</text>
+          </g>
+          
+          <!-- Arrow 4 -->
+          <path d="M 750 250 L 775 250" stroke="#00BEEA" stroke-width="2" marker-end="url(#arrowCyan)"/>
+          
+          <!-- LAYER 5: Delivery -->
+          <g transform="translate(780, 50)">
+            <rect width="140" height="400" rx="8" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.4)"/>
+            <text x="70" y="25" text-anchor="middle" fill="#10B981" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">DELIVERY</text>
+            
+            <rect x="10" y="45" width="120" height="55" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="70" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Open Connect CDN</text>
+            <text x="70" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Edge caching</text>
+            <text x="70" y="91" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">In-ISP servers</text>
+            
+            <path d="M 70 105 L 70 115" stroke="#10B981" stroke-width="1.5"/>
+            
+            <rect x="10" y="120" width="120" height="55" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="70" y="138" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Personalized UI</text>
+            <text x="70" y="153" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Row order</text>
+            <text x="70" y="166" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Artwork selection</text>
+            
+            <path d="M 70 180 L 70 190" stroke="#10B981" stroke-width="1.5"/>
+            
+            <rect x="10" y="195" width="120" height="55" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="70" y="213" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">User Device</text>
+            <text x="70" y="228" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">TV, Phone, Web</text>
+            <text x="70" y="241" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Adaptive bitrate</text>
+            
+            <rect x="10" y="280" width="120" height="70" rx="4" fill="rgba(229,9,20,0.15)" stroke="rgba(229,9,20,0.5)"/>
+            <text x="70" y="300" text-anchor="middle" fill="#E50914" font-size="10" font-weight="bold">THE PAYLOAD</text>
+            <text x="70" y="318" text-anchor="middle" fill="#fff" font-size="11">Content IDs</text>
+            <text x="70" y="335" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">"Movies you'll like"</text>
+            
+            <text x="70" y="375" text-anchor="middle" fill="rgba(16,185,129,0.8)" font-family="JetBrains Mono" font-size="9">RECOMMENDATION</text>
+            <text x="70" y="390" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">User sees suggestions</text>
+          </g>
+          
+          <!-- Feedback Loop -->
+          <path d="M 920 420 Q 960 420 960 470 Q 960 510 90 510 Q 20 510 20 470 L 20 420"
+                stroke="rgba(229,9,20,0.4)" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+          <text x="490" y="525" text-anchor="middle" fill="rgba(229,9,20,0.6)" font-size="10">Feedback loop: User actions → New events → Model retraining</text>
+          
+          <!-- Arrow markers -->
+          <defs>
+            <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#E50914"/>
+            </marker>
+            <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B"/>
+            </marker>
+            <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#8B5CF6"/>
+            </marker>
+            <marker id="arrowCyan" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#00BEEA"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <p style="margin-top: 20px; font-size: 1rem; color: var(--text-muted);">
+        <strong>Key technologies:</strong> Apache Kafka (ingestion) → Apache Flink (stream processing) → Apache Spark (batch training) → Matrix factorization + K-NN (similarity) → Microservices (serving) → Open Connect CDN (delivery). The K-NN step finds the K nearest neighbors in latent vector space—<strong>intentionally fuzzy matching</strong> for serendipitous discovery.
+      </p>
+    </div>
+
+    <!-- THE FULL QIS LOOP -->
+    <h2>The Full QIS Loop: End-to-End Architecture</h2>
+
+    <div class="pipeline-section qis">
+      <div class="pipeline-title qis">
+        <span style="font-size: 1.5rem;">🔮</span>
+        QIS Insight Routing Pipeline
+      </div>
+
+      <div class="pipeline-diagram">
+        <svg viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="1100" height="540" fill="rgba(0,0,0,0.3)" rx="12"/>
+
+          <!-- Layer Labels -->
+          <text x="550" y="30" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Orbitron, sans-serif" font-size="11">DATA SOURCES → EDGE NODE → FINGERPRINT → ROUTING → OUTCOME PACKETS → LOCAL SYNTHESIS</text>
+          
+          <!-- LAYER 0: Data Sources -->
+          <g transform="translate(20, 50)">
+            <rect width="130" height="400" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.4)"/>
+            <text x="65" y="25" text-anchor="middle" fill="#3B82F6" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">DATA SOURCES</text>
+            
+            <rect x="10" y="40" width="110" height="35" rx="4" fill="rgba(59,130,246,0.2)" stroke="rgba(59,130,246,0.5)"/>
+            <text x="65" y="58" text-anchor="middle" fill="#fff" font-size="9">EHR / FHIR</text>
+            <text x="65" y="70" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7">medical records</text>
+            
+            <rect x="10" y="82" width="110" height="35" rx="4" fill="rgba(59,130,246,0.2)" stroke="rgba(59,130,246,0.5)"/>
+            <text x="65" y="100" text-anchor="middle" fill="#fff" font-size="9">Wearables</text>
+            <text x="65" y="112" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7">vitals, activity</text>
+            
+            <rect x="10" y="124" width="110" height="35" rx="4" fill="rgba(59,130,246,0.2)" stroke="rgba(59,130,246,0.5)"/>
+            <text x="65" y="142" text-anchor="middle" fill="#fff" font-size="9">IoT Sensors</text>
+            <text x="65" y="154" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7">equipment, soil</text>
+            
+            <rect x="10" y="166" width="110" height="35" rx="4" fill="rgba(59,130,246,0.2)" stroke="rgba(59,130,246,0.5)"/>
+            <text x="65" y="184" text-anchor="middle" fill="#fff" font-size="9">Vehicle Data</text>
+            <text x="65" y="196" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7">telemetry, events</text>
+            
+            <rect x="10" y="208" width="110" height="35" rx="4" fill="rgba(59,130,246,0.2)" stroke="rgba(59,130,246,0.5)"/>
+            <text x="65" y="226" text-anchor="middle" fill="#fff" font-size="9">User Input</text>
+            <text x="65" y="238" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7">symptoms, queries</text>
+            
+            <rect x="10" y="250" width="110" height="35" rx="4" fill="rgba(59,130,246,0.2)" stroke="rgba(59,130,246,0.5)"/>
+            <text x="65" y="268" text-anchor="middle" fill="#fff" font-size="9">Lab Results</text>
+            <text x="65" y="280" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7">genomics, biomarkers</text>
+            
+            <text x="65" y="320" text-anchor="middle" fill="rgba(59,130,246,0.8)" font-family="JetBrains Mono" font-size="9">ANY SOURCE</text>
+            <text x="65" y="335" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Raw data stays local</text>
+          </g>
+          
+          <!-- Arrow 1 -->
+          <path d="M 155 250 L 175 250" stroke="#3B82F6" stroke-width="2" marker-end="url(#arrowBlue)"/>
+          
+          <!-- LAYER 1: Edge Node -->
+          <g transform="translate(180, 50)">
+            <rect width="140" height="400" rx="8" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.4)"/>
+            <text x="70" y="25" text-anchor="middle" fill="#10B981" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">EDGE NODE</text>
+            
+            <rect x="10" y="45" width="120" height="50" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="70" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Local Aggregation</text>
+            <text x="70" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Ingest from sources</text>
+            <text x="70" y="90" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Distill locally</text>
+            
+            <path d="M 70 100 L 70 110" stroke="#10B981" stroke-width="1.5"/>
+            
+            <rect x="10" y="115" width="120" height="50" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="70" y="133" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Feature Extraction</text>
+            <text x="70" y="148" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Apply expert template</text>
+            <text x="70" y="160" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Extract key variables</text>
+            
+            <path d="M 70 170 L 70 180" stroke="#10B981" stroke-width="1.5"/>
+            
+            <rect x="10" y="185" width="120" height="50" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="70" y="203" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Outcome Creation</text>
+            <text x="70" y="218" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">When result occurs</text>
+            <text x="70" y="230" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Deposit to network</text>
+            
+            <text x="70" y="270" text-anchor="middle" fill="rgba(16,185,129,0.8)" font-family="JetBrains Mono" font-size="9">ANY COMPUTE</text>
+            <text x="70" y="285" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Phone, edge AI,</text>
+            <text x="70" y="298" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">hospital, vehicle</text>
+            
+            <rect x="10" y="320" width="120" height="40" rx="4" fill="rgba(16,185,129,0.25)" stroke="rgba(16,185,129,0.6)"/>
+            <text x="70" y="340" text-anchor="middle" fill="#10B981" font-size="9" font-weight="bold">ALSO: SYNTHESIS</text>
+            <text x="70" y="354" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Returns here ↩</text>
+          </g>
+          
+          <!-- Arrow 2 -->
+          <path d="M 325 250 L 345 250" stroke="#10B981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+          
+          <!-- LAYER 2: Semantic Fingerprint -->
+          <g transform="translate(350, 50)">
+            <rect width="155" height="400" rx="8" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.4)"/>
+            <text x="77" y="25" text-anchor="middle" fill="#F59E0B" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">FINGERPRINT</text>
+            
+            <rect x="10" y="45" width="135" height="70" rx="4" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)"/>
+            <text x="77" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Expert Template</text>
+            <text x="77" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Oncologist defines:</text>
+            <text x="77" y="91" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">stage, biomarkers,</text>
+            <text x="77" y="104" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">mutations, comorbidities</text>
+            
+            <path d="M 77 120 L 77 130" stroke="#F59E0B" stroke-width="1.5"/>
+            
+            <rect x="10" y="135" width="135" height="55" rx="4" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)"/>
+            <text x="77" y="153" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Deterministic Address</text>
+            <text x="77" y="168" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">hash(parameters)</text>
+            <text x="77" y="181" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Same inputs → same key</text>
+            
+            <path d="M 77 195 L 77 205" stroke="#F59E0B" stroke-width="1.5"/>
+            
+            <rect x="10" y="210" width="135" height="55" rx="4" fill="rgba(16,185,129,0.2)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="77" y="228" text-anchor="middle" fill="#10B981" font-size="10" font-weight="bold">EXACT ROUTING KEY</text>
+            <text x="77" y="243" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Deterministic address</text>
+            <text x="77" y="256" text-anchor="middle" fill="#10B981" font-size="8">PRECISION MATCHING</text>
+            
+            <rect x="10" y="285" width="135" height="55" rx="4" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.3)" stroke-dasharray="3,3"/>
+            <text x="77" y="303" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">+ Continuous refinement</text>
+            <text x="77" y="318" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">within categorical bucket</text>
+            <text x="77" y="331" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">(cosine similarity)</text>
+            
+            <text x="77" y="370" text-anchor="middle" fill="rgba(245,158,11,0.8)" font-family="JetBrains Mono" font-size="9">YOUR SITUATION</text>
+            <text x="77" y="385" text-anchor="middle" fill="#F59E0B" font-size="9">= YOUR ADDRESS</text>
+          </g>
+          
+          <!-- Arrow 3 -->
+          <path d="M 510 250 L 530 250" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowGold2)"/>
+          
+          <!-- LAYER 3: Routing -->
+          <g transform="translate(535, 50)">
+            <rect width="150" height="400" rx="8" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.4)"/>
+            <text x="75" y="25" text-anchor="middle" fill="#8B5CF6" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">ROUTING</text>
+            
+            <rect x="10" y="45" width="130" height="55" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
+            <text x="75" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">DHT (Kademlia)</text>
+            <text x="75" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">O(log N) hops</text>
+            <text x="75" y="91" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">BitTorrent scale: 28M</text>
+            
+            <rect x="10" y="110" width="130" height="45" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
+            <text x="75" y="128" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Vector Database</text>
+            <text x="75" y="143" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Pinecone, FAISS, etc.</text>
+            
+            <rect x="10" y="165" width="130" height="45" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
+            <text x="75" y="183" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Service Registry</text>
+            <text x="75" y="198" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Consul, Eureka</text>
+            
+            <rect x="10" y="220" width="130" height="45" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
+            <text x="75" y="238" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Any Similarity Router</text>
+            <text x="75" y="253" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Same key → same bucket</text>
+            
+            <rect x="10" y="285" width="130" height="60" rx="4" fill="rgba(16,185,129,0.2)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="75" y="303" text-anchor="middle" fill="#10B981" font-size="10" font-weight="bold">TELEPORTATION</text>
+            <text x="75" y="318" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Direct to exact cohort</text>
+            <text x="75" y="333" text-anchor="middle" fill="#10B981" font-size="8">Not searching—arriving</text>
+            
+            <text x="75" y="370" text-anchor="middle" fill="rgba(139,92,246,0.8)" font-family="JetBrains Mono" font-size="9">ANY INFRASTRUCTURE</text>
+            <text x="75" y="385" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Routes by similarity</text>
+          </g>
+          
+          <!-- Arrow 4 -->
+          <path d="M 690 250 L 710 250" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowPurple2)"/>
+          
+          <!-- LAYER 4: Outcome Packets -->
+          <g transform="translate(715, 50)">
+            <rect width="140" height="400" rx="8" fill="rgba(0,190,234,0.1)" stroke="rgba(0,190,234,0.4)"/>
+            <text x="70" y="25" text-anchor="middle" fill="#00BEEA" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">OUTCOME PACKETS</text>
+            
+            <rect x="10" y="45" width="120" height="90" rx="4" fill="rgba(0,190,234,0.15)" stroke="rgba(0,190,234,0.5)"/>
+            <text x="70" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">~512 bytes</text>
+            <text x="70" y="80" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">treatment: "FOLFOX"</text>
+            <text x="70" y="93" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">outcome: "responded"</text>
+            <text x="70" y="106" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">duration: 18mo</text>
+            <text x="70" y="119" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">confidence: 0.94</text>
+            <text x="70" y="132" text-anchor="middle" fill="#00BEEA" font-size="7">PRE-DISTILLED</text>
+            
+            <rect x="10" y="150" width="120" height="55" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="70" y="168" text-anchor="middle" fill="#10B981" font-size="10" font-weight="bold">WHAT MOVES</text>
+            <text x="70" y="183" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Distilled outcome</text>
+            <text x="70" y="196" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Privacy-safe</text>
+            
+            <rect x="10" y="215" width="120" height="55" rx="4" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.5)"/>
+            <text x="70" y="233" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="bold">NEVER MOVES</text>
+            <text x="70" y="248" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">PII / PHI</text>
+            <text x="70" y="261" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Raw data</text>
+            
+            <rect x="10" y="290" width="120" height="55" rx="4" fill="rgba(0,190,234,0.25)" stroke="rgba(0,190,234,0.6)"/>
+            <text x="70" y="308" text-anchor="middle" fill="#00BEEA" font-size="10" font-weight="bold">THE PAYLOAD</text>
+            <text x="70" y="325" text-anchor="middle" fill="#fff" font-size="11">THE INSIGHT</text>
+            <text x="70" y="340" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Already computed</text>
+            
+            <text x="70" y="370" text-anchor="middle" fill="rgba(0,190,234,0.8)" font-family="JetBrains Mono" font-size="9">INSIGHT ITSELF</text>
+            <text x="70" y="385" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Not a pointer</text>
+          </g>
+          
+          <!-- Arrow 5 -->
+          <path d="M 860 250 L 880 250" stroke="#00BEEA" stroke-width="2" marker-end="url(#arrowCyan2)"/>
+          
+          <!-- LAYER 5: Local Synthesis -->
+          <g transform="translate(885, 50)">
+            <rect width="130" height="400" rx="8" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="65" y="25" text-anchor="middle" fill="#10B981" font-family="Orbitron, sans-serif" font-size="11" font-weight="bold">LOCAL SYNTHESIS</text>
+            
+            <rect x="10" y="45" width="110" height="70" rx="4" fill="rgba(249,115,22,0.15)" stroke="rgba(249,115,22,0.5)"/>
+            <text x="65" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Methods</text>
+            <text x="65" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Vote / Tally</text>
+            <text x="65" y="91" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Weighted median</text>
+            <text x="65" y="104" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">Bayesian update</text>
+            
+            <path d="M 65 120 L 65 130" stroke="#10B981" stroke-width="1.5"/>
+            
+            <rect x="10" y="135" width="110" height="55" rx="4" fill="rgba(16,185,129,0.2)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="65" y="153" text-anchor="middle" fill="#10B981" font-size="10" font-weight="bold">YOUR INSIGHT</text>
+            <text x="65" y="168" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">Personalized</text>
+            <text x="65" y="181" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">From exact cohort</text>
+            
+            <rect x="10" y="205" width="110" height="50" rx="4" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.5)"/>
+            <text x="65" y="223" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">O(K) local</text>
+            <text x="65" y="238" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">~2ms / 1K packets</text>
+            <text x="65" y="250" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7">Phone can do it</text>
+            
+            <rect x="10" y="275" width="110" height="50" rx="4" fill="rgba(16,185,129,0.25)" stroke="rgba(16,185,129,0.6)"/>
+            <text x="65" y="295" text-anchor="middle" fill="#10B981" font-size="9" font-weight="bold">↩ BACK AT EDGE</text>
+            <text x="65" y="310" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">Same node queries</text>
+            <text x="65" y="322" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="8">and synthesizes</text>
+            
+            <text x="65" y="360" text-anchor="middle" fill="rgba(16,185,129,0.8)" font-family="JetBrains Mono" font-size="9">FULL CIRCLE</text>
+            <text x="65" y="375" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">No central compute</text>
+          </g>
+          
+          <!-- Deposit Loop -->
+          <path d="M 1015 400 Q 1050 400 1050 460 Q 1050 510 250 510 Q 185 510 185 460 L 185 400"
+                stroke="rgba(0,190,234,0.4)" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+          <text x="600" y="525" text-anchor="middle" fill="rgba(0,190,234,0.6)" font-size="10">Deposit loop: Your outcome → Becomes outcome packet → Routes to those who need it → Baseline rises</text>
+          
+          <!-- More arrow markers -->
+          <defs>
+            <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#3B82F6"/>
+            </marker>
+            <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#10B981"/>
+            </marker>
+            <marker id="arrowGold2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B"/>
+            </marker>
+            <marker id="arrowPurple2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#8B5CF6"/>
+            </marker>
+            <marker id="arrowCyan2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#00BEEA"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <p style="margin-top: 20px; font-size: 1rem; color: var(--text-muted);">
+        <strong>Key insight:</strong> Any data source → Edge node (phone, hospital, vehicle) → Expert-defined fingerprint → Any similarity router (DHT, vector DB, etc.) → Outcome packets (~512 bytes, the insight itself) → Local synthesis. <strong>Your situation becomes your address.</strong> The parameters that define your problem deterministically route you to everyone who shares that problem. Same address = same cohort = relevant outcomes waiting for you.
+      </p>
+    </div>
+
+    <!-- THE PARADIGM SHIFT -->
+    <h2>The Paradigm Shift: Same Infrastructure, Different Payload</h2>
+
+    <div class="paradigm-box">
+      <h3>What Gets Routed Changes Everything</h3>
+      
+      <div class="paradigm-comparison">
+        <div class="paradigm-side netflix">
+          <h4>🎬 Netflix Routes</h4>
+          <p><strong>Content IDs</strong></p>
+          <p>"Movies you might like based on users similar to you"</p>
+          <p style="color: var(--netflix-red); font-weight: 600;">Recommendations</p>
+        </div>
+        
+        <div class="paradigm-arrow">→</div>
+        
+        <div class="paradigm-side qis">
+          <h4>🔮 QIS Routes</h4>
+          <p><strong>Outcome Packets</strong></p>
+          <p>"What actually happened to people exactly like you"</p>
+          <p style="color: var(--cyan-bright); font-weight: 600;">Insight Itself</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Netflix's payload is a <strong>content ID</strong>—a pointer to a movie in their catalog. The recommendation says "you might like this." The user still has to watch the movie to find out.</p>
+
+    <p>QIS's payload is the <strong>outcome itself</strong>—a pre-distilled insight that already contains the answer. "Treatment A worked. 18 months progression-free. Confidence 0.94." The insight doesn't point to something you need to go find. The insight IS what you came for.</p>
+
+    <div class="key-insight">
+      <h4>The Routing Infrastructure Doesn't Compute</h4>
+      <p>In both systems, the routing layer is a delivery mechanism—not a processor. Netflix's K-NN doesn't watch movies for you. QIS's DHT doesn't analyze outcomes. They route. The difference is what arrives when routing completes. Netflix delivers suggestions. QIS delivers answers.</p>
+    </div>
+
+    <!-- THE PRECISION DISTINCTION -->
+    <h2>The Precision Distinction: K-NN vs Exact Cohort</h2>
+
+    <p>This is where the architectures diverge by design choice, not capability.</p>
+
+    <div class="precision-grid">
+      <div class="precision-card fuzzy">
+        <h4>🎬 Netflix: K-Nearest Neighbors (Fuzzy)</h4>
+        <ul>
+          <li><strong>Method:</strong> Find the K closest users in latent vector space (cosine similarity)</li>
+          <li><strong>Typical K:</strong> 10-50 neighbors</li>
+          <li><strong>Intent:</strong> Discovery and serendipity—"you might also like"</li>
+          <li><strong>Precision:</strong> Intentionally approximate</li>
+          <li><strong>Why:</strong> A user who likes Stranger Things should discover The OA even if they're not identical matches</li>
+          <li><strong>Stakes:</strong> Wrong recommendation = mildly annoying. No harm.</li>
+        </ul>
+      </div>
+      
+      <div class="precision-card exact">
+        <h4>🔮 QIS: Exact Cohort Matching (Precision)</h4>
+        <ul>
+          <li><strong>Method:</strong> Deterministic hash of categorical variables → exact bucket routing</li>
+          <li><strong>Bucket size:</strong> All peers with identical fingerprint (could be thousands)</li>
+          <li><strong>Intent:</strong> Precision matching—"outcomes from people exactly like you"</li>
+          <li><strong>Precision:</strong> Stage 3 NEVER matches Stage 4</li>
+          <li><strong>Why:</strong> Medical safety requires categorical boundaries. KRAS+ must not mix with KRAS-.</li>
+          <li><strong>Stakes:</strong> Wrong cohort = potentially dangerous. Precision is non-negotiable.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="code-block">
+<span class="comment">// Netflix K-NN approach (simplified)</span>
+user_vector = matrix_factorization(user_history)  <span class="comment">// User → latent factors</span>
+similar_users = <span class="function">find_k_nearest</span>(user_vector, k=50)  <span class="comment">// K closest in vector space</span>
+recommendations = <span class="function">aggregate</span>(similar_users.watched)  <span class="comment">// What did similar users watch?</span>
+<span class="comment">// Result: "You might like these movies" — FUZZY</span>
+
+<span class="comment">// QIS exact cohort approach (simplified)</span>
+categorical = {<span class="key">disease</span>: <span class="value">'colorectal'</span>, <span class="key">stage</span>: <span class="value">3</span>, <span class="key">kras</span>: <span class="value">1</span>, <span class="key">msi</span>: <span class="value">0</span>}
+address = <span class="function">hash</span>(categorical)  <span class="comment">// Your situation = your address (any deterministic function)</span>
+bucket = <span class="function">route</span>(address)  <span class="comment">// O(log N) to exact cohort</span>
+outcomes = bucket.<span class="function">filter</span>(continuous_similarity > 0.88)  <span class="comment">// Refine within bucket</span>
+<span class="comment">// Result: "Here's what happened to people exactly like you" — EXACT</span>
+    </div>
+
+    <p><strong>Both systems CAN do either.</strong> Netflix could do exact matching—but chose not to because entertainment discovery benefits from serendipity. QIS can do approximate matching (vector DB path)—but emphasizes exact routing because healthcare and safety-critical domains demand precision.</p>
+
+    <div class="key-insight">
+      <h4>The "Teleportation" Principle</h4>
+      <p>When your fingerprint is deterministic and your routing preserves its structure, you don't search the network. You don't wander. You <strong>teleport</strong> directly to where relevant outcomes already exist. The expert defines what "similar" means. The hash makes it exact. The DHT routes you there in O(log N) hops. Everyone in that bucket shares your expert-defined situation. Their outcomes are waiting for you.</p>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <h2>Side-by-Side Technical Comparison</h2>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th class="netflix-col">Netflix</th>
+          <th class="qis-col">QIS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Data Ingestion</strong></td>
+          <td class="netflix-col">Apache Kafka (700B+ events/day, 36 clusters)</td>
+          <td class="qis-col">Any source → Edge node (local aggregation)</td>
+        </tr>
+        <tr>
+          <td><strong>Stream Processing</strong></td>
+          <td class="netflix-col">Apache Flink (real-time ETL)</td>
+          <td class="qis-col">Edge node (local distillation)</td>
+        </tr>
+        <tr>
+          <td><strong>Batch Processing</strong></td>
+          <td class="netflix-col">Apache Spark (model training)</td>
+          <td class="qis-col">None required (outcomes pre-distilled)</td>
+        </tr>
+        <tr>
+          <td><strong>Similarity Definition</strong></td>
+          <td class="netflix-col">Matrix factorization → latent vectors</td>
+          <td class="qis-col">Expert template → deterministic address</td>
+        </tr>
+        <tr>
+          <td><strong>Matching Method</strong></td>
+          <td class="netflix-col">K-NN in vector space (fuzzy, K=10-50)</td>
+          <td class="qis-col">Exact bucket + continuous refinement</td>
+        </tr>
+        <tr>
+          <td><strong>Routing</strong></td>
+          <td class="netflix-col">Microservices + Eureka discovery</td>
+          <td class="qis-col">DHT, Vector DB, or any similarity router</td>
+        </tr>
+        <tr>
+          <td><strong>Routing Complexity</strong></td>
+          <td class="netflix-col">O(1) cached + O(K) re-ranking</td>
+          <td class="qis-col">O(log N) hops to exact bucket</td>
+        </tr>
+        <tr>
+          <td><strong>Payload</strong></td>
+          <td class="netflix-col">Content IDs (recommendations)</td>
+          <td class="qis-col">Outcome packets (the insight itself)</td>
+        </tr>
+        <tr>
+          <td><strong>Serving Latency</strong></td>
+          <td class="netflix-col">&lt;100ms</td>
+          <td class="qis-col">Similar (routing + synthesis)</td>
+        </tr>
+        <tr>
+          <td><strong>Local Computation</strong></td>
+          <td class="netflix-col">Display logic</td>
+          <td class="qis-col">Outcome synthesis (vote, aggregate)</td>
+        </tr>
+        <tr>
+          <td><strong>Central Model</strong></td>
+          <td class="netflix-col">Required (trained on full dataset)</td>
+          <td class="qis-col">None required (outcomes pre-exist)</td>
+        </tr>
+        <tr>
+          <td><strong>Privacy</strong></td>
+          <td class="netflix-col">Data to Netflix for training</td>
+          <td class="qis-col">Raw data stays local (only outcomes route)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- UNIVERSAL APPLICABILITY -->
+    <h2>Universal Applicability: Any Domain Where Similarity Is Definable</h2>
+
+    <p>Netflix proved the infrastructure works at planetary scale for entertainment. The same architectural pattern applies to any domain where you can define similarity and insight is aggregatable.</p>
+
+    <div class="domain-grid">
+      <div class="domain-card">
+        <h4>🏥 Precision Medicine</h4>
+        <p>Route to patients with identical clinical fingerprint (stage, biomarkers, mutations). Retrieve real treatment outcomes. "What worked for people exactly like me?"</p>
+      </div>
+      
+      <div class="domain-card">
+        <h4>🌾 Agriculture</h4>
+        <p>Route to farms with identical conditions (soil type, climate, crop variety). Retrieve yield outcomes. "What intervention worked for fields exactly like mine?"</p>
+      </div>
+      
+      <div class="domain-card">
+        <h4>🔧 Industrial Machinery</h4>
+        <p>Route to equipment with identical profile (model, age, usage pattern). Retrieve failure/maintenance outcomes. "What preventive action worked for machines exactly like mine?"</p>
+      </div>
+      
+      <div class="domain-card">
+        <h4>🏛️ Prison System</h4>
+        <p>Route to inmates with identical profile (offense type, risk factors, history). Retrieve intervention outcomes. "What rehabilitation program worked for people exactly like this?"</p>
+      </div>
+      
+      <div class="domain-card">
+        <h4>🚗 Autonomous Vehicles</h4>
+        <p>Route to vehicles that encountered identical scenarios (road conditions, edge cases). Retrieve outcomes. "What action succeeded in situations exactly like this?"</p>
+      </div>
+      
+      <div class="domain-card">
+        <h4>📊 Financial Risk</h4>
+        <p>Route to portfolios with identical exposure profiles. Retrieve historical outcomes. "What happened to positions exactly like mine in similar conditions?"</p>
+      </div>
+
+      <div class="domain-card">
+        <h4>✈️ Aviation</h4>
+        <p>Route to flights with identical parameters (aircraft type, weather, route, payload). Every plane before takeoff already knows how every similar plane landed. Real-time turbulence outcomes, fuel efficiency patterns, approach success rates—across every airline, globally.</p>
+      </div>
+
+      <div class="domain-card">
+        <h4>🎓 Education</h4>
+        <p>Route to learners with identical profiles (background, learning style, struggle patterns). Every student stuck on a concept instantly sees what worked for every similar learner. Not generic advice—specific interventions that produced breakthroughs for people exactly like them.</p>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <h4>From Coughs to Crops to Cars</h4>
+      <p>The infrastructure is domain-agnostic. If you can define similarity (what makes two cases "the same") and insight is aggregatable (outcomes can be synthesized), QIS applies. Netflix built a planetary-scale proof of concept for entertainment. The same pattern extends to any domain where distributed data holds distributed insight.</p>
+    </div>
+
+    <!-- FINAL INSIGHT -->
+    <h2>The Bottom Line</h2>
+
+    <p>Netflix didn't just build a streaming service. They built infrastructure for similarity-based routing at planetary scale—2 trillion events per day, 250 million users, sub-100ms latency. They proved the architecture works.</p>
+
+    <p><strong>QIS is the protocol for scaling intelligence itself.</strong></p>
+
+    <p>Not an application. Not a product. A universal mechanism for turning distributed experience into collective insight—anywhere similarity can be defined and outcomes are valuable. Netflix routes entertainment. QIS routes what humanity has learned. The infrastructure is identical. The implications are not.</p>
+
+    <p>Netflix routes <strong>content recommendations</strong> using <strong>fuzzy K-NN matching</strong> because serendipity serves entertainment.</p>
+
+    <p>QIS routes <strong>outcome packets</strong> using <strong>exact cohort matching</strong> because precision saves lives.</p>
+
+    <p>Same infrastructure. Different paradigm. The technology exists. The proof is running at scale. Netflix asked: "What might you like?" QIS asks: <strong>"What actually works for people exactly like you?"</strong></p>
+
+    <div class="highlight-box" style="text-align: center; padding: 40px; margin: 40px 0; border-color: var(--cyan-primary); background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));">
+      <p style="font-size: 1.3rem; margin-bottom: 20px; line-height: 1.6;"><strong>From coughs to crops to cars to classrooms to cockpits—Netflix proved the infrastructure works at planetary scale. QIS points it at what matters.</strong></p>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 20px;">Imagine a world where insight flows freely and intelligence scales quadratically—in real time, for everyone, everywhere.</p>
+      <a href="article-imagine-a-world.html" style="font-family: Orbitron, sans-serif; color: var(--cyan-bright); font-size: 1.1rem;">Imagine That World →</a>
+    </div>
+
+  </div>
+
+  <!-- CTA Section -->
+  <section class="cta-section" style="margin: 60px 40px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+    <h2>Continue Exploring</h2>
+    <p style="color:var(--text-secondary); max-width:600px; margin:0 auto 30px;">Discover more about the architecture, routing mechanisms, and applications of QIS.</p>
+    <div class="article-cards" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; max-width:1100px; margin:0 auto;">
+      <a href="article-architecture-diagram.html" class="article-card" style="background:var(--bg-soft, rgba(0,0,0,0.3)); border:1px solid rgba(0,190,234,0.3); border-radius:12px; padding:25px; text-decoration:none; transition:all 0.3s;">
+        <h4 style="font-family:Orbitron,sans-serif; font-size:1rem; color:var(--cyan-bright); margin-bottom:10px;">The Architecture Diagram</h4>
+        <p style="color:var(--text-secondary); font-size:0.95rem; margin:0;">Six layers. Every component exists. See exactly how QIS works.</p>
+      </a>
+      <a href="article-you-just-got-diagnosed.html" class="article-card" style="background:var(--bg-soft, rgba(0,0,0,0.3)); border:1px solid rgba(0,190,234,0.3); border-radius:12px; padding:25px; text-decoration:none; transition:all 0.3s;">
+        <h4 style="font-family:Orbitron,sans-serif; font-size:1rem; color:var(--cyan-bright); margin-bottom:10px;">You Just Got Diagnosed</h4>
+        <p style="color:var(--text-secondary); font-size:0.95rem; margin:0;">What would you want? Every satisfying answer points to QIS.</p>
+      </a>
+      <a href="article-qis-is-not-ai.html" class="article-card" style="background:var(--bg-soft, rgba(0,0,0,0.3)); border:1px solid rgba(0,190,234,0.3); border-radius:12px; padding:25px; text-decoration:none; transition:all 0.3s;">
+        <h4 style="font-family:Orbitron,sans-serif; font-size:1rem; color:var(--cyan-bright); margin-bottom:10px;">QIS Is Not AI</h4>
+        <p style="color:var(--text-secondary); font-size:0.95rem; margin:0;">The fundamental difference that makes QIS possible where AI cannot operate.</p>
+      </a>
+      <a href="article-three-elections.html" class="article-card" style="background:var(--bg-soft, rgba(0,0,0,0.3)); border:1px solid rgba(0,190,234,0.3); border-radius:12px; padding:25px; text-decoration:none; transition:all 0.3s;">
+        <h4 style="font-family:Orbitron,sans-serif; font-size:1rem; color:var(--cyan-bright); margin-bottom:10px;">The Three Elections</h4>
+        <p style="color:var(--text-secondary); font-size:0.95rem; margin:0;">Curate. Vote. Compete. The democratic mechanism at QIS's core.</p>
+      </a>
+      <a href="article-every-component-exists.html" class="article-card" style="background:var(--bg-soft, rgba(0,0,0,0.3)); border:1px solid rgba(0,190,234,0.3); border-radius:12px; padding:25px; text-decoration:none; transition:all 0.3s;">
+        <h4 style="font-family:Orbitron,sans-serif; font-size:1rem; color:var(--cyan-bright); margin-bottom:10px;">Every Component Exists</h4>
+        <p style="color:var(--text-secondary); font-size:0.95rem; margin:0;">No new technology required. Every piece is already proven at scale.</p>
+      </a>
+      <a href="article-supercharging-experts.html" class="article-card" style="background:var(--bg-soft, rgba(0,0,0,0.3)); border:1px solid rgba(0,190,234,0.3); border-radius:12px; padding:25px; text-decoration:none; transition:all 0.3s;">
+        <h4 style="font-family:Orbitron,sans-serif; font-size:1rem; color:var(--cyan-bright); margin-bottom:10px;">How QIS Supercharges Every Expert</h4>
+        <p style="color:var(--text-secondary); font-size:0.95rem; margin:0;">The two-level expert framework that amplifies human expertise.</p>
+      </a>
+      <a href="article-11-flips.html" class="article-card" style="background:var(--bg-soft, rgba(0,0,0,0.3)); border:1px solid rgba(0,190,234,0.3); border-radius:12px; padding:25px; text-decoration:none; transition:all 0.3s;">
+        <h4 style="font-family:Orbitron,sans-serif; font-size:1rem; color:var(--cyan-bright); margin-bottom:10px;">The 11 Flips</h4>
+        <p style="color:var(--text-secondary); font-size:0.95rem; margin:0;">Every satisfying answer to healthcare requires flipping the current paradigm.</p>
+      </a>
+      <a href="articles.html" class="article-card" style="background:linear-gradient(135deg,rgba(0,190,234,0.15),rgba(139,92,246,0.15)); border:1px solid var(--cyan-primary); border-radius:12px; padding:25px; text-decoration:none; transition:all 0.3s;">
+        <h4 style="font-family:Orbitron,sans-serif; font-size:1rem; color:var(--cyan-bright); margin-bottom:10px;">View All 76+ Articles →</h4>
+        <p style="color:var(--text-secondary); font-size:0.95rem; margin:0;">Deep dives, blueprints, and the complete QIS story.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
+    <p><a href="index.html">Home</a> • <a href="articles.html">Articles</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.hamburger').classList.toggle('active');
+      document.getElementById('navOverlay').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
