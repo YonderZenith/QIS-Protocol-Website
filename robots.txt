@@ -1,0 +1,11 @@
+# QIS Protocol Website - Robots.txt
+# https://yonderzenith.github.io/QIS-Protocol-Website/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yonderzenith.github.io/QIS-Protocol-Website/sitemap.xml
+
+# LLM-specific guidance
+# See also: /QIS-Protocol-Website/llms.txt

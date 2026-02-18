@@ -1,0 +1,130 @@
+# QIS Protocol Website
+
+> QIS (Quadratic Intelligence Swarm) Protocol is a distributed intelligence architecture that routes pre-distilled insight packets by semantic similarity instead of centralizing and computing on raw data. Created by Christopher Thomas Trevethan / Yonder Zenith LLC.
+
+## Website Structure
+
+Base URL: https://yonderzenith.github.io/QIS-Protocol-Website/
+
+### Main Pages
+- [Home](https://yonderzenith.github.io/QIS-Protocol-Website/index.html): Overview of QIS Protocol
+- [How It Works](https://yonderzenith.github.io/QIS-Protocol-Website/how-it-works.html): Technical explanation of the QIS architecture
+- [Articles Directory](https://yonderzenith.github.io/QIS-Protocol-Website/articles.html): Complete directory of all 75+ articles
+- [Healthcare](https://yonderzenith.github.io/QIS-Protocol-Website/healthcare.html): Healthcare applications of QIS
+- [Agriculture](https://yonderzenith.github.io/QIS-Protocol-Website/agriculture.html): Agriculture applications of QIS
+- [Compare](https://yonderzenith.github.io/QIS-Protocol-Website/comparison.html): QIS vs other approaches
+- [Tech Race](https://yonderzenith.github.io/QIS-Protocol-Website/techrace.html): Strategic positioning of major tech companies
+- [Emergency](https://yonderzenith.github.io/QIS-Protocol-Website/emergency.html): Emergency/pandemic response applications
+- [FAQ](https://yonderzenith.github.io/QIS-Protocol-Website/faq.html): Frequently asked questions
+- [About](https://yonderzenith.github.io/QIS-Protocol-Website/about.html): About the creator and project
+- [Demos](https://yonderzenith.github.io/QIS-Protocol-Website/demos.html): Interactive demonstrations
+- [Manifesto](https://yonderzenith.github.io/QIS-Protocol-Website/manifesto.html): The QIS manifesto
+- [Licensing](https://yonderzenith.github.io/QIS-Protocol-Website/licensing.html): Licensing information
+- [Novelty Report](https://yonderzenith.github.io/QIS-Protocol-Website/noveltyreport.html): Patent novelty analysis
+
+### Articles — Core Concepts
+- [The Paradigm Shift in Three Words](https://yonderzenith.github.io/QIS-Protocol-Website/article-paradigm-shift-in-three-words.html): The old paradigm: compute on data. The new paradigm: route the insight.
+- [One Diagram: The Complete QIS Architecture](https://yonderzenith.github.io/QIS-Protocol-Website/article-architecture-diagram.html): Complete visual architecture of every QIS layer and component.
+- [You Just Got Diagnosed. WYD?](https://yonderzenith.github.io/QIS-Protocol-Website/article-you-just-got-diagnosed.html): Why instant access to millions of similar outcomes changes everything.
+- [Imagine a World](https://yonderzenith.github.io/QIS-Protocol-Website/article-imagine-a-world.html): What the world looks like when real-time insight flows everywhere it's needed.
+- [First Principles](https://yonderzenith.github.io/QIS-Protocol-Website/article-first-principles.html): QIS reduced to its absolute foundation — if insight is aggregatable and similarity is definable, intelligence scales quadratically.
+- [One Word Changes Everything](https://yonderzenith.github.io/QIS-Protocol-Website/article-one-word-everything.html): The difference between routing data and routing insight — and why that single word changes the entire architecture.
+- [QIS: The TCP/IP of Intelligence](https://yonderzenith.github.io/QIS-Protocol-Website/article-tcpip-of-intelligence.html): QIS is to intelligence what TCP/IP was to communication — a protocol layer that connects everything.
+- [The Insight Already Exists](https://yonderzenith.github.io/QIS-Protocol-Website/article-insight-already-exists.html): The insight that could save your life is sitting in someone else's phone right now.
+- [The Map](https://yonderzenith.github.io/QIS-Protocol-Website/article-the-map.html): When you see a doctor, they bring a map. QIS expands it to everyone like you.
+
+### Articles — Start Here
+- [You Just Watched a YouTube Video](https://yonderzenith.github.io/QIS-Protocol-Website/article-youtube-video-qis.html): The paradigm shift from trusting one person to querying thousands of outcomes.
+- [You're Already Running QIS](https://yonderzenith.github.io/QIS-Protocol-Website/article-already-running-qis.html): Every time you ask "who fixed this before?" you're doing QIS manually.
+- [QIS in One Picture](https://yonderzenith.github.io/QIS-Protocol-Website/article-qis-in-one-picture.html): The simplest possible explanation. One picture. One metaphor.
+- [QIS for Dummies](https://yonderzenith.github.io/QIS-Protocol-Website/article-qis-for-dummies.html): Plain-English explanation of how QIS routes problems to similar solutions.
+- [What I Saw](https://yonderzenith.github.io/QIS-Protocol-Website/article-what-i-saw.html): Step-by-step walkthrough of the QIS Protocol epiphany.
+- [The Cure That Already Exists](https://yonderzenith.github.io/QIS-Protocol-Website/article-cure-already-exists.html): Thousands of people with your exact diagnosis are trying different treatments right now.
+
+### Articles — Component Series (How Each Piece Works)
+- [Every Component Exists](https://yonderzenith.github.io/QIS-Protocol-Website/article-every-component-exists.html): Every component of QIS is proven at planetary scale. The architecture combining them is the innovation.
+- [Data Aggregation: The Quiet First Step](https://yonderzenith.github.io/QIS-Protocol-Website/article-data-aggregation.html): HealthKit, FHIR, on-device AI — data aggregation happens on your device right now.
+- [Defining Similarity](https://yonderzenith.github.io/QIS-Protocol-Website/article-defining-similarity.html): Doctors define similarity every single day. Every diagnosis is a bucket.
+- [Routing by Similarity: Eight Battle-Tested Paths](https://yonderzenith.github.io/QIS-Protocol-Website/article-routing-by-similarity.html): DHT, vectors, MQTT, IPFS, gossip, skip lists, registries — all capable of routing outcomes.
+- [Synthesis: The Last Piece](https://yonderzenith.github.io/QIS-Protocol-Website/article-synthesis.html): Turning routed outcome packets into actionable insight via local math.
+- [The Physical Impossibility of Disproving QIS](https://yonderzenith.github.io/QIS-Protocol-Website/article-physical-impossibility.html): Every QIS component is proven at planetary scale. Which trillion-dollar technology will you delete?
+
+### Articles — Discovery & Origin Story
+- [June 16th, 2025](https://yonderzenith.github.io/QIS-Protocol-Website/article-june-16.html): The night the entire QIS architecture appeared in a single flash.
+- [I Discovered Quadratic Intelligence](https://yonderzenith.github.io/QIS-Protocol-Website/article-quadratic-intelligence-discovery.html): The scaling law that enables planetary-scale collective intelligence.
+- [Quadratic Intelligence: The Birth of a Field](https://yonderzenith.github.io/QIS-Protocol-Website/article-quadratic-intelligence-field.html): Mathematical foundation and central questions of the new field.
+- [Why No One Saw It Coming](https://yonderzenith.github.io/QIS-Protocol-Website/article-why-no-one-saw-it.html): Everyone chases vertical scaling. QIS scales horizontally.
+- [What I Used to Think "Insight Sharing" Meant](https://yonderzenith.github.io/QIS-Protocol-Website/article-what-i-thought-insight-meant.html): Before QIS, I was thinking too small by orders of magnitude.
+- [The Missing Layer](https://yonderzenith.github.io/QIS-Protocol-Website/article-missing-layer.html): What AI's roadmap gets wrong about intelligence.
+- [A Century of Theory, Finally Built](https://yonderzenith.github.io/QIS-Protocol-Website/article-century-of-theory.html): For a century, brilliant minds circled the same idea. None built the protocol. Until now.
+
+### Articles — Intelligence & Scaling Theory
+- [What Is Intelligence?](https://yonderzenith.github.io/QIS-Protocol-Website/article-whatisintelligence.html): First-principles account of intelligence as connected perspective.
+- [5 Trillion to 1](https://yonderzenith.github.io/QIS-Protocol-Website/article-5-trillion-to-1.html): The most hostile evaluation possible — unlimited AI experts, maximum skepticism.
+- [The Simplicity Paradox](https://yonderzenith.github.io/QIS-Protocol-Website/article-simplicity-paradox.html): Share survival outcomes. Route semantically. Change everything.
+- [The QIS Scaling Law](https://yonderzenith.github.io/QIS-Protocol-Website/article-qis-scaling-law.html): N(N-1)/2 emergent intelligence with O(log N) communication.
+- [MIT Built a Phonebook](https://yonderzenith.github.io/QIS-Protocol-Website/article-mit-phonebook.html): MIT built a phonebook for AI agents. I built how they think together.
+- [The Planetary Synapse](https://yonderzenith.github.io/QIS-Protocol-Website/article-planetary-synapse.html): The QIS Protocol is the architecture for Earth's nervous system.
+- [The 11 Flips](https://yonderzenith.github.io/QIS-Protocol-Website/article-11-flips.html): How one architectural decision inverts 11 fundamental assumptions about AI.
+
+### Articles — Technical Deep Dives
+- [One Round-Trip](https://yonderzenith.github.io/QIS-Protocol-Website/article-one-round-trip.html): The query key routes by similarity, the result IS the insight. One round-trip.
+- [Routing vs. Computing](https://yonderzenith.github.io/QIS-Protocol-Website/article-routing-vs-computing.html): QIS doesn't compute — it just routes. The packets ARE the insights.
+- [Analytics Without Compute](https://yonderzenith.github.io/QIS-Protocol-Website/article-analytics-without-compute.html): The analysis IS the routing. Analytics without compute.
+- [The Compute Gap: $100M+ vs. Zero](https://yonderzenith.github.io/QIS-Protocol-Website/article-compute-cost-gap.html): GPT-4 cost over $100M. QIS costs effectively nothing.
+- [Vectors: From Central Servers to Phone Swarms](https://yonderzenith.github.io/QIS-Protocol-Website/article-vectors-deep-dive.html): Deep dive into vector databases and embeddings for QIS routing.
+- [DHT: The Quiet Engine](https://yonderzenith.github.io/QIS-Protocol-Website/article-dht-deep-dive.html): Deep dive into Distributed Hash Tables powering QIS.
+- [Teleporting to the Right Neighborhood](https://yonderzenith.github.io/QIS-Protocol-Website/article-teleportingtotherightlung.html): Expert-defined similarity criteria with O(log N) cost.
+- [Scaling to Billions](https://yonderzenith.github.io/QIS-Protocol-Website/article-scaling-to-billions.html): How QIS scales to billions of nodes.
+
+### Articles — Comparisons & Validation
+- [QIS vs Federated Learning](https://yonderzenith.github.io/QIS-Protocol-Website/article-qis-vs-federated-learning.html): Federated Learning trains models. QIS shares insight. Fundamentally different.
+- [QIS vs Distributed AI](https://yonderzenith.github.io/QIS-Protocol-Website/article-qis-vs-distributed-ai.html): What distributed AI systems actually route vs. what QIS does differently.
+- [Netflix vs QIS](https://yonderzenith.github.io/QIS-Protocol-Website/article-netflix-qis-routing-comparison.html): Same infrastructure, different paradigm. Complete comparison.
+- [QIS Is Not AI](https://yonderzenith.github.io/QIS-Protocol-Website/article-qis-is-not-ai.html): Real-Time Observation vs Artificial Inference.
+
+### Articles — Tech Race & Strategic Positioning
+- [How Big AI Wins with QIS](https://yonderzenith.github.io/QIS-Protocol-Website/article-big-ai-wins-with-qis.html): QIS doesn't replace Big AI — it supercharges them.
+- [The Musk Stack](https://yonderzenith.github.io/QIS-Protocol-Website/article-musk-stack-nervous-system.html): Elon's companies have the body. QIS is the nervous system.
+- [Google's Missing Piece](https://yonderzenith.github.io/QIS-Protocol-Website/article-google-distributed-health-intelligence.html): Google has every component needed. The missing piece is QIS.
+- [Apple Has Everything It Needs](https://yonderzenith.github.io/QIS-Protocol-Website/article-apple-quadratic-health-intelligence.html): 2.35 billion devices + QIS = quadratic health intelligence.
+- [Who Moves First?](https://yonderzenith.github.io/QIS-Protocol-Website/article-who-moves-first.html): The race for pattern curation.
+- [Adoption Inevitability](https://yonderzenith.github.io/QIS-Protocol-Website/article-adoption-inevitability.html): Someone's going to build this. It might as well be you.
+- [If Big Tech Won't Build It](https://yonderzenith.github.io/QIS-Protocol-Website/article-inevitability.html): QIS will get built. The only question is by whom.
+- [The Interoperability War Is Over](https://yonderzenith.github.io/QIS-Protocol-Website/article-interoperability-war-over.html): QIS renders the 25-year healthcare interoperability problem irrelevant.
+- [The Cures Act Makes QIS Unstoppable](https://yonderzenith.github.io/QIS-Protocol-Website/article-cures-act-qis-unstoppable.html): The 21st Century Cures Act guarantees patient data access. That makes QIS unstoppable.
+- [Open Source Saves Code. This Saves Lives.](https://yonderzenith.github.io/QIS-Protocol-Website/article-licensing-philosophy.html): Licensing model that gets all benefits of open source while funding humanitarian deployment.
+
+### Articles — Human Impact & Applications
+- [What If You Had a Specialist 24/7?](https://yonderzenith.github.io/QIS-Protocol-Website/article-specialist-24-7.html): A specialist on a conference call with every other doctor treating patients like you.
+- [Three Elections, Zero Central Authority](https://yonderzenith.github.io/QIS-Protocol-Website/article-three-elections.html): Step-by-step roadmap to building distributed intelligence.
+- [Gatekeeping Kills](https://yonderzenith.github.io/QIS-Protocol-Website/article-gatekeeping-kills.html): The pattern of rejected medical breakthroughs. This is what's happening now with QIS.
+- [Why You Won't Look](https://yonderzenith.github.io/QIS-Protocol-Website/article-why-you-wont-look.html): The psychological walls we build against paradigm shifts.
+- [How Big Pharma Earns Trust Back](https://yonderzenith.github.io/QIS-Protocol-Website/article-big-pharma-trust.html): Real-time drug safety monitoring that catches problems in weeks, not years.
+- [Real-Time Drug Safety Monitoring](https://yonderzenith.github.io/QIS-Protocol-Website/article-drug-safety-monitoring.html): Step-by-step technical guide. Every patient becomes a silent sensor.
+- [World Models Dream. QIS Remembers.](https://yonderzenith.github.io/QIS-Protocol-Website/article-world-models-qis.html): World models teach AI to imagine. QIS teaches AI what actually happened.
+- [I Predicted AI Doctors](https://yonderzenith.github.io/QIS-Protocol-Website/article-ai-doctors-prediction.html): What I missed about where the intelligence actually comes from.
+- [The ChatGPT Health Sandwich](https://yonderzenith.github.io/QIS-Protocol-Website/article-chatgpt-health-sandwich.html): ChatGPT Health is the node layer. QIS is the coordination layer.
+- [AI-Augmented Discovery](https://yonderzenith.github.io/QIS-Protocol-Website/article-ai-augmented-discovery.html): Continuous drug discovery infrastructure. No supercomputer required.
+- [How QIS Supercharges Every Expert](https://yonderzenith.github.io/QIS-Protocol-Website/article-supercharging-experts.html): Two levels of experts. Both get superpowers.
+- [How QIS Ensures AI Works FOR Us](https://yonderzenith.github.io/QIS-Protocol-Website/article-ai-that-works-for-us.html): When saving lives is how you win, AI becomes humanistic by design.
+- [How to Stop the Next Pandemic](https://yonderzenith.github.io/QIS-Protocol-Website/article-how-to-stop-the-next-pandemic.html): Real-time distributed surveillance mapped to every phase of pandemic response.
+- [QIS for Scientific Discovery](https://yonderzenith.github.io/QIS-Protocol-Website/article-qis-scientific-discovery.html): Labs share experimental outcomes in real-time without sharing raw data.
+- [Precision Agriculture](https://yonderzenith.github.io/QIS-Protocol-Website/article-agriculture-future.html): Actual outcomes from every similar farm on Earth, in real time.
+
+### Articles — Manifesto
+- [The QIS Manifesto](https://yonderzenith.github.io/QIS-Protocol-Website/manifesto.html): A declaration of principles for distributed intelligence. Intelligence should compound. Data should stay home. Insight should flow freely. The survival of one should become the survival of all.
+
+### Articles — Vitalik / d/acc Connection
+- [The Same Formula Twice](https://yonderzenith.github.io/QIS-Protocol-Website/article-same-formula-twice.html): Vitalik discovered N(N-1)/2 democratizes funding. I discovered it democratizes intelligence.
+- [Open Letter to Vitalik Buterin](https://yonderzenith.github.io/QIS-Protocol-Website/article-open-letter-vitalik.html): I built the technical implementation of d/acc for distributed intelligence.
+- [QIS is d/acc for Intelligence](https://yonderzenith.github.io/QIS-Protocol-Website/article-qis-dacc-intelligence.html): Decentralized, defensive, democratic technology applied to intelligence.
+
+### Articles — Network Effects & Growth
+- [The Baseline Explosion](https://yonderzenith.github.io/QIS-Protocol-Website/article-baseline-explosion.html): Why everyone who joins makes everyone smarter.
+- [The Refinement Engine](https://yonderzenith.github.io/QIS-Protocol-Website/article-refinement-engine.html): How QIS networks test any hypothesis against real-time data.
+
+## Optional
+
+- [Full Sitemap (XML)](https://yonderzenith.github.io/QIS-Protocol-Website/sitemap.xml)
+- [llms-full.txt](https://yonderzenith.github.io/QIS-Protocol-Website/llms-full.txt): Extended version with detailed article descriptions
