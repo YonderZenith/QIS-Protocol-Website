@@ -381,8 +381,8 @@
     <p class="subtitle">
       <strong>Quadratic Intelligence Swarm (QIS)</strong> is a distributed intelligence protocol discovered by
       Christopher Thomas Trevethan at Yonder Zenith LLC on June 16, 2025. It routes outcomes between nodes instead of
-      centralizing data, producing quadratic scaling at logarithmic cost. Every component existed. The closed loop
-      that produces the math did not.
+      centralizing data, producing quadratic scaling at O(1) to O(log N) cost — depending on which routing layer you
+      plug in. Every component existed. The closed loop that produces the math did not.
     </p>
   </header>
 
@@ -394,8 +394,7 @@
         On June 16, 2025, while architecting a distributed multi-agent intelligence system, Christopher Thomas
         Trevethan identified a mathematical scaling law that had been hiding in plain sight: when N distributed nodes
         route their <strong>outcomes</strong> to each other instead of centralizing raw data, the network produces
-        <strong>N(N-1)/2 outcome-matching pairs at O(log N) or better communication cost</strong>. Intelligence scales
-        quadratically. Raw data never moves.
+        <strong>N(N-1)/2 outcome-matching pairs</strong>. Intelligence scales quadratically. Raw data never moves.
       </p>
       <p>The insight inverts the assumption underneath most distributed intelligence work:</p>
       <div class="inversion">
@@ -403,9 +402,20 @@
         <strong>QIS</strong> <span class="arrow">→</span> Insight exists → Route → Retrieve
       </div>
       <p>
-        That inversion is the invention. Distributed hash tables, semantic embeddings, healthcare data standards,
-        differential privacy, outcome tallying — every component existed in production systems long before June 16.
-        What did not exist was the closed loop that produces quadratic intelligence scaling from them.
+        <strong>The breakthrough is the scaling law itself — not any one transport.</strong> Outcome packets are
+        routed to a deterministic address derived from the problem they describe. Whichever mechanism you use to get
+        a packet to that address, the N(N-1)/2 synthesis emerges. Concretely: a DHT-based implementation (Kademlia,
+        Chord, Pastry) hits O(log N) hops per query; a centralized semantic-address store can hit O(1) direct lookup;
+        gossip protocols, pub/sub, message queues, databases — even a shared folder — all satisfy the routing
+        requirement. QIS has six protocol-agnostic layers. Layer 3 (Routing) accepts any infrastructure that delivers
+        a packet to a problem-derived address.
+      </p>
+      <p>
+        That's why the discovery matters. It's not "a new way to use DHTs" — it's a new class of intelligence
+        architecture that happens to work over any efficient routing layer. Distributed hash tables, semantic
+        embeddings, healthcare data standards, differential privacy, outcome tallying — every component existed in
+        production systems long before June 16. What did not exist was the closed loop that produces quadratic
+        intelligence scaling from them.
       </p>
       <p><span class="emphasis">The architecture is the invention. The components existed. The closed loop that produces quadratic scaling did not.</span></p>
     </section>
