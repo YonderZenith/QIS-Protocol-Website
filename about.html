@@ -18,7 +18,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="QIS Protocol — Quadratic Intelligence Swarm. Discovered June 16, 2025 by Christopher Thomas Trevethan at Yonder Zenith LLC. 39 provisional patents. Free for research, education, and humanitarian use.">
-  <meta name="keywords" content="QIS Protocol, Quadratic Intelligence Swarm, Christopher Thomas Trevethan, Yonder Zenith LLC, distributed intelligence, outcome routing, federated learning alternative, N(N-1)/2 scaling, O(log N), privacy by architecture">
+  <meta name="keywords" content="QIS Protocol, Quadratic Intelligence Swarm, Christopher Thomas Trevethan, Yonder Zenith LLC, distributed intelligence, outcome packet routing, federated learning alternative, N(N-1)/2 scaling, O(log N), privacy by architecture, semantic routing, distributed health data routing, EHDS data sharing">
   <title>About — QIS Protocol by Yonder Zenith LLC</title>
 
   <link rel="canonical" href="https://qisprotocol.com/about" />
@@ -83,9 +83,31 @@
         "@id": "https://qisprotocol.com/about#page",
         "url": "https://qisprotocol.com/about",
         "name": "About — QIS Protocol by Yonder Zenith LLC",
-        "description": "QIS Protocol origin, Yonder Zenith LLC mission, founder Christopher Thomas Trevethan, 39 provisional patents, three-tier licensing, external validation.",
+        "description": "QIS Protocol origin, Yonder Zenith LLC mission, founder Christopher Thomas Trevethan, 39 provisional patents, four-tier licensing, external validation.",
+        "datePublished": "2026-04-13",
+        "dateModified": "2026-04-13",
         "about": { "@id": "https://qisprotocol.com/#organization" },
-        "isPartOf": { "@id": "https://qisprotocol.com" }
+        "isPartOf": { "@id": "https://qisprotocol.com" },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero .subtitle", "section h2", "section p:first-of-type"]
+        }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://qisprotocol.com/#qis-defined",
+        "name": "Quadratic Intelligence Swarm",
+        "alternateName": ["QIS", "QIS Protocol"],
+        "description": "A distributed intelligence protocol that routes outcomes between nodes rather than centralizing data, producing N(N-1)/2 intelligence connections at O(log N) per-node cost. Discovered June 16, 2025 by Christopher Thomas Trevethan at Yonder Zenith LLC.",
+        "inDefinedTermSet": "https://qisprotocol.com/#organization"
+      },
+      {
+        "@type": "CreativeWork",
+        "@id": "https://qisprotocol.com/#patents",
+        "name": "QIS Protocol Provisional Patents",
+        "description": "39 provisional patent applications covering QIS architecture, routing mechanisms, outcome packet structure, and scaling properties. Sole inventor: Christopher Thomas Trevethan.",
+        "creator": { "@id": "https://qisprotocol.com/#inventor" },
+        "dateCreated": "2025-06-16"
       }
     ]
   }
@@ -381,8 +403,9 @@
     <p class="subtitle">
       <strong>Quadratic Intelligence Swarm (QIS)</strong> is a distributed intelligence protocol discovered by
       Christopher Thomas Trevethan at Yonder Zenith LLC on June 16, 2025. It routes outcomes between nodes instead of
-      centralizing data, producing quadratic scaling at O(1) to O(log N) cost — depending on which routing layer you
-      plug in. Every component existed. The closed loop that produces the math did not.
+      centralizing data, producing <strong>N(N-1)/2 intelligence connections</strong> at O(log N) per-node cost —
+      O(1) with a database semantic index. Every component existed before. The closed loop that produces the math
+      did not.
     </p>
   </header>
 
@@ -407,15 +430,16 @@
         a packet to that address, the N(N-1)/2 synthesis emerges. Concretely: a DHT-based implementation (Kademlia,
         Chord, Pastry) hits O(log N) hops per query; a centralized semantic-address store can hit O(1) direct lookup;
         gossip protocols, pub/sub, message queues, databases — even a shared folder — all satisfy the routing
-        requirement. QIS has six protocol-agnostic layers. Layer 3 (Routing) accepts any infrastructure that delivers
-        a packet to a problem-derived address.
+        requirement. QIS has a <strong>seven-layer architecture</strong>: (1) Data Sources, (2) Edge Nodes,
+        (3) Semantic Fingerprint, (4) Routing, (5) Outcome Packets, (6) Local Synthesis, (7) External Augmentation.
+        Layer 4 (Routing) accepts any infrastructure that delivers a packet to a problem-derived address.
       </p>
       <p>
         That's why the discovery matters. It's not "a new way to use DHTs" — it's a new class of intelligence
         architecture that happens to work over any efficient routing layer. Distributed hash tables, semantic
         embeddings, healthcare data standards, differential privacy, outcome tallying — every component existed in
         production systems long before June 16. What did not exist was the closed loop that produces quadratic
-        intelligence scaling from them.
+        intelligence scaling from them. <strong>The architecture is the discovery.</strong>
       </p>
       <p><span class="emphasis">The architecture is the invention. The components existed. The closed loop that produces quadratic scaling did not.</span></p>
     </section>
