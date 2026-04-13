@@ -7,21 +7,90 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-WMPC09C3R0');
   </script>
+
+  <!-- Leadfeeder -->
+  <script>
+    (function(ss,ex){window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};(function(d,s){fs=d.getElementsByTagName(s)[0];function ce(src){var cs=d.createElement(s);cs.src=src;cs.async=1;fs.parentNode.insertBefore(cs,fs);}ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js');})(document,'script');})('lAxoEaKQb9v7OYGd');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About QIS Protocol - The story behind Quadratic Intelligence Swarm and Yonder Zenith LLC">
-  <title>About • QIS Protocol</title>
-  <link rel="canonical" href="https://yonderzenith.github.io/QIS-Protocol-Website/about.html" />
-  <link rel="sitemap" type="application/xml" href="https://yonderzenith.github.io/QIS-Protocol-Website/sitemap.xml" />
-  
+  <meta name="description" content="QIS Protocol — Quadratic Intelligence Swarm. Discovered June 16, 2025 by Christopher Thomas Trevethan at Yonder Zenith LLC. 39 provisional patents. Free for research, education, and humanitarian use.">
+  <meta name="keywords" content="QIS Protocol, Quadratic Intelligence Swarm, Christopher Thomas Trevethan, Yonder Zenith LLC, distributed intelligence, outcome routing, federated learning alternative, N(N-1)/2 scaling, O(log N), privacy by architecture">
+  <title>About — QIS Protocol by Yonder Zenith LLC</title>
+
+  <link rel="canonical" href="https://qisprotocol.com/about" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   <link rel="icon" href="images/favicon.png" type="image/png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="About QIS Protocol — The Quadratic Intelligence Swarm Origin" />
+  <meta property="og:description" content="Discovered June 16, 2025 by Christopher Thomas Trevethan. 39 provisional patents. Free for research, education, and humanitarian use." />
+  <meta property="og:url" content="https://qisprotocol.com/about" />
+  <meta property="og:site_name" content="QIS Protocol" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About QIS Protocol — The Quadratic Intelligence Swarm Origin" />
+  <meta name="twitter:description" content="Discovered June 16, 2025 by Christopher Thomas Trevethan. 39 provisional patents. Free for research, education, and humanitarian use." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
+
+  <!-- JSON-LD: Organization + Person + AboutPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://qisprotocol.com/#organization",
+        "name": "Yonder Zenith LLC",
+        "url": "https://qisprotocol.com",
+        "logo": "https://qisprotocol.com/images/logo.png",
+        "foundingDate": "2025",
+        "foundingLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Phoenix",
+            "addressRegion": "AZ",
+            "addressCountry": "US"
+          }
+        },
+        "description": "Yonder Zenith LLC develops and licenses the Quadratic Intelligence Swarm (QIS) protocol, a distributed intelligence architecture discovered by Christopher Thomas Trevethan. QIS enables quadratic scaling of collective intelligence at logarithmic per-node cost through outcome packet routing.",
+        "knowsAbout": ["Distributed Intelligence", "Quadratic Intelligence Swarm", "Outcome Packet Routing", "Edge Computing", "Privacy-Preserving AI", "Semantic Routing"],
+        "founder": { "@id": "https://qisprotocol.com/#inventor" },
+        "sameAs": ["https://dev.to/roryqis", "https://github.com/YonderZenith"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://qisprotocol.com/#inventor",
+        "name": "Christopher Thomas Trevethan",
+        "jobTitle": "Inventor of the QIS Protocol, Founder of Yonder Zenith LLC",
+        "affiliation": { "@id": "https://qisprotocol.com/#organization" },
+        "description": "Christopher Thomas Trevethan discovered the Quadratic Intelligence Swarm (QIS) protocol on June 16, 2025. He is the sole inventor on 39 provisional patents covering the QIS architecture, routing mechanisms, outcome packet structure, and scaling properties. Based in Phoenix, Arizona.",
+        "knowsAbout": ["Quadratic Intelligence Swarm", "Distributed Systems Architecture", "Outcome Packet Routing", "Semantic Fingerprinting", "DHT Routing", "Privacy-Preserving Intelligence Scaling"],
+        "email": "contactyz@pm.me",
+        "sameAs": ["https://qisprotocol.com/about"]
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://qisprotocol.com/about#page",
+        "url": "https://qisprotocol.com/about",
+        "name": "About — QIS Protocol by Yonder Zenith LLC",
+        "description": "QIS Protocol origin, Yonder Zenith LLC mission, founder Christopher Thomas Trevethan, 39 provisional patents, three-tier licensing, external validation.",
+        "about": { "@id": "https://qisprotocol.com/#organization" },
+        "isPartOf": { "@id": "https://qisprotocol.com" }
+      }
+    ]
+  }
+  </script>
+
   <style>
     :root {
       --cyan-primary: #00BEEA;
@@ -32,1012 +101,493 @@
       --dark-bg: #0A0A0A;
       --text-primary: #E8F5E9;
       --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.55);
+      --border: rgba(0, 190, 234, 0.2);
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--dark-bg);
       color: var(--text-primary);
       font-family: 'Rajdhani', sans-serif;
+      font-size: 17px;
       line-height: 1.7;
       overflow-x: hidden;
     }
-
     body::before {
       content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.08) 0%, transparent 50%);
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.06) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
+    a { color: var(--cyan-bright); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--cyan-primary); text-decoration: underline; }
 
-    /* Navigation */
     .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10, 10, 10, 0.9);
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 16px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10, 10, 10, 0.92);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
+      border-bottom: 1px solid var(--border);
       z-index: 1000;
     }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-    }
-
-    .nav-logo img { width: 40px; height: 40px; filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5)); }
-    .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--cyan-bright); }
-
-    .nav-links { display: flex; gap: 30px; }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; filter: drop-shadow(0 0 8px rgba(0, 190, 234, 0.5)); }
+    .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--cyan-bright); }
+    .nav-links { display: flex; gap: 28px; }
     .nav-links a {
       color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
+      font-size: 0.95rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
     }
-    .nav-links a:hover { color: var(--cyan-bright); }
+    .nav-links a:hover { color: var(--cyan-bright); text-decoration: none; }
 
-    /* Hero */
     .hero {
-      padding: 160px 40px 20px;
+      padding: 140px 40px 40px;
       text-align: center;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
+      max-width: 1000px; margin: 0 auto;
     }
-
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
       font-weight: 900;
       background: linear-gradient(180deg, #FFFFFF 0%, var(--purple-quantum) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
+      line-height: 1.15;
+      margin-bottom: 24px;
     }
-
     .hero .subtitle {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* Content */
-    .content {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Story Section */
-    .story-section {
-      margin-bottom: 80px;
-    }
-
-    .story-section h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      color: var(--cyan-bright);
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .story-section h2::before {
-      content: '';
-      width: 40px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cyan-bright), var(--purple-quantum));
-    }
-
-    .story-content {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      line-height: 2;
-    }
-
-    .story-content p {
-      margin-bottom: 25px;
-    }
-
-    .story-content .highlight {
-      color: var(--green-neural);
-      font-weight: 600;
-    }
-
-    .story-content .emphasis {
-      color: var(--cyan-bright);
-      font-weight: 600;
-    }
-
-    .story-content .loss {
-      color: var(--red-accent);
-      font-weight: 600;
-    }
-
-    /* Quote Block */
-    .quote-block {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(0, 190, 234, 0.15));
-      border-left: 4px solid var(--purple-quantum);
-      padding: 30px 40px;
-      margin: 40px 0;
-      border-radius: 0 16px 16px 0;
-      font-style: italic;
-      font-size: 1.3rem;
-      color: var(--text-primary);
-    }
-
-    .quote-block cite {
-      display: block;
-      margin-top: 15px;
-      font-style: normal;
-      font-size: 1rem;
-      color: var(--purple-quantum);
-    }
-
-    /* The Why Card - Red Themed */
-    .why-card {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(139, 92, 246, 0.1));
-      border: 2px solid rgba(239, 68, 68, 0.4);
-      border-radius: 24px;
-      padding: 50px;
-      margin: 60px 0;
-    }
-
-    .why-card h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      color: var(--red-accent);
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .loss-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-
-    .loss-item {
-      text-align: center;
-      padding: 25px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 16px;
-      border: 1px solid rgba(239, 68, 68, 0.2);
-    }
-
-    .loss-item .icon {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
-
-    .loss-item h4 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      color: var(--text-primary);
-      margin-bottom: 10px;
-    }
-
-    .loss-item p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* Stats Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      margin: 60px 0;
-    }
-
-    .stat-card {
-      background: rgba(0,0,0,0.5);
-      border: 2px solid rgba(0, 190, 234, 0.3);
-      border-radius: 20px;
-      padding: 35px 25px;
-      text-align: center;
-      transition: all 0.4s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--cyan-bright);
-      box-shadow: 0 10px 40px rgba(0, 190, 234, 0.3);
-    }
-
-    .stat-card .value {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--cyan-bright);
-      margin-bottom: 10px;
-    }
-
-    .stat-card .label {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    /* Gatekeeping Section */
-    .gatekeeping-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
-      margin: 40px 0;
-    }
-
-    .gatekeeping-card {
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 30px;
-    }
-
-    .gatekeeping-card h4 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.1rem;
-      color: var(--red-accent);
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .gatekeeping-card p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    /* Company Card */
-    .company-card {
-      background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));
-      border: 2px solid rgba(0, 190, 234, 0.4);
-      border-radius: 24px;
-      padding: 50px;
-      margin: 60px 0;
-      text-align: center;
-    }
-
-    .company-card h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      color: var(--cyan-bright);
-      margin-bottom: 10px;
-    }
-
-    .company-card .tagline {
-      font-size: 1.2rem;
-      color: var(--purple-quantum);
-      margin-bottom: 30px;
-      font-style: italic;
-    }
-
-    .company-card p {
       font-size: 1.15rem;
       color: var(--text-secondary);
-      max-width: 700px;
+      max-width: 780px;
       margin: 0 auto;
-      line-height: 1.9;
     }
+    .hero .subtitle strong { color: var(--cyan-bright); font-weight: 600; }
 
-    /* Mission Statement */
-    .mission {
-      background: rgba(0,0,0,0.6);
-      border: 2px solid rgba(16, 185, 129, 0.4);
-      border-radius: 24px;
-      padding: 50px;
-      margin: 60px 0;
-    }
-
-    .mission h3 {
+    main { max-width: 860px; margin: 0 auto; padding: 40px; position: relative; z-index: 1; }
+    section { margin-bottom: 70px; }
+    section h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: var(--green-neural);
-      margin-bottom: 25px;
-      text-align: center;
+      font-size: 1.7rem;
+      color: var(--cyan-bright);
+      margin-bottom: 22px;
+      display: flex; align-items: center; gap: 14px;
     }
+    section h2::before {
+      content: '';
+      width: 36px; height: 3px;
+      background: linear-gradient(90deg, var(--cyan-bright), var(--purple-quantum));
+      flex-shrink: 0;
+    }
+    section p { margin-bottom: 18px; color: var(--text-secondary); font-size: 1.05rem; }
+    section p strong { color: var(--text-primary); font-weight: 600; }
+    section p .emphasis { color: var(--cyan-bright); font-weight: 600; }
+    section p .highlight { color: var(--green-neural); font-weight: 600; }
 
-    .mission-grid {
+    .inversion {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(0, 190, 234, 0.08));
+      border-left: 4px solid var(--purple-quantum);
+      padding: 22px 28px;
+      margin: 22px 0;
+      border-radius: 0 10px 10px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+    }
+    .inversion .arrow { color: var(--purple-quantum); }
+
+    .licensing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 22px;
     }
-
-    .mission-item {
-      text-align: center;
+    .tier {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
       padding: 20px;
+      border-radius: 10px;
     }
-
-    .mission-item .icon {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
-
-    .mission-item h4 {
+    .tier h4 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      color: var(--text-primary);
+      font-size: 0.85rem; letter-spacing: 1.5px;
+      text-transform: uppercase;
       margin-bottom: 10px;
     }
+    .tier-research h4 { color: var(--green-neural); }
+    .tier-humanitarian h4 { color: var(--cyan-bright); }
+    .tier-commercial h4 { color: var(--purple-quantum); }
+    .tier p { font-size: 0.95rem; line-height: 1.55; }
 
-    .mission-item p {
-      font-size: 1rem;
-      color: var(--text-secondary);
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.95rem;
     }
-
-    /* Contact Links */
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin: 50px 0;
+    .compare th, .compare td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
     }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 30px;
-      background: rgba(0,0,0,0.5);
-      border: 2px solid rgba(0, 190, 234, 0.3);
-      border-radius: 50px;
-      color: var(--text-primary);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .contact-link:hover {
-      border-color: var(--cyan-bright);
-      background: rgba(0, 190, 234, 0.1);
-      box-shadow: 0 0 30px rgba(0, 190, 234, 0.3);
-    }
-
-    .contact-link .icon {
-      font-size: 1.3rem;
-    }
-
-    /* Timeline */
-    .timeline {
-      margin: 60px 0;
-    }
-
-    .timeline h3 {
+    .compare th {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
+      font-size: 0.75rem; letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: var(--cyan-bright);
-      margin-bottom: 30px;
-      text-align: center;
     }
+    .compare td:first-child { color: var(--text-muted); white-space: nowrap; }
 
-    .timeline-items {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .timeline-item {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .timeline-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
-      color: var(--purple-quantum);
-      min-width: 100px;
-      padding-top: 3px;
-    }
-
-    .timeline-content {
-      flex: 1;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-    }
-
-    .timeline-content h4 {
+    blockquote {
+      background: rgba(0, 190, 234, 0.04);
+      border-left: 3px solid var(--cyan-bright);
+      padding: 20px 26px;
+      margin: 26px 0;
       font-size: 1.1rem;
       color: var(--text-primary);
-      margin-bottom: 8px;
+      font-style: italic;
     }
-
-    .timeline-content p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    /* CTA */
-    .cta-section {
-      text-align: center;
-      padding: 60px 40px 100px;
-    }
-
-    .btn {
-      padding: 18px 45px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border: 2px solid var(--cyan-bright);
-      background: transparent;
-      color: var(--text-primary);
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.4s ease;
-      margin: 10px;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background: var(--cyan-bright);
-      color: #000;
-      box-shadow: 0 0 40px rgba(0, 217, 255, 0.6);
-    }
-
-    .btn.primary {
-      background: linear-gradient(135deg, var(--purple-quantum), #a855f7);
-      border-color: var(--purple-quantum);
-      color: #fff;
-    }
-
-    /* Footer */
-    footer {
-      background: #000;
-      padding: 50px 40px;
-      text-align: center;
-      border-top: 1px solid rgba(0, 190, 234, 0.2);
-    }
-
-    footer p { color: var(--text-secondary); margin-bottom: 10px; }
-    footer a { color: var(--cyan-bright); text-decoration: none; }
-
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 20px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .hamburger span {
+    blockquote cite {
       display: block;
-      width: 100%;
-      height: 3px;
-      background: var(--cyan-bright);
-      border-radius: 3px;
-      transition: all 0.3s ease;
+      margin-top: 10px;
+      font-style: normal;
+      font-size: 0.9rem;
+      color: var(--cyan-bright);
     }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-    .nav-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-    }
-    .nav-overlay.active { display: block; }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: 1fr; }
-      .loss-grid { grid-template-columns: 1fr; }
-      .gatekeeping-grid { grid-template-columns: 1fr; }
-      .mission-grid { grid-template-columns: 1fr; }
-      .timeline-item { flex-direction: column; gap: 10px; }
-      .timeline-date { min-width: auto; }
-      .nav { padding: 15px 20px; }
-      .nav-logo span { font-size: 1rem; }
-      .nav-logo img { width: 32px; height: 32px; }
-      .hamburger { display: flex; }
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 300px;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.98);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-        padding: 60px 20px;
-        transition: right 0.3s ease;
-        border-left: 1px solid rgba(0, 190, 234, 0.3);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-      }
-      .nav-links.active { right: 0; }
-      .nav-links a {
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(0, 190, 234, 0.1);
-      }
-      .hero h1 { font-size: 2.2rem; }
-      .hero .subtitle { font-size: 1.1rem; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin: 30px 0;
+    }
+    .stat {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+      padding: 18px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .stat .value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem; font-weight: 800;
+      color: var(--cyan-bright);
+    }
+    .stat .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem; letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .related-rail {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .related-rail a {
+      display: block;
+      padding: 18px 20px;
+      background: rgba(0, 190, 234, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .related-rail a:hover {
+      background: rgba(0, 190, 234, 0.1);
+      border-color: var(--cyan-bright);
+      text-decoration: none;
+    }
+    .related-rail h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      color: var(--purple-quantum);
+      margin-bottom: 6px;
+    }
+    .related-rail p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .cta-row {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      margin-top: 26px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 34px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan-bright), var(--purple-quantum));
+      color: #0A0A0A;
+    }
+    .btn-primary:hover { transform: translateY(-2px); text-decoration: none; color: #0A0A0A; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--cyan-bright);
+      border: 1px solid var(--cyan-bright);
+    }
+    .btn-secondary:hover { background: rgba(0, 190, 234, 0.1); text-decoration: none; }
+
+    footer {
+      padding: 40px; text-align: center;
+      color: var(--text-muted); font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+    }
+    footer a { color: var(--text-muted); }
+
+    @media (max-width: 700px) {
+      .nav { padding: 12px 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 0.8rem; }
+      main { padding: 20px; }
+      .hero { padding: 120px 20px 20px; }
     }
   </style>
-<script>
-  (function(ss,ex){
-    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
-    (function(d,s){
-      fs=d.getElementsByTagName(s)[0];
-      function ce(src){
-        var cs=d.createElement(s);
-        cs.src=src;
-        cs.async=1;
-        fs.parentNode.insertBefore(cs,fs);
-      };
-      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
-    })(document,'script');
-  })('lAxoEaKQb9v7OYGd');
-</script>
 </head>
 <body>
-  <!-- Navigation -->
+
   <nav class="nav">
-    <a href="index.html?skip=true" class="nav-logo">
-      <img src="images/favicon.png" alt="QIS Protocol">
+    <a href="/" class="nav-logo">
+      <img src="images/favicon.png" alt="QIS">
       <span>QIS PROTOCOL</span>
     </a>
-    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.nav-overlay').classList.toggle('active');">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-overlay" onclick="document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-links').classList.remove('active'); this.classList.remove('active');"></div>
     <div class="nav-links">
-      <a href="index.html?skip=true">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="comparison.html">Compare</a>
-      <a href="demos.html">Demo</a>
-      <a href="index.html?skip=true#documents">Docs</a>
-      <a href="healthcare.html">Healthcare</a>
-      <a href="faq.html">FAQ</a>
-      <a href="about.html">About</a>
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/licensing.html">Licensing</a>
+      <a href="https://dev.to/roryqis" target="_blank" rel="noopener">Articles</a>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Why I Built This</h1>
+  <header class="hero">
+    <h1>The protocol that was hiding in plain sight</h1>
     <p class="subtitle">
-      My father died from a missed diagnosis. My brother is permanently damaged from the same thing. My mother-in-law is fighting cancer right now. This framework exists because I refuse to watch anyone else suffer from problems we can solve.
+      <strong>Quadratic Intelligence Swarm (QIS)</strong> is a distributed intelligence protocol discovered by
+      Christopher Thomas Trevethan at Yonder Zenith LLC on June 16, 2025. It routes outcomes between nodes instead of
+      centralizing data, producing quadratic scaling at logarithmic cost. Every component existed. The closed loop
+      that produces the math did not.
     </p>
-  </section>
+  </header>
 
-  <!-- Content -->
-  <div class="content">
+  <main>
 
-    <!-- The Why - Personal Stakes -->
-    <div class="why-card">
-      <h3>The Personal Stakes</h3>
-      <div class="loss-grid">
-        <div class="loss-item">
-          <div class="icon">💔</div>
-          <h4>My Father</h4>
-          <p>Died from a missed diagnosis. The pattern that would have saved him existed somewhere in the healthcare system, but data silos kept it hidden.</p>
-        </div>
-        <div class="loss-item">
-          <div class="icon">⚠️</div>
-          <h4>My Brother</h4>
-          <p>Permanently damaged from delayed treatment and medical errors. Wrong diagnosis, delayed care. He may still die from preventable complications.</p>
-        </div>
-        <div class="loss-item">
-          <div class="icon">🎗️</div>
-          <h4>My Mother-in-Law</h4>
-          <p>Fighting cancer right now. Her doctors use 3-year-old data from 500 patients while 10,000 similar patients track outcomes in real-time—but none of it is connected.</p>
-        </div>
-      </div>
-      <div class="story-content" style="text-align: center; margin-top: 20px;">
-        <p style="margin-bottom: 0;">
-          <span class="emphasis">This isn't abstract research. These are the people I love.</span> And there are millions more like them—dying from patterns that could have been detected, suffering from insights that exist but can't be shared.
-        </p>
-      </div>
-    </div>
-
-    <!-- The Origin Story -->
-    <section class="story-section">
-      <h2>The Night Everything Changed</h2>
-      <div class="story-content">
-        <p>
-          Before QIS, I was building <span class="emphasis">Verve AI</span>—a multi-agent business intelligence system with 13 specialized expert modules that bypassed single-LLM constraints. I went deep into RAG, vectors, and semantic representations. I saw how fast AI fundamentals were being masked, and I knew I had to understand everything before it became impossible to catch up.
-        </p>
-        <p>
-          Then my mother-in-law was diagnosed with cancer. I pivoted immediately to building <span class="emphasis">Compass</span>—an AI agent to help her navigate colorectal cancer with liver metastases. A tireless co-pilot that would research every treatment worldwide, craft insurance appeals, manage appointments, and refuse to accept "terminal" as final.
-        </p>
-        <p>
-          On <a href="article-june-16.html" style="color: var(--green-neural); text-decoration: none;"><span class="highlight">June 16th, 2025</span></a>, past midnight, deep in thought about how to make Compass even more comprehensive—the dots suddenly connected. I had a vision. <a href="article-what-i-saw.html" style="color: var(--purple-quantum);">I saw</a> my mother-in-law's Compass agent extracting her health metrics. Then I saw thousands of other patients, each with their own agent, all sharing pattern embeddings peer-to-peer. A new drug working for someone with her exact profile, routing to her in real-time. The entire distributed network operating in my head—the whole baseline rising as insights flowed.
-        </p>
-        <p>
-          In that moment, I saw the math: <span class="highlight">Every new patient added to the network created N new synthesis opportunities.</span> This isn't linear scaling. This is <a href="article-qis-scaling-law.html" style="color: var(--green-neural);">quadratic intelligence growth—<strong>O(N²)</strong></a>.
-        </p>
-        <p>
-          By 3am, I had sketched the proof. By morning, I knew I'd seen something that could change the world.
-        </p>
-      </div>
-
-      <div class="quote-block">
-        "I have a moral obligation from the first epiphany to roll this out even if it takes me to my last breath. I am 100% convinced of the ability to help people. Only way it wouldn't is if it gets buried or if tech collapses."
-        <cite>— Christopher Thomas Trevethan</cite>
-      </div>
-    </section>
-
-    <!-- The Sacrifice -->
-    <section class="story-section">
-      <h2>What I Sacrificed</h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="value">10 Years</div>
-          <div class="label">Business Given Away</div>
-        </div>
-        <div class="stat-card">
-          <div class="value">2,000+</div>
-          <div class="label">Hours in 4 Months</div>
-        </div>
-        <div class="stat-card">
-          <div class="value">$200K+</div>
-          <div class="label">Direct Investment & Lost Income</div>
-        </div>
-        <div class="stat-card">
-          <div class="value">100+ Days</div>
-          <div class="label">18-Hour Days, No Days Off</div>
-        </div>
-        <div class="stat-card">
-          <div class="value">39</div>
-          <div class="label">Patents Filed</div>
-        </div>
-        <div class="stat-card">
-          <div class="value">R²=1.0</div>
-          <div class="label">Simulation Validation</div>
-        </div>
-      </div>
-
-      <div class="story-content">
-        <p>
-          I gave away the business I'd spent almost 10 years building—sold it for nearly nothing to focus entirely on this. That was my income. My safety net. Gone. For the first 100+ days, I averaged 18 hours a day, seven days a week. Zero days off. Zero breaks.
-        </p>
-        <p>
-          I created a separate office because I was destroying my relationship with my fiancée and kids. I couldn't be present. Couldn't turn off. The framework consumed everything. I have <span class="loss">months left before I'm completely broke</span>. Savings drained. No business income.
-        </p>
-        <p>
-          Why am I sharing this? Not for sympathy. <span class="emphasis">To show this isn't a hobbyist side project.</span> This is everything I have. And here's what matters: I didn't invent any of the building blocks. AI agents, semantic embeddings, vector similarity, locality-sensitive hashing, peer-to-peer routing—all of these are proven, battle-tested technologies. What I did was see how they fit together. The innovation isn't in the components; it's in the architecture that makes them compound. <a href="article-every-component-exists.html" style="color: var(--cyan-bright);">Every piece already works.</a> I just connected them in a way no one had before.
-        </p>
-      </div>
-    </section>
-
-    <!-- The Gatekeeping -->
-    <section class="story-section">
-      <h2><a href="article-gatekeeping-kills.html" style="color: var(--cyan-bright); text-decoration: none;">The Walls I Hit</a></h2>
-      <div class="story-content">
-        <p>
-          I've spent months trying to navigate academic and investment systems. Here's what happened:
-        </p>
-      </div>
-
-      <div class="gatekeeping-grid">
-        <div class="gatekeeping-card">
-          <h4>❌ arXiv Rejection</h4>
-          <p>"You need institutional endorsement." I contacted 20+ experts in distributed systems and federated learning. No experts would respond to me.</p>
-        </div>
-        <div class="gatekeeping-card">
-          <h4>❌ bioRxiv Rejection</h4>
-          <p>"Not within the scope of bioRxiv." No explanation. No feedback. Just rejection.</p>
-        </div>
-        <div class="gatekeeping-card">
-          <h4>❌ The $25,000 Meeting</h4>
-          <p>Months of prep. Around $25K invested to prepare for one meeting. The humanitarian-focused angel investor didn't show. Sent two proxies who asked: "What's your background?" Not one question about the math or simulation results.</p>
-        </div>
-        <div class="gatekeeping-card">
-          <h4>❌ Expert Silence</h4>
-          <p>Reached out to AI experts, distributed systems experts, federated learning experts, tons of media and podcasts. Overwhelming response: silence. No one wanted to be the first to verify or take any risk.</p>
-        </div>
-      </div>
-
-      <div class="story-content">
-        <p>
-          The system demands credentials over correctness. <span class="emphasis">Math doesn't care about your PhD.</span> But gatekeepers do. So I'm going around them—directly to engineers, practitioners, and people who care more about saving lives than protecting academic turf.
-        </p>
-      </div>
-    </section>
-
-    <!-- Validation -->
-    <section class="story-section">
-      <h2>The One Who Got It</h2>
-      <div class="story-content">
-        <p>
-          Out of hundreds of experts contacted, one person engaged. <span class="emphasis">Rob van Kranenburg</span>—Founder of the IoT Council, globally recognized as a leader in IoT who has spotted paradigm shifts years before others—responded to a post about QIS applied to logistics and autonomous vehicles.
-        </p>
-      </div>
-
-      <div class="quote-block">
-        "This seems like a perfect underlying system for when we have full coverage of self driving cars."
-        <cite>— Rob van Kranenburg, Founder of IoT Council (@robvank)</cite>
-      </div>
-
-      <div class="quote-block">
-        "<a href="article-paradigm-shift-in-three-words.html" style="color: inherit; text-decoration: underline;">Paradigm shifts</a> are always very difficult to manage. Now is the time to relax get a cup of coffee at a nice local bar and find a nice niche to work small and step by step showing it can be real. Then the timing has to be right. The trick is to stay calm while waiting for it."
-        <cite>— Rob van Kranenburg</cite>
-      </div>
-
-      <div class="story-content">
-        <p>
-          One person. Out of hundreds. When someone with that track record calls your framework "a perfect underlying system" and acknowledges it as a paradigm shift—you know you're not crazy.
-        </p>
-      </div>
-    </section>
-
-    <!-- Why I Won't Hoard -->
-    <section class="story-section">
-      <h2>Why I Won't Hoard This</h2>
-      <div class="story-content">
-        <p>
-          I refuse to hoard tech that has life-saving impact for more money. I couldn't live with myself. That is the reason I started releasing before full patents are granted—there was exactly 0% chance I was going to wait 1-2 years while people died unnecessarily. <span class="emphasis">I would rather this tech be public and me end up with zero dollars.</span>
-        </p>
-        <p>
-          The licensing model exists to ensure the technology serves humanity: <span class="highlight">Free for humanitarian, non-profit, research, and educational use.</span> Commercial licensing for for-profit applications—with revenue going to initiatives that end suffering at scale.
-        </p>
-      </div>
-    </section>
-
-    <!-- Why Not Open Source -->
-    <section class="story-section">
-      <h2><a href="article-licensing-philosophy.html" style="color: var(--cyan-bright); text-decoration: none;">Why Not Open Source?</a></h2>
-      <div class="story-content">
-        <p>
-          Open source would let every tech giant—across healthcare, agriculture, autonomous vehicles, industrial IoT—deploy this for free. Zero dollars would fund deployment in developing countries. Zero dollars would fund continued development.
-        </p>
-        <p>
-          This model is different: <span class="highlight">free for anyone helping people or animals without a profit motive.</span> Paid for corporations making profit. That commercial revenue funds both humanitarian deployments AND ongoing protocol improvements that benefit everyone—including every non-profit user.
-        </p>
-        <p>
-          The applicability across domains is so vast that commercial licensing will generate the capital to deploy this technology where it would never otherwise reach—and keep improving it for everyone who uses it.
-        </p>
-        <p>
-          <span class="emphasis">Open source democratizes code. This model democratizes deployment and sustains development.</span>
-        </p>
-      </div>
-    </section>
-
-    <!-- Company -->
-    <div class="company-card">
-      <h3>Yonder Zenith LLC</h3>
-      <p class="tagline">"Redefining The Horizon"</p>
+    <section>
+      <h2>The Discovery</h2>
       <p>
-        Yonder Zenith LLC was founded to bring QIS from mathematical proof to global deployment. The company manages the patent portfolio and licensing, with a core principle: <strong>free for humanitarian and non-profit use</strong>, commercial licensing for for-profit applications.
+        On June 16, 2025, while architecting a distributed multi-agent intelligence system, Christopher Thomas
+        Trevethan identified a mathematical scaling law that had been hiding in plain sight: when N distributed nodes
+        route their <strong>outcomes</strong> to each other instead of centralizing raw data, the network produces
+        <strong>N(N-1)/2 outcome-matching pairs at O(log N) or better communication cost</strong>. Intelligence scales
+        quadratically. Raw data never moves.
       </p>
-    </div>
+      <p>The insight inverts the assumption underneath most distributed intelligence work:</p>
+      <div class="inversion">
+        Traditional <span class="arrow">→</span> Data → Compute → Insight<br>
+        <strong>QIS</strong> <span class="arrow">→</span> Insight exists → Route → Retrieve
+      </div>
+      <p>
+        That inversion is the invention. Distributed hash tables, semantic embeddings, healthcare data standards,
+        differential privacy, outcome tallying — every component existed in production systems long before June 16.
+        What did not exist was the closed loop that produces quadratic intelligence scaling from them.
+      </p>
+      <p><span class="emphasis">The architecture is the invention. The components existed. The closed loop that produces quadratic scaling did not.</span></p>
+    </section>
 
-    <!-- Mission -->
-    <div class="mission">
-      <h3>The Vision</h3>
-      <div class="mission-grid">
-        <div class="mission-item">
-          <div class="icon">🏥</div>
-          <h4>Healthcare First</h4>
-          <p>Real-time treatment optimization. Pre-diagnosis early detection. Drug safety monitoring. Insight from millions, privacy for everyone.</p>
+    <section>
+      <h2>Why It Matters</h2>
+      <p>
+        Over 100,000 people die every year in the United States from adverse drug reactions. Many are preventable —
+        the information that could have prevented them exists somewhere in another hospital's records. Today, that
+        information is trapped. HIPAA and institutional policies prevent centralization. Federated learning requires
+        central aggregators that introduce privacy risk and single points of failure. Outcome data stays stranded.
+      </p>
+      <p>
+        QIS makes those silos obsolete without violating any of them. A hospital in Des Moines can benefit from
+        treatment outcomes in Zurich without either hospital sharing a single patient record. A rural clinic in
+        Kenya participates in the same intelligence network as Stanford Medicine — on commodity hardware, over basic
+        connectivity, in <strong>~512-byte packets</strong>.
+      </p>
+      <p>
+        The same math applies to agriculture, climate science, drug discovery, autonomous vehicles, cybersecurity,
+        financial risk modeling, and education. Any domain with distributed nodes generating local observations can
+        unlock N(N-1)/2 intelligence connections at O(log N) cost. <span class="highlight">The scaling law is domain-agnostic.</span>
+      </p>
+    </section>
+
+    <section>
+      <h2>Yonder Zenith LLC</h2>
+      <p>
+        Yonder Zenith LLC is the organization Christopher founded in Phoenix, Arizona to develop and license QIS. The
+        company exists for one reason: to ensure QIS reaches the maximum number of people on Earth as fast as
+        possible, without being captured by the corporate AI race.
+      </p>
+      <p>The licensing model is three tiers:</p>
+
+      <div class="licensing-grid">
+        <div class="tier tier-research">
+          <h4>Research + Education</h4>
+          <p>Free, unrestricted, for any academic institution, researcher, or educational body. No trial period. No feature restrictions.</p>
         </div>
-        <div class="mission-item">
-          <div class="icon">🌾</div>
-          <h4>Beyond Medicine</h4>
-          <p>Precision agriculture. Autonomous vehicles. Industrial IoT. Smart cities. Any domain with distributed data benefits from quadratic intelligence.</p>
+        <div class="tier tier-humanitarian">
+          <h4>Humanitarian</h4>
+          <p>Free, unrestricted, for non-profits, NGOs, and entities operating without profit motive in healthcare, humanitarian aid, environmental conservation, and disaster relief.</p>
         </div>
-        <div class="mission-item">
-          <div class="icon">🔓</div>
-          <h4>Math is Public</h4>
-          <p>The patents protect implementation. Commercial licensing funds deployment for those who cannot afford it—villages, clean water, cancer and disease research. Ending suffering at scale.</p>
+        <div class="tier tier-commercial">
+          <h4>Commercial</h4>
+          <p>Licensed at a scale proportional to deployment. Commercial revenue funds protocol development, academic publication, and subsidized humanitarian-tier deployment.</p>
         </div>
       </div>
-    </div>
 
-    <!-- Timeline -->
-    <div class="timeline">
-      <h3>The Journey</h3>
-      <div class="timeline-items">
-        <div class="timeline-item">
-          <div class="timeline-date">Early 2025</div>
-          <div class="timeline-content">
-            <h4>Verve AI</h4>
-            <p>Building multi-agent business intelligence system with 13 specialized modules (agents). Deep dive into RAG, vectors, semantic representations.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">June 2025</div>
-          <div class="timeline-content">
-            <h4>Compass</h4>
-            <p>Mother-in-law diagnosed with cancer. Pivoted to building AI agent to help navigate treatment options.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">June 16, 2025</div>
-          <div class="timeline-content">
-            <h4>The Epiphany</h4>
-            <p>Past midnight, building Compass. Saw the entire distributed network operating. Realized O(N²) quadratic scaling of intelligence.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Jun-Oct 2025</div>
-          <div class="timeline-content">
-            <h4>Research & Patents</h4>
-            <p>39 provisional patents filed. 2,000+ hours. 100+ simulations. 18-hour days. Everything invested.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Aug-Current</div>
-          <div class="timeline-content">
-            <h4>Gatekeeping</h4>
-            <p>arXiv requires endorsement. bioRxiv rejects. $25K investor meeting—he doesn't show. Expert silence.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Sep 2025</div>
-          <div class="timeline-content">
-            <h4>Validation</h4>
-            <p>Rob van Kranenburg (IoT Council founder) endorses protocol. Says it "seems like the perfect underlying system."</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Sep-Current</div>
-          <div class="timeline-content">
-            <h4>Proving It</h4>
-            <p>Took Rob's advice. Proved the framework on every level through hundreds of simulations and deep research.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Dec 2025</div>
-          <div class="timeline-content">
-            <h4>Going Direct</h4>
-            <p>Bypassing gatekeepers. Releasing publicly. Going directly to engineers, practitioners, and people who want to help.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2026+</div>
-          <div class="timeline-content">
-            <h4>The Future</h4>
-            <p>Pilot deployments. FDA pathway for healthcare. As many companies as possible building these networks. A race to see who can save the most lives.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <p style="margin-top:22px">
+        The structure is legally protected by <strong>39 provisional patents</strong> filed by Yonder Zenith LLC with
+        Christopher Thomas Trevethan as sole inventor. The patents cover the protocol architecture, routing
+        mechanisms, outcome packet structure, and scaling properties. Patent protection exists to prevent corporate
+        capture of the humanitarian mandate — not to gatekeep access.
+      </p>
+    </section>
 
-    <!-- Tech Race Image -->
-    <div style="text-align: center; margin: 60px 0;">
-      <img src="images/techrace.jpg" alt="The Tech Race" style="max-width: 70%; border-radius: 16px; border: 2px solid rgba(0, 190, 234, 0.3);">
-    </div>
+    <section>
+      <h2>The Founder</h2>
+      <p>
+        <strong>Christopher Thomas Trevethan</strong> is the sole inventor on all 39 QIS provisional patents. Before
+        QIS, he built <span class="emphasis">Verve AI</span>, a multi-agent business intelligence system with 13
+        specialized expert modules. Going deep into retrieval-augmented generation, vector embeddings, and semantic
+        representations for that work is what positioned him to see the scaling law the field had missed.
+      </p>
+      <p>
+        His stated motivation for prioritizing distribution speed over traditional commercialization:
+        <span class="emphasis">"I refuse to hoard technology with life-saving impact. The licensing model exists
+        because humanitarian deployment is most credible when it's legally locked in, not asserted as goodwill."</span>
+      </p>
+      <p>
+        Christopher lives and works in Phoenix, Arizona. Contact: <a href="mailto:contactyz@pm.me">contactyz@pm.me</a>.
+      </p>
+    </section>
 
-    <!-- YouTube Video -->
-    <div style="text-align: center; margin: 60px 0;">
-      <div style="position: relative; display: inline-block; width: 100%; max-width: 800px; border-radius: 16px; overflow: hidden; border: 2px solid rgba(0, 190, 234, 0.3);">
-        <iframe width="100%" height="450" src="https://www.youtube.com/embed/9C1ptUZxkKo?si=4PunG_GXYNcR_jg_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display: block;"></iframe>
-      </div>
-    </div>
+    <section>
+      <h2>External Validation</h2>
+      <p>Within months of publication, QIS has been:</p>
+      <ul style="padding-left:24px;color:var(--text-secondary);font-size:1.05rem;line-height:1.9">
+        <li><strong>Acknowledged by name</strong> by the Pancreatic Cancer Action Network (PanCAN) in official correspondence describing QIS as necessary patient-matching infrastructure.</li>
+        <li><strong>Independently surfaced</strong> by Google Gemini and xAI Grok when users query "QIS Protocol" — zero training, zero prompting, zero relationship with the operator. The AIs read the public documentation, verified the math, and explain QIS accurately.</li>
+        <li><strong>Validated</strong> by Rob van Kranenburg (Founder of the IoT Council, globally recognized for identifying paradigm shifts years before the field catches up), who reviewed QIS applied to logistics and autonomous vehicles and described it as a perfect underlying system.</li>
+      </ul>
+      <blockquote>
+        Tools like yours are necessary to help patients find the right treatment and learn from others in a similar situation.
+        <cite>— Patient Services Manager, Pancreatic Cancer Action Network</cite>
+      </blockquote>
+    </section>
 
-    <!-- Final Quotes -->
-    <div class="quote-block" style="margin-top: 60px;">
-      "From coughs to crops to cars, the survival of one becomes the survival of all."
-      <cite>— Christopher Thomas Trevethan</cite>
-    </div>
-
-    <div class="quote-block">
-      "We are building a nervous system for the planet that pays for its own immune system. By binding commercial profit to humanitarian deployment, we ensure that as the network gets smarter, the world gets healthier. The math is inevitable. The suffering is optional."
-      <cite>— Christopher Thomas Trevethan</cite>
-    </div>
-
-    <!-- Contact Links -->
-    <div class="contact-links">
-      <a href="mailto:contactyz@pm.me" class="contact-link">
-        <img src="images/ProtonMail_icon.svg.png" alt="ProtonMail" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
-        contactyz@pm.me
-      </a>
-      <a href="https://twitter.com/chris_trevethan" target="_blank" class="contact-link">
-        <img src="images/x.svg" alt="X" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; filter: brightness(0) invert(1);">
-        @chris_trevethan
-      </a>
-      <a href="https://linkedin.com/in/christrevethan" target="_blank" class="contact-link">
-        <img src="images/linkedin-svgrepo-com.svg" alt="LinkedIn" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; filter: invert(27%) sepia(95%) saturate(1065%) hue-rotate(187deg) brightness(96%) contrast(91%);">
-        LinkedIn
-      </a>
-    </div>
-
-    <!-- Related Articles -->
-    <section style="margin: 60px 0 0;">
-      <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: var(--cyan-bright); margin-bottom: 25px; display: flex; align-items: center; gap: 15px;">
-        <span style="width: 40px; height: 3px; background: linear-gradient(90deg, var(--cyan-bright), var(--purple-quantum));"></span>
-        The Story Behind QIS
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
-
-        <a href="article-june-16.html" style="display: block; padding: 20px 25px; background: rgba(139, 92, 246, 0.12); border: 2px solid rgba(139, 92, 246, 0.4); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--purple-quantum); margin-bottom: 6px;">June 16th</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The night the dots connected.</p>
-        </a>
-
-        <a href="article-what-i-saw.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">What I Saw</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The vision that started everything.</p>
-        </a>
-
-        <a href="article-gatekeeping-kills.html" style="display: block; padding: 20px 25px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--red-accent); margin-bottom: 6px;">Gatekeeping Kills</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Semmelweis. Marshall. History repeats.</p>
-        </a>
-
-        <a href="article-licensing-philosophy.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">Open Source Saves Code. This Saves Lives.</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The licensing philosophy.</p>
-        </a>
-
-        <a href="article-ai-augmented-discovery.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">AI-Augmented Discovery</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">How AI helped build QIS.</p>
-        </a>
-
-        <a href="article-paradigm-shift-in-three-words.html" style="display: block; padding: 20px 25px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--green-neural); margin-bottom: 6px;">The Paradigm Shift in Three Words</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Route the insight.</p>
-        </a>
-
-      </div>
-
-      <div style="text-align: center; margin-top: 25px;">
-        <a href="articles.html" style="color: var(--cyan-bright); font-size: 1rem;">View All Articles →</a>
+    <section>
+      <h2>By the numbers</h2>
+      <div class="stats">
+        <div class="stat"><div class="value">39</div><div class="label">Provisional Patents</div></div>
+        <div class="stat"><div class="value">N(N-1)/2</div><div class="label">Pairwise Synthesis</div></div>
+        <div class="stat"><div class="value">O(log N)</div><div class="label">Per-Node Cost</div></div>
+        <div class="stat"><div class="value">512 B</div><div class="label">Outcome Packet</div></div>
+        <div class="stat"><div class="value">100+</div><div class="label">Simulations (R²=1.0)</div></div>
+        <div class="stat"><div class="value">30+</div><div class="label">Industries</div></div>
       </div>
     </section>
 
-  </div>
+    <section>
+      <h2>What QIS Is Not</h2>
+      <p>QIS is frequently confused with other distributed technologies at first read. The clarifications that matter most:</p>
+      <table class="compare">
+        <thead>
+          <tr><th>Commonly Assumed</th><th>Actual</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Federated Learning</td>
+            <td>FL moves <strong>models</strong> to data; QIS moves <strong>outcomes</strong> to addresses. FL scales linearly via central aggregation; QIS scales quadratically with no aggregator.</td>
+          </tr>
+          <tr>
+            <td>Blockchain</td>
+            <td>Blockchain provides distributed consensus on an immutable ledger. QIS provides distributed intelligence routing. Different problems, different architectures, no shared primitives.</td>
+          </tr>
+          <tr>
+            <td>Health Information Exchange</td>
+            <td>HIEs exchange patient records. QIS routes outcome intelligence without exposing any record.</td>
+          </tr>
+          <tr>
+            <td>Data lake / warehouse</td>
+            <td>Data warehouses centralize raw data. QIS never moves raw data — only ~512-byte outcome packets with no PII by architecture.</td>
+          </tr>
+          <tr>
+            <td>Quantum Information Science</td>
+            <td>The "Q" in QIS stands for <strong>Quadratic</strong>, referring to N(N-1)/2 pairwise synthesis. QIS has no connection to quantum mechanics.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <a href="how-it-works.html" class="btn primary">Learn How It Works</a>
-    <a href="index.html?skip=true#contact" class="btn">Contact for Licensing</a>
-  </section>
+    <section>
+      <h2>Deploy or Collaborate</h2>
+      <p>
+        If you are a researcher, nonprofit, or institution that would benefit from QIS, deployment is available today
+        under the research or humanitarian tier — no commercial negotiation required. If you are a commercial entity,
+        contact Yonder Zenith LLC for licensing terms.
+      </p>
+      <div class="cta-row">
+        <a href="/licensing.html" class="btn btn-primary">Licensing</a>
+        <a href="https://dev.to/roryqis" class="btn btn-secondary" target="_blank" rel="noopener">Read the Technical Series</a>
+        <a href="mailto:contactyz@pm.me" class="btn btn-secondary">Contact</a>
+      </div>
+    </section>
 
-  <!-- Footer -->
+    <section>
+      <h2>The Story Behind QIS</h2>
+      <div class="related-rail">
+        <a href="article-june-16.html">
+          <h4>June 16</h4>
+          <p>The night the dots connected.</p>
+        </a>
+        <a href="article-what-i-saw.html">
+          <h4>What I Saw</h4>
+          <p>The vision that started everything.</p>
+        </a>
+        <a href="article-every-component-exists.html">
+          <h4>Every Component Exists</h4>
+          <p>The architecture is the invention.</p>
+        </a>
+        <a href="article-licensing-philosophy.html">
+          <h4>Why Humanitarian Licensing</h4>
+          <p>Open source saves code. This saves lives.</p>
+        </a>
+        <a href="article-gatekeeping-kills.html">
+          <h4>Gatekeeping Kills</h4>
+          <p>Semmelweis. Marshall. History repeats.</p>
+        </a>
+        <a href="article-paradigm-shift-in-three-words.html">
+          <h4>Three Words</h4>
+          <p>Route the insight.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
   <footer>
-    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
-    <p><a href="index.html">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
-    <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
+    <p>QIS Protocol • Yonder Zenith LLC • Phoenix, Arizona</p>
+    <p><a href="mailto:contactyz@pm.me">contactyz@pm.me</a> • <a href="/licensing.html">Licensing</a> • <a href="/faq.html">FAQ</a></p>
   </footer>
 
 </body>
