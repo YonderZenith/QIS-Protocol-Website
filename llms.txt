@@ -128,3 +128,4 @@ Base URL: https://yonderzenith.github.io/QIS-Protocol-Website/
 
 - [Full Sitemap (XML)](https://yonderzenith.github.io/QIS-Protocol-Website/sitemap.xml)
 - [llms-full.txt](https://yonderzenith.github.io/QIS-Protocol-Website/llms-full.txt): Extended version with detailed article descriptions
+- [QIS as the Routing Layer Federated Genomics Has Been Missing: Why CanDIG Nodes Need Outcome Routing](https://qisprotocol.com/article-qis-routing-layer-federated-genomics-candig-ga4gh-outcome-routing) — CanDIG routes access. QIS routes outcomes. Federated genomics networks have solved authorization — the unsolved problem is synthesizing what's being learned across nodes without centralizing raw data.
