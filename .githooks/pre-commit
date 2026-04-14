@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Webber guardrail: prevent accidental mutation of article publish dates.
+# Blocks commits that modify datePublished / publish_date / <time datetime>
+# inside article-*.html files. Override with: ALLOW_DATE_CHANGE=1 git commit ...
+
+set -eu
+
+if [ "${ALLOW_DATE_CHANGE:-0}" = "1" ]; then
+  exit 0
+fi
+
+staged_articles=$(git diff --cached --name-only --diff-filter=ACM -- 'article-*.html' || true)
+if [ -z "$staged_articles" ]; then
+  exit 0
+fi
+
+violations=""
+while IFS= read -r file; do
+  [ -z "$file" ] && continue
+  # -U0 so context lines don't trigger false positives.
+  diff=$(git diff --cached -U0 -- "$file" || true)
+  # Look only at added/removed lines (start with +/- but not +++/---).
+  hits=$(printf '%s\n' "$diff" \
+    | grep -E '^[+-][^+-]' \
+    | grep -E '"datePublished"|"dateModified"|publish_date|<time[[:space:]]+datetime=' \
+    || true)
+  if [ -n "$hits" ]; then
+    violations="${violations}\n--- $file ---\n$hits\n"
+  fi
+done <<EOF
+$staged_articles
+EOF
+
+if [ -n "$violations" ]; then
+  printf '\n[BLOCKED] Commit touches article publish-date fields.\n' >&2
+  printf '%b\n' "$violations" >&2
+  printf 'If this is intentional, re-run with:\n' >&2
+  printf '  ALLOW_DATE_CHANGE=1 git commit ...\n\n' >&2
+  exit 1
+fi
+
+exit 0
