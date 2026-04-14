@@ -1,30 +1,31 @@
 {
   "canonical_domain": "https://qisprotocol.com",
   "last_updated": "2026-04-14",
+  "url_convention": "Use explicit .html extensions on all page links (except /). Works on both github.io subdirectory and qisprotocol.com without Jekyll pretty-URL config.",
   "primary_nav": [
     { "label": "Home", "href": "/", "page": "index.html", "priority": 1.0, "changefreq": "daily" },
-    { "label": "How It Works", "href": "/how-it-works", "page": "how-it-works.html", "priority": 0.9, "changefreq": "weekly" },
+    { "label": "How It Works", "href": "/how-it-works.html", "page": "how-it-works.html", "priority": 0.9, "changefreq": "weekly" },
     {
       "label": "Use Cases",
       "dropdown": [
-        { "label": "Healthcare", "href": "/healthcare", "page": "healthcare.html", "priority": 0.9, "changefreq": "weekly" },
-        { "label": "Agriculture", "href": "/agriculture", "page": "agriculture.html", "priority": 0.8, "changefreq": "weekly" },
-        { "label": "Emergency Response", "href": "/emergency", "page": "emergency.html", "priority": 0.8, "changefreq": "weekly" }
+        { "label": "Healthcare", "href": "/healthcare.html", "page": "healthcare.html", "priority": 0.9, "changefreq": "weekly" },
+        { "label": "Agriculture", "href": "/agriculture.html", "page": "agriculture.html", "priority": 0.8, "changefreq": "weekly" },
+        { "label": "Emergency Response", "href": "/emergency.html", "page": "emergency.html", "priority": 0.8, "changefreq": "weekly" }
       ]
     },
-    { "label": "Demos", "href": "/demos", "page": "demos.html", "priority": 0.9, "changefreq": "weekly" },
-    { "label": "Articles", "href": "/articles", "page": "articles.html", "priority": 0.9, "changefreq": "daily" },
-    { "label": "Licensing", "href": "/licensing", "page": "licensing.html", "priority": 0.8, "changefreq": "monthly" },
-    { "label": "About", "href": "/about", "page": "about.html", "priority": 0.8, "changefreq": "monthly" },
-    { "label": "FAQ", "href": "/faq", "page": "faq.html", "priority": 0.8, "changefreq": "weekly" }
+    { "label": "Demos", "href": "/demos.html", "page": "demos.html", "priority": 0.9, "changefreq": "weekly" },
+    { "label": "Articles", "href": "/articles.html", "page": "articles.html", "priority": 0.9, "changefreq": "daily" },
+    { "label": "Licensing", "href": "/licensing.html", "page": "licensing.html", "priority": 0.8, "changefreq": "monthly" },
+    { "label": "About", "href": "/about.html", "page": "about.html", "priority": 0.8, "changefreq": "monthly" },
+    { "label": "FAQ", "href": "/faq.html", "page": "faq.html", "priority": 0.8, "changefreq": "weekly" }
   ],
   "secondary_nav": [
-    { "label": "Compare", "href": "/comparison", "page": "comparison.html", "priority": 0.6, "changefreq": "monthly" },
-    { "label": "Tech Race", "href": "/techrace", "page": "techrace.html", "priority": 0.6, "changefreq": "monthly" },
-    { "label": "Manifesto", "href": "/manifesto", "page": "manifesto.html", "priority": 0.5, "changefreq": "monthly" },
-    { "label": "Directory", "href": "/directory", "page": "directory.html", "priority": 0.5, "changefreq": "weekly" },
-    { "label": "Privacy", "href": "/privacy", "page": "privacy.html", "priority": 0.3, "changefreq": "monthly" },
-    { "label": "Disclaimer", "href": "/disclaimer", "page": "disclaimer.html", "priority": 0.3, "changefreq": "yearly" }
+    { "label": "Compare", "href": "/comparison.html", "page": "comparison.html", "priority": 0.6, "changefreq": "monthly" },
+    { "label": "Tech Race", "href": "/techrace.html", "page": "techrace.html", "priority": 0.6, "changefreq": "monthly" },
+    { "label": "Manifesto", "href": "/manifesto.html", "page": "manifesto.html", "priority": 0.5, "changefreq": "monthly" },
+    { "label": "Directory", "href": "/directory.html", "page": "directory.html", "priority": 0.5, "changefreq": "weekly" },
+    { "label": "Privacy", "href": "/privacy.html", "page": "privacy.html", "priority": 0.3, "changefreq": "monthly" },
+    { "label": "Disclaimer", "href": "/disclaimer.html", "page": "disclaimer.html", "priority": 0.3, "changefreq": "yearly" }
   ],
   "external_footer_links": [
     { "label": "GitHub", "href": "https://github.com/YonderZenith" },
@@ -33,13 +34,13 @@
   "archived_pages": [
     {
       "page": "watch-demo.html",
-      "reason": "Consolidated into /demos hub as of 2026-04-14 IA redesign",
-      "redirect": "/demos"
+      "reason": "Consolidated into /demos.html hub as of 2026-04-14 IA redesign",
+      "redirect": "/demos.html"
     },
     {
       "page": "demo-qis-four-architectures.html",
-      "reason": "Consolidated into /demos hub as of 2026-04-14 IA redesign",
-      "redirect": "/demos"
+      "reason": "Consolidated into /demos.html hub as of 2026-04-14 IA redesign",
+      "redirect": "/demos.html"
     }
   ],
   "known_ghost_references_to_remove": [
