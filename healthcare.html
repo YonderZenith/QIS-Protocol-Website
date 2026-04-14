@@ -1,1418 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-WMPC09C3R0');
   </script>
+  <script>
+    (function(ss,ex){window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};(function(d,s){fs=d.getElementsByTagName(s)[0];function ce(src){var cs=d.createElement(s);cs.src=src;cs.async=1;fs.parentNode.insertBefore(cs,fs);}ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js');})(document,'script');})('lAxoEaKQb9v7OYGd');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QIS Protocol Healthcare - Democratizing precision medicine through distributed pattern synthesis. 2.5-3.3M lives saved annually.">
-  <title>Healthcare • QIS Protocol</title>
+  <meta name="description" content="QIS Protocol for healthcare — distributed outcome routing across hospitals, clinics, and research networks. NHS, OHDSI, OMOP, PCORnet, CanDIG compatible. No raw patient data movement, N(N-1)/2 intelligence connections.">
+  <meta name="keywords" content="QIS healthcare, federated health data, NHS federated AI, OHDSI OMOP routing, PCORnet, CanDIG genomics, distributed clinical intelligence, HIPAA compliant outcome routing, federated learning alternative healthcare">
+  <title>Healthcare — QIS Protocol</title>
+
   <link rel="canonical" href="https://qisprotocol.com/healthcare" />
-  <link rel="sitemap" type="application/xml" href="https://qisprotocol.com/sitemap.xml" />
-  
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   <link rel="icon" href="images/favicon.png" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --cyan-primary: #00BEEA;
-      --cyan-bright: #00D9FF;
-      --purple-quantum: #8B5CF6;
-      --green-neural: #10B981;
-      --orange-warning: #F59E0B;
-      --red-alert: #EF4444;
-      --dark-bg: #0A0A0A;
-      --text-primary: #E8F5E9;
-      --text-secondary: rgba(232, 245, 233, 0.8);
-    }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--dark-bg);
-      color: var(--text-primary);
-      font-family: 'Rajdhani', sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: 
-        radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Navigation */
-    .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10, 10, 10, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
-      z-index: 1000;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-    }
-
-    .nav-logo img { width: 40px; height: 40px; filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5)); }
-    .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--cyan-bright); }
-
-    .nav-links { display: flex; gap: 30px; }
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-    }
-    .nav-links a:hover { color: var(--cyan-bright); }
-
-    /* Hero */
-    .hero {
-      padding: 160px 40px 80px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      padding: 8px 20px;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      color: var(--green-neural);
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .hero h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      background: linear-gradient(180deg, #FFFFFF 0%, var(--green-neural) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-    }
-
-    .hero .subtitle {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero .subtitle .highlight {
-      color: var(--green-neural);
-      font-weight: 600;
-    }
-
-    /* Content */
-    .content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Section Headers */
-    .section-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-header h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      color: var(--cyan-bright);
-      margin-bottom: 15px;
-    }
-
-    .section-header p {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    /* Problem Section */
-    .problem-section {
-      margin: 80px 0;
-    }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
-    }
-
-    .problem-card {
-      background: rgba(239, 68, 68, 0.08);
-      border: 2px solid rgba(239, 68, 68, 0.3);
-      border-radius: 20px;
-      padding: 35px;
-      transition: all 0.4s ease;
-    }
-
-    .problem-card:hover {
-      border-color: rgba(239, 68, 68, 0.6);
-      transform: translateY(-5px);
-    }
-
-    .problem-card .icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .problem-card h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
-      color: var(--red-alert);
-      margin-bottom: 15px;
-    }
-
-    .problem-card p {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      margin-bottom: 15px;
-      line-height: 1.8;
-    }
-
-    .problem-card .stat {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.1rem;
-      color: var(--red-alert);
-      font-weight: 600;
-    }
-
-    .problem-card .stat-label {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-    }
-
-    /* Core Insight Box */
-    .core-insight {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
-      border: 2px solid rgba(239, 68, 68, 0.4);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 40px 0;
-      text-align: center;
-    }
-
-    .core-insight p {
-      font-size: 1.4rem;
-      color: var(--text-primary);
-      font-weight: 600;
-      line-height: 1.8;
-    }
-
-    .core-insight .emphasis {
-      color: var(--red-alert);
-    }
-
-    /* Impact Stats */
-    .impact-section {
-      margin: 100px 0;
-    }
-
-    .big-number-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-bottom: 50px;
-    }
-
-    .big-number-card {
-      background: rgba(0,0,0,0.5);
-      border: 2px solid rgba(16, 185, 129, 0.4);
-      border-radius: 24px;
-      padding: 40px 30px;
-      text-align: center;
-      transition: all 0.4s ease;
-    }
-
-    .big-number-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--green-neural);
-      box-shadow: 0 10px 50px rgba(16, 185, 129, 0.3);
-    }
-
-    .big-number-card .number {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: 900;
-      color: var(--green-neural);
-      margin-bottom: 10px;
-      line-height: 1.1;
-    }
-
-    .big-number-card .label {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* Lives Saved Breakdown */
-    .lives-breakdown {
-      background: rgba(0,0,0,0.5);
-      border: 2px solid rgba(0, 190, 234, 0.3);
-      border-radius: 24px;
-      padding: 50px;
-      margin: 50px 0;
-    }
-
-    .lives-breakdown h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: var(--cyan-bright);
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .lives-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .lives-item {
-      text-align: center;
-      padding: 25px 15px;
-      background: rgba(16, 185, 129, 0.08);
-      border-radius: 16px;
-      border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-
-    .lives-item .condition {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      margin-bottom: 10px;
-    }
-
-    .lives-item .deaths {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--red-alert);
-      margin-bottom: 8px;
-    }
-
-    .lives-item .saved {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--green-neural);
-    }
-
-    .lives-item .saved-label {
-      font-size: 0.85rem;
-      color: var(--green-neural);
-    }
-
-    /* Solution Section */
-    .solution-section {
-      margin: 100px 0;
-    }
-
-    .solution-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-    }
-
-    .solution-card {
-      background: rgba(0,0,0,0.5);
-      border: 2px solid rgba(0, 190, 234, 0.3);
-      border-radius: 20px;
-      padding: 35px;
-      transition: all 0.4s ease;
-    }
-
-    .solution-card:hover {
-      border-color: var(--cyan-bright);
-      box-shadow: 0 0 40px rgba(0, 190, 234, 0.2);
-    }
-
-    .solution-card .icon {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .solution-card h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.15rem;
-      color: var(--cyan-bright);
-      margin-bottom: 15px;
-    }
-
-    .solution-card p {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-
-    .solution-card .highlight {
-      color: var(--green-neural);
-      font-weight: 600;
-    }
-
-    /* Case Study */
-    .case-study {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(16, 185, 129, 0.1));
-      border: 2px solid var(--purple-quantum);
-      border-radius: 24px;
-      padding: 50px;
-      margin: 80px 0;
-    }
-
-    .case-study-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .case-study-header .tag {
-      display: inline-block;
-      background: rgba(139, 92, 246, 0.2);
-      border: 1px solid rgba(139, 92, 246, 0.4);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: var(--purple-quantum);
-      margin-bottom: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .case-study-header h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      color: var(--text-primary);
-    }
-
-    .case-comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-
-    .case-before, .case-after {
-      padding: 30px;
-      border-radius: 16px;
-    }
-
-    .case-before {
-      background: rgba(239, 68, 68, 0.1);
-      border: 2px solid rgba(239, 68, 68, 0.3);
-    }
-
-    .case-after {
-      background: rgba(16, 185, 129, 0.1);
-      border: 2px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .case-before h4 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      color: var(--red-alert);
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .case-after h4 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      color: var(--green-neural);
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .case-before ul, .case-after ul {
-      list-style: none;
-    }
-
-    .case-before li, .case-after li {
-      padding: 8px 0;
-      padding-left: 25px;
-      position: relative;
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-    }
-
-    .case-before li::before {
-      content: '✗';
-      position: absolute;
-      left: 0;
-      color: var(--red-alert);
-    }
-
-    .case-after li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--green-neural);
-    }
-
-    .case-outcome {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .outcome-stat {
-      text-align: center;
-    }
-
-    .outcome-stat .value {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .outcome-stat .value.green { color: var(--green-neural); }
-    .outcome-stat .value.cyan { color: var(--cyan-bright); }
-    .outcome-stat .value.purple { color: var(--purple-quantum); }
-
-    .outcome-stat .label {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-    }
-
-    /* Pre-Diagnosis Section */
-    .prediagnosis {
-      background: rgba(0,0,0,0.6);
-      border: 2px solid rgba(245, 158, 11, 0.4);
-      border-radius: 24px;
-      padding: 50px;
-      margin: 80px 0;
-    }
-
-    .prediagnosis h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: var(--orange-warning);
-      margin-bottom: 25px;
-      text-align: center;
-    }
-
-    .prediagnosis > p {
-      font-size: 1.15rem;
-      color: var(--text-primary);
-      max-width: 900px;
-      margin: 0 auto 30px;
-      text-align: center;
-      line-height: 1.9;
-    }
-
-    .signals-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 15px;
-      margin: 30px 0;
-    }
-
-    .signal-item {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      border-radius: 12px;
-      padding: 20px 15px;
-      text-align: center;
-    }
-
-    .signal-item .icon {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .signal-item .name {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
-    .detection-comparison {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .detection-card {
-      background: rgba(0,0,0,0.4);
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .detection-card h4 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      margin-bottom: 15px;
-    }
-
-    .detection-card.traditional h4 { color: var(--orange-warning); }
-    .detection-card.qis h4 { color: var(--green-neural); }
-
-    .detection-card .time {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .detection-card.traditional .time { color: var(--red-alert); }
-    .detection-card.qis .time { color: var(--green-neural); }
-
-    .detection-card .note {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-    }
-
-    /* Who Benefits */
-    .beneficiaries {
-      margin: 80px 0;
-    }
-
-    .beneficiaries-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .beneficiary-item {
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(0, 190, 234, 0.2);
-      border-radius: 16px;
-      padding: 25px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .beneficiary-item:hover {
-      border-color: var(--cyan-bright);
-      background: rgba(0, 190, 234, 0.05);
-    }
-
-    .beneficiary-item .icon {
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
-
-    .beneficiary-item p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    /* Privacy Section */
-    .privacy-section {
-      margin: 80px 0;
-      text-align: center;
-    }
-
-    .privacy-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      margin-top: 40px;
-    }
-
-    .privacy-item {
-      background: rgba(0,0,0,0.5);
-      border: 2px solid rgba(16, 185, 129, 0.3);
-      border-radius: 20px;
-      padding: 35px 25px;
-    }
-
-    .privacy-item .icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .privacy-item h4 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.1rem;
-      color: var(--green-neural);
-      margin-bottom: 15px;
-    }
-
-    .privacy-item p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    /* Implementation Pathway */
-    .implementation {
-      background: rgba(0,0,0,0.5);
-      border: 2px solid rgba(139, 92, 246, 0.3);
-      border-radius: 24px;
-      padding: 50px;
-      margin: 80px 0;
-    }
-
-    .implementation h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: var(--purple-quantum);
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    .phase-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .phase-card {
-      background: rgba(139, 92, 246, 0.08);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 16px;
-      padding: 30px;
-    }
-
-    .phase-card .phase-num {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.85rem;
-      color: var(--purple-quantum);
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .phase-card h4 {
-      font-size: 1.2rem;
-      color: var(--text-primary);
-      margin-bottom: 15px;
-    }
-
-    .phase-card p {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      margin-bottom: 10px;
-    }
-
-    .phase-card .detail {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--cyan-bright);
-    }
-
-    .regulatory-note {
-      margin-top: 40px;
-      padding: 25px;
-      background: rgba(0,0,0,0.4);
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .regulatory-note p {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    .regulatory-note strong {
-      color: var(--purple-quantum);
-    }
-
-    /* CTA */
-    .cta-section {
-      text-align: center;
-      padding: 60px 40px 100px;
-    }
-
-    .btn {
-      padding: 18px 45px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border: 2px solid var(--cyan-bright);
-      background: transparent;
-      color: var(--text-primary);
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.4s ease;
-      margin: 10px;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background: var(--cyan-bright);
-      color: #000;
-      box-shadow: 0 0 40px rgba(0, 217, 255, 0.6);
-    }
-
-    .btn.primary {
-      background: linear-gradient(135deg, var(--green-neural), #34d399);
-      border-color: var(--green-neural);
-      color: #fff;
-    }
-
-    .btn.primary:hover {
-      box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
-    }
-
-    /* Footer */
-    footer {
-      background: #000;
-      padding: 50px 40px;
-      text-align: center;
-      border-top: 1px solid rgba(0, 190, 234, 0.2);
-    }
-
-    footer p { color: var(--text-secondary); margin-bottom: 10px; }
-    footer a { color: var(--cyan-bright); text-decoration: none; }
-
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 20px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .hamburger span {
-      display: block;
-      width: 100%;
-      height: 3px;
-      background: var(--cyan-bright);
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-    .nav-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-    }
-    .nav-overlay.active { display: block; }
-
-    /* Responsive */
-    @media (max-width: 1100px) {
-      .big-number-grid { grid-template-columns: 1fr; }
-      .lives-grid { grid-template-columns: repeat(2, 1fr); }
-      .solution-grid { grid-template-columns: 1fr; }
-      .phase-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 968px) {
-      .problem-grid { grid-template-columns: 1fr; }
-      .case-comparison { grid-template-columns: 1fr; }
-      .case-outcome { grid-template-columns: 1fr; gap: 15px; }
-      .detection-comparison { grid-template-columns: 1fr; }
-      .privacy-grid { grid-template-columns: 1fr; }
-      .beneficiaries-grid { grid-template-columns: repeat(2, 1fr); }
-      .signals-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-      .nav { padding: 15px 20px; }
-      .nav-logo span { font-size: 1rem; }
-      .nav-logo img { width: 32px; height: 32px; }
-      .hamburger { display: flex; }
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 300px;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.98);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-        padding: 60px 20px;
-        transition: right 0.3s ease;
-        border-left: 1px solid rgba(0, 190, 234, 0.3);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-      }
-      .nav-links.active { right: 0; }
-      .nav-links a {
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(0, 190, 234, 0.1);
-      }
-      .lives-grid { grid-template-columns: 1fr; }
-      .beneficiaries-grid { grid-template-columns: 1fr; }
-      .signals-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
-<script>
-  (function(ss,ex){
-    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
-    (function(d,s){
-      fs=d.getElementsByTagName(s)[0];
-      function ce(src){
-        var cs=d.createElement(s);
-        cs.src=src;
-        cs.async=1;
-        fs.parentNode.insertBefore(cs,fs);
-      };
-      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
-    })(document,'script');
-  })('lAxoEaKQb9v7OYGd');
-</script>
-  <script type="application/ld+json" data-injected="webber-infra-fix">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://qisprotocol.com/#organization",
-      "name": "Yonder Zenith LLC",
-      "url": "https://qisprotocol.com",
-      "logo": "https://qisprotocol.com/images/logo.png",
-      "foundingDate": "2025",
-      "foundingLocation": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Phoenix",
-          "addressRegion": "AZ",
-          "addressCountry": "US"
-        }
-      },
-      "description": "Yonder Zenith LLC develops and licenses the Quadratic Intelligence Swarm (QIS) protocol, a distributed intelligence architecture discovered by Christopher Thomas Trevethan.",
-      "founder": { "@id": "https://qisprotocol.com/#inventor" },
-      "sameAs": ["https://dev.to/roryqis", "https://github.com/YonderZenith"]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://qisprotocol.com/#inventor",
-      "name": "Christopher Thomas Trevethan",
-      "jobTitle": "Inventor of the QIS Protocol, Founder of Yonder Zenith LLC",
-      "affiliation": { "@id": "https://qisprotocol.com/#organization" },
-      "description": "Discovered the Quadratic Intelligence Swarm (QIS) protocol on June 16, 2025. Sole inventor on 39 provisional patents. Based in Phoenix, Arizona.",
-      "email": "contactyz@pm.me",
-      "sameAs": ["https://qisprotocol.com/about"]
-    }
-  ]
-}
-</script>
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Healthcare • QIS Protocol" />
-  <meta property="og:description" content="QIS Protocol Healthcare - Democratizing precision medicine through distributed pattern synthesis. 2.5-3.3M lives saved annually." />
+  <meta property="og:title" content="QIS Protocol for Healthcare — Distributed Outcome Routing" />
+  <meta property="og:description" content="The routing layer NHS, OHDSI, PCORnet, CanDIG, and federated genomics have been missing. No raw data movement. N(N-1)/2 quadratic intelligence." />
   <meta property="og:url" content="https://qisprotocol.com/healthcare" />
   <meta property="og:site_name" content="QIS Protocol" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Healthcare • QIS Protocol" />
-  <meta name="twitter:description" content="QIS Protocol Healthcare - Democratizing precision medicine through distributed pattern synthesis. 2.5-3.3M lives saved annually." />
+  <meta name="twitter:title" content="QIS Protocol for Healthcare" />
+  <meta name="twitter:description" content="The routing layer NHS, OHDSI, PCORnet, CanDIG, and federated genomics have been missing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Organization", "@id": "https://qisprotocol.com/#organization", "name": "Yonder Zenith LLC", "url": "https://qisprotocol.com", "founder": { "@id": "https://qisprotocol.com/#inventor" } },
+      { "@type": "Person", "@id": "https://qisprotocol.com/#inventor", "name": "Christopher Thomas Trevethan", "jobTitle": "Inventor of the QIS Protocol" },
+      {
+        "@type": "AboutPage",
+        "@id": "https://qisprotocol.com/healthcare#page",
+        "url": "https://qisprotocol.com/healthcare",
+        "name": "QIS Protocol for Healthcare",
+        "description": "QIS as the missing routing layer for federated healthcare data networks — NHS, OHDSI, OMOP, PCORnet, CanDIG.",
+        "datePublished": "2026-04-13",
+        "dateModified": "2026-04-14",
+        "about": { "@id": "https://qisprotocol.com/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://qisprotocol.com/healthcare#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "How does QIS work with NHS Federated AI?", "acceptedAnswer": { "@type": "Answer", "text": "NHS federated AI moves models to data. QIS adds the missing routing layer — outcome packets route between trusted research environments via semantic address, no raw data movement. The two are complementary; QIS sits above NHS's existing federated infrastructure." } },
+          { "@type": "Question", "name": "How does QIS work with OHDSI / OMOP?", "acceptedAnswer": { "@type": "Answer", "text": "OHDSI nodes already speak OMOP CDM. QIS routes the outcomes those nodes produce to other OHDSI nodes seeing the same biomarker profiles. ~512-byte packets route by semantic fingerprint. Synthesis happens locally at each node. The OMOP layer is unchanged." } },
+          { "@type": "Question", "name": "Is QIS HIPAA compliant?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — by architecture. Protected Health Information never enters the routing layer. No patient names, dates of birth, MRNs, raw lab values, or diagnosis strings appear in outcome packets. The packet contains only a pseudonymous node ID, outcome label, confidence score, and integrity checksum." } },
+          { "@type": "Question", "name": "How does QIS compare to PCORnet?", "acceptedAnswer": { "@type": "Answer", "text": "PCORnet routes queries to data. QIS routes the outcomes PCORnet learns. PCORnet asks 'what is the answer at each site?' and aggregates. QIS lets each site emit its outcome packet once, and any other site facing the same problem retrieves the synthesis. Different layers, complementary." } },
+          { "@type": "Question", "name": "Does QIS replace federated learning?", "acceptedAnswer": { "@type": "Answer", "text": "No — they solve different problems. Federated learning trains models across distributed data. QIS routes outcomes between distributed nodes. A federated learning round can produce outcomes that QIS then routes. They compose." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root { --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6; --green-neural: #10B981; --red-accent: #EF4444; --dark-bg: #0A0A0A; --text-primary: #E8F5E9; --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.55); --border: rgba(0, 190, 234, 0.2); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; font-size: 17px; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(0, 190, 234, 0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    a { color: var(--cyan-bright); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .nav { position: fixed; top: 0; left: 0; right: 0; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; filter: drop-shadow(0 0 8px rgba(0, 190, 234, 0.5)); }
+    .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--cyan-bright); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: var(--text-secondary); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .hero { padding: 140px 40px 30px; text-align: center; max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.15; margin-bottom: 22px; }
+    .hero .subtitle { font-size: 1.1rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.7; }
+    .hero .subtitle strong { color: var(--cyan-bright); font-weight: 600; }
+    main { max-width: 920px; margin: 0 auto; padding: 30px 40px 80px; position: relative; z-index: 1; }
+    section { margin-bottom: 70px; }
+    section h2 { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; color: var(--cyan-bright); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+    section h2::before { content: ''; width: 36px; height: 3px; background: linear-gradient(90deg, var(--cyan-bright), var(--purple-quantum)); flex-shrink: 0; }
+    section p { margin-bottom: 18px; color: var(--text-secondary); font-size: 1.05rem; }
+    section p strong { color: var(--text-primary); font-weight: 600; }
+    .institution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 22px; }
+    .inst { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); padding: 20px; border-radius: 10px; }
+    .inst h4 { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 10px; }
+    .inst p { font-size: 0.95rem; line-height: 1.55; margin: 0; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 30px 0; }
+    .stat { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); padding: 18px; text-align: center; border-radius: 10px; }
+    .stat .value { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--cyan-bright); }
+    .stat .label { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase; margin-top: 6px; }
+    .article-rail { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 24px; }
+    .article-rail a { display: block; padding: 18px 20px; background: rgba(0, 190, 234, 0.04); border: 1px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+    .article-rail a:hover { background: rgba(0, 190, 234, 0.1); border-color: var(--cyan-bright); text-decoration: none; }
+    .article-rail h4 { font-family: 'Orbitron', sans-serif; font-size: 0.95rem; color: var(--purple-quantum); margin-bottom: 6px; line-height: 1.3; }
+    .article-rail p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+    .btn { display: inline-block; padding: 14px 34px; font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 8px; transition: all 0.2s; }
+    .btn-primary { background: linear-gradient(135deg, var(--cyan-bright), var(--purple-quantum)); color: #0A0A0A; }
+    .btn-primary:hover { transform: translateY(-2px); text-decoration: none; color: #0A0A0A; }
+    .btn-secondary { background: transparent; color: var(--cyan-bright); border: 1px solid var(--cyan-bright); }
+    .btn-secondary:hover { background: rgba(0, 190, 234, 0.1); text-decoration: none; }
+    blockquote { background: rgba(0, 190, 234, 0.04); border-left: 3px solid var(--cyan-bright); padding: 20px 26px; margin: 26px 0; font-size: 1.05rem; color: var(--text-primary); font-style: italic; }
+    blockquote cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.9rem; color: var(--cyan-bright); }
+    footer { padding: 40px; text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 80px; }
+    footer a { color: var(--text-muted); }
+    @media (max-width: 700px) { .nav { padding: 12px 20px; } .nav-links { gap: 16px; } .nav-links a { font-size: 0.8rem; } main { padding: 20px; } .hero { padding: 120px 20px 20px; } }
+  </style>
 </head>
 <body>
-  <!-- Navigation -->
+
   <nav class="nav">
-    <a href="index.html?skip=true" class="nav-logo">
-      <img src="images/favicon.png" alt="QIS Protocol">
-      <span>QIS PROTOCOL</span>
-    </a>
-    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.nav-overlay').classList.toggle('active');">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-overlay" onclick="document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-links').classList.remove('active'); this.classList.remove('active');"></div>
+    <a href="/" class="nav-logo"><img src="images/favicon.png" alt="QIS"><span>QIS PROTOCOL</span></a>
     <div class="nav-links">
-      <a href="index.html?skip=true">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="comparison.html">Compare</a>
-      <a href="demos.html">Demo</a>
-      <a href="index.html?skip=true#documents">Docs</a>
-      <a href="healthcare.html">Healthcare</a>
-      <a href="faq.html">FAQ</a>
-      <a href="about.html">About</a>
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/licensing.html">Licensing</a>
+      <a href="/articles.html">Articles</a>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-badge">🏥 Healthcare Deep Dive</div>
-    <h1>Democratizing Precision Medicine</h1>
+  <header class="hero">
+    <h1>The routing layer federated healthcare has been missing</h1>
     <p class="subtitle">
-      The first architecture that scales care, not clinicians. 
-      <span class="highlight">2.5–3.3 million lives saved annually</span> through global pattern synthesis—without sacrificing privacy.
+      <strong>QIS Protocol</strong> is the distributed intelligence layer above NHS Federated AI, OHDSI / OMOP, PCORnet, and CanDIG. It routes <strong>~512-byte outcome packets</strong> between hospitals, clinics, and research networks &mdash; no raw patient data movement, <strong>N(N-1)/2 intelligence connections</strong>, O(log N) per-node cost. The infrastructure most healthcare networks already have solved authorization. QIS solves what they have never touched: synthesis.
     </p>
-  </section>
+  </header>
 
-  <!-- Content -->
-  <div class="content">
+  <main>
 
-    <!-- ==================== SECTION 1: THE PROBLEM ==================== -->
-    <section class="problem-section">
-      <div class="section-header">
-        <h2>What's Broken Today</h2>
-        <p>Medicine has no global memory. Each clinician stands alone, even though millions of similar cases exist across the world.</p>
-      </div>
-
-      <div class="problem-grid">
-        <div class="problem-card">
-          <div class="icon">⏱️</div>
-          <h3>Diagnostic Delays Kill</h3>
-          <p>300 million people worldwide live with rare diseases. Average diagnostic delay is 5–8 years. Misdiagnosis rates remain extremely high even for common conditions.</p>
-          <div class="stat">5-8 years</div>
-          <div class="stat-label">Average delay for rare disease diagnosis</div>
-        </div>
-
-        <div class="problem-card">
-          <div class="icon">🌍</div>
-          <h3>Geography = Destiny</h3>
-          <p>Pneumonia mortality ranges from 2% to 25% depending on where you live. Heart attack survival varies 2–3× by region. Same patient, different outcomes—not biology, information inequality.</p>
-          <div class="stat">2% → 25%</div>
-          <div class="stat-label">Pneumonia mortality variance by geography</div>
-        </div>
-
-        <div class="problem-card">
-          <div class="icon">🏥</div>
-          <h3>No Specialist Access</h3>
-          <p>50% of humanity has no access to specialists. 800+ million people live nowhere near a doctor. Current telemedicine requires high bandwidth, expensive devices, and trained staff—exactly what underserved areas lack.</p>
-          <div class="stat">800M+</div>
-          <div class="stat-label">People with no access to doctors</div>
-        </div>
-
-        <div class="problem-card">
-          <div class="icon">🦠</div>
-          <h3>Outbreak Detection Is Slow</h3>
-          <p>Surveillance updates come weekly or monthly. Countries silo data. Labs take days to confirm. Emerging clusters go unnoticed until it's too late. COVID-19 showed the cost of this delay.</p>
-          <div class="stat">Weeks–Months</div>
-          <div class="stat-label">Current outbreak detection lag</div>
-        </div>
-      </div>
-
-      <div class="core-insight">
-        <p>Human lives are being lost because <span class="emphasis">we aren't sharing patterns</span>. We've built "digital health" that works everywhere except where it's actually needed.</p>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 2: THE IMPACT ==================== -->
-    <section class="impact-section">
-      <div class="section-header">
-        <h2>The Humanitarian Impact</h2>
-        <p>Conservative projections with moderate adoption. These aren't aspirational targets—they're what happens when global pattern recognition meets common medical failures.</p>
-      </div>
-
-      <div class="big-number-grid">
-        <div class="big-number-card">
-          <div class="number">1.5B</div>
-          <div class="label">People gain access to global diagnostic support—more than any medical system in history</div>
-        </div>
-        <div class="big-number-card">
-          <div class="number">2.5–3.3M</div>
-          <div class="label">Lives saved every year through early detection and treatment optimization</div>
-        </div>
-        <div class="big-number-card">
-          <div class="number">$400–600B</div>
-          <div class="label">Annual global savings from reduced diagnostics, hospitalizations, and redundant tests</div>
-        </div>
-      </div>
-
-      <div class="lives-breakdown">
-        <h3>Lives Saved Breakdown (Annual, Conservative)</h3>
-        <div class="lives-grid">
-          <div class="lives-item">
-            <div class="condition">Sepsis</div>
-            <div class="deaths">11M deaths/year globally</div>
-            <div class="saved">2M</div>
-            <div class="saved-label">lives saved</div>
-          </div>
-          <div class="lives-item">
-            <div class="condition">Pneumonia</div>
-            <div class="deaths">2.5M deaths/year globally</div>
-            <div class="saved">300–500K</div>
-            <div class="saved-label">lives saved</div>
-          </div>
-          <div class="lives-item">
-            <div class="condition">Cardiac Events</div>
-            <div class="deaths">Delays reduce survival</div>
-            <div class="saved">150–300K</div>
-            <div class="saved-label">lives saved</div>
-          </div>
-          <div class="lives-item">
-            <div class="condition">Rare Diseases</div>
-            <div class="deaths">Delayed diagnosis</div>
-            <div class="saved">50–100K</div>
-            <div class="saved-label">lives saved</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 3: THE SOLUTION ==================== -->
-    <section class="solution-section">
-      <div class="section-header">
-        <h2>How QIS Solves This</h2>
-        <p>Every device becomes a global pattern-sharing node. Raw data never leaves the patient—only domain-expert-designed abstractions.</p>
-      </div>
-
-      <div class="solution-grid">
-        <div class="solution-card">
-          <div class="icon">🌐</div>
-          <h3>Instant Global Diagnostic Support</h3>
-          <p>Your device asks: "What happened to people with similar patterns across the planet?" and gets answers from <span class="highlight">tens of thousands of similar cases</span>—impossible with any existing system.</p>
-        </div>
-
-        <div class="solution-card">
-          <div class="icon">📊</div>
-          <h3>Real-Time Treatment Optimization</h3>
-          <p>Not guidelines. Not general averages. <span class="highlight">Actual outcome-driven insights</span> from millions of biologically similar cases, weighted by similarity to your specific profile.</p>
-        </div>
-
-        <div class="solution-card">
-          <div class="icon">🚨</div>
-          <h3>Early Outbreak Detection</h3>
-          <p>Phones begin clustering symptoms <span class="highlight">before any lab test is done</span>. Pattern anomalies surface in hours, not weeks. The network detects what labs miss.</p>
-        </div>
-
-        <div class="solution-card">
-          <div class="icon">📡</div>
-          <h3>Works Everywhere</h3>
-          <p>Communications scale as <span class="highlight">O(log N)</span>. No massive central servers needed. Functional in rural Africa, remote India, and U.S. care deserts—exactly where it's needed most.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 4: CASE STUDY ==================== -->
-    <section class="case-study">
-      <div class="case-study-header">
-        <div class="tag">Real-World Example</div>
-        <h3>A 4-Year-Old in Rural Uganda with Pneumonia</h3>
-      </div>
-
-      <div class="case-comparison">
-        <div class="case-before">
-          <h4>❌ Before QIS</h4>
-          <ul>
-            <li>Mother walks 5 miles to nearest clinic</li>
-            <li>Nurse lacks pediatric training</li>
-            <li>No imaging or specialist access</li>
-            <li>Treatment based on guesswork</li>
-            <li>High mortality risk</li>
-          </ul>
-        </div>
-
-        <div class="case-after">
-          <h4>✓ With QIS</h4>
-          <ul>
-            <li>Phone captures cough audio + symptoms</li>
-            <li>QIS finds 50,000+ similar pediatric cases</li>
-            <li>Shows which treatments succeeded</li>
-            <li>Recommends immediate escalation path</li>
-            <li>Nurse acts with specialist-level insight</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="case-outcome" style="grid-template-columns: repeat(2, 1fr); max-width: 500px; margin-left: auto; margin-right: auto;">
-        <div class="outcome-stat">
-          <div class="value green">80% → 96%+</div>
-          <div class="label">Survival probability jump</div>
-        </div>
-        <div class="outcome-stat">
-          <div class="value purple">50,000+</div>
-          <div class="label">Similar cases matched globally</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 5: PRE-DIAGNOSIS ==================== -->
-    <section class="prediagnosis">
-      <h3>🚨 Pre-Diagnosis Early Detection</h3>
+    <section>
+      <h2>The problem federated healthcare networks have not solved</h2>
       <p>
-        QIS doesn't just optimize treatment—it can <strong>detect conditions before clinical diagnosis</strong>. 
-        Continuous monitoring + multi-hypothesis parallel queries enable pre-symptomatic detection of 
-        time-critical conditions like sepsis, MI, and stroke.
+        Federated genomics networks like CanDIG built elegant access control. NHS Federated AI moved models to data. OHDSI nodes speak OMOP CDM. PCORnet routes queries across distributed research environments. <strong>All of these solve the same problem &mdash; authorization &mdash; with different vocabularies.</strong>
       </p>
-
-      <div class="signals-grid">
-        <div class="signal-item">
-          <div class="icon">💓</div>
-          <div class="name">Heart Rate</div>
-        </div>
-        <div class="signal-item">
-          <div class="icon">🌡️</div>
-          <div class="name">Temperature</div>
-        </div>
-        <div class="signal-item">
-          <div class="icon">🫁</div>
-          <div class="name">Respiration</div>
-        </div>
-        <div class="signal-item">
-          <div class="icon">🩸</div>
-          <div class="name">Skin Perfusion</div>
-        </div>
-        <div class="signal-item">
-          <div class="icon">🎤</div>
-          <div class="name">Cough Audio</div>
-        </div>
-        <div class="signal-item">
-          <div class="icon">📝</div>
-          <div class="name">Symptoms</div>
-        </div>
-      </div>
-
-      <p style="margin-top: 30px;">
-        <strong>Sepsis Example:</strong> Current detection relies on qSOFA score (requiring 2+ organ dysfunctions). 
-        QIS detects in the <strong>pre-qSOFA phase</strong> via subtle pattern deviations matched across population.
-        Early antibiotics reduce mortality by 30–50%.
+      <p>
+        None of them solve the next layer. When a CanDIG node finds a variant combination associated with treatment response in 23 patients, that insight stays at the node. When an NHS TRE runs an analysis, the model lives at the data, but the outcome does not propagate. When an OHDSI node produces a cohort result, no other OHDSI node automatically learns from it. <span style="color:var(--cyan-bright);font-weight:600;">The synthesis layer is missing.</span>
       </p>
+      <p>
+        QIS routes the outcomes those networks produce. It sits above the authorization layer, not inside it. The federated infrastructure stays unchanged. Outcome packets &mdash; ~512 bytes each, no PHI by construction &mdash; route by semantic fingerprint to other nodes facing the same problem profile.
+      </p>
+    </section>
 
-      <div class="detection-comparison">
-        <div class="detection-card traditional">
-          <h4>Traditional Detection (FAERS)</h4>
-          <div class="time">12–18 months</div>
-          <div class="note">Captures only 1–10% of adverse events</div>
-        </div>
-        <div class="detection-card qis">
-          <h4>QIS Early Detection</h4>
-          <div class="time">8–12 weeks</div>
-          <div class="note">Detects 4+ hours before clinical diagnosis</div>
-        </div>
+    <section>
+      <h2>The networks QIS sits above</h2>
+      <div class="institution-grid">
+        <div class="inst"><h4>NHS Federated AI</h4><p>Adds the missing routing layer. Models still live at the trusted research environment; outcome packets route between TREs by semantic address.</p></div>
+        <div class="inst"><h4>OHDSI / OMOP CDM</h4><p>Each OHDSI node emits an outcome packet hashed by biomarker profile. Other OHDSI nodes facing the same profile retrieve the synthesis. OMOP layer unchanged.</p></div>
+        <div class="inst"><h4>PCORnet</h4><p>PCORnet routes queries. QIS routes the outcomes PCORnet learns. Each PCORnet site emits its outcome once; any site facing the same problem retrieves the synthesis.</p></div>
+        <div class="inst"><h4>CanDIG / GA4GH</h4><p>CanDIG routes access. QIS routes outcomes. GA4GH phenopacket schemas map cleanly to QIS semantic fingerprints. Existing access control infrastructure unchanged.</p></div>
+        <div class="inst"><h4>EHDS (EU)</h4><p>European Health Data Space federation gets cross-border outcome synthesis without cross-border raw data movement. GDPR Article 9 special-category data never enters the protocol layer.</p></div>
+        <div class="inst"><h4>FDA Sentinel</h4><p>Sentinel does distributed adverse event surveillance. QIS adds real-time outcome synthesis between Sentinel partners. Drug safety signals emerge before any one site can see them.</p></div>
       </div>
     </section>
 
-    <!-- ==================== SECTION 6: WHO BENEFITS ==================== -->
-    <section class="beneficiaries">
-      <div class="section-header">
-        <h2>Who Benefits Most</h2>
-        <p>QIS is the first system that gives specialist-level insight to people who have never had specialists.</p>
+    <section>
+      <h2>Why this works for healthcare specifically</h2>
+      <div class="stats">
+        <div class="stat"><div class="value">100k+</div><div class="label">US ADR deaths/yr</div></div>
+        <div class="stat"><div class="value">512 B</div><div class="label">packet size</div></div>
+        <div class="stat"><div class="value">0</div><div class="label">PHI in routing</div></div>
+        <div class="stat"><div class="value">N(N-1)/2</div><div class="label">synthesis pairs</div></div>
       </div>
+      <p>
+        Adverse drug reactions kill over 100,000 people per year in the United States alone. Many are preventable &mdash; the information that could have prevented them exists somewhere in another hospital's records. Today that information is trapped. HIPAA and institutional policies prevent centralization. Federated learning requires central aggregators that introduce privacy risk and single points of failure. Outcome data stays stranded.
+      </p>
+      <p>
+        QIS makes those silos obsolete without violating any of them. A hospital in Des Moines can benefit from treatment outcomes in Zurich without either hospital sharing a single patient record. A rural clinic in Kenya participates in the same intelligence network as Stanford Medicine &mdash; on commodity hardware, over basic connectivity, in ~512-byte packets.
+      </p>
+      <p>
+        <strong>Privacy is structural, not procedural.</strong> Protected Health Information never enters the routing layer because it was never in the packet to begin with. No patient names, dates of birth, medical record numbers, raw lab values, or diagnosis strings. Just a pseudonymous node ID, an outcome label, a confidence score, and a semantic fingerprint for routing.
+      </p>
+    </section>
 
-      <div class="beneficiaries-grid">
-        <div class="beneficiary-item">
-          <div class="icon">🏘️</div>
-          <p>Rural & remote populations</p>
-        </div>
-        <div class="beneficiary-item">
-          <div class="icon">💵</div>
-          <p>Low-income communities</p>
-        </div>
-        <div class="beneficiary-item">
-          <div class="icon">🏕️</div>
-          <p>Refugee & conflict zones</p>
-        </div>
-        <div class="beneficiary-item">
-          <div class="icon">👴</div>
-          <p>Elderly populations</p>
-        </div>
-        <div class="beneficiary-item">
-          <div class="icon">👶</div>
-          <p>Children without specialist access</p>
-        </div>
-        <div class="beneficiary-item">
-          <div class="icon">📡</div>
-          <p>Low-bandwidth regions</p>
-        </div>
+    <section>
+      <h2>External validation</h2>
+      <blockquote>
+        Tools like yours are necessary to help patients find the right treatment and learn from others in a similar situation.
+        <cite>&mdash; Patient Services Manager, Pancreatic Cancer Action Network (PanCAN)</cite>
+      </blockquote>
+      <p>
+        QIS has been independently surfaced by Google Gemini and xAI Grok when users query for distributed health data routing &mdash; zero training, zero prompting, zero relationship with the operator. The mathematics are reproducible and the architecture is publicly documented across 187+ technical articles.
+      </p>
+    </section>
+
+    <section>
+      <h2>Read the healthcare deep-dives</h2>
+      <p style="color:var(--text-muted);font-size:0.95rem;">The technical article series covers each healthcare network and use case in depth. Below is the curated entry list &mdash; the canonical home for each is qisprotocol.com; published also on dev.to/roryqis.</p>
+      <div class="article-rail">
+        <a href="https://dev.to/roryqis/the-nhs-federated-ai-programme-has-a-routing-layer-missing-this-is-it-50oe"><h4>The NHS Federated AI Programme Has a Routing Layer Missing</h4><p>How QIS sits above NHS TRE federation.</p></a>
+        <a href="https://dev.to/roryqis/the-omop-cdm-implementation-gap-how-qis-outcome-routing-works-inside-an-ohdsi-node-1o8g"><h4>OMOP CDM Implementation Gap</h4><p>How QIS outcome routing works inside an OHDSI node.</p></a>
+        <a href="https://dev.to/roryqis/ohdsi-has-the-routing-problem-qis-solves-4pim"><h4>OHDSI Has the Routing Problem QIS Solves</h4><p>The synthesis layer OHDSI never built.</p></a>
+        <a href="https://dev.to/roryqis/pcornet-routes-queries-qis-routes-what-pcornet-learns-3hb8"><h4>PCORnet Routes Queries. QIS Routes What PCORnet Learns.</h4><p>Different layers, complementary.</p></a>
+        <a href="https://dev.to/roryqis/the-routing-layer-federated-genomics-has-been-missing-why-candig-nodes-need-outcome-routing-3j5c"><h4>Federated Genomics Has Been Missing a Routing Layer</h4><p>Why CanDIG nodes need outcome routing.</p></a>
+        <a href="https://dev.to/roryqis/the-routing-upgrade-pcornet-has-been-waiting-for-30p3"><h4>The Routing Upgrade PCORnet Has Been Waiting For</h4><p>The protocol fit nobody named.</p></a>
+        <a href="article-cure-already-exists.html"><h4>The Cure Already Exists</h4><p>It's just trapped in the wrong hospital. QIS is the routing layer that frees it.</p></a>
+        <a href="article-drug-safety-monitoring.html"><h4>Drug Safety Monitoring at QIS Speed</h4><p>Distributed pharmacovigilance with no central data movement.</p></a>
       </div>
     </section>
 
-    <!-- ==================== SECTION 7: PRIVACY ==================== -->
-    <section class="privacy-section">
-      <div class="section-header">
-        <h2>Privacy by Design</h2>
-        <p>Your data never leaves your device. Only anonymized patterns are shared.</p>
-      </div>
-
-      <div class="privacy-grid">
-        <div class="privacy-item">
-          <div class="icon">🔒</div>
-          <h4>Data Stays Local</h4>
-          <p>Full medical records stored only on your device. Raw data is never transmitted to any server.</p>
-        </div>
-        <div class="privacy-item">
-          <div class="icon">🎭</div>
-          <h4>Anonymized Patterns</h4>
-          <p>Only curated feature vectors shared. No PII, no PHI, no identifiers—ever.</p>
-        </div>
-        <div class="privacy-item">
-          <div class="icon">✅</div>
-          <h4>HIPAA Compliant</h4>
-          <p>No centralized data aggregation. Full regulatory compliance by architectural design.</p>
-        </div>
+    <section>
+      <h2>Deploy or collaborate</h2>
+      <p>
+        QIS is free for research, education, and humanitarian use at any scale. Hospitals, clinics, research consortia, and non-profits can deploy through YonderClaw &mdash; up to 10 nodes free per organisation. Commercial healthcare deployments above that threshold are licensed proportional to scale.
+      </p>
+      <div class="cta-row">
+        <a href="/licensing.html" class="btn btn-primary">Licensing</a>
+        <a href="/about.html" class="btn btn-secondary">About QIS</a>
+        <a href="mailto:contactyz@pm.me" class="btn btn-secondary">Contact</a>
       </div>
     </section>
 
-    <!-- ==================== SECTION 8: IMPLEMENTATION ==================== -->
-    <section class="implementation">
-      <h3>Implementation Pathway</h3>
-      
-      <div class="phase-grid">
-        <div class="phase-card">
-          <div class="phase-num">Phase 1 — Pilot</div>
-          <h4>Validation</h4>
-          <p>3 regions: U.S., Kenya, India</p>
-          <p>Focus: pneumonia, sepsis, hypertension</p>
-          <div class="detail">50,000 participants • 6–9 months</div>
-        </div>
-        
-        <div class="phase-card">
-          <div class="phase-num">Phase 2 — Trial</div>
-          <h4>Comparative Study</h4>
-          <p>QIS-guided vs standard care</p>
-          <p>Measure outcome improvements</p>
-          <div class="detail">1–2M users • 12–18 months</div>
-        </div>
-        
-        <div class="phase-card">
-          <div class="phase-num">Phase 3 — Scale</div>
-          <h4>Global Deployment</h4>
-          <p>FDA SaMD approval</p>
-          <p>WHO digital health prequalification</p>
-          <div class="detail">Humanitarian licensing for LMICs</div>
-        </div>
-      </div>
+  </main>
 
-    </section>
-
-  </div>
-
-  <!-- Additional Applications Note -->
-  <div style="max-width: 900px; margin: 0 auto; padding: 0 40px 40px;">
-    <div style="background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(0, 190, 234, 0.3); border-radius: 16px; padding: 25px 30px; text-align: center;">
-      <p style="font-size: 1.1rem; color: var(--text-primary); margin: 0;">QIS doesn't just revolutionize precision medicine through treatment optimization—it also enables <strong style="color: var(--cyan-bright);">pre-diagnosis early detection</strong> and <strong style="color: var(--cyan-bright);">drug safety monitoring</strong> (detecting adverse reactions before recalls). See the <a href="pdfs/core-spec.pdf" target="_blank" style="color: var(--purple-quantum);">Core Specification</a> for details.</p>
-    </div>
-  </div>
-
-  <!-- Disclaimer -->
-  <div style="max-width: 900px; margin: 0 auto; padding: 0 40px 40px; text-align: center;">
-    <p style="font-size: 0.9rem; color: rgba(232, 245, 233, 0.5); font-style: italic;">All figures are projections based on available research, published studies, and simulation data. Actual outcomes may vary based on implementation and regulatory factors.</p>
-  </div>
-
-  <!-- Healthcare Articles Section -->
-  <section style="max-width: 1000px; margin: 0 auto; padding: 40px 40px 60px;">
-    <div class="section-header">
-      <h2>Healthcare Articles</h2>
-      <p>Deep dives into how QIS transforms medicine, drug safety, and patient outcomes</p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
-
-      <a href="article-you-just-got-diagnosed.html" style="display: block; padding: 20px 25px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--green-neural); margin-bottom: 6px;">You Just Got Diagnosed. WYD?</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Two choices. One changes everything.</p>
-      </a>
-
-      <a href="article-cure-already-exists.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The Cure Already Exists</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">It's in someone else's outcome. Right now. Waiting.</p>
-      </a>
-
-      <a href="article-specialist-24-7.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">What If You Had a Specialist 24/7?</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The average wait is 31 days. There's another way.</p>
-      </a>
-
-      <a href="article-drug-safety-monitoring.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">Real-Time Drug Safety Monitoring</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">From coughs to crops to cars—the survival of one becomes the survival of all.</p>
-      </a>
-
-      <a href="article-big-pharma-trust.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">Big Pharma Has a Trust Problem</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Real-time transparency turns skeptics into believers.</p>
-      </a>
-
-      <a href="article-cures-act-qis-unstoppable.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The Cures Act Makes QIS Unstoppable</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Patient data access guaranteed—QIS turns it into collective intelligence.</p>
-      </a>
-
-      <a href="article-interoperability-war-over.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The Interoperability War Is Over</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The silos still exist—they just don't matter anymore.</p>
-      </a>
-
-      <a href="article-ai-doctors-prediction.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">I Predicted AI Doctors</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The centralized brain was only half the picture.</p>
-      </a>
-
-      <a href="article-data-aggregation.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">Data Aggregation</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">HealthKit, FHIR, wearables—already doing this billions of times daily.</p>
-      </a>
-
-      <a href="article-three-elections.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The Three Elections</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">The framework for curation, routing, and outcomes.</p>
-      </a>
-
-      <a href="article-google-distributed-health-intelligence.html" style="display: block; padding: 20px 25px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--purple-quantum); margin-bottom: 6px;">Google Distributed Health Intelligence</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Why Google should care about QIS.</p>
-      </a>
-
-      <a href="article-apple-quadratic-health-intelligence.html" style="display: block; padding: 20px 25px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--purple-quantum); margin-bottom: 6px;">Apple Quadratic Health Intelligence</h4>
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Why Apple's privacy-first approach is perfect for QIS.</p>
-      </a>
-
-    </div>
-
-    <div style="text-align: center; margin-top: 30px;">
-      <a href="articles.html" class="btn">View All Articles</a>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <a href="how-it-works.html" class="btn primary">Learn How It Works</a>
-    <a href="watch-demo.html" class="btn">See Live Demo</a>
-    <a href="about.html" class="btn">Partner With Us</a>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
-    <p><a href="index.html">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
-    <p style="margin-top: 15px; opacity: 0.5; font-size: 0.9rem;">39 Patents Pending • Math is Public</p>
+    <p>QIS Protocol &middot; Yonder Zenith LLC &middot; Phoenix, Arizona</p>
+    <p><a href="/">Home</a> &middot; <a href="/about.html">About</a> &middot; <a href="/licensing.html">Licensing</a> &middot; <a href="/faq.html">FAQ</a> &middot; <a href="/privacy.html">Privacy</a></p>
+    <p style="margin-top:14px;font-size:0.75rem;color:rgba(232,245,233,0.4);">Source articles harvested from dev.to/roryqis healthcare cluster (HEALTH_OHDSI_EHDS, RARE_DISEASE, DRUG_SAFETY_PHARMA). Canonical home for each: qisprotocol.com.</p>
   </footer>
+
 </body>
 </html>
