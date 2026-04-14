@@ -321,8 +321,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const splash = document.getElementById('splash');
   const main = document.getElementById('main');
 
+  // Auto-skip splash for returning visitors (replaces old ?skip=true query param)
+  try {
+    if (splash && main && localStorage.getItem('qis_splash_seen') === '1') {
+      splash.classList.add('hidden');
+      splash.style.opacity = '0';
+      main.classList.remove('hidden');
+      main.style.opacity = '1';
+    }
+  } catch (e) { /* localStorage blocked — fall through to splash flow */ }
+
   if (enterBtn && splash && main) {
     enterBtn.addEventListener('click', function() {
+      // Remember preference so future visits skip straight to content
+      try { localStorage.setItem('qis_splash_seen', '1'); } catch (e) {}
+
       // Stop any ongoing speech
       audioSystem.synth.cancel();
 

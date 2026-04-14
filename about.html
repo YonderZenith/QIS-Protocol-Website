@@ -385,19 +385,57 @@
 </head>
 <body>
 
-  <nav class="nav">
-    <a href="/" class="nav-logo">
-      <img src="images/favicon.png" alt="QIS">
-      <span>QIS PROTOCOL</span>
-    </a>
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/licensing.html">Licensing</a>
-      <a href="https://dev.to/roryqis" target="_blank" rel="noopener">Articles</a>
-    </div>
-  </nav>
+  <!-- ==================== CANONICAL NAV v1 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v1">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare">Healthcare</a></li>
+        <li><a href="/agriculture">Agriculture</a></li>
+        <li><a href="/emergency">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos">Demos</a></li>
+    <li><a href="/articles">Articles</a></li>
+    <li><a href="/licensing">Licensing</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v1 ==================== -->
+
 
   <header class="hero">
     <h1>The protocol that was hiding in plain sight</h1>

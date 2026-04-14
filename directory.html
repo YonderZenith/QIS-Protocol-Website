@@ -319,30 +319,57 @@
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="nav">
-    <a href="index.html?skip=true" class="nav-logo">
-      <img src="images/favicon.png" alt="QIS Protocol">
-      <span>QIS PROTOCOL</span>
-    </a>
-    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.nav-overlay').classList.toggle('active');">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-overlay" onclick="document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-links').classList.remove('active'); this.classList.remove('active');"></div>
-    <div class="nav-links">
-      <a href="index.html?skip=true">Home</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="comparison.html">Compare</a>
-      <a href="demos.html">Demo</a>
-      <a href="index.html?skip=true#documents">Docs</a>
-      <a href="healthcare.html">Healthcare</a>
-      <a href="techrace.html">Tech Race</a>
-      <a href="articles.html">Articles</a>
-      <a href="faq.html">FAQ</a>
-      <a href="about.html">About</a>
-    </div>
-  </nav>
+  <!-- ==================== CANONICAL NAV v1 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v1">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare">Healthcare</a></li>
+        <li><a href="/agriculture">Agriculture</a></li>
+        <li><a href="/emergency">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos">Demos</a></li>
+    <li><a href="/articles">Articles</a></li>
+    <li><a href="/licensing">Licensing</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v1 ==================== -->
+
 
   <div class="content">
     <h1>Full Directory</h1>
@@ -352,7 +379,7 @@
     <div class="section">
       <h2>Main Pages</h2>
       <div class="link-grid">
-        <a href="index.html?skip=true" class="link-item">
+        <a href="/" class="link-item">
           <h3>Home</h3>
           <p>Main landing page with overview and epiphany generator</p>
         </a>
@@ -445,15 +472,15 @@
     <div class="section">
       <h2>Interactive Features</h2>
       <div class="link-grid">
-        <a href="index.html?skip=true#epiphany" class="link-item">
+        <a href="/#epiphany" class="link-item">
           <h3>Epiphany Generator</h3>
           <p>Generate mind-blowing explanations of how QIS works</p>
         </a>
-        <a href="index.html?skip=true#industries" class="link-item">
+        <a href="/#industries" class="link-item">
           <h3>Industry Applications</h3>
           <p>Explore QIS applications across different industries</p>
         </a>
-        <a href="index.html?skip=true#contact" class="link-item">
+        <a href="/#contact" class="link-item">
           <h3>Get Involved</h3>
           <p>Contact, licensing, and partnership opportunities</p>
         </a>
@@ -465,7 +492,7 @@
   <!-- Footer -->
   <footer>
     <p>QIS Protocol • Quadratic Intelligence Swarm</p>
-    <p><a href="index.html?skip=true">Home</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
+    <p><a href="/">Home</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
     <p style="margin-top: 20px; font-size: 0.9rem;">© 2025 Yonder Zenith LLC. All rights reserved.</p>
   </footer>
 
