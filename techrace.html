@@ -22,7 +22,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
   
-  <style>
+  <style>/* responsive-retrofit:v1 */
+
     :root {
       --cyan-primary: #00BEEA;
       --cyan-bright: #00D9FF;
@@ -154,7 +155,7 @@
     }
 
     .hero .subtitle {
-      font-size: 1.5rem;
+      font-size: clamp(0.9rem, 2vw, 1.5rem);
       color: var(--text-secondary);
       max-width: 900px;
       margin: 0 auto 40px;
@@ -201,7 +202,7 @@
 
     .paradigm-box h3 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.3rem;
+      font-size: clamp(0.9rem, 1.7vw, 1.3rem);
       margin-bottom: 25px;
       display: flex;
       align-items: center;
@@ -246,7 +247,7 @@
     }
 
     .arrow {
-      font-size: 3rem;
+      font-size: clamp(1.26rem, 3.9vw, 3rem);
       color: var(--gold-accent);
       animation: arrowPulse 2s ease-in-out infinite;
     }
@@ -310,12 +311,12 @@
     }
 
     .competitor-icon {
-      font-size: 2.5rem;
+      font-size: clamp(1.05rem, 3.3vw, 2.5rem);
     }
 
     .competitor-name {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.3rem;
+      font-size: clamp(0.9rem, 1.7vw, 1.3rem);
       color: var(--text-primary);
     }
 
@@ -364,7 +365,7 @@
 
     .scoreboard h3 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
+      font-size: clamp(0.9rem, 2.3vw, 1.8rem);
       color: var(--gold-accent);
       text-align: center;
       margin-bottom: 40px;
@@ -385,7 +386,7 @@
     }
 
     .score-item .icon {
-      font-size: 2rem;
+      font-size: clamp(0.9rem, 2.6vw, 2rem);
       margin-bottom: 15px;
     }
 
@@ -399,7 +400,7 @@
 
     .score-item .value {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
+      font-size: clamp(0.9rem, 2vw, 1.5rem);
       color: var(--cyan-bright);
       font-weight: 700;
     }
@@ -414,7 +415,7 @@
     }
 
     .vision-quote p {
-      font-size: 1.4rem;
+      font-size: clamp(0.9rem, 1.8vw, 1.4rem);
       font-style: italic;
       color: var(--text-primary);
       line-height: 1.8;
@@ -453,7 +454,7 @@
     }
 
     .impact-card .icon {
-      font-size: 3rem;
+      font-size: clamp(1.26rem, 3.9vw, 3rem);
       margin-bottom: 20px;
     }
 
@@ -481,7 +482,7 @@
 
     .tesla-section h3 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.6rem;
+      font-size: clamp(0.9rem, 2.1vw, 1.6rem);
       color: var(--red-accent);
       margin-bottom: 25px;
       display: flex;
@@ -556,7 +557,7 @@
 
     .final-cta h3 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
+      font-size: clamp(0.9rem, 2.3vw, 1.8rem);
       color: var(--cyan-bright);
       margin-bottom: 20px;
     }

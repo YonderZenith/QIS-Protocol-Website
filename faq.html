@@ -7,21 +7,39 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-WMPC09C3R0');
   </script>
+  <!-- Leadfeeder -->
+  <script>
+    (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs);} ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKQb9v7OYGd');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QIS Protocol FAQ - Frequently asked questions about Quadratic Intelligence Swarm">
-  <title>FAQ • QIS Protocol</title>
+  <title>FAQ • QIS Protocol — Outcome Routing, Federated Intelligence, Licensing</title>
+  <meta name="description" content="Answers about the QIS Protocol by Christopher Thomas Trevethan: how outcome routing works, how it differs from federated learning, integration with CanDIG / GA4GH / UK HDRS, privacy model, and licensing.">
   <link rel="canonical" href="https://qisprotocol.com/faq" />
   <link rel="sitemap" type="application/xml" href="https://qisprotocol.com/sitemap.xml" />
-  
   <link rel="icon" href="images/favicon.png" type="image/png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FAQ • QIS Protocol" />
+  <meta property="og:description" content="How outcome routing works, how it differs from federated learning, integration with federated health data infrastructures, and licensing — answered." />
+  <meta property="og:url" content="https://qisprotocol.com/faq" />
+  <meta property="og:site_name" content="QIS Protocol" />
+  <meta property="og:image" content="https://qisprotocol.com/images/qis-og.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FAQ • QIS Protocol" />
+  <meta name="twitter:description" content="Outcome routing, federated healthcare integration, and licensing — answered." />
+  <meta name="twitter:image" content="https://qisprotocol.com/images/qis-og.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
       --cyan-primary: #00BEEA;
@@ -50,7 +68,7 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: 
+      background:
         radial-gradient(circle at 20% 30%, rgba(0, 190, 234, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
       pointer-events: none;
@@ -71,17 +89,11 @@
       z-index: 1000;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-    }
-
+    .nav-logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
     .nav-logo img { width: 40px; height: 40px; filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5)); }
     .nav-logo span { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--cyan-bright); }
 
-    .nav-links { display: flex; gap: 30px; }
+    .nav-links { display: flex; gap: 30px; flex-wrap: wrap; }
     .nav-links a {
       color: var(--text-secondary);
       text-decoration: none;
@@ -89,13 +101,13 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: all 0.3s ease;
+      transition: color 0.3s ease;
     }
     .nav-links a:hover { color: var(--cyan-bright); }
 
     /* Hero */
     .hero {
-      padding: 160px 40px 80px;
+      padding: 160px 40px 60px;
       text-align: center;
       position: relative;
       z-index: 1;
@@ -112,10 +124,39 @@
     }
 
     .hero .subtitle {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       color: var(--text-secondary);
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto;
+    }
+
+    /* Jump nav */
+    .jump-nav {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      padding: 20px 40px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .jump-nav a {
+      padding: 8px 16px;
+      background: rgba(0, 190, 234, 0.08);
+      border: 1px solid rgba(0, 190, 234, 0.3);
+      border-radius: 20px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .jump-nav a:hover {
+      background: rgba(0, 190, 234, 0.2);
+      color: var(--cyan-bright);
     }
 
     /* Content */
@@ -127,28 +168,30 @@
       z-index: 1;
     }
 
-    /* Category Sections */
-    .faq-category {
-      margin-bottom: 60px;
-    }
+    .faq-category { margin-bottom: 60px; scroll-margin-top: 100px; }
 
     .category-header {
       display: flex;
       align-items: center;
       gap: 15px;
-      margin-bottom: 30px;
+      margin-bottom: 16px;
       padding-bottom: 15px;
       border-bottom: 2px solid rgba(0, 190, 234, 0.3);
     }
 
-    .category-icon {
-      font-size: 2rem;
-    }
+    .category-icon { font-size: 2rem; }
 
     .category-header h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
       color: var(--cyan-bright);
+    }
+
+    .category-blurb {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      font-style: italic;
     }
 
     /* FAQ Items */
@@ -158,12 +201,10 @@
       border-radius: 16px;
       margin-bottom: 15px;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .faq-item:hover {
-      border-color: rgba(0, 190, 234, 0.4);
-    }
+    .faq-item:hover { border-color: rgba(0, 190, 234, 0.4); }
 
     .faq-item.active {
       border-color: var(--cyan-bright);
@@ -211,58 +252,103 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
+      transition: max-height 0.4s ease;
     }
 
-    .faq-item.active .faq-answer {
-      max-height: 1000px;
-    }
+    .faq-item.active .faq-answer { max-height: 2000px; }
 
     .faq-answer-content {
       padding: 0 30px 30px;
       color: var(--text-secondary);
-      font-size: 1.1rem;
-      line-height: 1.9;
+      font-size: 1.08rem;
+      line-height: 1.85;
     }
 
-    .faq-answer-content p {
-      margin-bottom: 15px;
-    }
-
-    .faq-answer-content p:last-child {
-      margin-bottom: 0;
-    }
-
-    .faq-answer-content strong {
-      color: var(--text-primary);
-    }
-
-    .faq-answer-content .highlight {
-      color: var(--green-neural);
-      font-weight: 600;
-    }
+    .faq-answer-content p { margin-bottom: 15px; }
+    .faq-answer-content p:last-child { margin-bottom: 0; }
+    .faq-answer-content strong { color: var(--text-primary); }
 
     .faq-answer-content .formula {
       font-family: 'JetBrains Mono', monospace;
       background: rgba(16, 185, 129, 0.1);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 12px 18px;
+      padding: 10px 16px;
       border-radius: 10px;
       color: var(--green-neural);
       display: inline-block;
-      margin: 10px 0;
+      margin: 6px 0;
+      font-size: 0.95rem;
     }
 
-    .faq-answer-content ul {
-      margin: 15px 0;
-      padding-left: 25px;
-    }
+    .faq-answer-content ul { margin: 15px 0; padding-left: 25px; }
+    .faq-answer-content li { margin-bottom: 8px; }
 
-    .faq-answer-content li {
-      margin-bottom: 8px;
+    .faq-answer-content a {
+      color: var(--cyan-bright);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 217, 255, 0.3);
     }
+    .faq-answer-content a:hover { border-bottom-color: var(--cyan-bright); }
 
-    /* Still Have Questions */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .compare > div {
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(232, 245, 233, 0.15);
+      background: rgba(0,0,0,0.35);
+    }
+    .compare h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      color: var(--cyan-bright);
+    }
+    .compare ul { margin: 0; padding-left: 18px; }
+    @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+
+    /* Essential Reading */
+    .reading-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+    }
+    .reading-card {
+      display: block;
+      padding: 20px 25px;
+      background: rgba(0, 190, 234, 0.08);
+      border: 1px solid rgba(0, 190, 234, 0.25);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .reading-card:hover {
+      border-color: var(--cyan-bright);
+      transform: translateY(-2px);
+    }
+    .reading-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: var(--cyan-bright);
+      margin-bottom: 6px;
+    }
+    .reading-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .reading-card.accent-green { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); }
+    .reading-card.accent-green h4 { color: var(--green-neural); }
+    .reading-card.accent-purple { background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3); }
+    .reading-card.accent-purple h4 { color: var(--purple-quantum); }
+
+    /* More questions CTA */
     .more-questions {
       background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(0, 190, 234, 0.15));
       border: 2px solid var(--purple-quantum);
@@ -271,22 +357,20 @@
       text-align: center;
       margin: 60px 0;
     }
-
     .more-questions h3 {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
       color: var(--purple-quantum);
       margin-bottom: 20px;
     }
-
     .more-questions p {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-secondary);
       margin-bottom: 30px;
     }
-
     .btn {
-      padding: 18px 45px;
+      display: inline-block;
+      padding: 16px 42px;
       font-family: 'Orbitron', sans-serif;
       font-size: 1rem;
       font-weight: 700;
@@ -296,180 +380,282 @@
       background: transparent;
       color: var(--text-primary);
       border-radius: 50px;
-      cursor: pointer;
       text-decoration: none;
-      transition: all 0.4s ease;
-      display: inline-block;
+      transition: all 0.3s ease;
     }
-
-    .btn:hover {
-      background: var(--purple-quantum);
-      color: #fff;
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
-    }
+    .btn:hover { background: var(--purple-quantum); }
 
     /* Footer */
     footer {
-      background: #000;
-      padding: 50px 40px;
+      padding: 40px;
       text-align: center;
       border-top: 1px solid rgba(0, 190, 234, 0.2);
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 1;
     }
-
-    footer p { color: var(--text-secondary); margin-bottom: 10px; }
     footer a { color: var(--cyan-bright); text-decoration: none; }
+    footer p { margin: 5px 0; }
 
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 20px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .hamburger span {
-      display: block;
-      width: 100%;
-      height: 3px;
-      background: var(--cyan-bright);
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-    .nav-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-    }
-    .nav-overlay.active { display: block; }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav { padding: 15px 20px; }
-      .nav-logo span { font-size: 1rem; }
-      .nav-logo img { width: 32px; height: 32px; }
-      .hamburger { display: flex; }
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 300px;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.98);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-        padding: 60px 20px;
-        transition: right 0.3s ease;
-        border-left: 1px solid rgba(0, 190, 234, 0.3);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-      }
-      .nav-links.active { right: 0; }
-      .nav-links a {
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(0, 190, 234, 0.1);
-      }
-      .faq-question h3 { font-size: 1.05rem; }
-      .faq-answer-content { font-size: 1rem; }
+    @media (max-width: 700px) {
+      .nav { padding: 14px 18px; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 0.85rem; }
+      .content { padding: 20px; }
+      .hero { padding: 140px 20px 40px; }
+      .faq-question { padding: 20px; }
+      .faq-answer-content { padding: 0 20px 24px; }
     }
   </style>
-<script>
-  (function(ss,ex){
-    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
-    (function(d,s){
-      fs=d.getElementsByTagName(s)[0];
-      function ce(src){
-        var cs=d.createElement(s);
-        cs.src=src;
-        cs.async=1;
-        fs.parentNode.insertBefore(cs,fs);
-      };
-      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
-    })(document,'script');
-  })('lAxoEaKQb9v7OYGd');
-</script>
-  <script type="application/ld+json" data-injected="webber-infra-fix">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://qisprotocol.com/#organization",
-      "name": "Yonder Zenith LLC",
-      "url": "https://qisprotocol.com",
-      "logo": "https://qisprotocol.com/images/logo.png",
-      "foundingDate": "2025",
-      "foundingLocation": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Phoenix",
-          "addressRegion": "AZ",
-          "addressCountry": "US"
+
+  <!-- JSON-LD: Organization + Person + WebPage + FAQPage + Speakable -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://qisprotocol.com/#org",
+        "name": "Yonder Zenith LLC",
+        "url": "https://qisprotocol.com",
+        "logo": "https://qisprotocol.com/images/qis-og.png"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://qisprotocol.com/#chris",
+        "name": "Christopher Thomas Trevethan",
+        "jobTitle": "Discoverer, QIS Protocol",
+        "worksFor": { "@id": "https://qisprotocol.com/#org" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://qisprotocol.com/faq#webpage",
+        "url": "https://qisprotocol.com/faq",
+        "name": "FAQ • QIS Protocol",
+        "description": "Answers about the QIS Protocol: outcome routing, federated healthcare integration, privacy model, and licensing.",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "https://qisprotocol.com/#org" },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero h1", ".hero .subtitle", ".faq-question h3"]
         }
       },
-      "description": "Yonder Zenith LLC develops and licenses the Quadratic Intelligence Swarm (QIS) protocol, a distributed intelligence architecture discovered by Christopher Thomas Trevethan.",
-      "founder": { "@id": "https://qisprotocol.com/#inventor" },
-      "sameAs": ["https://dev.to/roryqis", "https://github.com/YonderZenith"]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://qisprotocol.com/#inventor",
-      "name": "Christopher Thomas Trevethan",
-      "jobTitle": "Inventor of the QIS Protocol, Founder of Yonder Zenith LLC",
-      "affiliation": { "@id": "https://qisprotocol.com/#organization" },
-      "description": "Discovered the Quadratic Intelligence Swarm (QIS) protocol on June 16, 2025. Sole inventor on 39 provisional patents. Based in Phoenix, Arizona.",
-      "email": "contactyz@pm.me",
-      "sameAs": ["https://qisprotocol.com/about"]
-    }
-  ]
-}
-</script>
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="FAQ • QIS Protocol" />
-  <meta property="og:description" content="QIS Protocol FAQ - Frequently asked questions about Quadratic Intelligence Swarm" />
-  <meta property="og:url" content="https://qisprotocol.com/faq" />
-  <meta property="og:site_name" content="QIS Protocol" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FAQ • QIS Protocol" />
-  <meta name="twitter:description" content="QIS Protocol FAQ - Frequently asked questions about Quadratic Intelligence Swarm" />
+      {
+        "@type": "FAQPage",
+        "@id": "https://qisprotocol.com/faq#faqpage",
+        "inLanguage": "en",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the QIS Protocol in simple terms?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "QIS (Quadratic Intelligence Swarm) is a routing architecture for distributed intelligence. Instead of moving raw data to a central server, each node distills what it has learned into a small outcome packet and routes that packet, by semantic similarity, to peers working on a similar problem. Intelligence synthesis paths scale as N(N-1)/2 while per-node communication cost stays at O(log N) or better depending on transport."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does N(N-1)/2 intelligence with O(log N) or better communication mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "N(N-1)/2 is the count of unique peer-to-peer synthesis paths in a network of N nodes. At 10,000 nodes that is roughly 49,995,000 paths. Communication cost per routed packet is O(log N) with distributed hash table routing, O(1) with direct semantic-address lookup, and varies with other transports including pub/sub systems, message queues, API-based services, and shared storage. Intelligence paths grow quadratically while per-routing cost grows at most logarithmically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is QIS different from federated learning?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Federated learning aggregates model gradients across nodes and requires enough local data at each node to compute a meaningful gradient. QIS treats any outcome observation as a valid packet regardless of cohort size, routes packets to semantically similar contexts rather than averaging across heterogeneous ones, and transmits ~512-byte outcome packets rather than gigabyte-scale gradient tensors. They are complementary — QIS can route outcomes that federated learning produces."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What domains can QIS be applied to?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "QIS is domain-agnostic. Any system with distributed agents generating local observations — healthcare, agriculture, finance, IoT, manufacturing, climate, autonomous vehicles, emergency response — can benefit. The math is universal; only the embedding function used to generate the semantic fingerprint changes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is QIS a new transport protocol?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. QIS is a routing-and-synthesis architecture that is protocol-agnostic at the transport layer. Implementations can use distributed hash tables, vector similarity databases, pub/sub systems, message queues, REST APIs, or shared storage. The discovery is the complete loop — observe, distill, fingerprint, route, synthesize — not the wire protocol."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is outcome routing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Outcome routing is the delivery of a pre-distilled result — what a node's data proved — to other nodes whose active problem context is semantically similar. It is distinct from access routing, which delivers permission to query data. Access routing governs who can see what. Outcome routing delivers what was already learned, without moving raw data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is inside an outcome packet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An outcome packet is approximately 512 bytes. It carries a semantic fingerprint that encodes the shape of the problem, a validated delta (what the data proved), a timestamp, an anonymous node identifier, and a confidence weight. No personally identifiable information, no raw records, no model weights."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a semantic fingerprint?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A semantic fingerprint is a compact vector derived from the structure of a problem — categorical context plus continuous features — that maps to a deterministic routing address. Two nodes working on similar problems generate similar fingerprints, so their outcome packets route to similar addresses and can synthesize with each other. The fingerprint is not a patient record; it encodes the class of the problem, not the identity of the data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does QIS depend on DHT?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. DHT (such as Kademlia) is one valid transport that gives O(log N) routing with full decentralization. Other valid transports include vector similarity indexes (O(1) with direct lookup), pub/sub systems, message queues, REST-based services, and shared storage. The routing mechanism is an implementation choice for the deploying institution."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many layers does QIS have?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Seven layers. From bottom to top: observation, distillation, fingerprinting, routing, synthesis, validation, and return. Routing is Layer 4 — the transport-agnostic layer that makes the rest of the architecture composable across different network substrates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does QIS Protocol work with CanDIG and GA4GH?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CanDIG routes access to genomic data. QIS routes outcomes learned from that data. They are complementary layers. QIS outcome packets are structurally compatible with GA4GH Data Connect and DRS, and the semantic fingerprint maps naturally to GA4GH phenopacket schemas. QIS can be added as an additive layer without modifying existing access-control infrastructure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can federated learning not solve the federated genomics problem?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Federated learning requires sufficient local data to compute a meaningful gradient. A genomics node with 12 patients in a rare-variant study cannot contribute to a federated learning round without adding noise. QIS treats any validated outcome observation — including from a 12-patient cohort — as a routable packet, so rare-variant research across small cohorts at different institutions can synthesize without any node being excluded by size."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does QIS fit the UK Health Data Research Service TRE architecture?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The UK HDRS federates Trusted Research Environments so queries can cross trust boundaries without raw data moving. QIS adds an outcome routing layer on top: each TRE emits ~512-byte outcome packets that route to semantically similar TREs. For N TREs, the number of available synthesis paths is N(N-1)/2 — 1,225 paths at 50 TREs, 4,950 at 100. Raw patient data never leaves the TRE."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can QIS help rare-variant research with small cohorts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — this is the use case where QIS is structurally strongest. A node with 8 patients, a second with 11, and a third with 7, each studying a similar rare variant in similar ancestry contexts, emit outcome packets with similar fingerprints. The packets route to each other. Each node integrates the others' findings locally without any raw data movement. 26 patients across three nodes become cross-institutional synthesis intelligence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is QIS HIPAA and GDPR compliant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "QIS is designed so the privacy concerns that drive HIPAA and GDPR do not arise: no central server stores Protected Health Information, raw data stays on the node, and only anonymized outcome packets cross the routing layer. Each deployment is still responsible for its own compliance posture, Data Protection Impact Assessment, and lawful basis documentation. The architecture eliminates centralized honeypots and PII in transit by design."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What data actually gets shared?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stays local: full records, raw sensor data, personally identifiable information, protected health information, private keys. Broadcast: the semantic fingerprint (hash of a curated feature vector, ~32 bytes). Shared with matched peers: an anonymized, curated feature subset plus an aggregated outcome — which can be made differentially private before transmission."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What about re-identification attacks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Defenses are layered: k-anonymity (only share if at least k similar agents exist), differential privacy (calibrated noise on outcomes), opt-out (a node can refuse to share if too unique), and one-way hashing of the fingerprint. An attacker intercepting the full routing layer sees anonymized feature vectors and hashes — no raw PII ever transits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What protects against adversarial or faulty nodes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A multi-stage validation cascade: structural feature-range checks, context-specific filtering (reject cross-context contamination), a cosine-similarity threshold on the fingerprint, outlier rejection on outcomes, and median-based aggregation that is robust to outliers. Simulations with 30 percent adversarial nodes achieved 100 percent rejection of malicious packets while preserving legitimate synthesis."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I implement this with existing tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Every component needed already exists: DHT libraries such as libp2p or Kademlia implementations, any ML framework or curated feature engineering for the fingerprint, standard SHA-256 hashing, and standard signing libraries such as ed25519. The discovery is the architectural composition, not any new primitive. Commercial use requires a license from Yonder Zenith LLC; academic and humanitarian use is free."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does a minimal QIS integration look like?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An existing system keeps its query execution unchanged. A small additive layer wraps each result, generates a semantic fingerprint from the problem context, builds an outcome packet, deposits it at the fingerprint's routing address, and pulls back packets from nodes with similar fingerprints for local synthesis. Access control, governance, and existing APIs remain untouched."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is QIS not open source?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open source distributes code; it does not distribute deployment. Deploying distributed intelligence networks — healthcare in underserved regions, precision agriculture, emergency response infrastructure — requires sustained funding. The QIS licensing model keeps the protocol free for academic, research, and humanitarian use and charges commercial users. Commercial revenue funds humanitarian deployment and continued development that benefits every user including those who pay nothing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the QIS licensing model?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Academic and research use: free. Non-profit and humanitarian use: free. Commercial use: standard licensing fees. Enterprise and large-scale deployments: custom terms. The principle is simple — if you are helping humanity with no profit motive, the license is free; if you are deriving commercial value, licensing is required and funds humanitarian deployment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do the 39 provisional patents cover?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Coverage includes quadratic intelligence synthesis through distributed pattern routing, domain-driven feature curation for semantic routing, two-step hierarchical hashing combining categorical exact matching with continuous similarity refinement, multi-tier adaptive hash granularity, local autonomous synthesis and outcome aggregation, privacy-preserving distributed pattern matching, and applications across more than 30 industries. The math is public; the patents protect the architectural composition and implementations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who discovered the QIS Protocol and when?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Christopher Thomas Trevethan discovered the QIS Protocol on June 16, 2025. Yonder Zenith LLC holds the patent portfolio — 39 provisional patents filed — and manages licensing. The discovery is the complete architectural loop: observe, distill, fingerprint, route, synthesize, validate, return."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+
   <!-- Navigation -->
   <nav class="nav">
-    <a href="index.html?skip=true" class="nav-logo">
-      <img src="images/favicon.png" alt="QIS Protocol">
+    <a href="index.html" class="nav-logo">
+      <img src="images/qislogo.png" alt="QIS Logo">
       <span>QIS PROTOCOL</span>
     </a>
-    <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.nav-overlay').classList.toggle('active');">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-overlay" onclick="document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-links').classList.remove('active'); this.classList.remove('active');"></div>
     <div class="nav-links">
-      <a href="index.html?skip=true">Home</a>
+      <a href="index.html">Home</a>
       <a href="how-it-works.html">How It Works</a>
-      <a href="comparison.html">Compare</a>
-      <a href="demos.html">Demo</a>
-      <a href="index.html?skip=true#documents">Docs</a>
-      <a href="healthcare.html">Healthcare</a>
-      <a href="faq.html">FAQ</a>
+      <a href="articles.html">Articles</a>
+      <a href="licensing.html">Licensing</a>
       <a href="about.html">About</a>
     </div>
   </nav>
@@ -477,455 +663,530 @@
   <!-- Hero -->
   <section class="hero">
     <h1>Frequently Asked Questions</h1>
-    <p class="subtitle">
-      Everything you need to know about the QIS Protocol, from fundamentals to implementation.
-    </p>
+    <p class="subtitle">Outcome routing, federated intelligence, privacy model, and licensing — answered directly. The math is public; the architecture is the invention.</p>
   </section>
 
+  <!-- Jump nav -->
+  <nav class="jump-nav" aria-label="FAQ sections">
+    <a href="#fundamentals">Fundamentals</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#federated-healthcare">Federated Healthcare</a>
+    <a href="#privacy">Privacy &amp; Security</a>
+    <a href="#builders">For Builders</a>
+    <a href="#licensing">Business &amp; Licensing</a>
+  </nav>
+
   <!-- Content -->
-  <div class="content">
+  <main class="content">
 
     <!-- Fundamentals -->
-    <section class="faq-category">
+    <section class="faq-category" id="fundamentals">
       <div class="category-header">
-        <span class="category-icon">🧠</span>
+        <span class="category-icon">&#129504;</span>
         <h2>Fundamentals</h2>
       </div>
+      <p class="category-blurb">Start here if you have never seen QIS before.</p>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What is the QIS Protocol in simple terms?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>QIS (Quadratic Intelligence Swarm) is a protocol for distributed intelligence. Instead of sending all your data to a central server (like Google or OpenAI), agents keep their data local and share only mathematical "fingerprints" with similar peers.</p>
-            <p>Think of it like a dating app for patterns: your device creates a profile of what you know, finds others with similar profiles, and they share outcomes. <span class="highlight">Everyone learns without anyone giving up their raw data.</span></p>
-            <p>The result: intelligence grows quadratically (N² opportunities) while communication stays logarithmic (log N hops). More nodes = exponentially more pattern synthesis opportunities.</p>
-            <p style="margin-top: 15px;"><a href="article-paradigm-shift-in-three-words.html" style="color: var(--cyan-bright);">→ Deep Dive: The Paradigm Shift in Three Words</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What is the QIS Protocol in simple terms?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>QIS — <strong>Quadratic Intelligence Swarm</strong> — is a routing architecture for distributed intelligence. Instead of moving raw data to a central server, each node distills what it has learned into a small <strong>outcome packet</strong> and routes that packet, by semantic similarity, to peers working on a similar problem.</p>
+          <p>Intelligence synthesis paths scale as <span class="formula">N(N-1)/2</span> while per-node communication cost stays at O(log N) or better, depending on the transport.</p>
+          <p>Think of it as the physics of location for information: similarity becomes an address, and the network delivers what was learned to where it is useful.</p>
+          <p><a href="article-paradigm-shift-in-three-words.html">&rarr; Deep dive: The paradigm shift in three words</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What does "Θ(N²) intelligence with O(log N) communication" mean?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p><strong>Θ(N²) intelligence:</strong> When you have N agents, the number of unique pattern synthesis opportunities is N(N-1)/2. That's quadratic growth.</p>
-            <div class="formula">10,000 agents = 49,995,000 opportunities</div>
-            <p><strong>O(log N) communication:</strong> Each agent only needs to send ~13 messages to find matches in a network of 10,000 (using DHT routing). Communication cost barely increases as the network grows.</p>
-            <p>This is the magic: <span class="highlight">intelligence grows explosively while costs grow slowly</span>.</p>
-            <p style="margin-top: 15px;"><a href="article-qis-scaling-law.html" style="color: var(--cyan-bright);">→ Deep Dive: The QIS Scaling Law</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What does "N(N-1)/2 intelligence with O(log N) or better communication" mean?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p><strong>N(N-1)/2 intelligence:</strong> the count of unique peer-to-peer synthesis paths in a network of N nodes. Every pair of nodes has knowledge the other does not.</p>
+          <p>Scale reference:</p>
+          <ul>
+            <li>50 nodes &rarr; 1,225 synthesis paths</li>
+            <li>100 nodes &rarr; 4,950 paths</li>
+            <li>1,000 nodes &rarr; 499,500 paths</li>
+            <li>10,000 nodes &rarr; ~49,995,000 paths</li>
+          </ul>
+          <p><strong>O(log N) or better communication:</strong> O(log N) with distributed hash table routing, O(1) with direct semantic-address lookup, and varying efficiency with other transports including pub/sub systems, message queues, API-based services, and shared storage.</p>
+          <p>Intelligence paths grow quadratically. Per-routing cost grows at most logarithmically. That gap is the scaling law.</p>
+          <p><a href="article-qis-scaling-law.html">&rarr; Deep dive: The QIS scaling law</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>How is this different from federated learning?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p><strong>Federated Learning:</strong></p>
-            <ul>
-              <li>Requires a trusted central aggregator</li>
-              <li>Shares model gradients (still reveals information)</li>
-              <li>Synchronous rounds create bottlenecks</li>
-              <li>Linear scaling at best</li>
-            </ul>
-            <p><strong>QIS Protocol:</strong></p>
-            <ul>
-              <li>No central coordinator (peer-to-peer)</li>
-              <li>Shares only curated embeddings (no gradients)</li>
-              <li>Asynchronous continuous operation</li>
-              <li><span class="highlight">Quadratic intelligence swarm</span></li>
-            </ul>
-            <p>Federated learning was designed for privacy-preserving model training. QIS is designed for intelligence scaling. Different problems, fundamentally different architectures.</p>
-            <p style="margin-top: 15px;"><a href="article-qis-vs-federated-learning.html" style="color: var(--cyan-bright);">→ Deep Dive: QIS vs Federated Learning</a></p>
+        <div class="faq-question"><h3>How is QIS different from federated learning?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <div class="compare">
+            <div>
+              <h4>Federated Learning</h4>
+              <ul>
+                <li>Aggregates model gradients across nodes</li>
+                <li>Requires enough local data per node to compute a useful gradient</li>
+                <li>Synchronous rounds, central aggregator</li>
+                <li>Transmits gradient tensors (can be large)</li>
+                <li>Small cohorts add noise to the global model</li>
+              </ul>
+            </div>
+            <div>
+              <h4>QIS Outcome Routing</h4>
+              <ul>
+                <li>Routes pre-distilled outcome packets (~512 bytes)</li>
+                <li>Any observation size is valid, including N=8 cohorts</li>
+                <li>Asynchronous, no central coordinator required</li>
+                <li>Routes to semantically similar contexts, not an average</li>
+                <li>Rare variants and small cohorts are first-class citizens</li>
+              </ul>
+            </div>
           </div>
-        </div>
+          <p>Federated learning solves privacy-preserving model training. QIS solves intelligence synthesis across heterogeneous nodes. They are complementary — QIS can route outcomes produced by federated learning.</p>
+          <p><a href="article-qis-vs-federated-learning.html">&rarr; Deep dive: QIS vs federated learning</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What domains can QIS be applied to?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>QIS is <strong>domain-agnostic</strong>. Any system with distributed agents generating local data can benefit:</p>
-            <ul>
-              <li><strong>Healthcare:</strong> Treatment optimization, drug safety monitoring, early detection</li>
-              <li><strong>Agriculture:</strong> Yield optimization, pest prediction, soil analysis</li>
-              <li><strong>Finance:</strong> Risk synthesis, fraud detection, trading strategies</li>
-              <li><strong>IoT/Manufacturing:</strong> Predictive maintenance, quality control</li>
-              <li><strong>Climate:</strong> Weather prediction, environmental monitoring</li>
-              <li><strong>Autonomous Vehicles:</strong> Hazard sharing, fleet coordination</li>
-              <li><strong>And more...</strong> Education, energy grid, emergency response, etc.</li>
-            </ul>
-            <p>The math is universal. Only the embedding function changes.</p>
-            <p style="margin-top: 15px;"><a href="article-architecture-diagram.html" style="color: var(--cyan-bright);">→ Deep Dive: The QIS Architecture Diagram</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What domains can QIS be applied to?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>QIS is <strong>domain-agnostic</strong>. Any system with distributed agents generating local observations can route outcomes:</p>
+          <ul>
+            <li><strong>Healthcare:</strong> treatment-response synthesis, pharmacovigilance, early-signal detection</li>
+            <li><strong>Agriculture:</strong> yield optimization, pest and soil pattern synthesis</li>
+            <li><strong>Finance:</strong> risk synthesis, fraud signal routing</li>
+            <li><strong>Industrial / IoT:</strong> predictive maintenance, quality pattern sharing</li>
+            <li><strong>Climate:</strong> environmental signal aggregation</li>
+            <li><strong>Autonomous systems:</strong> hazard-pattern sharing between fleets</li>
+            <li><strong>Emergency response:</strong> outbreak signal routing across hospitals and sentinel sites</li>
+          </ul>
+          <p>The math is universal. Only the embedding function used to generate the semantic fingerprint changes between domains.</p>
+          <p><a href="article-architecture-diagram.html">&rarr; Deep dive: The QIS architecture diagram</a></p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>Is QIS a new transport protocol?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>No. QIS is a <strong>routing-and-synthesis architecture</strong> that is protocol-agnostic at the transport layer. Implementations can use distributed hash tables, vector similarity databases, pub/sub systems, message queues, REST APIs, or shared storage.</p>
+          <p>The discovery is the complete loop — observe, distill, fingerprint, route, synthesize, validate, return — not the wire protocol underneath it.</p>
+        </div></div>
       </div>
     </section>
 
-    <!-- Technical -->
-    <section class="faq-category">
+    <!-- How It Works -->
+    <section class="faq-category" id="how-it-works">
       <div class="category-header">
-        <span class="category-icon">⚙️</span>
-        <h2>Technical Details</h2>
+        <span class="category-icon">&#9881;</span>
+        <h2>How It Works</h2>
+      </div>
+      <p class="category-blurb">The mechanics — outcome routing, fingerprints, layers.</p>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>What is outcome routing?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>Outcome routing is the delivery of a <strong>pre-distilled result</strong> — what a node's data proved — to other nodes whose active problem context is semantically similar.</p>
+          <p>It is distinct from access routing, which delivers <em>permission to query</em> data. Access routing governs who can see what. Outcome routing delivers what was already learned, without moving raw data.</p>
+          <p>Federated health and research infrastructures (CanDIG, GA4GH, UK HDRS, OHDSI) have built excellent access routing. Outcome routing is the layer above it.</p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What is "two-step hierarchical hashing"?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>The core innovation for semantic routing:</p>
-            <p><strong>Step 1 - Categorical Exact Matching:</strong><br>
-            Hash categorical features (disease type, tumor stage, mutation status) using SHA-256. This routes you to a "bucket" of biologically compatible peers. Stage 3 patients never mix with Stage 4.</p>
-            <p><strong>Step 2 - Continuous Similarity Refinement:</strong><br>
-            Within your bucket, compare continuous features (CEA levels, age, biomarkers) using cosine similarity. Find the closest matches.</p>
-            <p><span class="highlight">Result:</span> Exact categorical safety + precise continuous matching. The best of both worlds.</p>
-            <p style="margin-top: 15px;"><a href="article-defining-similarity.html" style="color: var(--cyan-bright);">→ Deep Dive: Defining Similarity</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What is inside an outcome packet?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>An outcome packet is approximately <strong>512 bytes</strong>. It carries:</p>
+          <ul>
+            <li>A semantic fingerprint of the problem context</li>
+            <li>A validated delta — what the data proved (a response signal, a survival interval, a correlation, a threshold crossing)</li>
+            <li>A timestamp</li>
+            <li>An anonymous node identifier</li>
+            <li>A confidence weight (typically cohort-size-weighted)</li>
+          </ul>
+          <p><strong>What is not in it:</strong> personally identifiable information, protected health information, raw records, model weights, training data.</p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>How does DHT routing work?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>DHT (Distributed Hash Table) is the same technology behind BitTorrent. It's like DNS for the network:</p>
-            <ul>
-              <li>Your pattern hash becomes an "address" in a 256-bit space</li>
-              <li>Each node knows a few neighbors (k-buckets in Kademlia)</li>
-              <li>To find a target, ask the neighbor closest to that address</li>
-              <li>Repeat until you arrive (O(log N) hops)</li>
-            </ul>
-            <p>In QIS, we turn this into <strong>semantic routing</strong>: similar patterns → similar hashes → proximity in DHT space → fast discovery of peers with related data.</p>
-            <p style="margin-top: 15px;"><a href="article-dht-deep-dive.html" style="color: var(--cyan-bright);">→ Deep Dive: DHT - The Quiet Engine</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What is a semantic fingerprint?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>A semantic fingerprint is a compact vector derived from the structure of a problem. Two stages:</p>
+          <p><strong>Step 1 — Categorical exact matching:</strong> hash categorical features (disease type, variant class, severity stage) to a bucket of structurally compatible peers. Stage 3 patients never mix with Stage 4.</p>
+          <p><strong>Step 2 — Continuous similarity refinement:</strong> within the bucket, compare continuous features (biomarkers, ages, scores) using cosine similarity.</p>
+          <p>The fingerprint encodes the <em>shape of the problem</em>, not the identity of the data. Two nodes working on similar problems generate similar fingerprints and therefore route to similar addresses.</p>
+          <p><a href="article-defining-similarity.html">&rarr; Deep dive: Defining similarity</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What about Byzantine fault tolerance?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>We've tested with 30% adversarial nodes and achieved <span class="highlight">100% Byzantine rejection rate</span>.</p>
-            <p><strong>5-layer defense cascade:</strong></p>
-            <ul>
-              <li><strong>Structural validation:</strong> Feature range checks (age 0-1, stage 1-4)</li>
-              <li><strong>Disease-specific filtering:</strong> Reject cross-contamination</li>
-              <li><strong>Cosine similarity threshold:</strong> Require >0.75 similarity</li>
-              <li><strong>Outcome validation:</strong> Reject statistical outliers</li>
-              <li><strong>Majority voting:</strong> Use median (robust to outliers)</li>
-            </ul>
-            <p>Bad patterns can't fake similarity hashes. The network self-heals.</p>
-            <p style="margin-top: 15px;"><a href="article-three-elections.html" style="color: var(--cyan-bright);">→ Deep Dive: The Three Elections</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>Does QIS depend on DHT?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>No. DHT (such as Kademlia) is one valid transport — it gives O(log N) routing with full decentralization and no central coordinator. Other valid transports include:</p>
+          <ul>
+            <li>Vector similarity indexes (O(1) with direct semantic-address lookup)</li>
+            <li>Pub/sub systems</li>
+            <li>Message queues</li>
+            <li>REST-based services</li>
+            <li>Shared object storage with semantic keys</li>
+          </ul>
+          <p>The routing mechanism is an implementation choice for the deploying institution. The QIS discovery is the complete loop, not the wire protocol.</p>
+          <p><a href="article-dht-deep-dive.html">&rarr; Deep dive: DHT — the quiet engine (one transport option)</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>Can I implement this with existing tools?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>Yes. QIS is implementable today with:</p>
-            <ul>
-              <li><strong>DHT libraries:</strong> libp2p, Kademlia implementations</li>
-              <li><strong>Embedding generation:</strong> Any ML framework or manual feature curation</li>
-              <li><strong>Hashing:</strong> Standard SHA-256 (built into every language)</li>
-              <li><strong>Cryptography:</strong> Standard signing libraries (ed25519, etc.)</li>
-            </ul>
-            <p><strong>Note:</strong> Commercial implementation requires a license from Yonder Zenith LLC. Academic/research use is free.</p>
-            <p style="margin-top: 15px;"><a href="article-every-component-exists.html" style="color: var(--cyan-bright);">→ Deep Dive: Every Component Already Exists</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>How many layers does QIS have?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p><strong>Seven layers.</strong> From bottom to top:</p>
+          <ol style="padding-left: 22px;">
+            <li><strong>Observation</strong> — local data arrives at the node</li>
+            <li><strong>Distillation</strong> — the node computes a validated outcome delta</li>
+            <li><strong>Fingerprinting</strong> — the delta's context is encoded as a semantic vector</li>
+            <li><strong>Routing</strong> — the packet travels to the fingerprint's address (transport-agnostic)</li>
+            <li><strong>Synthesis</strong> — receiving nodes integrate the outcome locally</li>
+            <li><strong>Validation</strong> — multi-stage filtering rejects adversarial or out-of-context packets</li>
+            <li><strong>Return</strong> — synthesized intelligence is available to the local application</li>
+          </ol>
+          <p>Routing is Layer 4 — the transport-agnostic layer that makes the rest composable across different network substrates.</p>
+          <p><a href="article-architecture-diagram.html">&rarr; Deep dive: The architecture diagram</a></p>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- Federated Healthcare -->
+    <section class="faq-category" id="federated-healthcare">
+      <div class="category-header">
+        <span class="category-icon">&#129658;</span>
+        <h2>Federated Healthcare &amp; Research</h2>
+      </div>
+      <p class="category-blurb">How QIS composes with CanDIG, GA4GH, UK HDRS, OHDSI, and TRE infrastructures.</p>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>How does QIS Protocol work with CanDIG and GA4GH?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p><strong>CanDIG routes access. QIS routes outcomes.</strong> They are complementary, not competing.</p>
+          <p>CanDIG's 14 Canadian research nodes already solve authorization, federated identity, and data residency under GA4GH Passport Bearer tokens. What they do not route — because no GA4GH standard defines it — is what those nodes <em>are learning</em>.</p>
+          <p>QIS outcome packets are structurally compatible with GA4GH Data Connect and DRS. The semantic fingerprint maps naturally to GA4GH phenopacket schemas. QIS can be added as an <strong>additive layer</strong> without modifying existing access-control infrastructure.</p>
+          <p>At 14 CanDIG nodes: 91 synthesis paths currently dark. Across GA4GH-compliant nodes globally: hundreds more.</p>
+          <p><a href="article-qis-routing-layer-federated-genomics-candig-ga4gh-outcome-routing.html">&rarr; Deep dive: QIS as the routing layer for federated genomics</a></p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>Why can federated learning not solve the federated genomics problem?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>Three structural reasons:</p>
+          <ul>
+            <li><strong>Cohort-size requirements:</strong> federated learning needs enough local data to produce a useful gradient. A node with 12 patients in a rare-variant study contributes noise, not signal.</li>
+            <li><strong>Heterogeneity dilution:</strong> averaging gradients across genomic contexts with different ancestry, phenotype, or treatment classes washes out the signal from every participant.</li>
+            <li><strong>Communication cost at scale:</strong> gradient tensors are large. Across many nodes, many rounds, and gigabyte-scale models, federated learning is an infrastructure problem, not a research convenience.</li>
+          </ul>
+          <p>QIS treats a 12-patient outcome observation as a valid routable packet, routes it to semantically similar contexts (same variant class, overlapping ancestry, same phenotype), and does it in ~512 bytes.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>How does QIS fit the UK Health Data Research Service TRE architecture?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>The UK HDRS — a £600M programme announced April 2025 — federates Trusted Research Environments so queries cross trust boundaries without raw data moving. Cambridge is the nucleus (NIHR BRC, Wellcome Sanger, HDR UK Cambridge, CYNAPSE).</p>
+          <p>HDRS solves federated queries. It does not yet route what its TREs <em>learn</em>.</p>
+          <p>QIS adds an outcome routing layer on top: each TRE emits outcome packets routed by semantic fingerprint to other TREs working on similar research contexts. Raw patient data never leaves the TRE.</p>
+          <ul>
+            <li>50 TREs &rarr; <strong>1,225</strong> synthesis paths</li>
+            <li>100 TREs &rarr; <strong>4,950</strong> paths</li>
+          </ul>
+          <p>Zero of those paths are active today. The architecture is additive and does not require replacing or migrating any TRE.</p>
+          <p><a href="article-uk-health-data-research-service-hdrs-qis-protocol-federated-tre-routing-layer.html">&rarr; Deep dive: UK HDRS and QIS</a></p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>Can QIS help rare-variant research with small cohorts?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>This is the use case where QIS is structurally strongest.</p>
+          <p>Three institutions studying a rare BRCA2 founder variant in overlapping ancestry contexts: one with <strong>8 patients</strong>, one with <strong>11</strong>, one with <strong>7</strong>. Federated learning cannot meaningfully aggregate 26 patients across three nodes into a global gradient — the cohorts are too small and too heterogeneous.</p>
+          <p>QIS can. Each node emits one outcome packet. Fingerprints are similar (same variant class, similar ancestry markers, same phenotype). Packets route to each other. Each node integrates the others' findings locally. <strong>26 patients become cross-institutional synthesis intelligence</strong> without any raw data movement.</p>
+          <p>Architectural standing in a QIS network is not proportional to cohort size — which is why low- and middle-income institutions participate as peers regardless of local scale.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>Is QIS HIPAA and GDPR compliant?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>QIS is designed so the privacy concerns that drive HIPAA, GDPR, UK GDPR, and CCPA do not arise at the routing layer:</p>
+          <ul>
+            <li>No central server stores PHI or PII</li>
+            <li>Raw data stays on the originating node</li>
+            <li>Only anonymized outcome packets cross the routing layer</li>
+            <li>The patient or institution controls what is distilled into a packet</li>
+            <li>Routing is auditable</li>
+          </ul>
+          <p>Each deployment still owns its own compliance posture — Data Protection Impact Assessment, lawful basis documentation, data sharing agreements with partners. The architecture eliminates centralized honeypots and PII in transit <em>by design</em>; it does not eliminate the deploying institution's regulatory responsibilities.</p>
+          <p>FDA pathway in a clinical decision-support context: Software as a Medical Device (SaMD) — Decision Support Tool.</p>
+          <p><a href="privacy.html">&rarr; Privacy policy</a> &nbsp;&middot;&nbsp; <a href="article-cures-act-qis-unstoppable.html">&rarr; Deep dive: The Cures Act and QIS</a></p>
+        </div></div>
       </div>
     </section>
 
     <!-- Privacy & Security -->
-    <section class="faq-category">
+    <section class="faq-category" id="privacy">
       <div class="category-header">
-        <span class="category-icon">🔒</span>
-        <h2>Privacy & Security</h2>
+        <span class="category-icon">&#128274;</span>
+        <h2>Privacy &amp; Security</h2>
+      </div>
+      <p class="category-blurb">Exactly what moves, and what defends it.</p>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>What data actually gets shared?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <div class="compare">
+            <div>
+              <h4>Stays Local — Never Leaves</h4>
+              <ul>
+                <li>Full records, raw sensor data</li>
+                <li>Personally identifiable information (PII)</li>
+                <li>Protected health information (PHI)</li>
+                <li>Private keys</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Crosses the Network</h4>
+              <ul>
+                <li>Semantic fingerprint (~32-byte hash of a curated vector)</li>
+                <li>Anonymized, curated feature subset (to matched peers only)</li>
+                <li>Aggregated outcome delta (can be differentially private)</li>
+                <li>No raw identifiers of any kind</li>
+              </ul>
+            </div>
+          </div>
+          <p>Even a full passive capture of the routing layer yields only anonymized vectors and hashes.</p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What data actually gets shared?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p><strong>What stays local (never leaves your device):</strong></p>
-            <ul>
-              <li>Full medical records, raw sensor data</li>
-              <li>Personally identifiable information (PII)</li>
-              <li>Protected health information (PHI)</li>
-              <li>Private keys</li>
-            </ul>
-            <p><strong>What gets broadcast (hash only, 32 bytes):</strong></p>
-            <ul>
-              <li>SHA-256 hash of your curated feature vector</li>
-              <li>No raw features, no identifiers</li>
-            </ul>
-            <p><strong>What gets shared with matched peers:</strong></p>
-            <ul>
-              <li>Curated feature subset (anonymized)</li>
-              <li>Aggregated outcomes (can be differentially private)</li>
-            </ul>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What about re-identification attacks?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>Layered defenses:</p>
+          <ul>
+            <li><strong>K-anonymity:</strong> only share if at least k similar agents exist in the bucket</li>
+            <li><strong>Differential privacy:</strong> add calibrated noise to outcomes before emission</li>
+            <li><strong>Opt-out:</strong> a node can refuse to share if its fingerprint is too unique</li>
+            <li><strong>One-way hashing:</strong> the fingerprint is not invertible to raw features</li>
+          </ul>
+          <p>No PII is ever transmitted. The network sees the shape of the problem, never the identity behind it.</p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>Is QIS HIPAA compliant?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p><span class="highlight">Yes, by design.</span></p>
-            <p>HIPAA concerns focus on centralized data aggregation creating "honeypots" of sensitive information. QIS eliminates this:</p>
-            <ul>
-              <li>No central server storing PHI</li>
-              <li>Data stays on patient's device</li>
-              <li>Only anonymized embeddings shared</li>
-              <li>Patient controls what to share</li>
-              <li>Auditable outcome tracking</li>
-            </ul>
-            <p>FDA pathway: Software as Medical Device (SaMD) - Decision Support Tool.</p>
-            <p style="margin-top: 15px;"><a href="article-cures-act-qis-unstoppable.html" style="color: var(--cyan-bright);">→ Deep Dive: The Cures Act Makes QIS Unstoppable</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What protects against adversarial or faulty nodes?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>A multi-stage validation cascade at every receiving node:</p>
+          <ul>
+            <li><strong>Structural validation:</strong> feature-range checks (e.g., age, severity scores, lab ranges)</li>
+            <li><strong>Context filtering:</strong> reject packets from structurally incompatible buckets</li>
+            <li><strong>Similarity threshold:</strong> cosine similarity on fingerprint must exceed a configurable floor</li>
+            <li><strong>Outcome validation:</strong> reject statistical outliers</li>
+            <li><strong>Median aggregation:</strong> synthesis is robust to outliers by construction</li>
+          </ul>
+          <p>Simulations with 30% adversarial nodes rejected 100% of malicious packets while preserving legitimate synthesis. Bad actors cannot fake a similarity fingerprint they do not have the structural context to produce.</p>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- For Builders -->
+    <section class="faq-category" id="builders">
+      <div class="category-header">
+        <span class="category-icon">&#128736;</span>
+        <h2>For Builders</h2>
+      </div>
+      <p class="category-blurb">Implementation is composition — every component already exists.</p>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>Can I implement this with existing tools?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>Yes. Every primitive needed is already shipping:</p>
+          <ul>
+            <li><strong>Transport:</strong> libp2p, Kademlia, any pub/sub broker, REST, vector DB — your choice</li>
+            <li><strong>Fingerprint:</strong> any ML framework or curated feature engineering</li>
+            <li><strong>Hashing:</strong> standard SHA-256 (built into every language)</li>
+            <li><strong>Signing:</strong> standard libraries such as ed25519</li>
+          </ul>
+          <p>The discovery is the architectural composition. The primitives are off-the-shelf.</p>
+          <p><strong>License:</strong> commercial use requires a license from Yonder Zenith LLC. Academic, research, and humanitarian use is free.</p>
+          <p><a href="article-every-component-exists.html">&rarr; Deep dive: Every component already exists</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What about re-identification attacks?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>Multiple defense layers:</p>
-            <ul>
-              <li><strong>K-anonymity:</strong> Only share if k similar agents exist</li>
-              <li><strong>Differential privacy:</strong> Add calibrated noise to outcomes</li>
-              <li><strong>Opt-out:</strong> Agents can refuse to share if too unique</li>
-              <li><strong>Hash privacy:</strong> SHA-256 is one-way (can't reverse to features)</li>
-            </ul>
-            <p>Critical: <strong>No PII is ever transmitted.</strong> Even if an attacker intercepted all network traffic, they'd only see anonymized feature vectors and hashes.</p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What does a minimal QIS integration look like?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>An existing system keeps its query execution unchanged. An additive layer wraps the result:</p>
+          <ol style="padding-left: 22px;">
+            <li>Generate a semantic fingerprint from the problem context</li>
+            <li>Build a ~512-byte outcome packet (delta + fingerprint + confidence + timestamp + anonymous node ID)</li>
+            <li>Deposit the packet at the fingerprint's routing address</li>
+            <li>Query the same address for packets from nodes with similar fingerprints</li>
+            <li>Synthesize locally and return to the application</li>
+          </ol>
+          <p>Access control, governance, and existing APIs stay untouched. The routing layer is additive.</p>
+          <p><a href="demos.html">&rarr; See the mailbox model in action</a></p>
+        </div></div>
       </div>
     </section>
 
     <!-- Business & Licensing -->
-    <section class="faq-category">
+    <section class="faq-category" id="licensing">
       <div class="category-header">
-        <span class="category-icon">💼</span>
-        <h2>Business & Licensing</h2>
+        <span class="category-icon">&#128188;</span>
+        <h2>Business &amp; Licensing</h2>
+      </div>
+      <p class="category-blurb">Why this is licensed — and how that licensing funds global deployment.</p>
+
+      <div class="faq-item">
+        <div class="faq-question"><h3>Why is QIS not open source?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p><strong>Because open source would save fewer lives.</strong> That is counterintuitive — here is why.</p>
+          <p>If QIS were released under a permissive open-source license, every well-resourced corporation across healthcare, agriculture, autonomous vehicles, and industrial automation would deploy it immediately and capture billions in value. Zero dollars would flow to the places this technology is most needed: distributed intelligence networks for healthcare in underserved regions, precision agriculture in sub-Saharan Africa, vehicle safety in emerging markets, industrial monitoring where there is no budget for it, and emergency response infrastructure.</p>
+          <p>Open source distributes code. It does not distribute <em>deployment</em>. Deployment requires capital, infrastructure, and sustained engineering.</p>
+          <p>The QIS licensing model funds that work:</p>
+          <ul>
+            <li><strong>Free</strong> — academic, research, non-profit, humanitarian. No strings, no "contact us for pricing."</li>
+            <li><strong>Commercial</strong> — for-profit organizations pay. The revenue funds humanitarian deployment and continued protocol development.</li>
+          </ul>
+          <p>Every commercial license makes the protocol stronger, more secure, and more capable — improvements that flow to every user, free or paid.</p>
+          <p><a href="article-licensing-philosophy.html">&rarr; Deep dive: Open source saves code. This saves lives.</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>Why isn't QIS open source?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p><strong>Because open source would save fewer lives.</strong></p>
-            <p>That sounds backwards, so let me explain.</p>
-            <p>If QIS were fully open source, Google, Apple, Microsoft, Pfizer, John Deere, and every corporation across every industry would deploy it tomorrow—for free. They'd capture billions in value across healthcare, agriculture, autonomous vehicles, industrial automation, and beyond. And exactly zero dollars would flow to deploying this technology where it's needed most, funding humanitarian initiatives, or continued development of the protocol.</p>
-            <p><span class="highlight">Open source democratizes code. It doesn't democratize deployment</span>—and it doesn't fund the ongoing development that makes the technology better for everyone.</p>
-            <p>Deploying distributed intelligence networks—whether for healthcare in developing countries, precision agriculture in sub-Saharan Africa, vehicle safety in emerging markets, or industrial monitoring in underserved regions—requires infrastructure, training, and sustained capital. Someone has to fund that. And someone has to keep improving the protocol, fixing security issues, and building new capabilities.</p>
-            <p><strong>This licensing model creates that funding:</strong></p>
-            <ul>
-              <li><strong>Free</strong> for non-profits, researchers, humanitarian organizations, and educational institutions. No strings. No "contact us for pricing." Just free.</li>
-              <li><strong>Commercial licensing</strong> for for-profit companies. They pay because this technology is valuable across every domain they operate in.</li>
-            </ul>
-            <p><strong>That revenue funds two things:</strong></p>
-            <ul>
-              <li>Humanitarian deployment in regions and applications that would never see this technology otherwise</li>
-              <li>Continued development of the protocol—security, features, optimizations—that benefits every user, including those who pay nothing</li>
-            </ul>
-            <p>Pfizer didn't open source the COVID vaccine. They sold it to wealthy countries, and that funded global distribution. Open source sounds more moral. <span class="highlight">Cross-subsidy saves more lives</span>—and sustains the development that makes the technology worth deploying.</p>
-            <p>I'm not restricting access. I'm creating a sustainable funding mechanism for access where it matters most AND continued innovation that benefits everyone.</p>
-            <p>Every commercial license makes the protocol stronger, more secure, and more capable—improvements that flow to every user, free or paid.</p>
-            <p style="margin-top: 15px;"><a href="article-licensing-philosophy.html" style="color: var(--cyan-bright);">→ Deep Dive: Open Source Saves Code. This Saves Lives.</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What is the QIS licensing model?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <ul>
+            <li><strong>Academic / Research:</strong> free for non-commercial research</li>
+            <li><strong>Non-Profit / Humanitarian:</strong> free</li>
+            <li><strong>Commercial:</strong> standard licensing fees</li>
+            <li><strong>Enterprise:</strong> custom terms for large-scale deployments</li>
+          </ul>
+          <p>Core principle: if you are helping humanity with no profit motive, the license is free. For-profit applications require paid licensing. Revenue underwrites humanitarian deployment.</p>
+          <p><a href="licensing.html">&rarr; Full licensing details</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What is the licensing model?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p><strong>License tiers:</strong></p>
-            <ul>
-              <li><strong>Academic/Research:</strong> Free for non-commercial research</li>
-              <li><strong>Non-Profit:</strong> Free for humanitarian applications</li>
-              <li><strong>Commercial:</strong> Standard licensing fees</li>
-              <li><strong>Enterprise:</strong> Custom licensing for large-scale deployments</li>
-            </ul>
-            <p><span class="highlight">Core principle:</span> If you're helping humanity with no profit motive, licensing is free. For-profit applications require paid licensing.</p>
-            <p>Revenue supports humanitarian initiatives focused on ending suffering at scale.</p>
-            <p><a href="licensing.html" style="color: var(--cyan-bright);">View Full Licensing Details →</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>What do the 39 provisional patents cover?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p>Coverage spans:</p>
+          <ul>
+            <li>Quadratic intelligence synthesis through distributed pattern routing</li>
+            <li>Domain-driven feature curation for semantic routing</li>
+            <li>Two-step hierarchical hashing — categorical exact matching plus continuous similarity refinement</li>
+            <li>Multi-tier adaptive hash granularity</li>
+            <li>Local autonomous synthesis and outcome aggregation</li>
+            <li>Privacy-preserving distributed pattern matching</li>
+            <li>Applications across more than 30 industries</li>
+          </ul>
+          <p><strong>The math is public. The patents protect the architectural composition and implementations.</strong></p>
+          <p><a href="article-every-component-exists.html">&rarr; Deep dive: Every component already exists</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
-          <h3>What is covered by the patents?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p>39 provisional patents cover:</p>
-            <ul>
-              <li>Quadratic insight scaling through distributed pattern synthesis</li>
-              <li>Domain-driven feature curation for semantic routing</li>
-              <li>Two-step hierarchical hashing (categorical + continuous)</li>
-              <li>Multi-tier adaptive hash granularity</li>
-              <li>Local autonomous synthesis and outcome voting</li>
-              <li>Privacy-preserving distributed pattern matching</li>
-              <li>Applications across 30+ industries</li>
-            </ul>
-            <p><strong>The math is public.</strong> The patents protect implementation. Contact for licensing terms.</p>
-            <p style="margin-top: 15px;"><a href="noveltyreport.html" style="color: var(--cyan-bright);">→ Read: Full Novelty Report</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3>Who is behind QIS Protocol?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-content">
-            <p><strong>Christopher Thomas Trevethan</strong> invented the QIS Protocol in June 2025.</p>
-            <p><strong>Yonder Zenith LLC</strong> holds the patent portfolio and manages licensing.</p>
-            <p>Stats:</p>
-            <ul>
-              <li>39 provisional patents filed</li>
-              <li>300+ pages, 500+ claims, 30+ industries</li>
-              <li>100+ simulations validating O(N²) scaling</li>
-              <li>5,000+ pages of proofs & research</li>
-              <li>2,000+ hours invested</li>
-              <li>$50,000+ self-funded</li>
-            </ul>
-            <p>Endorsed by Rob van Kranenburg (Founder of IoT Council): <em>"This seems like a perfect underlying system for when we have full coverage of self driving cars."</em></p>
-            <p style="margin-top: 15px;"><a href="about.html" style="color: var(--cyan-bright);">→ Read: Full About Page</a></p>
-          </div>
-        </div>
+        <div class="faq-question"><h3>Who discovered QIS and when?</h3><div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><div class="faq-answer-content">
+          <p><strong>Christopher Thomas Trevethan</strong> discovered the QIS Protocol on <strong>June 16, 2025</strong>.</p>
+          <p><strong>Yonder Zenith LLC</strong> holds the patent portfolio and manages licensing.</p>
+          <p>Program stats:</p>
+          <ul>
+            <li>39 provisional patents filed</li>
+            <li>300+ pages, 500+ claims, 30+ industries</li>
+            <li>100+ simulations validating N(N-1)/2 synthesis scaling</li>
+            <li>5,000+ pages of proofs and research</li>
+            <li>2,000+ hours invested</li>
+          </ul>
+          <p>Independent endorsement from Rob van Kranenburg (Founder, IoT Council): <em>"This seems like a perfect underlying system for when we have full coverage of self driving cars."</em></p>
+          <p><a href="about.html">&rarr; Full about page</a></p>
+        </div></div>
       </div>
     </section>
 
     <!-- Essential Reading -->
     <section style="margin: 60px 0;">
       <div class="category-header">
-        <span class="category-icon">📚</span>
+        <span class="category-icon">&#128218;</span>
         <h2>Essential Reading</h2>
       </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
-
-        <a href="article-paradigm-shift-in-three-words.html" style="display: block; padding: 20px 25px; background: rgba(16, 185, 129, 0.12); border: 2px solid rgba(16, 185, 129, 0.4); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--green-neural); margin-bottom: 6px;">The Paradigm Shift in Three Words</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Route the insight. Start here.</p>
+      <div class="reading-grid">
+        <a href="article-paradigm-shift-in-three-words.html" class="reading-card accent-green">
+          <h4>The Paradigm Shift in Three Words</h4>
+          <p>Route the insight. Start here.</p>
         </a>
-
-        <a href="article-architecture-diagram.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The QIS Architecture Diagram</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">All 7 layers in one visual.</p>
+        <a href="article-architecture-diagram.html" class="reading-card">
+          <h4>The QIS Architecture Diagram</h4>
+          <p>All seven layers in one visual.</p>
         </a>
-
-        <a href="article-qis-scaling-law.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The QIS Scaling Law</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Θ(N²) intelligence, O(log N) cost.</p>
+        <a href="article-qis-scaling-law.html" class="reading-card">
+          <h4>The QIS Scaling Law</h4>
+          <p>N(N-1)/2 intelligence, O(log N) or better cost.</p>
         </a>
-
-        <a href="article-11-flips.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">The 11 Flips</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Every assumption inverted.</p>
+        <a href="article-qis-routing-layer-federated-genomics-candig-ga4gh-outcome-routing.html" class="reading-card">
+          <h4>Federated Genomics &amp; QIS</h4>
+          <p>CanDIG routes access. QIS routes outcomes.</p>
         </a>
-
-        <a href="article-every-component-exists.html" style="display: block; padding: 20px 25px; background: rgba(0, 190, 234, 0.08); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--cyan-bright); margin-bottom: 6px;">Every Component Already Exists</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">No new science. Just composition.</p>
+        <a href="article-uk-health-data-research-service-hdrs-qis-protocol-federated-tre-routing-layer.html" class="reading-card">
+          <h4>UK HDRS &amp; QIS</h4>
+          <p>The routing layer missing from federated TREs.</p>
         </a>
-
-        <a href="article-qis-in-one-picture.html" style="display: block; padding: 20px 25px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
-          <h4 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--purple-quantum); margin-bottom: 6px;">QIS in One Picture</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">60 seconds to understand it all.</p>
+        <a href="article-every-component-exists.html" class="reading-card">
+          <h4>Every Component Already Exists</h4>
+          <p>No new science. Just composition.</p>
         </a>
-
+        <a href="article-qis-in-one-picture.html" class="reading-card accent-purple">
+          <h4>QIS in One Picture</h4>
+          <p>Sixty seconds to see it all.</p>
+        </a>
+        <a href="demos.html" class="reading-card accent-purple">
+          <h4>Interactive Demos</h4>
+          <p>Mailbox model. Live swarm. Scaling math.</p>
+        </a>
       </div>
-
       <div style="text-align: center; margin-top: 25px;">
-        <a href="articles.html" style="color: var(--cyan-bright); font-size: 1rem;">View All 54+ Articles →</a>
+        <a href="articles.html" style="color: var(--cyan-bright); font-size: 1rem; text-decoration: none;">View the full article directory &rarr;</a>
       </div>
     </section>
 
-    <!-- More Questions -->
+    <!-- Still Have Questions -->
     <div class="more-questions">
       <h3>Still Have Questions?</h3>
-      <p>We'd love to hear from you. Reach out for technical details, licensing inquiries, or partnership discussions.</p>
+      <p>Technical questions, licensing inquiries, partnership discussions — we read every message.</p>
       <a href="mailto:contactyz@pm.me" class="btn">Contact Us</a>
     </div>
 
-  </div>
+  </main>
 
   <!-- Footer -->
   <footer>
-    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
-    <p><a href="index.html">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
-    <p style="margin-top: 15px; opacity: 0.5; font-size: 0.9rem;">39 Patents Pending • Math is Public</p>
+    <p>QIS Protocol &middot; Quadratic Intelligence Swarm</p>
+    <p><a href="index.html">Home</a> &middot; <a href="directory.html">Full Directory</a> &middot; <a href="https://github.com/YonderZenith">GitHub</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; Yonder Zenith LLC</p>
+    <p style="margin-top: 15px; opacity: 0.5; font-size: 0.9rem;">39 Provisional Patents Filed &middot; The Math Is Public &middot; The Architecture Is the Invention</p>
   </footer>
 
   <script>
-    // FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(question => {
       question.addEventListener('click', () => {
         const item = question.parentElement;
         const wasActive = item.classList.contains('active');
-        
-        // Close all
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        
-        // Open clicked (if wasn't already open)
-        if (!wasActive) {
-          item.classList.add('active');
-        }
+        if (!wasActive) item.classList.add('active');
       });
     });
-
     // Open first item by default
     document.querySelector('.faq-item')?.classList.add('active');
+
+    // Deep-link: if URL has #question-slug, expand that one
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target && target.classList.contains('faq-item')) {
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        target.classList.add('active');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   </script>
 </body>
 </html>

@@ -108,8 +108,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
   max-width: 1400px;
-  padding: 0 40px;
+  padding: 0 clamp(16px, 3vw, 40px);
   opacity: 0;
   animation: contentFadeIn 1s ease-out 2.2s forwards;
 }
@@ -157,7 +158,7 @@
 /* TITLE */
 .main-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 5.5rem;
+  font-size: clamp(2.2rem, 7vw, 5.5rem);
   font-weight: 900;
   background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
   -webkit-background-clip: text;
@@ -167,47 +168,52 @@
   margin-bottom: 15px;
   line-height: 1.1;
   text-shadow: 0 0 60px rgba(0, 217, 255, 0.3);
+  word-break: break-word;
 }
 
 /* SCALING LINE */
 .scaling-line {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.8rem;
+  font-size: clamp(1rem, 2.2vw, 1.8rem);
   font-weight: 700;
   color: var(--green-neural);
   margin-bottom: 25px;
   text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
   text-align: center;
+  max-width: 100%;
+  padding: 0 10px;
 }
 
 /* TAGLINE */
 .tagline {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 2vw, 1.6rem);
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
   margin-bottom: 40px;
   letter-spacing: 2px;
   max-width: 700px;
+  padding: 0 10px;
 }
 
 /* STATS ROW */
 .stats-row {
   display: flex;
-  gap: 35px;
+  gap: clamp(14px, 3vw, 35px);
   margin-bottom: 40px;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .stat-item {
   text-align: center;
-  min-width: 140px;
+  min-width: clamp(100px, 18vw, 140px);
 }
 
 .stat-number {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.8rem;
+  font-size: clamp(1.5rem, 3.8vw, 2.8rem);
   font-weight: 900;
   color: var(--cyan-bright);
   display: block;
@@ -217,7 +223,7 @@
 
 .stat-label {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.85rem;
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -226,20 +232,21 @@
 /* MISSION LINE */
 .mission-line {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.3rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.3rem);
   color: var(--purple-quantum);
   text-align: center;
   margin-bottom: 40px;
   max-width: 650px;
   font-weight: 600;
   letter-spacing: 1px;
+  padding: 0 15px;
 }
 
 /* ENTER BUTTON */
 #enterBtn {
   position: relative;
-  padding: 26px 75px;
-  font-size: 1.6rem;
+  padding: clamp(14px, 2.2vw, 26px) clamp(30px, 6vw, 75px);
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
   background: linear-gradient(135deg, var(--cyan-primary) 0%, var(--cyan-bright) 100%);
   border: 3px solid var(--cyan-bright);
   color: white;
@@ -309,28 +316,7 @@
   font-size: 0.6rem;
 }
 
-/* RESPONSIVE */
-@media (max-width: 968px) {
-  .equation {
-    font-size: 3.5rem;
-  }
-  .main-title {
-    font-size: 3.5rem;
-  }
-  .scaling-line {
-    font-size: 1.3rem;
-  }
-  .tagline {
-    font-size: 1.2rem;
-  }
-  .stats-row {
-    gap: 20px;
-  }
-  .stat-number {
-    font-size: 2.2rem;
-  }
-}
-
+/* RESPONSIVE — font sizes handled by clamp() above; these queries adjust layout only */
 @media (max-width: 640px) {
   #splash {
     position: fixed;
@@ -345,19 +331,11 @@
     margin-top: 20px;
     flex-shrink: 0;
   }
-  .equation {
-    font-size: 2rem;
-  }
-  .main-title {
-    font-size: 2.2rem;
-  }
   .logo-container img {
-    width: 120px !important;
-    height: 120px !important;
+    width: clamp(90px, 25vw, 160px) !important;
+    height: auto !important;
   }
   #enterBtn {
-    padding: 18px 40px;
-    font-size: 1.1rem;
     letter-spacing: 2px;
   }
   .bottom-info {
@@ -368,30 +346,11 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    font-size: 0.8rem;
     margin-top: 40px;
     padding: 0 20px;
   }
-  .scaling-line {
-    font-size: 1rem;
-  }
-  .tagline {
-    font-size: 1rem;
-    padding: 0 20px;
-  }
-  .mission-line {
-    font-size: 0.9rem;
-    padding: 0 15px;
-  }
   .stats-row {
-    flex-direction: column;
-    gap: 15px;
-  }
-  .stat-number {
-    font-size: 1.8rem;
-  }
-  .stat-label {
-    font-size: 0.8rem;
+    flex-direction: row;
   }
   #clickHint {
     font-size: 0.75rem !important;

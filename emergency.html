@@ -65,7 +65,8 @@
   }
   </script>
 
-  <style>
+  <style>/* responsive-retrofit:v1 */
+
     :root { --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6; --green-neural: #10B981; --red-accent: #EF4444; --orange-alert: #F59E0B; --dark-bg: #0A0A0A; --text-primary: #E8F5E9; --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.55); --border: rgba(0, 190, 234, 0.2); }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -85,7 +86,7 @@
     .hero .subtitle strong { color: var(--cyan-bright); font-weight: 600; }
     main { max-width: 920px; margin: 0 auto; padding: 30px 40px 80px; position: relative; z-index: 1; }
     section { margin-bottom: 70px; }
-    section h2 { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; color: var(--cyan-bright); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+    section h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(0.9rem, 2.1vw, 1.6rem); color: var(--cyan-bright); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
     section h2::before { content: ''; width: 36px; height: 3px; background: linear-gradient(90deg, var(--orange-alert), var(--cyan-bright)); flex-shrink: 0; }
     section p { margin-bottom: 18px; color: var(--text-secondary); font-size: 1.05rem; }
     section p strong { color: var(--text-primary); font-weight: 600; }
@@ -95,7 +96,7 @@
     .threat p { font-size: 0.95rem; line-height: 1.55; margin: 0; }
     .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 30px 0; }
     .stat { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); padding: 18px; text-align: center; border-radius: 10px; }
-    .stat .value { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--orange-alert); }
+    .stat .value { font-family: 'Orbitron', sans-serif; font-size: clamp(0.9rem, 2.3vw, 1.8rem); font-weight: 800; color: var(--orange-alert); }
     .stat .label { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase; margin-top: 6px; }
     .article-rail { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 24px; }
     .article-rail a { display: block; padding: 18px 20px; background: rgba(0, 190, 234, 0.04); border: 1px solid var(--border); border-radius: 10px; transition: all 0.2s; }
