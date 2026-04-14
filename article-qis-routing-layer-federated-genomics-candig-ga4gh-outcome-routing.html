@@ -205,7 +205,7 @@ def genomic_fingerprint(outcome: GenomicOutcome) -&gt; np.ndarray:
 </code></pre>
 <p>This fingerprint is <strong>not</strong> a patient record. It encodes the <em>shape of the problem</em> — what class of genomic context produced what class of outcome — without encoding any individual's data.</p>
 <p>Two nodes processing BRCA2 frameshift variants in similar ancestry contexts with similar immunotherapy outcomes will generate similar fingerprints. Their outcome packets route to similar addresses. Each node's local synthesis engine pulls outcome packets from nodes with similar fingerprints and synthesizes locally.</p>
-<p>The routing mechanism can be anything that supports semantic similarity lookup — DHT-based routing (O(log N), fully decentralized, no central coordinator), vector similarity search (O(1) with a database index), or any other mechanism that maps fingerprint similarity to routing addresses. The quadratic scaling comes from the loop and the semantic addressing, not the transport layer.</p>
+<p>The routing mechanism can be anything that supports semantic similarity lookup — DHT-based routing (O(log N) or better, fully decentralized, no central coordinator), vector similarity search (O(1) with a database index), or any other mechanism that maps fingerprint similarity to routing addresses. The quadratic scaling comes from the loop and the semantic addressing, not the transport layer.</p>
 <p>---</p>
 <h2>What the GDI Connection Adds</h2>
 <p>CanDIG is not isolated. The GA4GH standards it implements are the same standards the EU Genomic Data Infrastructure is building on. GDI is connecting genomic biobanks across seven founding EU member states — 500,000+ genomes, multiple ancestry populations, multiple governance jurisdictions.</p>

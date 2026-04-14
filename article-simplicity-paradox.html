@@ -677,7 +677,7 @@
 
     <p>Traditional distributed systems either centralize (send everything to a coordinator) or broadcast (send everything to everyone). Both approaches break at scale. Centralization creates bottlenecks. Broadcasting creates noise.</p>
 
-    <p>QIS uses semantic routing through distributed hash tables (among other methods—see core spec and other articles). Your pattern gets hashed. The hash becomes an address. The address routes you to semantically similar patterns—in <span class="math">O(log N)</span> hops, regardless of network size.</p>
+    <p>QIS uses semantic routing through distributed hash tables (among other methods—see core spec and other articles). Your pattern gets hashed. The hash becomes an address. The address routes you to semantically similar patterns—in <span class="math">O(log N) or better</span> hops, regardless of network size.</p>
 
     <div class="highlight-box">
       <p><strong>The math:</strong> In a network of 1 million agents, finding your semantic neighbors takes about 20 hops. In a network of 1 billion, it takes about 30. The network can grow by 1000x and routing cost increases by 50%. That's logarithmic scaling—the same property that makes the internet work.</p>

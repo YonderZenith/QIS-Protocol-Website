@@ -881,7 +881,7 @@
         </div>
         <div class="flip-body">
           <p><span class="current-label">Central Systems:</span> More farms = more data = more central compute required. Scales linearly. Hits capacity limits. Requires massive infrastructure investment.</p>
-          <p><span class="qis-label">QIS:</span> N farms create N(N-1)/2 synthesis opportunities. Each farm queries its cohorts at O(log N) cost. Intelligence grows <em>quadratically</em>. Communication stays <em>logarithmic</em>. No central bottleneck.</p>
+          <p><span class="qis-label">QIS:</span> N farms create N(N-1)/2 synthesis opportunities. Each farm queries its cohorts at O(log N) or better cost. Intelligence grows <em>quadratically</em>. Communication stays <em>logarithmic</em>. No central bottleneck.</p>
         </div>
       </div>
 
@@ -911,7 +911,7 @@
 
       <p><strong>Step 2: Distributed Routing</strong></p>
       <p>The fingerprint routes through a distributed hash table (DHT) or <a href="article-routing-by-similarity.html">other methods</a> to farms in the same "cohort"—farms with matching conditions. This is peer-to-peer: no central server, no corporate data center, no bottleneck. The fingerprint itself determines which farms are relevant through semantic similarity—farms don't "upload" to anything. They participate in a network.</p>
-      <p>Communication cost: O(log N), regardless of network size. No central compute scaling problem because there's no central compute.</p>
+      <p>Communication cost: O(log N) or better, regardless of network size. No central compute scaling problem because there's no central compute.</p>
 
       <p><strong>Step 3: Outcome Retrieval</strong></p>
       <p>Matching farms return outcome packets. Not predictions. <em>Actual outcomes.</em></p>
@@ -1100,7 +1100,7 @@
             <td>Communication Cost</td>
             <td>O(data size)</td>
             <td>O(model × clients × rounds)</td>
-            <td>O(log N) per query</td>
+            <td>O(log N) or better per query</td>
           </tr>
           <tr>
             <td>Privacy Risk</td>

@@ -1127,7 +1127,7 @@
 
       <p><strong>Semantic similarity matching vs. task coordination:</strong> Where multi-agent frameworks route tasks to capability-matched agents, QIS matches outcome packets to exact cohorts based on semantic similarity. The routing decision itself embeds intelligence—determining who needs what insight based on meaning, not capability.</p>
 
-      <p><strong>Quadratic synthesis as feature:</strong> Where current systems minimize O(N²) communication as cost, QIS treats N(N-1)/2 pairwise synthesis opportunities as value. With N agents sharing outcome packets via semantic routing, you get N(N-1)/2 potential synthesis opportunities while maintaining O(log N) communication complexity per agent.</p>
+      <p><strong>Quadratic synthesis as feature:</strong> Where current systems minimize O(N²) communication as cost, QIS treats N(N-1)/2 pairwise synthesis opportunities as value. With N agents sharing outcome packets via semantic routing, you get N(N-1)/2 potential synthesis opportunities while maintaining O(log N) or better communication complexity per agent.</p>
 
       <p><strong>Local synthesis, no central aggregation:</strong> The edge node that sends the query is the edge node that synthesizes the answer. Vote, tally, weighted median, Bayesian update—any consensus mechanism. O(K) computation where K is matched neighbors. ~2ms for 1,000 packets. No server coordinates. No rounds converge. The network is a post office, not a computer.</p>
     </div>

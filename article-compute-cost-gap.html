@@ -811,7 +811,7 @@
         <span class="pipeline-arrow">→</span>
         <div class="pipeline-step">
           Route by Similarity
-          <div class="pipeline-cost">O(log N) hops</div>
+          <div class="pipeline-cost">O(log N) or better hops</div>
         </div>
         <span class="pipeline-arrow">→</span>
         <div class="pipeline-step">
@@ -860,7 +860,7 @@
         </tr>
         <tr>
           <td><strong>Network Routing</strong></td>
-          <td class="qis-col">O(log N) hops</td>
+          <td class="qis-col">O(log N) or better hops</td>
           <td>DHT/vector lookup. Same cost as loading a webpage.</td>
         </tr>
         <tr>
@@ -889,7 +889,7 @@
         <li><strong>Aggregate local data:</strong> Pull outcome metrics from whatever sources you have—APIs, databases, sensors, IoT devices, user input. This can be programmed, run on edge AI, or even cloud AI. Cost depends on your data sources, but it's local processing—no central infrastructure bill.</li>
         <li><strong>Fill out the outcome template:</strong> Domain experts or AI define what metrics matter for a given problem. Your node scrapes those metrics into a structured packet. Trivial compute.</li>
         <li><strong>Generate semantic fingerprint:</strong> Hash or embed your situation for routing. Milliseconds.</li>
-        <li><strong>Query the network:</strong> Route by similarity to your cohort. O(log N) hops—same as loading a webpage.</li>
+        <li><strong>Query the network:</strong> Route by similarity to your cohort. O(log N) or better hops—same as loading a webpage.</li>
         <li><strong>Vote/synthesize on returned packets:</strong> Count, average, weight. Basic math on tiny JSONs. Negligible.</li>
       </ul>
       <p>The most compute you'll ever see in QIS is if you choose to run cloud AI for your aggregation and synthesis. But here's what that gets you: <strong>a cloud model for your exact issue that doesn't just have training data—it has actual real-time insight from everyone facing your exact situation right now.</strong></p>
@@ -968,7 +968,7 @@
       <h4>QIS Approach</h4>
       <ul>
         <li><strong>Step 1:</strong> Patient generates semantic fingerprint from their profile (local)</li>
-        <li><strong>Step 2:</strong> Fingerprint routes to cohort with matching profiles (O(log N))</li>
+        <li><strong>Step 2:</strong> Fingerprint routes to cohort with matching profiles (O(log N) or better)</li>
         <li><strong>Step 3:</strong> Outcome packets return: "847 patients with your exact profile. Treatment A: 312 patients, 78% progression-free at 18 months. Treatment B: 289 patients, 71% progression-free..."</li>
         <li><strong>Step 4:</strong> Local synthesis: display distribution, confidence, recency</li>
         <li><strong>Result:</strong> Actual outcomes from real patients with this exact profile</li>
@@ -1010,7 +1010,7 @@
         <tr>
           <td><strong>Cost scaling</strong></td>
           <td class="traditional-col">O(N) — linear with data</td>
-          <td class="qis-col">O(log N) — logarithmic per query</td>
+          <td class="qis-col">O(log N) or better — logarithmic per query</td>
         </tr>
         <tr>
           <td><strong>Intelligence scaling</strong></td>

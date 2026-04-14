@@ -317,7 +317,7 @@
 
             <!-- Log curve (cyan — cost) -->
             <path id="sc-log-curve" d="M40,215 Q180,195 380,180" stroke="#00D9FF" stroke-width="2" fill="none"/>
-            <text x="340" y="175" fill="#00D9FF" font-family="JetBrains Mono, monospace" font-size="9">O(log N)</text>
+            <text x="340" y="175" fill="#00D9FF" font-family="JetBrains Mono, monospace" font-size="9">O(log N) or better</text>
 
             <!-- Marker for current N -->
             <line id="sc-marker" x1="100" y1="40" x2="100" y2="220" stroke="rgba(139,92,246,0.6)" stroke-width="1.5" stroke-dasharray="4,4"/>
@@ -340,7 +340,7 @@
         <a href="article-architecture-diagram.html"><h4>The QIS Architecture Diagram</h4><p>Seven layers in one visual. Every flow labeled. Every layer clickable.</p></a>
         <a href="article-qis-in-one-picture.html"><h4>QIS in One Picture</h4><p>The 60-second explanation. If you understand mailboxes, you understand QIS.</p></a>
         <a href="article-paradigm-shift-in-three-words.html"><h4>Route the Insight</h4><p>The three-word paradigm shift. The inversion that changes everything.</p></a>
-        <a href="article-qis-scaling-law.html"><h4>The QIS Scaling Law</h4><p>Θ(N²) emergent intelligence with O(log N) communication, formally derived.</p></a>
+        <a href="article-qis-scaling-law.html"><h4>The QIS Scaling Law</h4><p>Θ(N²) emergent intelligence with O(log N) or better communication, formally derived.</p></a>
       </div>
     </section>
 
@@ -451,7 +451,7 @@
               log('← N2 retrieves the outcome. Synthesizes locally.', true);
               setTimeout(() => {
                 log('N3 and N4 ALSO facing the same situation would route to the same address.');
-                log('Cost for N1 to post: O(1). Cost for N2 to retrieve: O(log N) with DHT, O(1) with direct lookup.', true);
+                log('Cost for N1 to post: O(1). Cost for N2 to retrieve: O(log N) or better with DHT, O(1) with direct lookup.', true);
               }, 400);
             });
           }, 400);

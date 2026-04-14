@@ -898,7 +898,7 @@
 
       <div class="how-it-works">
         <h4>How It Works</h4>
-        <p>Your semantic fingerprint gets hashed (SHA-256) to produce a 256-bit key. This key is an "address" in a shared address space. Each node knows k neighbors (k=20 in libp2p). To find your bucket, ask the neighbor closest to that address, repeat until you arrive. O(log N) hops.</p>
+        <p>Your semantic fingerprint gets hashed (SHA-256) to produce a 256-bit key. This key is an "address" in a shared address space. Each node knows k neighbors (k=20 in libp2p). To find your bucket, ask the neighbor closest to that address, repeat until you arrive. O(log N) or better hops.</p>
         <p>Here's the key: you're not limited to one bucket. The network allocates a <em>hash prefix</em> for each similarity definition—that prefix IS the problem space. All buckets under that prefix belong to that similarity. Query bucket 0, then 1, then 2... walk the prefix space until no more buckets exist. The prefix boundary tells you when you're done. No per-bucket constraints—the similarity definition determines how much address space is allocated, and you query all of it.</p>
       </div>
 
@@ -927,7 +927,7 @@
         </div>
         <div class="metric">
           <div class="metric-label">Routing complexity</div>
-          <div class="metric-value">O(log N)</div>
+          <div class="metric-value">O(log N) or better</div>
         </div>
       </div>
 
@@ -1082,7 +1082,7 @@
 
       <div class="how-it-works">
         <h4>How It Works</h4>
-        <p>Nodes gossip publishers they know to random peers. Each round, information "infects" new nodes exponentially—like a virus spreading through a population. After O(log N) rounds, information reaches all nodes with high probability. Each node caches recent publishers. Query finds what you need through accumulated gossip. Natural redundancy: everyone has a slice.</p>
+        <p>Nodes gossip publishers they know to random peers. Each round, information "infects" new nodes exponentially—like a virus spreading through a population. After O(log N) or better rounds, information reaches all nodes with high probability. Each node caches recent publishers. Query finds what you need through accumulated gossip. Natural redundancy: everyone has a slice.</p>
       </div>
 
       <div class="production-proof">
@@ -1110,7 +1110,7 @@
         </div>
         <div class="metric">
           <div class="metric-label">Propagation</div>
-          <div class="metric-value">O(log N) rounds</div>
+          <div class="metric-value">O(log N) or better rounds</div>
         </div>
       </div>
 
@@ -1143,7 +1143,7 @@
 
       <div class="how-it-works">
         <h4>How It Works</h4>
-        <p>Nodes arranged in sorted order by similarity score. Multi-level structure: bottom level is complete sorted list, higher levels "skip" progressively more nodes (like express lanes). Query starts at top level, skips as far as possible, drops down, repeats. O(log N) search. Unlike DHT, preserves ordering—so you can find "all patients with similarity score between 0.8 and 0.95" (range queries).</p>
+        <p>Nodes arranged in sorted order by similarity score. Multi-level structure: bottom level is complete sorted list, higher levels "skip" progressively more nodes (like express lanes). Query starts at top level, skips as far as possible, drops down, repeats. O(log N) or better search. Unlike DHT, preserves ordering—so you can find "all patients with similarity score between 0.8 and 0.95" (range queries).</p>
       </div>
 
       <div class="production-proof">

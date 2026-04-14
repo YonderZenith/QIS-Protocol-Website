@@ -553,7 +553,7 @@ dht_key = SHA256(serialize(categorical))</pre>
     </div>
 
     <p>
-      That hash routes you to the exact cohort in <strong>O(log N)</strong> hops. You're now connected to peers who match on the dimensions that matter—not "kind of similar," but <em>exactly right</em> for your problem.
+      That hash routes you to the exact cohort in <strong>O(log N) or better</strong> hops. You're now connected to peers who match on the dimensions that matter—not "kind of similar," but <em>exactly right</em> for your problem.
     </p>
 
     <h3>Step 2: Local Synthesis (Extract and Compute Insight)</h3>
@@ -647,7 +647,7 @@ dht_key = SHA256(serialize(categorical))</pre>
     <p>
       If you tried to brute-force “compare me to everybody,” that would be a disaster.
       QIS avoids that by routing with a DHT so that finding the right bucket takes only about
-      <strong>O(log N)</strong> hops.    </p>
+      <strong>O(log N) or better</strong> hops.    </p>
 
     <p>
       The core spec gives concrete scale examples like:
@@ -847,7 +847,7 @@ dht_key = SHA256(serialize(categorical))</pre>
           <td><strong>Theoretically grounded</strong></td>
           <td>Math/architecture reasoning supports it; implementation details can vary.</td>
           <td>
-            Quadratic synthesis opportunity counting argument (Θ(N²)).            DHT routing bound proof sketch (O(log N)).          </td>
+            Quadratic synthesis opportunity counting argument (Θ(N²)).            DHT routing bound proof sketch (O(log N) or better).          </td>
         </tr>
         <tr>
           <td><strong>Needs real-world validation</strong></td>

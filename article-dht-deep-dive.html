@@ -823,7 +823,7 @@
           <div class="stat-label">continuous operation without central failure</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">O(log N)</div>
+          <div class="stat-number">O(log N) or better</div>
           <div class="stat-label">routing hops—10M nodes ≈ 23 hops max</div>
         </div>
         <div class="stat-item">
@@ -907,7 +907,7 @@
       
       <div class="mechanism-step">
         <span class="step-num">5</span>
-        <span class="step-text"><strong>Hops:</strong> O(log N). With 10 million nodes, ~23 hops theoretical max. Real-world: often fewer due to caching.</span>
+        <span class="step-text"><strong>Hops:</strong> O(log N) or better. With 10 million nodes, ~23 hops theoretical max. Real-world: often fewer due to caching.</span>
       </div>
       
       <div class="mechanism-step">
@@ -931,7 +931,7 @@
     <div class="code-block">
 <span class="comment">// Expert-defined similarity → hash → exact routing</span>
 similarity_hash = SHA256(disease_type + tumor_stage + mutation_status + biomarker_bucket)
-<span class="comment">// Routes to exact bucket in O(log N) hops</span>
+<span class="comment">// Routes to exact bucket in O(log N) or better hops</span>
 <span class="comment">// Everyone in that bucket shares your exact fingerprint</span>
     </div>
 
@@ -988,7 +988,7 @@ outcomes = parallel_fetch(providers)  <span class="comment">// P2P, not through 
 
     <p>The DHT is a distributed index. The actual outcome exchange happens peer-to-peer. One node can store millions of provider records—they're just pointers. IPFS handles popular content (millions of nodes sharing the same file) exactly this way.</p>
 
-    <p><strong>Total retrieval time:</strong> O(log N) hops to find providers (~23 hops max at 10M nodes, milliseconds). Then direct P2P connections to fetch outcome packets—no more DHT hops needed. Parallel fetches from 100K providers take seconds, not hours. The DHT routes you there; after that, it's just regular networking.</p>
+    <p><strong>Total retrieval time:</strong> O(log N) or better hops to find providers (~23 hops max at 10M nodes, milliseconds). Then direct P2P connections to fetch outcome packets—no more DHT hops needed. Parallel fetches from 100K providers take seconds, not hours. The DHT routes you there; after that, it's just regular networking.</p>
 
     <p><strong>Prefix grouping:</strong> First 8 bits = disease ID (e.g., <code>0x7...</code>). Rest = sub-variants. Buckets stay manageable forever.</p>
 

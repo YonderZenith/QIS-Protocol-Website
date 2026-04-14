@@ -749,7 +749,7 @@
       <h3>The Routing</h3>
       <p>Here's the magic: fingerprints can find each other.</p>
       <p>There's a technology called a Distributed Hash Table (DHT). BitTorrent has used it for 20 years. It lets any node in a network find any other node with similar content—in logarithmic time. No central server required.</p>
-      <p>So: her fingerprint routes through the network. It finds other fingerprints that match—patients with similar profiles, anywhere in the world. The routing costs almost nothing. O(log N) hops. At 1 million patients, that's about 20 steps.</p>
+      <p>So: her fingerprint routes through the network. It finds other fingerprints that match—patients with similar profiles, anywhere in the world. The routing costs almost nothing. O(log N) or better hops. At 1 million patients, that's about 20 steps.</p>
       <p>No one shared their data. The fingerprints just <em>found each other</em>.</p>
       <p><em><strong>Side note:</strong> DHT is just one example. Any system that can route by semantic fingerprint works—vector databases, federated indexes, hybrid architectures. The principle is what matters: efficient similarity-based routing.</em></p>
     </div>
@@ -811,7 +811,7 @@
 
     <p>That's not quadratic <em>cost</em>. That's quadratic <em>intelligence</em>.</p>
 
-    <p>And here's the kicker: each agent only pays logarithmic cost. O(log N) to route. O(log N) to find matches. The network intelligence grows quadratically while individual burden stays manageable.</p>
+    <p>And here's the kicker: each agent only pays logarithmic cost. O(log N) or better to route. O(log N) or better to find matches. The network intelligence grows quadratically while individual burden stays manageable.</p>
 
     <div class="highlight-box">
       <p><strong>This is the inversion.</strong> Everyone else treats quadratic as a problem to avoid. I discovered it's the treasure—if you're scaling intelligence instead of scaling load.</p>

@@ -1095,7 +1095,7 @@
             
             <rect x="10" y="45" width="130" height="55" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
             <text x="75" y="63" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">DHT (Kademlia)</text>
-            <text x="75" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">O(log N) hops</text>
+            <text x="75" y="78" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">O(log N) or better hops</text>
             <text x="75" y="91" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8">BitTorrent scale: 28M</text>
             
             <rect x="10" y="110" width="130" height="45" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.5)"/>
@@ -1295,7 +1295,7 @@ recommendations = <span class="function">aggregate</span>(similar_users.watched)
 <span class="comment">// QIS exact cohort approach (simplified)</span>
 categorical = {<span class="key">disease</span>: <span class="value">'colorectal'</span>, <span class="key">stage</span>: <span class="value">3</span>, <span class="key">kras</span>: <span class="value">1</span>, <span class="key">msi</span>: <span class="value">0</span>}
 address = <span class="function">hash</span>(categorical)  <span class="comment">// Your situation = your address (any deterministic function)</span>
-bucket = <span class="function">route</span>(address)  <span class="comment">// O(log N) to exact cohort</span>
+bucket = <span class="function">route</span>(address)  <span class="comment">// O(log N) or better to exact cohort</span>
 outcomes = bucket.<span class="function">filter</span>(continuous_similarity > 0.88)  <span class="comment">// Refine within bucket</span>
 <span class="comment">// Result: "Here's what happened to people exactly like you" — EXACT</span>
     </div>
@@ -1304,7 +1304,7 @@ outcomes = bucket.<span class="function">filter</span>(continuous_similarity > 0
 
     <div class="key-insight">
       <h4>The "Teleportation" Principle</h4>
-      <p>When your fingerprint is deterministic and your routing preserves its structure, you don't search the network. You don't wander. You <strong>teleport</strong> directly to where relevant outcomes already exist. The expert defines what "similar" means. The hash makes it exact. The DHT routes you there in O(log N) hops. Everyone in that bucket shares your expert-defined situation. Their outcomes are waiting for you.</p>
+      <p>When your fingerprint is deterministic and your routing preserves its structure, you don't search the network. You don't wander. You <strong>teleport</strong> directly to where relevant outcomes already exist. The expert defines what "similar" means. The hash makes it exact. The DHT routes you there in O(log N) or better hops. Everyone in that bucket shares your expert-defined situation. Their outcomes are waiting for you.</p>
     </div>
 
     <!-- COMPARISON TABLE -->
@@ -1352,7 +1352,7 @@ outcomes = bucket.<span class="function">filter</span>(continuous_similarity > 0
         <tr>
           <td><strong>Routing Complexity</strong></td>
           <td class="netflix-col">O(1) cached + O(K) re-ranking</td>
-          <td class="qis-col">O(log N) hops to exact bucket</td>
+          <td class="qis-col">O(log N) or better hops to exact bucket</td>
         </tr>
         <tr>
           <td><strong>Payload</strong></td>

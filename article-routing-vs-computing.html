@@ -742,7 +742,7 @@
       <p>Imagine you need a plumber. You look in the phone book under "plumbing." The phone book doesn't evaluate plumbers, train a model on plumber reviews, or compute which plumber is best. It just shows you the entries filed under "plumbing."</p>
       <p>But here's the twist: in QIS, each entry already contains the outcome. "Called this plumber, fixed the leak in 2 hours, $150." The phone book didn't compute that—the previous customer deposited it when they filed their experience.</p>
       <p>And here's the key: <strong>the category you look up IS your exact problem.</strong> You're not looking up "plumbing"—you're looking up "leaking pipe, copper, under kitchen sink, 1960s house." Everyone filed under that exact category had that exact problem. So the outcomes they deposited are directly relevant to you. The routing by similarity IS the matching. No analysis needed—just find your category and read what others learned.</p>
-      <p>You read 20 entries. You see the pattern. You make your decision. Local synthesis: trivial. Routing: <span class="math">O(log N)</span>. No central compute anywhere.</p>
+      <p>You read 20 entries. You see the pattern. You make your decision. Local synthesis: trivial. Routing: <span class="math">O(log N) or better</span>. No central compute anywhere.</p>
     </div>
 
     <h2>What Actually Moves</h2>
@@ -793,7 +793,7 @@
           <td><strong>Communication cost</strong></td>
           <td>O(data size)</td>
           <td>O(model × clients × rounds)</td>
-          <td>O(log N) per query</td>
+          <td>O(log N) or better per query</td>
         </tr>
         <tr>
           <td><strong>Hardware required</strong></td>
@@ -868,7 +868,7 @@
 
     <div class="highlight-box green">
       <h4>Quadratic Intelligence, Logarithmic Cost</h4>
-      <p>N agents create N(N-1)/2 synthesis opportunities—that's the quadratic intelligence. But each agent only pays O(log N) to route and O(K) to synthesize K matches—and "synthesize" just means reading tiny packets, not computing with those agents. No coordination. No shared processing. Just route to your cohort, grab the outcome packets they already deposited, tally locally. No central bottleneck scales with N². The opportunity is quadratic. The cost is not.</p>
+      <p>N agents create N(N-1)/2 synthesis opportunities—that's the quadratic intelligence. But each agent only pays O(log N) or better to route and O(K) to synthesize K matches—and "synthesize" just means reading tiny packets, not computing with those agents. No coordination. No shared processing. Just route to your cohort, grab the outcome packets they already deposited, tally locally. No central bottleneck scales with N². The opportunity is quadratic. The cost is not.</p>
     </div>
 
     <div class="highlight-box green">
@@ -942,7 +942,7 @@
     <p>I keep saying "DHT or vector database or whatever" because the specific routing technology doesn't matter. What matters is the pattern:</p>
 
     <ul>
-      <li><strong>DHT (Distributed Hash Table):</strong> Determine your fingerprint → route to the matching bucket(s) → get all entries filed there. Exact or range-based matching. O(log N) hops. No central server.</li>
+      <li><strong>DHT (Distributed Hash Table):</strong> Determine your fingerprint → route to the matching bucket(s) → get all entries filed there. Exact or range-based matching. O(log N) or better hops. No central server.</li>
       <li><strong>Vector Database:</strong> Embed your situation as a vector → nearest neighbor search → get top-K matches with metadata. Approximate matching. Various index structures.</li>
       <li><strong>Federated Index:</strong> Query multiple indices in parallel → merge results locally. Hybrid approach for cross-domain synthesis.</li>
       <li><strong>Semantic Pub/Sub:</strong> Subscribe to topics matching your fingerprint → receive outcomes as they're published. Real-time streaming variant.</li>

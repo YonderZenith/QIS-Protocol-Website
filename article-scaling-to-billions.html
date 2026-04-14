@@ -737,7 +737,7 @@
     <p>Let's be concrete:</p>
 
     <p><strong>Routing options:</strong><br>
-    • DHT (Kademlia): O(log N) hops — ~30 hops max even at 1 billion nodes<br>
+    • DHT (Kademlia): O(log N) or better hops — ~30 hops max even at 1 billion nodes<br>
     • Vector database: near constant-time similarity search — Pinecone handles billions of vectors<br>
     • Hybrid approaches, MQTT pub/sub, skip graphs — multiple proven paths<br>
     • The protocol is infrastructure-agnostic. Use what fits your deployment.</p>
@@ -755,7 +755,7 @@
 
     <div class="key-insight">
       <div class="big">The math works because we're routing, not computing.</div>
-      <p>We don't need to process everyone's data. We don't need global consensus. We don't need N² communication. We need to find your bucket and retrieve what's already there. That's O(log N) + O(K). That scales to any size.</p>
+      <p>We don't need to process everyone's data. We don't need global consensus. We don't need N² communication. We need to find your bucket and retrieve what's already there. That's O(log N) or better + O(K). That scales to any size.</p>
     </div>
 
     <h2>Already Proven at Scale</h2>

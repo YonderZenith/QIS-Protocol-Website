@@ -458,7 +458,7 @@
             "name": "What does N(N-1)/2 intelligence with O(log N) or better communication mean?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "N(N-1)/2 is the count of unique peer-to-peer synthesis paths in a network of N nodes. At 10,000 nodes that is roughly 49,995,000 paths. Communication cost per routed packet is O(log N) with distributed hash table routing, O(1) with direct semantic-address lookup, and varies with other transports including pub/sub systems, message queues, API-based services, and shared storage. Intelligence paths grow quadratically while per-routing cost grows at most logarithmically."
+              "text": "N(N-1)/2 is the count of unique peer-to-peer synthesis paths in a network of N nodes. At 10,000 nodes that is roughly 49,995,000 paths. Communication cost per routed packet is O(log N) or better with distributed hash table routing, O(1) with direct semantic-address lookup, and varies with other transports including pub/sub systems, message queues, API-based services, and shared storage. Intelligence paths grow quadratically while per-routing cost grows at most logarithmically."
             }
           },
           {
@@ -514,7 +514,7 @@
             "name": "Does QIS depend on DHT?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. DHT (such as Kademlia) is one valid transport that gives O(log N) routing with full decentralization. Other valid transports include vector similarity indexes (O(1) with direct lookup), pub/sub systems, message queues, REST-based services, and shared storage. The routing mechanism is an implementation choice for the deploying institution."
+              "text": "No. DHT (such as Kademlia) is one valid transport that gives O(log N) or better routing with full decentralization. Other valid transports include vector similarity indexes (O(1) with direct lookup), pub/sub systems, message queues, REST-based services, and shared storage. The routing mechanism is an implementation choice for the deploying institution."
             }
           },
           {
@@ -746,7 +746,7 @@
             <li>1,000 nodes &rarr; 499,500 paths</li>
             <li>10,000 nodes &rarr; ~49,995,000 paths</li>
           </ul>
-          <p><strong>O(log N) or better communication:</strong> O(log N) with distributed hash table routing, O(1) with direct semantic-address lookup, and varying efficiency with other transports including pub/sub systems, message queues, API-based services, and shared storage.</p>
+          <p><strong>O(log N) or better communication:</strong> O(log N) or better with distributed hash table routing, O(1) with direct semantic-address lookup, and varying efficiency with other transports including pub/sub systems, message queues, API-based services, and shared storage.</p>
           <p>Intelligence paths grow quadratically. Per-routing cost grows at most logarithmically. That gap is the scaling law.</p>
           <p><a href="article-qis-scaling-law.html">&rarr; Deep dive: The QIS scaling law</a></p>
         </div></div>
@@ -855,7 +855,7 @@
       <div class="faq-item">
         <div class="faq-question"><h3>Does QIS depend on DHT?</h3><div class="faq-toggle">+</div></div>
         <div class="faq-answer"><div class="faq-answer-content">
-          <p>No. DHT (such as Kademlia) is one valid transport — it gives O(log N) routing with full decentralization and no central coordinator. Other valid transports include:</p>
+          <p>No. DHT (such as Kademlia) is one valid transport — it gives O(log N) or better routing with full decentralization and no central coordinator. Other valid transports include:</p>
           <ul>
             <li>Vector similarity indexes (O(1) with direct semantic-address lookup)</li>
             <li>Pub/sub systems</li>

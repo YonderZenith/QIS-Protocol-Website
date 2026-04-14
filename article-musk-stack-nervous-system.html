@@ -714,7 +714,7 @@
 
       <div class="qis-upgrade">
         <div class="label">With QIS</div>
-        <p>Satellites share a semantic fingerprint based on whatever parameters experts define to group satellites facing similar conditions—orbital shell, altitude band, inclination, or any combination that puts them in the right neighborhood. When a satellite executes a successful avoidance maneuver, it publishes the outcome (maneuver parameters, debris vector, result) to that fingerprint. Other satellites in comparable orbits query the same semantic space via laser links—O(log N) hops—and pull back refined parameters instantly.</p>
+        <p>Satellites share a semantic fingerprint based on whatever parameters experts define to group satellites facing similar conditions—orbital shell, altitude band, inclination, or any combination that puts them in the right neighborhood. When a satellite executes a successful avoidance maneuver, it publishes the outcome (maneuver parameters, debris vector, result) to that fingerprint. Other satellites in comparable orbits query the same semantic space via laser links—O(log N) or better hops—and pull back refined parameters instantly.</p>
       </div>
 
       <div class="scenario-box">
@@ -806,7 +806,7 @@
     <p>No new hardware required. The sensors exist. The connectivity exists. The edge compute exists. QIS is a protocol layer that wires existing primitives into a shared nervous system.</p>
 
     <div class="highlight-box">
-      <p><strong>The math:</strong> <span class="math">Θ(N²)</span> intelligence scaling across the fleet. <span class="math">O(log N)</span> routing cost per device. The network gets quadratically smarter while individual burden stays logarithmic.</p>
+      <p><strong>The math:</strong> <span class="math">Θ(N²)</span> intelligence scaling across the fleet. <span class="math">O(log N) or better</span> routing cost per device. The network gets quadratically smarter while individual burden stays logarithmic.</p>
     </div>
 
     <h2>The Invitation</h2>

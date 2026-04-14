@@ -15,7 +15,7 @@
 
   <!-- SEO -->
   <meta name="description" content="The trick that makes QIS work: the query key routes by similarity, the result payload IS the insight itself. One round-trip. No secondary calls. No compute explosion. Quadratic intelligence, logarithmic cost.">
-  <meta name="keywords" content="QIS Protocol, distributed intelligence, semantic routing, vector database, DHT, insight sharing, O(log N), quadratic scaling, Christopher Trevethan">
+  <meta name="keywords" content="QIS Protocol, distributed intelligence, semantic routing, vector database, DHT, insight sharing, O(log N) or better, quadratic scaling, Christopher Trevethan">
   <meta name="author" content="Christopher Thomas Trevethan">
   
   <!-- Open Graph -->
@@ -651,7 +651,7 @@
 
     <p>If QIS creates <span class="math">Θ(N²)</span> synthesis opportunities across thousands or millions of agents, shouldn't the compute explode?</p>
 
-    <p>No. Per-agent routing stays <span class="math">O(log N)</span>. Local synthesis stays <span class="math">O(K)</span> where K is the number of matched neighbors. The <em>opportunity</em> for insight scales quadratically. The <em>cost</em> does not.</p>
+    <p>No. Per-agent routing stays <span class="math">O(log N) or better</span>. Local synthesis stays <span class="math">O(K)</span> where K is the number of matched neighbors. The <em>opportunity</em> for insight scales quadratically. The <em>cost</em> does not.</p>
 
     <p>The trick is deceptively simple: <strong>the result payload IS the insight itself.</strong></p>
 
@@ -773,7 +773,7 @@ GET /dht/hash:7f3a9c2b...
     <p>The next patient, the next car, the next sensor all use the same template to produce a key that lands in the same neighborhood. Their outcomes go INTO that bucket when they contribute. But no re-routing happens. Fixed key space. Growing insight space. No extra hops.</p>
 
     <div class="highlight-box">
-      <p><strong>This is why <span class="math">Θ(N²)</span> synthesis opportunities don't cost <span class="math">Θ(N²)</span> compute.</strong> Each agent pays <span class="math">O(log N)</span> to route and <span class="math">O(K)</span> to synthesize. The network intelligence scales quadratically while individual cost stays flat.</p>
+      <p><strong>This is why <span class="math">Θ(N²)</span> synthesis opportunities don't cost <span class="math">Θ(N²)</span> compute.</strong> Each agent pays <span class="math">O(log N) or better</span> to route and <span class="math">O(K)</span> to synthesize. The network intelligence scales quadratically while individual cost stays flat.</p>
     </div>
 
     <h2>What Actually Moves</h2>
