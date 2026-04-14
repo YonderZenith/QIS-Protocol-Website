@@ -264,32 +264,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { once: false });
   }
 
-  // Initialize stats counters
-  const agentsCounter = new StatsCounter('statAgents', 10000, 2500);
-  const synthesisCounter = new StatsCounter('statSynthesis', 49995000, 2500);
-  const patentsCounter = new StatsCounter('statPatents', 39, 2500);
+  // Initialize stats counters — LIVE values come from the relay poller in index.html.
+  // splash.js only animates the patents count-up (static fact). Agents + synthesis
+  // are written by the poller so visitors only ever see actual network state.
+  const patentsCounter = new StatsCounter('statPatents', 39, 1800);
 
-  // Start counters after content fades in
   setTimeout(() => {
-    agentsCounter.animate(0);
-    synthesisCounter.animate(200);
     patentsCounter.animate(400);
   }, 2800);
+
+  // Expose counters for the scale-cycler (example / what-if mode)
+  const agentsCounter = new StatsCounter('statAgents', 0, 1200);
+  const synthesisCounter = new StatsCounter('statSynthesis', 0, 1200);
 
   // Scale example cycler
   const cycleBtn = document.getElementById('cycleScaleBtn');
 
   if (cycleBtn) {
-    cycleBtn.addEventListener('click', function() {
-      // Move to next example
-      currentScaleIndex = (currentScaleIndex + 1) % scaleExamples.length;
-      const example = scaleExamples[currentScaleIndex];
+    // Cycle through hypothetical-scale examples. First click pauses the LIVE poller
+    // so example values don't get overwritten on the next 30s tick. After the last
+    // example, the cycler resumes LIVE mode.
+    let exampleMode = false;
 
-      // Get current values for smooth transition
+    cycleBtn.addEventListener('click', function() {
+      // On the very first click, capture the LIVE values as the starting animation point
+      // and enter example mode.
+      if (!exampleMode) {
+        exampleMode = true;
+        currentScaleIndex = -1; // so the increment below lands on index 0
+        if (window.__qisLiveCounter) window.__qisLiveCounter.pauseForExample();
+      }
+
+      currentScaleIndex++;
+      // After the last example, toggle back to LIVE
+      if (currentScaleIndex >= scaleExamples.length) {
+        exampleMode = false;
+        currentScaleIndex = 0;
+        if (window.__qisLiveCounter) window.__qisLiveCounter.resumeLive();
+        return;
+      }
+
+      const example = scaleExamples[currentScaleIndex];
       const currentAgents = agentsCounter.getCurrentValue();
       const currentSynthesis = synthesisCounter.getCurrentValue();
 
-      // Set new targets and animate from current values
       agentsCounter.setTarget(example.nodes);
       synthesisCounter.setTarget(example.synthesis);
 
