@@ -354,7 +354,13 @@
 
   <script>
     // ============ Demo 1: Live Swarm Stats ============
+    // DISABLED 2026-04-16 pending relay HTTPS — relay is HTTP-only; browsers
+    // block mixed-content fetches from HTTPS pages AND flag the page as "not
+    // fully secure." Re-enable when Axiom puts TLS on the relay or routes it
+    // via Cloudflare. Demo shows static "relay offline — fetch manually" until
+    // then. Demo 2 (Mailbox SVG) + Demo 3 (scaling animator) unaffected.
     (function(){
+      return; // poller disabled until relay HTTPS fix
       const URL = 'http://64.23.192.227:7891/stats';
       const INTERVAL = 30000;
       let last = { agents: null, buckets: null, packets: null };
