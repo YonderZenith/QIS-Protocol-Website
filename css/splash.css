@@ -147,7 +147,11 @@
 
 /* LOGO */
 .logo-container {
-  margin-bottom: 30px;
+  margin-bottom: clamp(8px, 2vh, 24px);
+}
+.logo-container img {
+  width: clamp(60px, 14vh, 140px);
+  height: auto;
 }
 
 @keyframes logoFloat {
@@ -158,14 +162,14 @@
 /* TITLE */
 .main-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(2.2rem, 7vw, 5.5rem);
+  font-size: clamp(1.8rem, min(7vw, 9vh), 5.5rem);
   font-weight: 900;
   background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: clamp(6px, 1.2vh, 14px);
   line-height: 1.1;
   text-shadow: 0 0 60px rgba(0, 217, 255, 0.3);
   word-break: break-word;
@@ -174,10 +178,10 @@
 /* SCALING LINE */
 .scaling-line {
   font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  font-size: clamp(0.85rem, min(2vw, 2.6vh), 1.6rem);
   font-weight: 700;
   color: var(--green-neural);
-  margin-bottom: 25px;
+  margin-bottom: clamp(8px, 1.8vh, 22px);
   text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
   text-align: center;
   max-width: 100%;
@@ -187,10 +191,10 @@
 /* TAGLINE */
 .tagline {
   font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(1rem, 2vw, 1.6rem);
+  font-size: clamp(0.9rem, min(1.7vw, 2.2vh), 1.4rem);
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: clamp(12px, 2.5vh, 30px);
   letter-spacing: 2px;
   max-width: 700px;
   padding: 0 10px;
@@ -199,8 +203,8 @@
 /* STATS ROW */
 .stats-row {
   display: flex;
-  gap: clamp(14px, 3vw, 35px);
-  margin-bottom: 40px;
+  gap: clamp(12px, 2.5vw, 30px);
+  margin-bottom: clamp(8px, 2vh, 24px);
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
@@ -208,22 +212,22 @@
 
 .stat-item {
   text-align: center;
-  min-width: clamp(100px, 18vw, 140px);
+  min-width: clamp(90px, 16vw, 130px);
 }
 
 .stat-number {
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(1.5rem, 3.8vw, 2.8rem);
+  font-size: clamp(1.3rem, min(3.4vw, 4.6vh), 2.6rem);
   font-weight: 900;
   color: var(--cyan-bright);
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   text-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
 }
 
 .stat-label {
   font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-size: clamp(0.65rem, 0.9vw, 0.8rem);
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -232,10 +236,10 @@
 /* MISSION LINE */
 .mission-line {
   font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(0.95rem, 1.6vw, 1.3rem);
+  font-size: clamp(0.85rem, min(1.4vw, 1.8vh), 1.2rem);
   color: var(--purple-quantum);
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: clamp(10px, 2.2vh, 28px);
   max-width: 650px;
   font-weight: 600;
   letter-spacing: 1px;
