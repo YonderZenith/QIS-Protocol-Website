@@ -65,7 +65,7 @@
       "description": "The complete QIS loop: distill outcomes locally, fingerprint by situation, route to matching addresses, synthesize at the edge, loop closes as new outcomes re-enter the network.",
       "step": [
         { "@type": "HowToStep", "name": "Observe", "text": "Each node collects data from its own local sources. Raw data stays on the originating device." },
-        { "@type": "HowToStep", "name": "Distill", "text": "The node compresses what it learned into a ~512-byte outcome packet: an outcome delta, confidence interval, cohort count, and population descriptor." },
+        { "@type": "HowToStep", "name": "Distill", "text": "The node compresses what it learned into a ~512-byte outcome packet: a condition code, treatment code, outcome delta, confidence indicator, and coarsened population tag. One edge, one outcome, one packet." },
         { "@type": "HowToStep", "name": "Fingerprint", "text": "The situation context is encoded as a semantic address. The address is deterministic: two nodes with the same problem compute the same address independently." },
         { "@type": "HowToStep", "name": "Route", "text": "The outcome packet routes to its matching address at O(log N) or better cost, using any routing mechanism: DHT, REST API, database, pub/sub, shared storage, or SMS." },
         { "@type": "HowToStep", "name": "Synthesize", "text": "The receiving node tallies all deposited outcome packets locally. No central aggregator. Synthesis takes milliseconds even for thousands of packets." },
@@ -531,7 +531,7 @@
       </div>
       <div class="invariant">
         <h4>Raw Data Never Moves</h4>
-        <p>Only outcome packets travel — approximately 512 bytes each. A validated result, a confidence interval, a cohort count. The evidence stays at the source. Only the verdict routes.</p>
+        <p>Only outcome packets travel — approximately 512 bytes each. One edge, one outcome, one packet. No patient identifiers. No raw data. Only the validated result routes.</p>
       </div>
     </div>
 
@@ -555,10 +555,10 @@
     <div class="step">
       <div class="step-number">Step 2</div>
       <h3>Distill</h3>
-      <p>The node compresses what it learned into an <strong>outcome packet</strong> — approximately 512 bytes. This contains an outcome delta, a confidence interval, a cohort count, and a population descriptor. It is a validated result, not raw data.</p>
-      <p>A hospital managing 100,000 patients transmits the same 512-byte packet as a clinic with 3 patients. The information density is maximized. The transmission cost is constant.</p>
+      <p>The node compresses what it learned into an <strong>outcome packet</strong> — approximately 512 bytes. This contains a condition code, a treatment code, an outcome delta, a confidence indicator, and a coarsened population tag. One edge, one outcome, one packet.</p>
+      <p>No patient identifiers. No raw data. The packet IS the insight — what was the problem, what was done, what changed. Every edge transmits the same ~512-byte packet regardless of whether the edge is a patient's phone, a hospital system, or a tractor's sensor array.</p>
       <div class="example">
-        <strong>Healthcare:</strong> condition code + drug code + outcome delta + confidence interval + cohort size<br>
+        <strong>Healthcare:</strong> condition code + treatment code + outcome delta + confidence indicator<br>
         <strong>Agriculture:</strong> crop type + soil class + yield delta + weather context + season<br>
         <strong>Automotive:</strong> road condition + speed context + hazard type + response outcome
       </div>

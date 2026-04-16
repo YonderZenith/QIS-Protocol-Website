@@ -466,7 +466,7 @@
             "name": "How is QIS different from federated learning?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Federated learning aggregates model gradients across nodes and requires enough local data at each node to compute a meaningful gradient. QIS treats any outcome observation as a valid packet regardless of cohort size, routes packets to semantically similar contexts rather than averaging across heterogeneous ones, and transmits ~512-byte outcome packets rather than gigabyte-scale gradient tensors. They are complementary — QIS can route outcomes that federated learning produces."
+              "text": "Federated learning aggregates model gradients across nodes through a central aggregator. QIS routes individual outcome packets (~512 bytes each) to semantic addresses — one edge, one outcome, one packet. No central aggregator. No gradient sharing. QIS achieves quadratic intelligence scaling where federated learning scales linearly. They are complementary — QIS can route outcomes that federated learning produces."
             }
           },
           {
@@ -941,7 +941,7 @@
           <p>This is the use case where QIS is structurally strongest.</p>
           <p>Three institutions studying a rare BRCA2 founder variant in overlapping ancestry contexts: one with <strong>8 patients</strong>, one with <strong>11</strong>, one with <strong>7</strong>. Federated learning cannot meaningfully aggregate 26 patients across three nodes into a global gradient — the cohorts are too small and too heterogeneous.</p>
           <p>QIS can. Each node emits one outcome packet. Fingerprints are similar (same variant class, similar ancestry markers, same phenotype). Packets route to each other. Each node integrates the others' findings locally. <strong>26 patients become cross-institutional synthesis intelligence</strong> without any raw data movement.</p>
-          <p>Architectural standing in a QIS network is not proportional to cohort size — which is why low- and middle-income institutions participate as peers regardless of local scale.</p>
+          <p>Architectural standing in a QIS network is not proportional to local data volume — which is why low- and middle-income institutions participate as peers regardless of local scale.</p>
         </div></div>
       </div>
 
