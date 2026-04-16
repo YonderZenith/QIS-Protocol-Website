@@ -7,42 +7,91 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-WMPC09C3R0');
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="How QIS Protocol Works - Step-by-step explanation of Quadratic Intelligence Swarm technology">
-  <title>How It Works • QIS Protocol</title>
-  <link rel="canonical" href="https://qisprotocol.com/how-it-works" />
+  <meta name="description" content="How QIS Protocol works: the complete loop from local outcome distillation to quadratic intelligence scaling. Domain-agnostic, privacy-preserving, no central aggregator.">
+  <title>How QIS Protocol Works — The Complete Loop</title>
+  <link rel="canonical" href="https://qisprotocol.com/how-it-works.html" />
   <link rel="sitemap" type="application/xml" href="https://qisprotocol.com/sitemap.xml" />
-  
   <link rel="icon" href="images/favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-  <style>/* responsive-retrofit:v1 */
 
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How QIS Protocol Works — The Complete Loop" />
+  <meta property="og:description" content="The complete loop from local outcome distillation to quadratic intelligence scaling. Domain-agnostic, privacy-preserving, no central aggregator." />
+  <meta property="og:url" content="https://qisprotocol.com/how-it-works.html" />
+  <meta property="og:site_name" content="QIS Protocol" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How QIS Protocol Works — The Complete Loop" />
+  <meta name="twitter:description" content="The complete loop from local outcome distillation to quadratic intelligence scaling." />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://qisprotocol.com/#organization",
+      "name": "Yonder Zenith LLC",
+      "url": "https://qisprotocol.com",
+      "logo": "https://qisprotocol.com/images/logo.png",
+      "founder": { "@id": "https://qisprotocol.com/#inventor" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://qisprotocol.com/#inventor",
+      "name": "Christopher Thomas Trevethan",
+      "jobTitle": "QIS Protocol Architect, Founder of Yonder Zenith LLC"
+    },
+    {
+      "@type": "WebPage",
+      "name": "How QIS Protocol Works — The Complete Loop",
+      "url": "https://qisprotocol.com/how-it-works.html",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://qisprotocol.com/" },
+          { "@type": "ListItem", "position": 2, "name": "How It Works", "item": "https://qisprotocol.com/how-it-works.html" }
+        ]
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "How QIS Protocol Routes Intelligence",
+      "description": "The complete QIS loop: distill outcomes locally, fingerprint by situation, route to matching addresses, synthesize at the edge, loop closes as new outcomes re-enter the network.",
+      "step": [
+        { "@type": "HowToStep", "name": "Observe", "text": "Each node collects data from its own local sources. Raw data stays on the originating device." },
+        { "@type": "HowToStep", "name": "Distill", "text": "The node compresses what it learned into a ~512-byte outcome packet: an outcome delta, confidence interval, cohort count, and population descriptor." },
+        { "@type": "HowToStep", "name": "Fingerprint", "text": "The situation context is encoded as a semantic address. The address is deterministic: two nodes with the same problem compute the same address independently." },
+        { "@type": "HowToStep", "name": "Route", "text": "The outcome packet routes to its matching address at O(log N) or better cost, using any routing mechanism: DHT, REST API, database, pub/sub, shared storage, or SMS." },
+        { "@type": "HowToStep", "name": "Synthesize", "text": "The receiving node tallies all deposited outcome packets locally. No central aggregator. Synthesis takes milliseconds even for thousands of packets." },
+        { "@type": "HowToStep", "name": "Validate", "text": "Three Elections filter adversarial or out-of-context packets: curators define similarity, outcomes vote by being counted, users migrate to better-performing networks." },
+        { "@type": "HowToStep", "name": "Loop Close", "text": "The node acts on the synthesis. Its outcome becomes a new packet that deposits back into the network. The next node finds one more note in the mailbox. Intelligence compounds." }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
     :root {
       --cyan-primary: #00BEEA;
       --cyan-bright: #00D9FF;
       --purple-quantum: #8B5CF6;
       --green-neural: #10B981;
       --orange-warning: #F59E0B;
-      --red-alert: #EF4444;
+      --red-accent: #EF4444;
       --dark-bg: #0A0A0A;
-      --dark-card: #1a1a1a;
       --text-primary: #E8F5E9;
       --text-secondary: rgba(232, 245, 233, 0.8);
+      --text-muted: rgba(232, 245, 233, 0.5);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
@@ -56,488 +105,307 @@
     body::before {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(0, 190, 234, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(0, 190, 234, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Navigation */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10, 10, 10, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 190, 234, 0.2);
-      z-index: 1000;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      width: 40px;
-      height: 40px;
-      filter: drop-shadow(0 0 10px rgba(0, 190, 234, 0.5));
-    }
-
-    .nav-logo span {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--cyan-bright);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--cyan-bright);
-      text-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
-    }
-
-    /* Hero Section */
+    /* Hero */
     .hero {
-      padding: 160px 40px 100px;
+      padding: 140px 40px 50px;
       text-align: center;
       position: relative;
       z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
       font-weight: 900;
       background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
-    .hero .subtitle {
-      font-size: clamp(0.9rem, 1.8vw, 1.4rem);
-      color: var(--text-secondary);
-      max-width: 800px;
+    .hero-sentence {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: var(--text-primary);
+      line-height: 1.8;
+      max-width: 780px;
       margin: 0 auto;
     }
 
-    /* Timeline Container */
-    .timeline-container {
-      max-width: 1200px;
+    .hero-sentence strong { color: var(--green-neural); }
+
+    /* Content */
+    .content {
+      max-width: 900px;
       margin: 0 auto;
-      padding: 60px 40px;
+      padding: 20px clamp(16px, 4vw, 40px);
       position: relative;
       z-index: 1;
     }
 
-    /* Step Cards */
+    /* Section headers */
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+      color: var(--cyan-bright);
+      margin: 60px 0 20px;
+    }
+
+    /* Invariants box */
+    .invariants {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 30px 0;
+    }
+
+    .invariant {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .invariant h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      color: var(--green-neural);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .invariant p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Steps */
     .step {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 40px 0;
+      padding: 28px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      border-left: 4px solid var(--cyan-bright);
+      position: relative;
     }
 
-    .step.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: 25px;
+    .step.loop-close {
+      border-left-color: var(--green-neural);
+      background: rgba(16, 185, 129, 0.04);
     }
 
     .step-number {
-      width: 70px;
-      height: 70px;
-      min-width: 70px;
-      background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-bright));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.9rem, 2.3vw, 1.8rem);
-      font-weight: 900;
-      color: #000;
-      box-shadow: 0 0 40px rgba(0, 190, 234, 0.6);
-    }
-
-    .step-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.9rem, 2.1vw, 1.6rem);
-      color: var(--cyan-bright);
-    }
-
-    .step-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: stretch;
-    }
-
-    .step-content {
-      background: rgba(0, 0, 0, 0.5);
-      border: 2px solid rgba(0, 190, 234, 0.3);
-      border-radius: 20px;
-      padding: 35px;
-      transition: all 0.4s ease;
-    }
-
-    .step-content:hover {
-      border-color: var(--cyan-bright);
-      box-shadow: 0 0 40px rgba(0, 190, 234, 0.3);
-    }
-
-    .step-content p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      margin-bottom: 15px;
-      line-height: 1.8;
-    }
-
-    .step-content p:last-child {
-      margin-bottom: 0;
-    }
-
-    .step-content .highlight {
-      color: var(--green-neural);
-      font-weight: 600;
-    }
-
-    .step-content .formula {
-      font-family: 'JetBrains Mono', monospace;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 15px 20px;
-      border-radius: 10px;
-      color: var(--green-neural);
-      margin: 15px 0;
-      font-size: 0.95rem;
-      text-align: center;
-      word-break: break-word;
-    }
-
-    .step-content ul {
-      color: var(--text-secondary);
-      margin-left: 20px;
-      margin-bottom: 15px;
-    }
-
-    .step-content li {
-      margin-bottom: 8px;
-    }
-
-    /* Step Visual */
-    .step-visual {
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px solid rgba(139, 92, 246, 0.3);
-      border-radius: 20px;
-      padding: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Data Flow Animation */
-    .data-flow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      width: 100%;
-    }
-
-    .data-node {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: clamp(0.9rem, 2.3vw, 1.8rem);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .data-node.source {
-      background: linear-gradient(135deg, var(--purple-quantum), #a855f7);
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.8; }
-    }
-
-    .arrow-down {
-      width: 2px;
-      height: 25px;
-      background: linear-gradient(180deg, var(--cyan-bright), transparent);
-      position: relative;
-    }
-
-    .arrow-down::after {
-      content: '▼';
       position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--cyan-bright);
+      top: -14px;
+      left: 24px;
+      font-family: 'Orbitron', sans-serif;
       font-size: 0.7rem;
-    }
-
-    .data-icons {
-      display: flex;
-      gap: 12px;
-      font-size: clamp(0.9rem, 2vw, 1.5rem);
-    }
-
-    /* Equation Display */
-    .equation-display {
-      text-align: center;
-      width: 100%;
-    }
-
-    .equation-display .big-eq {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
       font-weight: 700;
       color: var(--cyan-bright);
-      text-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
-      margin-bottom: 15px;
-      word-break: break-word;
+      background: var(--dark-bg);
+      padding: 2px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    .equation-display .sub-text {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-    }
-
-    .equation-display .detail {
-      margin-top: 15px;
-      font-family: 'JetBrains Mono', monospace;
+    .step.loop-close .step-number {
       color: var(--green-neural);
-      font-size: 0.9rem;
+      border-color: rgba(16, 185, 129, 0.3);
     }
 
-    /* Summary Section */
-    .summary {
-      max-width: 1000px;
-      margin: 80px auto;
-      padding: 60px;
-      background: linear-gradient(135deg, rgba(0, 190, 234, 0.1), rgba(139, 92, 246, 0.1));
-      border: 2px solid rgba(0, 190, 234, 0.4);
-      border-radius: 24px;
-      text-align: center;
-    }
-
-    .summary h2 {
+    .step h3 {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.05rem, 3.3vw, 2.5rem);
-      color: var(--cyan-bright);
-      margin-bottom: 30px;
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      margin-top: 4px;
     }
 
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .summary-item {
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: 15px;
-      border: 1px solid rgba(0, 190, 234, 0.2);
-    }
-
-    .summary-item .value {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.9rem, 2.6vw, 2rem);
-      font-weight: 900;
+    .step p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
       margin-bottom: 10px;
     }
 
-    .summary-item .value.cyan { color: var(--cyan-bright); }
-    .summary-item .value.green { color: var(--green-neural); }
-    .summary-item .value.purple { color: var(--purple-quantum); }
+    .step p:last-child { margin-bottom: 0; }
 
-    .summary-item .label {
-      font-size: 1rem;
-      color: var(--text-secondary);
-    }
-
-    /* Featured Diagram */
-    .featured-diagram {
-      max-width: 800px;
-      margin: -40px auto 60px;
-      padding: 0 40px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .diagram-card {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      padding: 30px 35px;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(0, 190, 234, 0.15));
-      border: 2px solid rgba(139, 92, 246, 0.4);
-      border-radius: 20px;
-      text-decoration: none;
-      transition: all 0.4s ease;
-    }
-
-    .diagram-card:hover {
-      border-color: var(--purple-quantum);
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
-      transform: translateY(-3px);
-    }
-
-    .diagram-icon {
-      font-size: clamp(1.26rem, 3.9vw, 3rem);
-      min-width: 70px;
-      text-align: center;
-    }
-
-    .diagram-content h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.9rem, 1.8vw, 1.4rem);
-      color: var(--purple-quantum);
-      margin-bottom: 8px;
-    }
-
-    .diagram-content p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .diagram-link {
-      color: var(--cyan-bright);
+    .step .key-fact {
       font-weight: 600;
-      font-size: 0.95rem;
+      color: var(--green-neural);
     }
 
-    /* Dive Deeper Section */
-    .dive-deeper {
-      max-width: 1000px;
-      margin: 80px auto 40px;
-      padding: 0 40px;
+    .step .example {
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .step .example strong { color: var(--text-secondary); }
+
+    /* Loop arrow */
+    .loop-arrow {
       text-align: center;
-    }
-
-    .dive-deeper h2 {
+      margin: 10px 0;
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.9rem, 2.3vw, 1.8rem);
-      color: var(--cyan-bright);
-      margin-bottom: 30px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 2px;
     }
 
-    .article-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .article-link {
-      display: block;
-      padding: 25px;
-      background: rgba(0, 0, 0, 0.4);
+    /* N(N-1)/2 table */
+    .scaling-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: rgba(0,0,0,0.4);
+      border-radius: 12px;
+      overflow: hidden;
       border: 1px solid rgba(0, 190, 234, 0.2);
-      border-radius: 15px;
-      text-decoration: none;
-      transition: all 0.3s ease;
     }
 
-    .article-link:hover {
-      border-color: var(--cyan-bright);
-      background: rgba(0, 190, 234, 0.1);
+    .scaling-table th, .scaling-table td {
+      padding: 12px 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
     }
 
-    .article-link h4 {
-      color: var(--cyan-bright);
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+    .scaling-table thead th {
+      background: rgba(0, 190, 234, 0.08);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .article-link p {
-      color: var(--text-secondary);
+    .scaling-table td:first-child { font-weight: 600; }
+    .scaling-table td:nth-child(2) { color: var(--green-neural); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+    .scaling-table td:nth-child(3) { color: var(--purple-quantum); font-family: 'JetBrains Mono', monospace; }
+    .scaling-table td:nth-child(4) { color: var(--cyan-bright); font-family: 'JetBrains Mono', monospace; }
+
+    /* What QIS is NOT */
+    .not-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .not-item {
+      padding: 14px 18px;
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.15);
+      border-radius: 10px;
       font-size: 0.9rem;
     }
 
-    @media (max-width: 600px) {
-      .featured-diagram {
-        padding: 0 20px;
-        margin: -20px auto 40px;
-      }
+    .not-item strong { color: var(--red-accent); }
+    .not-item span { color: var(--text-secondary); }
 
-      .diagram-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 25px;
-      }
-
-      .diagram-icon {
-        min-width: auto;
-      }
-
-      .dive-deeper {
-        padding: 0 20px;
-      }
+    /* Domain grid */
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
     }
 
-    /* CTA Section */
-    .cta-section {
+    .domain-card {
+      padding: 16px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
       text-align: center;
-      padding: 60px 40px 100px;
     }
 
-    .cta-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
+    .domain-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--cyan-bright);
+      margin-bottom: 6px;
     }
+
+    .domain-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Callout */
+    .callout {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(0, 190, 234, 0.1));
+      border: 1px solid var(--purple-quantum);
+      border-radius: 14px;
+      padding: clamp(20px, 3vw, 32px);
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .callout p {
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      color: var(--text-primary);
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 600;
+    }
+
+    /* Deeper links */
+    .deeper-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .deeper-grid a {
+      display: block;
+      padding: 16px 20px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0, 190, 234, 0.12);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .deeper-grid a:hover { border-color: var(--cyan-bright); }
+
+    .deeper-grid a h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cyan-bright);
+      margin-bottom: 4px;
+    }
+
+    .deeper-grid a p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+
+    /* CTA */
+    .cta-section { text-align: center; padding: 50px 20px 70px; }
 
     .btn {
-      padding: 18px 45px;
+      padding: 12px 32px;
       font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -545,147 +413,28 @@
       background: transparent;
       color: var(--text-primary);
       border-radius: 50px;
-      cursor: pointer;
       text-decoration: none;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
+      margin: 6px;
+      display: inline-block;
     }
 
-    .btn:hover {
-      background: var(--cyan-bright);
-      color: #000;
-      box-shadow: 0 0 40px rgba(0, 217, 255, 0.6);
-    }
-
-    .btn.primary {
-      background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-bright));
-      color: #fff;
-    }
-
-    .btn.primary:hover {
-      background: linear-gradient(135deg, var(--cyan-bright), var(--cyan-primary));
-      transform: translateY(-3px);
-    }
+    .btn:hover { background: var(--cyan-bright); color: #000; }
+    .btn.primary { background: linear-gradient(135deg, var(--cyan-primary), var(--cyan-bright)); color: #fff; }
 
     /* Footer */
     footer {
       background: #000;
-      padding: 50px 40px;
+      padding: 40px;
       text-align: center;
-      border-top: 1px solid rgba(0, 190, 234, 0.2);
+      border-top: 1px solid rgba(0, 190, 234, 0.15);
     }
-
-    footer p {
-      color: var(--text-secondary);
-      margin-bottom: 10px;
-    }
-
-    footer a {
-      color: var(--cyan-bright);
-      text-decoration: none;
-    }
-
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 28px;
-      height: 20px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .hamburger span {
-      display: block;
-      width: 100%;
-      height: 3px;
-      background: var(--cyan-bright);
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-    .nav-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-    }
-    .nav-overlay.active { display: block; }
+    footer p { color: var(--text-secondary); margin-bottom: 8px; font-size: 0.9rem; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
 
     /* Responsive */
-    @media (max-width: 968px) {
-      .step-body {
-        grid-template-columns: 1fr;
-      }
-
-      .step-visual {
-        min-height: 180px;
-      }
-
-      .summary-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     @media (max-width: 768px) {
-      .nav { padding: 15px 20px; }
-      .nav-logo span { font-size: 1rem; }
-      .nav-logo img { width: 32px; height: 32px; }
-      .hamburger { display: flex; }
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 300px;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.98);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-        padding: 60px 20px;
-        transition: right 0.3s ease;
-        border-left: 1px solid rgba(0, 190, 234, 0.3);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-      }
-      .nav-links.active { right: 0; }
-      .nav-links a {
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(0, 190, 234, 0.1);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .step-header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .step-title {
-        font-size: clamp(0.9rem, 1.7vw, 1.3rem);
-      }
-
-      .step-content {
-        padding: 25px;
-      }
-
-      .hero {
-        padding: 140px 20px 60px;
-      }
-
-      .timeline-container {
-        padding: 40px 20px;
-      }
+      .hero { padding: 120px 20px 30px; }
     }
   </style>
 <script>
@@ -703,54 +452,9 @@
     })(document,'script');
   })('lAxoEaKQb9v7OYGd');
 </script>
-  <script type="application/ld+json" data-injected="webber-infra-fix">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://qisprotocol.com/#organization",
-      "name": "Yonder Zenith LLC",
-      "url": "https://qisprotocol.com",
-      "logo": "https://qisprotocol.com/images/logo.png",
-      "foundingDate": "2025",
-      "foundingLocation": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Phoenix",
-          "addressRegion": "AZ",
-          "addressCountry": "US"
-        }
-      },
-      "description": "Yonder Zenith LLC develops and licenses the Quadratic Intelligence Swarm (QIS) protocol, a distributed intelligence architecture discovered by Christopher Thomas Trevethan.",
-      "founder": { "@id": "https://qisprotocol.com/#inventor" },
-      "sameAs": ["https://dev.to/roryqis", "https://github.com/YonderZenith"]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://qisprotocol.com/#inventor",
-      "name": "Christopher Thomas Trevethan",
-      "jobTitle": "Inventor of the QIS Protocol, Founder of Yonder Zenith LLC",
-      "affiliation": { "@id": "https://qisprotocol.com/#organization" },
-      "description": "Discovered the Quadratic Intelligence Swarm (QIS) protocol on June 16, 2025. Sole inventor on 39 provisional patents. Based in Phoenix, Arizona.",
-      "email": "contactyz@pm.me",
-      "sameAs": ["https://qisprotocol.com/about"]
-    }
-  ]
-}
-</script>
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="How It Works • QIS Protocol" />
-  <meta property="og:description" content="How QIS Protocol Works - Step-by-step explanation of Quadratic Intelligence Swarm technology" />
-  <meta property="og:url" content="https://qisprotocol.com/how-it-works" />
-  <meta property="og:site_name" content="QIS Protocol" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="How It Works • QIS Protocol" />
-  <meta name="twitter:description" content="How QIS Protocol Works - Step-by-step explanation of Quadratic Intelligence Swarm technology" />
 </head>
 <body>
-  <!-- Navigation -->
+
   <!-- ==================== CANONICAL NAV v2 (auto-injected from data/canonical-ia.json) ==================== -->
 <nav class="qis-nav" data-qis-nav="v2">
   <a href="/" class="qis-nav-logo">
@@ -802,295 +506,205 @@
 </style>
 <!-- ==================== /CANONICAL NAV v2 ==================== -->
 
-
-
   <!-- Hero -->
   <section class="hero">
     <h1>How QIS Protocol Works</h1>
-    <p class="subtitle">
-      A 5-step journey from local data to quadratic intelligence.
-      Understanding how distributed agents create compounding knowledge.
+    <p class="hero-sentence">
+      QIS routes validated outcomes between distributed nodes. Intelligence scales as <strong>N(N-1)/2</strong>.
+      Communication costs <strong>O(log N) or better</strong>. Raw data never moves.
+      The complete loop — distill, fingerprint, route, synthesize, act, repeat — is the discovery.
     </p>
   </section>
 
-  <!-- Featured Architecture Diagram -->
-  <section class="featured-diagram">
-    <a href="article-architecture-diagram.html" class="diagram-card">
-      <div class="diagram-content">
-        <h3>See the Full Architecture</h3>
-        <p>Visual breakdown of all 7 layers — from hardware to collective intelligence. Understand how the pieces fit together.</p>
-        <span class="diagram-link">View Architecture Diagram →</span>
-      </div>
-    </a>
-  </section>
+  <div class="content">
 
-  <!-- Timeline -->
-  <div class="timeline-container">
-    
-    <!-- Step 1: Data Ingestion -->
-    <div class="step" id="step1">
-      <div class="step-header">
-        <div class="step-number">1</div>
-        <h3 class="step-title">Local Data Ingestion</h3>
+    <!-- The 3 invariants -->
+    <h2 class="section-title">Three Facts That Define QIS</h2>
+    <div class="invariants">
+      <div class="invariant">
+        <h4>Situation = Address</h4>
+        <p>Two nodes with the same problem compute the same address independently, without communicating. The situation determines the routing destination. No lookup table. No coordinator.</p>
       </div>
-      <div class="step-body">
-        <div class="step-content">
-          <p>
-            Each agent (smartphone, IoT sensor, tractor, medical device, etc.) ingests data from 
-            <span class="highlight">its own local sources</span>. This could be:
-          </p>
-          <ul>
-            <li>Wearable health data (heart rate, activity, sleep)</li>
-            <li>Medical records (lab results, diagnoses, treatments)</li>
-            <li>Sensor readings (soil pH, temperature, humidity)</li>
-            <li>Transaction data, behavior patterns, any structured data</li>
-            <li>Any data source: IoT devices, APIs, databases, manual entry, and more</li>
-          </ul>
-          <p>
-            <span class="highlight">Critical:</span> Raw data never leaves your device. 
-            Your phone stores everything locally.
-          </p>
-        </div>
-        <div class="step-visual">
-          <div class="data-flow">
-            <div class="data-icons">
-              <span>Heart</span>
-              <span>DNA</span>
-              <span>Meds</span>
-              <span>Data</span>
-            </div>
-            <div class="arrow-down"></div>
-            <div class="data-node source">Device</div>
-          </div>
-        </div>
+      <div class="invariant">
+        <h4>The Mailbox Is Already Full</h4>
+        <p>When you open the mailbox at your address, outcome notes from every node that already solved your problem are waiting. No compute happens at query time. You are reading, not asking.</p>
+      </div>
+      <div class="invariant">
+        <h4>Raw Data Never Moves</h4>
+        <p>Only outcome packets travel — approximately 512 bytes each. A validated result, a confidence interval, a cohort count. The evidence stays at the source. Only the verdict routes.</p>
       </div>
     </div>
 
-    <!-- Step 2: Embedding Creation -->
-    <div class="step" id="step2">
-      <div class="step-header">
-        <div class="step-number">2</div>
-        <h3 class="step-title">Create Mathematical Fingerprint</h3>
-      </div>
-      <div class="step-body">
-        <div class="step-content">
-          <p>
-            Your agent transforms raw data into a <span class="highlight">curated feature vector</span> 
-            — a mathematical "fingerprint" optimized for your domain.
-          </p>
-          <div class="formula">
-            patient_vector = [stage=3, KRAS=1, CEA=42, age=0.67, ...]
-          </div>
-          <p>
-            <span class="highlight">Network-specific design:</span> Domain experts define the vector templates
-            for each network—oncologists for cancer networks, agronomists for crop networks, etc.
-            They determine which features matter and their valid ranges. This ensures the fingerprints
-            capture what's clinically (or agriculturally, financially) meaningful.
-          </p>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); font-style: italic;">
-            Note: Methods for creating vectors and hashes can vary—see the <a href="pdfs/core-spec.pdf" target="_blank" style="color: var(--purple-quantum);">Core Specification</a> for alternatives. This approach is my favorite for "teleporting to the right lung" every time.
-          </p>
-          <p>
-            <span class="highlight">Privacy preserved:</span> Only this anonymized vector is shared — 
-            not your name, not your address, not your raw medical records.
-          </p>
-        </div>
-        <div class="step-visual">
-          <div class="equation-display">
-            <div class="big-eq">F(data) → ℝ<sup>d</sup></div>
-            <div class="sub-text">Structure-preserving embedding function</div>
-          </div>
-        </div>
+    <!-- The anchor callout (Peter) -->
+    <div class="callout">
+      <p>The architecture is the invention. Every component below existed for decades. The closed loop that produces quadratic intelligence scaling did not.</p>
+    </div>
+
+    <!-- The Complete Loop -->
+    <h2 class="section-title">The Complete Loop</h2>
+
+    <div class="step">
+      <div class="step-number">Step 1</div>
+      <h3>Observe</h3>
+      <p>Each node collects data from its own local sources. A hospital aggregates treatment records. A tractor ingests soil sensors. A weather station logs atmospheric readings. The data format does not matter — QIS is format-agnostic.</p>
+      <p class="key-fact">Raw data stays on the originating device. Always.</p>
+    </div>
+
+    <div class="loop-arrow">|</div>
+
+    <div class="step">
+      <div class="step-number">Step 2</div>
+      <h3>Distill</h3>
+      <p>The node compresses what it learned into an <strong>outcome packet</strong> — approximately 512 bytes. This contains an outcome delta, a confidence interval, a cohort count, and a population descriptor. It is a validated result, not raw data.</p>
+      <p>A hospital managing 100,000 patients transmits the same 512-byte packet as a clinic with 3 patients. The information density is maximized. The transmission cost is constant.</p>
+      <div class="example">
+        <strong>Healthcare:</strong> condition code + drug code + outcome delta + confidence interval + cohort size<br>
+        <strong>Agriculture:</strong> crop type + soil class + yield delta + weather context + season<br>
+        <strong>Automotive:</strong> road condition + speed context + hazard type + response outcome
       </div>
     </div>
 
-    <!-- Step 3: Hash & Route -->
-    <div class="step" id="step3">
-      <div class="step-header">
-        <div class="step-number">3</div>
-        <h3 class="step-title">Hash & Route Peer-to-Peer</h3>
-      </div>
-      <div class="step-body">
-        <div class="step-content">
-          <p>
-            Your fingerprint gets <span class="highlight">hashed (SHA-256)</span> and published 
-            to a distributed hash table (DHT). This is like DNS for patterns.
-          </p>
-          <div class="formula">
-            H(categorical_features) → DHT Key → O(log N) or better routing
-          </div>
-          <p>
-            <strong>Two-step magic:</strong> Categorical features (disease type, stage) determine 
-            your "bucket." Continuous features refine similarity within that bucket.
-          </p>
-          <p>
-            <span class="highlight">Stage 3 cancer patients never accidentally match with Stage 4.</span> 
-            The hash enforces biological compatibility.
-          </p>
-        </div>
-        <div class="step-visual">
-          <div class="equation-display">
-            <div class="big-eq">O(log N) or better</div>
-            <div class="sub-text">~13 hops to find matches in a network of 10,000</div>
-          </div>
-        </div>
-      </div>
+    <div class="loop-arrow">|</div>
+
+    <div class="step">
+      <div class="step-number">Step 3</div>
+      <h3>Fingerprint</h3>
+      <p>The situation context is encoded as a <strong>semantic address</strong>. This address is deterministic — two nodes working on the same clinical question, crop problem, or engineering challenge produce the same fingerprint independently, without coordinating.</p>
+      <p>The address space already exists in every hospital using SNOMED CT, every farm using crop classification codes, every vehicle fleet using standard telemetry schemas. QIS does not require a new vocabulary. It routes using vocabularies that domain practitioners already maintain.</p>
     </div>
 
-    <!-- Step 4: Pattern Synthesis -->
-    <div class="step" id="step4">
-      <div class="step-header">
-        <div class="step-number">4</div>
-        <h3 class="step-title">Synthesize Patterns with Peers</h3>
-      </div>
-      <div class="step-body">
-        <div class="step-content">
-          <p>
-            Your agent finds <span class="highlight">similar peers</span> — other patients 
-            with matching cancer biology, tractors with similar soil profiles, etc.
-          </p>
-          <p>
-            Each peer shares their outcomes:
-          </p>
-          <ul>
-            <li>"I tried Treatment A, survived 18 months"</li>
-            <li>"I used fertilizer combination B, yield increased 23%"</li>
-            <li>"Trading strategy C returned 14% annually"</li>
-          </ul>
-          <p>
-            Your agent performs <span class="highlight">weighted voting</span> — closer biology 
-            means higher weight. The result: evidence from hundreds of similar cases.
-          </p>
-        </div>
-        <div class="step-visual">
-          <div class="equation-display">
-            <div class="big-eq">N(N-1)/2</div>
-            <div class="sub-text">Unique synthesis opportunities across network</div>
-            <div class="detail">10,000 agents = 49,995,000 opportunities</div>
-          </div>
-        </div>
-      </div>
+    <div class="loop-arrow">|</div>
+
+    <div class="step">
+      <div class="step-number">Step 4</div>
+      <h3>Route</h3>
+      <p>The outcome packet routes to its matching address at <strong>O(log N) or better</strong> cost. For 10,000 nodes, that is roughly 13 hops. For 1,000,000 nodes, roughly 20 hops. Cost grows logarithmically while intelligence grows quadratically.</p>
+      <p>QIS is <strong>transport-agnostic</strong>. The same protocol works over distributed hash tables, REST APIs, databases, pub/sub messaging, shared folders, or SMS. Any transport that can carry 512 bytes can carry a QIS outcome packet.</p>
     </div>
 
-    <!-- Step 5: Outcome Reporting -->
-    <div class="step" id="step5">
-      <div class="step-header">
-        <div class="step-number">5</div>
-        <h3 class="step-title">Report Outcomes & Raise Baseline</h3>
-      </div>
-      <div class="step-body">
-        <div class="step-content">
-          <p>
-            After your treatment/intervention, outcomes are reported back to the network.
-            This is the <span class="highlight">compounding effect</span>.
-          </p>
-          <div class="formula">
-            Accuracy(t) ≈ A₀ + α × log(t)
-          </div>
-          <p>
-            Each new outcome makes the network smarter. The first 100 patients get limited cohort
-            matches. Patient #100,000 draws from a much larger pool—dramatically increasing the
-            odds of finding patients with nearly identical profiles and proven outcomes.
-          </p>
-          <p>
-            <span class="highlight">Network value scales superlinearly:</span> 
-            V(N,t) = N² × Accuracy(t)
-          </p>
-        </div>
-        <div class="step-visual">
-          <div class="equation-display">
-            <div class="big-eq">Θ(N²)</div>
-            <div class="sub-text">Intelligence scales quadratically</div>
-          </div>
-        </div>
-      </div>
+    <div class="loop-arrow">|</div>
+
+    <div class="step">
+      <div class="step-number">Step 5</div>
+      <h3>Synthesize</h3>
+      <p>The receiving node tallies all deposited outcome packets locally. No central aggregator processes the data. Synthesis happens at the edge — vote counting, Bayesian updating, confidence-weighted averaging — using only the outcome packets that arrived at this address.</p>
+      <p>For 1,000 outcome packets, synthesis takes milliseconds. The result: an evidence-based answer drawn from every node that has ever solved this problem.</p>
+    </div>
+
+    <div class="loop-arrow">|</div>
+
+    <div class="step">
+      <div class="step-number">Step 6</div>
+      <h3>Validate</h3>
+      <p>Three Elections filter adversarial or out-of-context packets:</p>
+      <p><strong>Election 1:</strong> Domain experts define what "similar" means — the fingerprint template. Different networks elect different curators. Competition on curation quality.</p>
+      <p><strong>Election 2:</strong> Outcomes vote by being counted. No algorithm decides which treatment is best. The outcomes themselves — aggregated across hundreds of nodes — produce the answer.</p>
+      <p><strong>Election 3:</strong> Users migrate to networks with better results. Networks that save more lives, grow more food, or prevent more failures attract more nodes. Natural selection at network scale.</p>
+    </div>
+
+    <div class="loop-arrow">|</div>
+
+    <div class="step loop-close">
+      <div class="step-number">Loop Close</div>
+      <h3>Act and Re-Deposit</h3>
+      <p>The node acts on the synthesis. That action produces a new outcome. The new outcome distills into a new packet. The packet deposits back at the same address.</p>
+      <p class="key-fact">The next node that opens this mailbox finds one more note. 312 becomes 313. The network learned from your reading AND your acting. Intelligence compounds with every cycle.</p>
+      <p>Without the loop closure, QIS is a database. With it, QIS is a learning network. The complete loop — not any single component — is the discovery.</p>
+    </div>
+
+    <div class="loop-arrow" style="color: var(--green-neural);">REPEAT</div>
+
+    <!-- The Math -->
+    <h2 class="section-title">The Scaling Law</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 20px;">N nodes create N(N-1)/2 unique synthesis opportunities. Communication cost per node: O(log N) or better. The gap widens with every node added.</p>
+
+    <table class="scaling-table">
+      <thead>
+        <tr>
+          <th>Nodes</th>
+          <th>Synthesis Pairs</th>
+          <th>Cost per Node</th>
+          <th>Intelligence : Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>10</td><td>45</td><td>~3 hops</td><td>4:1</td></tr>
+        <tr><td>100</td><td>4,950</td><td>~7 hops</td><td>50:1</td></tr>
+        <tr><td>1,000</td><td>499,500</td><td>~10 hops</td><td>499:1</td></tr>
+        <tr><td>10,000</td><td>49,995,000</td><td>~13 hops</td><td>4,999:1</td></tr>
+        <tr><td>100,000</td><td>4,999,950,000</td><td>~17 hops</td><td>49,999:1</td></tr>
+      </tbody>
+    </table>
+
+    <!-- What QIS is NOT -->
+    <h2 class="section-title">What QIS Is Not</h2>
+    <div class="not-list">
+      <div class="not-item"><strong>Not federated learning.</strong> <span>FL shares model gradients through a central aggregator. QIS routes validated outcomes peer-to-peer. No aggregator.</span></div>
+      <div class="not-item"><strong>Not a database.</strong> <span>Databases store and retrieve. QIS routes, synthesizes, and compounds intelligence through the closed loop.</span></div>
+      <div class="not-item"><strong>Not blockchain.</strong> <span>Blockchain achieves consensus on state. QIS achieves synthesis of outcomes. Different problem, different architecture.</span></div>
+      <div class="not-item"><strong>Not centralized AI.</strong> <span>Centralized AI moves all data to one server. QIS keeps data local and routes only 512-byte outcome packets.</span></div>
+    </div>
+
+    <!-- Where It Works -->
+    <h2 class="section-title">Where It Works</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 20px;">QIS applies to any domain where outcomes are aggregatable and similarity is definable. The architecture is identical in every case — change three strings (situation description, address fields, outcome format) and the same protocol runs.</p>
+
+    <div class="domain-grid">
+      <div class="domain-card"><h4>Healthcare</h4><p>Treatment outcomes across hospitals</p></div>
+      <div class="domain-card"><h4>Agriculture</h4><p>Yield data across farms and climates</p></div>
+      <div class="domain-card"><h4>Autonomous Vehicles</h4><p>Hazard patterns across fleets</p></div>
+      <div class="domain-card"><h4>Climate Science</h4><p>Sensor synthesis across stations</p></div>
+      <div class="domain-card"><h4>Drug Safety</h4><p>Adverse event signals across populations</p></div>
+      <div class="domain-card"><h4>Radio Astronomy</h4><p>Observation correlation across telescopes</p></div>
+      <div class="domain-card"><h4>Supply Chain</h4><p>Disruption signals across networks</p></div>
+      <div class="domain-card"><h4>Rare Disease</h4><p>Small-cohort outcomes across institutions</p></div>
+    </div>
+
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 12px;">39 provisional patent applications filed across 28 domains. The math does not change between them.</p>
+
+    <!-- Dive Deeper -->
+    <h2 class="section-title">Dive Deeper</h2>
+    <div class="deeper-grid">
+      <a href="demo.html">
+        <h4>See the Core Loop</h4>
+        <p>Interactive demo — watch the full QIS loop in 90 seconds</p>
+      </a>
+      <a href="article-architecture-diagram.html">
+        <h4>Full Architecture Diagram</h4>
+        <p>All 7 layers from data sources to collective intelligence</p>
+      </a>
+      <a href="comparison.html">
+        <h4>Compare Approaches</h4>
+        <p>QIS vs. federated learning, centralized AI, edge AI, and more</p>
+      </a>
+      <a href="article-every-component-exists.html">
+        <h4>Every Component Exists Today</h4>
+        <p>No new science needed — novel composition of proven technology</p>
+      </a>
+      <a href="article-qis-scaling-law.html">
+        <h4>The Scaling Law</h4>
+        <p>Why N(N-1)/2 intelligence with O(log N) or better cost changes everything</p>
+      </a>
+      <a href="articles.html">
+        <h4>All Articles</h4>
+        <p>78+ articles covering every aspect of QIS Protocol</p>
+      </a>
     </div>
 
   </div>
 
-  <!-- Summary -->
-  <section class="summary">
-    <h2>The Result</h2>
-    <p style="font-size: 1.3rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-      Quadratic intelligence growth with logarithmic communication cost. 
-      Privacy preserved. No central authority. Byzantine fault tolerant.
-    </p>
-    <div class="summary-grid">
-      <div class="summary-item">
-        <div class="value cyan">Θ(N²)</div>
-        <div class="label">Intelligence Scaling</div>
-      </div>
-      <div class="summary-item">
-        <div class="value green">O(log N) or better</div>
-        <div class="label">Communication Cost</div>
-      </div>
-      <div class="summary-item">
-        <div class="value purple">100%</div>
-        <div class="label">Data Stays Local</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dive Deeper -->
-  <section class="dive-deeper">
-    <h2>Dive Deeper</h2>
-    <div class="article-grid">
-      <a href="article-architecture-diagram.html" class="article-link">
-        <h4>Full Architecture Diagram</h4>
-        <p>Visual breakdown of all 7 layers from hardware to collective intelligence</p>
-      </a>
-      <a href="article-every-component-exists.html" class="article-link">
-        <h4>Every Component Exists Today</h4>
-        <p>No new science needed — just novel composition of proven technology</p>
-      </a>
-      <a href="article-one-roundtrip-swarm.html" class="article-link">
-        <h4>One Round-Trip</h4>
-        <p>How emergent intelligence arises from simple local interactions</p>
-      </a>
-      <a href="article-11-flips.html" class="article-link">
-        <h4>The 11 Flips</h4>
-        <p>Every architectural inversion that makes QIS fundamentally different</p>
-      </a>
-      <a href="article-three-elections.html" class="article-link">
-        <h4>Three Elections</h4>
-        <p>The triple-voting mechanism that ensures Byzantine fault tolerance</p>
-      </a>
-      <a href="article-qis-scaling-law.html" class="article-link">
-        <h4>QIS Scaling Law</h4>
-        <p>Why N² intelligence growth with O(log N) or better cost changes everything</p>
-      </a>
-    </div>
-  </section>
-
   <!-- CTA -->
   <section class="cta-section">
-    <div class="cta-buttons">
-      <a href="/demos.html" class="btn primary">Watch Live Demo</a>
-      <a href="comparison.html" class="btn">Compare Approaches</a>
-      <a href="healthcare.html" class="btn">Healthcare Deep-Dive</a>
-    </div>
+    <a href="demo.html" class="btn primary">Watch the Demo</a>
+    <a href="comparison.html" class="btn">Compare Approaches</a>
+    <a href="faq.html" class="btn">FAQ</a>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>QIS Protocol • Quadratic Intelligence Swarm</p>
-    <p><a href="index.html">Home</a> • <a href="directory.html">Full Directory</a> • <a href="https://github.com/YonderZenith">GitHub</a> • <a href="disclaimer.html">Disclaimer</a> • Yonder Zenith LLC</p>
-    <p style="margin-top: 15px; opacity: 0.5; font-size: 0.9rem;">39 Patents Pending • Math is Public</p>
+    <p><strong>Yonder Zenith LLC</strong> &mdash; Redefining The Horizon</p>
+    <p>&copy; 2025 Yonder Zenith LLC. All rights reserved. <a href="licensing.html">License</a> | <a href="privacy.html">Privacy</a></p>
+    <p style="margin-top: 10px; opacity: 0.4; font-size: 0.85rem;">39 provisional patent applications filed. Math is public.</p>
   </footer>
 
-  <script>
-    // Intersection Observer for step animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.step').forEach(step => {
-      observer.observe(step);
-    });
-  </script>
 </body>
 </html>
