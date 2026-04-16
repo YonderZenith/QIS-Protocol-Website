@@ -541,9 +541,11 @@
     }
 
     .tesla-box.qis li::before {
-      content: '⚡';
+      content: '\2713';
       position: absolute;
       left: 0;
+      color: var(--green-neural);
+      font-weight: bold;
     }
 
     /* Final CTA */
@@ -771,7 +773,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-badge">🏁 The Future of Competition</div>
+    <div class="hero-badge">The Future of Competition</div>
     <h1>The Next Tech Race</h1>
     <p class="subtitle">
       What happens when companies can no longer hoard data? When the only way to win is to <span class="emphasis">save the most lives</span>? Welcome to the race that will define the next era of technology.
@@ -784,7 +786,7 @@
     <!-- Paradigm Shift -->
     <section class="paradigm-shift">
       <div class="paradigm-box old">
-        <h3>⛓️ The Old Race: Data Hoarding</h3>
+        <h3>The Old Race: Data Hoarding</h3>
         <ul>
           <li>Companies acquire hospitals, apps, and devices for their data</li>
           <li>Patient information becomes a competitive moat</li>
@@ -800,7 +802,7 @@
       </div>
 
       <div class="paradigm-box new">
-        <h3>🚀 The New Race: Pattern Curation</h3>
+        <h3>The New Race: Pattern Curation</h3>
         <ul>
           <li>Data stays on your device—companies can't hoard what they don't have</li>
           <li>Companies compete on curation quality and outcome accuracy</li>
@@ -828,7 +830,6 @@
       <div class="competitors-grid">
         <div class="competitor-card">
           <div class="competitor-header">
-            <span class="competitor-icon">🍎</span>
             <div>
               <div class="competitor-name"><a href="article-apple-quadratic-health-intelligence.html" style="color: var(--text-primary); text-decoration: none;">AppleVitals Network</a></div>
               <div class="competitor-type">Consumer Health Swarm</div>
@@ -843,7 +844,6 @@
 
         <div class="competitor-card">
           <div class="competitor-header">
-            <span class="competitor-icon">🔬</span>
             <div>
               <div class="competitor-name"><a href="article-drug-safety-monitoring.html" style="color: var(--text-primary); text-decoration: none;">PhizerSwarm</a></div>
               <div class="competitor-type">Pharmaceutical Intelligence</div>
@@ -858,7 +858,6 @@
 
         <div class="competitor-card">
           <div class="competitor-header">
-            <span class="competitor-icon">🏥</span>
             <div>
               <div class="competitor-name">EpicHealth Collective</div>
               <div class="competitor-type">EMR Pattern Network</div>
@@ -873,7 +872,6 @@
 
         <div class="competitor-card">
           <div class="competitor-header">
-            <span class="competitor-icon">🚗</span>
             <div>
               <div class="competitor-name"><a href="article-musk-stack-nervous-system.html" style="color: var(--text-primary); text-decoration: none;">Tesla Fleet Intelligence</a></div>
               <div class="competitor-type">Autonomous Safety Swarm</div>
@@ -888,7 +886,6 @@
 
         <div class="competitor-card">
           <div class="competitor-header">
-            <span class="competitor-icon">🌾</span>
             <div>
               <div class="competitor-name"><a href="article-agriculture-future.html" style="color: var(--text-primary); text-decoration: none;">JohnDeere AgriSwarm</a></div>
               <div class="competitor-type">Precision Agriculture</div>
@@ -903,7 +900,6 @@
 
         <div class="competitor-card">
           <div class="competitor-header">
-            <span class="competitor-icon">🧠</span>
             <div>
               <div class="competitor-name">MindBridge Network</div>
               <div class="competitor-type">Mental Health Collective</div>
@@ -920,25 +916,21 @@
 
     <!-- The Scoreboard -->
     <div class="scoreboard">
-      <h3>🏆 The New Metrics of Victory</h3>
+      <h3>The New Metrics of Victory</h3>
       <div class="scoreboard-grid">
         <div class="score-item">
-          <div class="icon">💉</div>
           <div class="label">Lives Saved</div>
           <div class="value">Verified</div>
         </div>
         <div class="score-item">
-          <div class="icon">⚡</div>
           <div class="label">Detection Speed</div>
           <div class="value">Measurable</div>
         </div>
         <div class="score-item">
-          <div class="icon">🎯</div>
           <div class="label">Recommendation Accuracy</div>
           <div class="value">Trackable</div>
         </div>
         <div class="score-item">
-          <div class="icon">👥</div>
           <div class="label">Patient Choice</div>
           <div class="value">Democratic</div>
         </div>
@@ -947,14 +939,14 @@
 
     <!-- Tesla Deep Dive -->
     <section class="tesla-section">
-      <h3>🚗 Case Study: <a href="article-musk-stack-nervous-system.html" style="color: var(--red-accent); text-decoration: none;">Tesla Fleet Safety</a></h3>
+      <h3>Case Study: <a href="article-musk-stack-nervous-system.html" style="color: var(--red-accent); text-decoration: none;">Tesla Fleet Safety</a></h3>
       <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 20px;">
         What happens when 4 million vehicles share hazard patterns peer-to-peer instead of routing through central servers?
       </p>
 
       <div class="tesla-comparison">
         <div class="tesla-box current">
-          <h4>❌ Current Architecture</h4>
+          <h4>Current Architecture</h4>
           <ul>
             <li>Car detects hazard → uploads to Tesla servers</li>
             <li>Central processing (latency: 500ms-2s)</li>
@@ -965,7 +957,7 @@
           </ul>
         </div>
         <div class="tesla-box qis">
-          <h4>✓ QIS Fleet Intelligence</h4>
+          <h4>QIS Fleet Intelligence</h4>
           <ul>
             <li>Car detects hazard → hashes pattern → broadcasts P2P</li>
             <li>Nearby vehicles receive in <50ms via <a href="article-dht-deep-dive.html" style="color: var(--green-neural);">DHT routing</a></li>
@@ -994,17 +986,14 @@
 
       <div class="impact-grid">
         <div class="impact-card">
-          <div class="icon">📊</div>
           <h4>Measurable Impact</h4>
           <p>For the first time in history, we can track which network saves the most lives. This creates market incentives aligned with human flourishing.</p>
         </div>
         <div class="impact-card">
-          <div class="icon">🗳️</div>
           <h4>Patient Democracy</h4>
           <p>You choose which swarms to join. Bad actors lose members. Good actors grow. Your enrollment is your vote for who deserves to help humanity.</p>
         </div>
         <div class="impact-card">
-          <div class="icon">💰</div>
           <h4>Aligned Incentives</h4>
           <p>Commercial revenue funds humanitarian deployment. The more profitable the network, the more lives it saves in underserved regions. Profit and purpose unified.</p>
         </div>

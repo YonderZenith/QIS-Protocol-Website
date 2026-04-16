@@ -613,7 +613,7 @@
       onclick="this.classList.toggle('active');
                document.querySelector('.nav-links').classList.toggle('active');
                document.querySelector('.nav-overlay').classList.toggle('active');">
-      <span></span><span></span><span></span>
+      
     </div>
 
     <div class="nav-overlay"
@@ -713,41 +713,41 @@
 
     <div class="source-grid">
       <div class="source-card">
-        <h4><span class="icon">⌚</span> Wearables & IoT</h4>
+        <h4><span class="icon"></span> Wearables & IoT</h4>
         <p>Apple HealthKit, Google Health Connect, Garmin, Oura, Fitbit APIs—already aggregate steps, HRV, sleep, SpO₂, ECG <strong>on-device</strong>.</p>
         <p>Agent pulls summaries (e.g., average HRV last 30 days). No raw waveform leaves.</p>
         <div class="source-proof">✓ HealthKit: 150+ data types, tens of thousands of apps, all on-device encrypted</div>
       </div>
 
       <div class="source-card">
-        <h4><span class="icon">📱</span> Apps & Manual Input</h4>
+        <h4><span class="icon"></span> Apps & Manual Input</h4>
         <p>Patient apps (MyChart, custom QIS app). Voice notes → Whisper transcription <strong>on-device</strong>. Manual sliders: "nausea level 1-10".</p>
         <p>All local. Raw data never leaves—only the structured packet.</p>
         <div class="source-proof">✓ Whisper on-device: iPhone 12+, 100% offline, ~97% accuracy (2-3% word error rate)</div>
       </div>
 
       <div class="source-card">
-        <h4><span class="icon">🏥</span> EHR & Clinical Feeds</h4>
+        <h4><span class="icon"></span> EHR & Clinical Feeds</h4>
         <p>21st Century Cures Act mandates API access (FHIR standard). Agent pulls discrete fields (lab values, meds, progression scans) via patient-authorized OAuth.</p>
         <p>Only curated outcomes stored locally. Raw notes stay in hospital silo.</p>
         <div class="source-proof">✓ Epic: 750+ free APIs, 8 billion calls since 2024, 195M MyChart patients</div>
       </div>
 
       <div class="source-card">
-        <h4><span class="icon">🔬</span> Lab & Imaging Results</h4>
+        <h4><span class="icon"></span> Lab & Imaging Results</h4>
         <p>FHIR bundles or direct PDF parse (on-device OCR if needed). Extract: tumor size change, mutation status.</p>
         <p>No full scan shared—only numeric outcome.</p>
         <div class="source-proof">✓ ML Kit / Apple Vision: on-device OCR, no network required</div>
       </div>
 
       <div class="source-card">
-        <h4><span class="icon">🎙️</span> Voice & Ambient</h4>
+        <h4><span class="icon"></span> Voice & Ambient</h4>
         <p>Phone mic → on-device speech-to-text (Apple/Google models). "Feeling tired today, nausea mild." → structured fields.</p>
         <div class="source-proof">✓ WhisperKit: CoreML on Apple Silicon, trained on 680K hours of audio</div>
       </div>
 
       <div class="source-card">
-        <h4><span class="icon">📄</span> Legacy & Low-Tech</h4>
+        <h4><span class="icon"></span> Legacy & Low-Tech</h4>
         <p>Manual entry for paper records. Photo → on-device OCR. Spreadsheet import.</p>
         <div class="source-proof">✓ Google ML Kit Text Recognition v2: Chinese, Japanese, Korean, Devanagari, Latin</div>
       </div>

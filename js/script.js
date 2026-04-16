@@ -585,7 +585,7 @@ function share(platform) {
              "
              onmouseover="this.style.transform='translateY(-5px) scale(1.02)'; this.style.boxShadow='0 0 50px rgba(0, 217, 255, 1)';"
              onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 0 30px rgba(0, 190, 234, 0.6)';">
-            🐦 Share on X (Twitter)
+            Share on X (Twitter)
           </a>
           
           <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" 
@@ -606,7 +606,7 @@ function share(platform) {
              "
              onmouseover="this.style.transform='translateY(-5px) scale(1.02)'; this.style.boxShadow='0 0 50px rgba(0, 217, 255, 1)';"
              onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 0 30px rgba(0, 190, 234, 0.6)';">
-            📘 Share on Facebook
+            Share on Facebook
           </a>
           
           <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" 
@@ -627,7 +627,7 @@ function share(platform) {
              "
              onmouseover="this.style.transform='translateY(-5px) scale(1.02)'; this.style.boxShadow='0 0 50px rgba(0, 217, 255, 1)';"
              onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 0 30px rgba(0, 190, 234, 0.6)';">
-            💼 Share on LinkedIn
+            Share on LinkedIn
           </a>
           
           <a href="mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}" 

@@ -286,19 +286,23 @@
     }
 
     .permitted-list li::before {
-      content: '✅';
+      content: '\2713';
       position: absolute;
       left: 0;
+      color: var(--green-neural);
+      font-weight: bold;
     }
 
     .restricted-list li::before {
-      content: '🔒';
+      content: '\2717';
       position: absolute;
       left: 0;
+      color: var(--red-accent);
+      font-weight: bold;
     }
 
-    .examples-yes li::before { content: '✅'; }
-    .examples-no li::before { content: '❌'; }
+    .examples-yes li::before { content: '\2713'; color: var(--green-neural); font-weight: bold; }
+    .examples-no li::before { content: '\2717'; color: var(--red-accent); font-weight: bold; }
 
     /* Tables */
     .table-container {
@@ -737,7 +741,7 @@
 
     <!-- Header -->
     <header class="license-header">
-      <div class="license-badge">📜 License Agreement</div>
+      <div class="license-badge">License Agreement</div>
       <h1>QIS Protocol License v1.0</h1>
       <p class="version">Effective Date: November 2025</p>
       <p class="meta">
@@ -748,7 +752,7 @@
 
     <!-- Quick Summary -->
     <section class="quick-summary">
-      <h2>📋 License Tiers at a Glance</h2>
+      <h2>License Tiers at a Glance</h2>
       <div class="summary-grid">
         <div class="summary-card">
           <div class="tier">Tier 1</div>
@@ -787,7 +791,7 @@
 
     <!-- Notice -->
     <section class="notice-box">
-      <h3>⚠️ NOTICE</h3>
+      <h3>NOTICE</h3>
       <p>
         This license governs all use of the Quadratic Intelligence Swarm (QIS) Protocol, including the protocol specification, reference implementation code, simulation software, documentation, and all related materials in this repository (collectively, the "Protocol").
       </p>
@@ -811,7 +815,7 @@
 
       <h3>1.2 Patent Notice</h3>
       <div class="callout warning">
-        <h4>⚠️ CRITICAL: Patent-Protected Technology</h4>
+        <h4>CRITICAL: Patent-Protected Technology</h4>
         <p>
           The distributed pattern synthesis methods described in this Protocol are covered by pending US patent applications. Under US patent law, independent invention is NOT a defense to patent infringement. Any implementation of the patented methods—whether developed independently, derived from these specifications, or otherwise—may constitute infringement.
         </p>
@@ -1316,7 +1320,7 @@
 
     <!-- Download Section -->
     <section class="download-section">
-      <h3>📥 Download Full License</h3>
+      <h3>Download Full License</h3>
       <p>Download the complete QIS Protocol License v1.0 as a PDF for your records.</p>
       <a href="pdfs/qis-licensing-terms.pdf" class="btn" target="_blank">Download PDF</a>
     </section>

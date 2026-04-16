@@ -674,9 +674,9 @@
       <a href="about.html">About</a>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      
+      
+      
     </div>
   </nav>
 
@@ -737,7 +737,7 @@
 
     <div class="pipeline-section">
       <div class="pipeline-title netflix">
-        <span style="font-size: 1.5rem;">🎬</span>
+        <span style="font-size: 1.5rem;"></span>
         Netflix Recommendation Pipeline
       </div>
 
@@ -967,7 +967,7 @@
 
     <div class="pipeline-section qis">
       <div class="pipeline-title qis">
-        <span style="font-size: 1.5rem;">🔮</span>
+        <span style="font-size: 1.5rem;"></span>
         QIS Insight Routing Pipeline
       </div>
 
@@ -1228,7 +1228,7 @@
       
       <div class="paradigm-comparison">
         <div class="paradigm-side netflix">
-          <h4>🎬 Netflix Routes</h4>
+          <h4>Netflix Routes</h4>
           <p><strong>Content IDs</strong></p>
           <p>"Movies you might like based on users similar to you"</p>
           <p style="color: var(--netflix-red); font-weight: 600;">Recommendations</p>
@@ -1237,7 +1237,7 @@
         <div class="paradigm-arrow">→</div>
         
         <div class="paradigm-side qis">
-          <h4>🔮 QIS Routes</h4>
+          <h4>QIS Routes</h4>
           <p><strong>Outcome Packets</strong></p>
           <p>"What actually happened to people exactly like you"</p>
           <p style="color: var(--cyan-bright); font-weight: 600;">Insight Itself</p>
@@ -1261,7 +1261,7 @@
 
     <div class="precision-grid">
       <div class="precision-card fuzzy">
-        <h4>🎬 Netflix: K-Nearest Neighbors (Fuzzy)</h4>
+        <h4>Netflix: K-Nearest Neighbors (Fuzzy)</h4>
         <ul>
           <li><strong>Method:</strong> Find the K closest users in latent vector space (cosine similarity)</li>
           <li><strong>Typical K:</strong> 10-50 neighbors</li>
@@ -1273,7 +1273,7 @@
       </div>
       
       <div class="precision-card exact">
-        <h4>🔮 QIS: Exact Cohort Matching (Precision)</h4>
+        <h4>QIS: Exact Cohort Matching (Precision)</h4>
         <ul>
           <li><strong>Method:</strong> Deterministic hash of categorical variables → exact bucket routing</li>
           <li><strong>Bucket size:</strong> All peers with identical fingerprint (could be thousands)</li>
@@ -1389,32 +1389,32 @@ outcomes = bucket.<span class="function">filter</span>(continuous_similarity > 0
 
     <div class="domain-grid">
       <div class="domain-card">
-        <h4>🏥 Precision Medicine</h4>
+        <h4>Precision Medicine</h4>
         <p>Route to patients with identical clinical fingerprint (stage, biomarkers, mutations). Retrieve real treatment outcomes. "What worked for people exactly like me?"</p>
       </div>
       
       <div class="domain-card">
-        <h4>🌾 Agriculture</h4>
+        <h4>Agriculture</h4>
         <p>Route to farms with identical conditions (soil type, climate, crop variety). Retrieve yield outcomes. "What intervention worked for fields exactly like mine?"</p>
       </div>
       
       <div class="domain-card">
-        <h4>🔧 Industrial Machinery</h4>
+        <h4>Industrial Machinery</h4>
         <p>Route to equipment with identical profile (model, age, usage pattern). Retrieve failure/maintenance outcomes. "What preventive action worked for machines exactly like mine?"</p>
       </div>
       
       <div class="domain-card">
-        <h4>🏛️ Prison System</h4>
+        <h4>Prison System</h4>
         <p>Route to inmates with identical profile (offense type, risk factors, history). Retrieve intervention outcomes. "What rehabilitation program worked for people exactly like this?"</p>
       </div>
       
       <div class="domain-card">
-        <h4>🚗 Autonomous Vehicles</h4>
+        <h4>Autonomous Vehicles</h4>
         <p>Route to vehicles that encountered identical scenarios (road conditions, edge cases). Retrieve outcomes. "What action succeeded in situations exactly like this?"</p>
       </div>
       
       <div class="domain-card">
-        <h4>📊 Financial Risk</h4>
+        <h4>Financial Risk</h4>
         <p>Route to portfolios with identical exposure profiles. Retrieve historical outcomes. "What happened to positions exactly like mine in similar conditions?"</p>
       </div>
 
@@ -1424,7 +1424,7 @@ outcomes = bucket.<span class="function">filter</span>(continuous_similarity > 0
       </div>
 
       <div class="domain-card">
-        <h4>🎓 Education</h4>
+        <h4>Education</h4>
         <p>Route to learners with identical profiles (background, learning style, struggle patterns). Every student stuck on a concept instantly sees what worked for every similar learner. Not generic advice—specific interventions that produced breakthroughs for people exactly like them.</p>
       </div>
     </div>

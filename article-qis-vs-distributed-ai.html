@@ -681,7 +681,7 @@
       <span>QIS PROTOCOL</span>
     </a>
     <div class="hamburger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active'); document.querySelector('.nav-overlay').classList.toggle('active');">
-      <span></span><span></span><span></span>
+      
     </div>
     <div class="nav-overlay" onclick="document.querySelector('.hamburger').classList.remove('active'); document.querySelector('.nav-links').classList.remove('active'); this.classList.remove('active');"></div>
     <div class="nav-links">
@@ -783,7 +783,7 @@
 
     <div class="system-grid">
       <div class="system-card">
-        <h4>🤖 AutoGPT</h4>
+        <h4>AutoGPT</h4>
         <p>Recursive loop: goal analysis → task decomposition → action selection → execution → self-criticism.</p>
         <div class="routes">
           <strong>Routes:</strong> Tool calls (JSON-structured), file operations, spawned sub-agent messages
@@ -795,7 +795,7 @@
       </div>
 
       <div class="system-card">
-        <h4>👶 BabyAGI</h4>
+        <h4>BabyAGI</h4>
         <p>Three-agent architecture (execution, task creation, prioritization) around a task queue.</p>
         <div class="routes">
           <strong>Routes:</strong> Task descriptions, embeddings to Pinecone/Chroma for context retrieval
@@ -806,7 +806,7 @@
       </div>
 
       <div class="system-card">
-        <h4>👥 CrewAI</h4>
+        <h4>CrewAI</h4>
         <p>Role-based collaboration (Market Research Analyst, Writer, etc.) with explicit context parameters.</p>
         <div class="routes">
           <strong>Routes:</strong> Task outputs via Delegate Work / Ask Question tools. Output of Task N → input to Task N+1.
@@ -817,7 +817,7 @@
       </div>
 
       <div class="system-card">
-        <h4>🔄 Microsoft AutoGen</h4>
+        <h4>Microsoft AutoGen</h4>
         <p>ConversableAgent base class, GroupChat architecture, nested conversations for hierarchical workflows.</p>
         <div class="routes">
           <strong>Routes:</strong> Messages (JSON-RPC), tool calls, full conversation history within threads
@@ -828,7 +828,7 @@
       </div>
 
       <div class="system-card">
-        <h4>📝 MetaGPT / ChatDev</h4>
+        <h4>MetaGPT / ChatDev</h4>
         <p>Software development specialization. MetaGPT: Standardized Operating Procedures via publish-subscribe. ChatDev: dual-agent chat chains.</p>
         <div class="routes">
           <strong>Routes:</strong> Structured artifacts (PRDs, system designs, code) between role-specialized agents
@@ -851,7 +851,7 @@
 
     <div class="system-grid">
       <div class="system-card">
-        <h4>🔌 MCP (Anthropic, Nov 2024)</h4>
+        <h4>MCP (Anthropic, Nov 2024)</h4>
         <p>"USB-C port for AI." JSON-RPC 2.0 over STDIO or HTTP+SSE.</p>
         <div class="routes">
           <strong>Routes:</strong> Resources (files, DB records, API responses), Tools (function calls), Prompts (templates)
@@ -863,7 +863,7 @@
       </div>
 
       <div class="system-card">
-        <h4>🤝 A2A (Google, April 2025)</h4>
+        <h4>A2A (Google, April 2025)</h4>
         <p>Three-layer architecture: data model, operations, protocol bindings. Agent Cards at /.well-known/agent.json.</p>
         <div class="routes">
           <strong>Routes:</strong> Task lifecycle (working, completed, failed), Artifacts (task outputs), Messages
@@ -875,7 +875,7 @@
       </div>
 
       <div class="system-card">
-        <h4>⚡ OpenAI Agents SDK</h4>
+        <h4>OpenAI Agents SDK</h4>
         <p>Evolved from experimental Swarm framework. Patterns for handoffs, agents-as-tools, parallel execution.</p>
         <div class="routes">
           <strong>Routes:</strong> Tool calls (function calling schemas), Handoff signals (function returns)
@@ -933,7 +933,7 @@
 
     <div class="system-grid">
       <div class="system-card">
-        <h4>🔄 PSO (Particle Swarm Optimization)</h4>
+        <h4>PSO (Particle Swarm Optimization)</h4>
         <p>Optimizes continuous functions f: ℝⁿ → ℝ through particle dynamics.</p>
         <div class="routes">
           <strong>Routes:</strong> Position vectors (candidate solutions), Velocity vectors (search directions), Best known positions (personal and global)
@@ -944,7 +944,7 @@
       </div>
 
       <div class="system-card">
-        <h4>🐜 ACO (Ant Colony Optimization)</h4>
+        <h4>ACO (Ant Colony Optimization)</h4>
         <p>Stigmergy—indirect coordination through environment modification—for combinatorial optimization.</p>
         <div class="routes">
           <strong>Routes:</strong> Pheromone deposits on graph edges. τ_{ij}(t+1) = (1-ρ)·τ_{ij}(t) + Δτ_{ij}
@@ -968,7 +968,7 @@
 
     <div class="system-grid">
       <div class="system-card">
-        <h4>🌐 SingularityNET</h4>
+        <h4>SingularityNET</h4>
         <p>Ethereum-based AI service marketplace. Smart contract registries, Multi-Party Escrow, daemon sidecars.</p>
         <div class="routes">
           <strong>Routes:</strong> AI service API calls (gRPC), AGIX token payments
@@ -979,7 +979,7 @@
       </div>
 
       <div class="system-card">
-        <h4>🌊 Ocean Protocol</h4>
+        <h4>Ocean Protocol</h4>
         <p>Data tokenization: ERC721 Data NFTs (IP ownership), ERC20 Datatokens (access licenses). Compute-to-Data.</p>
         <div class="routes">
           <strong>Routes:</strong> Access permissions, compute job specifications
@@ -990,7 +990,7 @@
       </div>
 
       <div class="system-card">
-        <h4>🤖 Fetch.ai</h4>
+        <h4>Fetch.ai</h4>
         <p>uAgents framework, Almanac registry. Autonomous Economic Agents coordinate negotiations.</p>
         <div class="routes">
           <strong>Routes:</strong> Economic agent messages, service negotiations, payment transactions
@@ -1001,7 +1001,7 @@
       </div>
 
       <div class="system-card">
-        <h4>⚡ Bittensor</h4>
+        <h4>Bittensor</h4>
         <p>Presents as "neural network" / "hive mind." Actually: competitive inference marketplace.</p>
         <div class="routes">
           <strong>Routes:</strong> Inference outputs, quality scores (Yuma Consensus aggregates scores, not knowledge)
@@ -1187,21 +1187,21 @@
 
     <div class="system-grid">
       <div class="system-card">
-        <h4>🏥 Healthcare</h4>
+        <h4>Healthcare</h4>
         <p><strong>Multi-agent frameworks:</strong> Can coordinate care tasks. Cannot synthesize treatment outcomes across 10,000 patients.</p>
         <p><strong>Federated learning:</strong> Requires hundreds to thousands of rounds to train a model. Cannot deliver insight instantly when a patient presents.</p>
         <p><strong>QIS:</strong> 10,000 patients create 49,995,000 synthesis opportunities. Query with your clinical fingerprint, matched outcomes arrive instantly. No training rounds. No waiting for convergence. Real-time insight from those exactly like you.</p>
       </div>
 
       <div class="system-card">
-        <h4>🚗 Autonomous Vehicles</h4>
+        <h4>Autonomous Vehicles</h4>
         <p><strong>Decentralized AI:</strong> Can coordinate service calls or data access. Cannot synthesize driving outcomes across fleet.</p>
         <p><strong>Swarm algorithms:</strong> Can optimize routes (combinatorial). Cannot match semantic scenarios.</p>
         <p><strong>QIS:</strong> Vehicle encounters icy bridge + pedestrian + construction. Routes to all vehicles that faced similar scenario. Retrieves outcomes. Synthesizes locally. Real-time pattern matching across global fleet.</p>
       </div>
 
       <div class="system-card">
-        <h4>🌾 Agriculture</h4>
+        <h4>Agriculture</h4>
         <p><strong>Agent protocols:</strong> Can connect to soil sensors and weather APIs. Cannot synthesize crop outcomes across similar farms.</p>
         <p><strong>QIS:</strong> Your farm's fingerprint (soil type, climate zone, crop variety, irrigation) routes to farms with matching conditions. Not generic advice from aggregate data—precise outcomes from farms exactly like yours. What treatments worked for your exact soil, your exact climate, your exact crop? That insight exists. Route to it.</p>
       </div>
