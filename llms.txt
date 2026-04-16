@@ -8,7 +8,7 @@
 ## Primary pages
 
 - [QIS Protocol • Quadratic Intelligence Swarm](https://qisprotocol.com/index): QIS Protocol — Quadratic Intelligence Swarm — is LIVE. The first distributed intelligence protocol discovered by Christopher Thomas Trevethan, June 16 2025. Install YonderClaw and join the swarm. Free for research and humanitarian use.
-- [How It Works • QIS Protocol](https://qisprotocol.com/how-it-works): How QIS Protocol Works - Step-by-step explanation of Quadratic Intelligence Swarm technology
+- [How QIS Protocol Works — The Complete Loop](https://qisprotocol.com/how-it-works): How QIS Protocol works: the complete loop from local outcome distillation to quadratic intelligence scaling. Domain-agnostic, privacy-preserving, no central aggregator.
 - **Use Cases**
     - [Healthcare — QIS Protocol](https://qisprotocol.com/healthcare): QIS Protocol for healthcare — distributed outcome routing across hospitals, clinics, and research networks. NHS, OHDSI, OMOP, PCORnet, CanDIG compatible. No raw patient data movement, N(N-1)/2 intelligence connections.
     - [Agriculture — QIS Protocol](https://qisprotocol.com/agriculture): QIS Protocol for agriculture — distributed outcome routing across farms, agronomic sensors, and co-ops. No raw yield data movement, N(N-1)/2 intelligence connections, O(log N) or better per-node cost. Smallholder farmers get intelligence at parity with industrial operations.
@@ -21,7 +21,7 @@
 
 ## Secondary pages
 
-- [Compare Approaches • QIS Protocol](https://qisprotocol.com/comparison): Compare QIS Protocol to Centralized AI, Federated Learning, and Edge AI - understand the paradigm shift
+- [QIS Protocol vs Federated Learning vs Centralized AI — Full Comparison](https://qisprotocol.com/comparison): QIS Protocol achieves N(N-1)/2 quadratic scaling — no central aggregator, zero compute cost, full HIPAA compliance. See how QIS compares to federated learning, centralized AI, and edge AI.
 - [The Next Tech Race • QIS Protocol](https://qisprotocol.com/techrace): The Next Tech Race - When Companies Compete to Save Lives. A paradigm shift from data hoarding to pattern curation.
 - [The QIS Manifesto • A Declaration of Principles](https://qisprotocol.com/manifesto): The QIS Manifesto. A declaration of principles for distributed intelligence. Intelligence should compound. Data should stay home. Insight should flow freely. The survival of one should become the survival of all.
 - [Directory • QIS Protocol](https://qisprotocol.com/directory): QIS Protocol Full Directory - All pages, documents, and resources
@@ -114,5 +114,5 @@ All articles are canonical on qisprotocol.com. Dev.to / Medium / Hashnode syndic
 - [You Just Watched a YouTube Video. Here's What You Actually Got. • QIS Protocol](https://qisprotocol.com/article-youtube-video-qis): When you watch a YouTube video to solve a problem, you're trusting one person who doesn't know you. What if instead you could query outcomes from thousands of people with your exact situation? That's the paradigm shift.
 
 ---
-Last regenerated: 2026-04-14
+Last regenerated: 2026-04-16
 Source: data/canonical-ia.json + article-*.html inventory
