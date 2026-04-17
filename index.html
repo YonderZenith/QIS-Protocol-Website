@@ -574,7 +574,7 @@
           <div class="qis-live-cell c-hops">
             <div class="v" id="qls-hops">&mdash;</div>
             <div class="l">Hops / Query</div>
-            <div class="s" id="qls-hops-note">scales logarithmically</div>
+            <div class="s" id="qls-hops-note">direct peer lookup</div>
           </div>
           <div class="qis-live-cell c-ratio">
             <div class="v" id="qls-ratio">&mdash;</div>
@@ -1226,12 +1226,12 @@
       }
 
       // Honest hops framing per Ysmara:
-      // <4 nodes = effectively O(1) direct peer lookup
-      // >=4 nodes = ceil(log2 N), label "scales logarithmically"
-      function computeHops(n) {
-        if (n < 2) return { value: 0, note: 'bootstrapping' };
-        if (n < 4) return { value: 1, note: 'direct peer lookup (O(1))' };
-        return { value: Math.ceil(Math.log2(n)), note: 'scales logarithmically' };
+      // Current actual DHT cost is ~1 hop (2-3 holder nodes in direct peer lookup mode).
+      // /stats 'agents' counts depositors, NOT holders, so we can't use it for hop math.
+      // When Ysmara ships /dht-stats with real holder_count + avg_hops, swap this for the
+      // measured values. Until then show the real-current O(1) with scaling context.
+      function computeHops() {
+        return { value: 1, note: 'direct peer lookup — scales to log₂(N) as more nodes join' };
       }
 
       function setText(id, txt) {
@@ -1249,12 +1249,12 @@
       function setTrackerLive(data) {
         var agents = data.agents || 0;
         var pairs = agents >= 2 ? (agents * (agents - 1) / 2) : 0;
-        var hops = computeHops(agents);
+        var hops = computeHops();
         var ratio = hops.value > 0 ? Math.round(pairs / hops.value) : pairs;
 
         setText('qls-agents', fmt(agents));
         setText('qls-pairs', fmt(pairs));
-        setText('qls-hops', hops.value > 0 ? '~' + hops.value : '—');
+        setText('qls-hops', '~' + hops.value);
         setText('qls-hops-note', hops.note);
         setText('qls-ratio', ratio > 0 ? fmt(ratio) + ':1' : '—');
         setText('qls-packets', fmt(data.packets || 0));
