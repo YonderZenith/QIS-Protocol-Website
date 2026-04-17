@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Article #210 — QIS Protocol Series">
+  <meta name="keywords" content="healthtech, distributedsystems, ehds, healthdata">
+  <meta name="author" content="Christopher Thomas Trevethan">
+  <link rel="canonical" href="https://qisprotocol.com/article-ehds-european-health-data-space-qis-routing-layer.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The European Health Data Space Went Live on March 26. Here Is the Routing Architecture It Needs.">
+  <meta property="og:description" content="Article #210 — QIS Protocol Series">
+  <meta property="og:url" content="https://qisprotocol.com/article-ehds-european-health-data-space-qis-routing-layer.html">
+  <meta property="og:site_name" content="QIS Protocol">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The European Health Data Space Went Live on March 26. Here Is the Routing Architecture It Needs.">
+  <meta name="twitter:description" content="Article #210 — QIS Protocol Series">
+
+  <title>The European Health Data Space Went Live on March 26. Here Is the Routing Architecture It Needs.</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://qisprotocol.com/#organization",
+      "name": "Yonder Zenith LLC",
+      "url": "https://qisprotocol.com",
+      "logo": "https://qisprotocol.com/images/logo.png",
+      "founder": {
+        "@id": "https://qisprotocol.com/#inventor"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://qisprotocol.com/#inventor",
+      "name": "Christopher Thomas Trevethan",
+      "jobTitle": "QIS Protocol Architect, Founder of Yonder Zenith LLC",
+      "affiliation": {
+        "@id": "https://qisprotocol.com/#organization"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "The European Health Data Space Went Live on March 26. Here Is the Routing Architecture It Needs.",
+      "description": "Article #210 — QIS Protocol Series",
+      "url": "https://qisprotocol.com/article-ehds-european-health-data-space-qis-routing-layer.html",
+      "mainEntityOfPage": "https://qisprotocol.com/article-ehds-european-health-data-space-qis-routing-layer.html",
+      "datePublished": "2026-04-17",
+      "dateModified": "2026-04-17",
+      "author": {
+        "@id": "https://qisprotocol.com/#inventor"
+      },
+      "publisher": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "QIS Protocol — Quadratic Intelligence Swarm",
+        "url": "https://qisprotocol.com"
+      },
+      "keywords": "healthtech, distributedsystems, ehds, healthdata"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://qisprotocol.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://qisprotocol.com/articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The European Health Data Space Went Live on March 26. Here Is the Routing Architecture It Needs.",
+          "item": "https://qisprotocol.com/article-ehds-european-health-data-space-qis-routing-layer.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6;
+      --green-neural: #10B981; --gold-accent: #F59E0B; --red-accent: #EF4444;
+      --dark-bg: #0A0A0A; --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; line-height: 1.8; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(0,190,234,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .article-hero { padding: 140px clamp(16px, 4vw, 40px) 40px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .article-badge {
+      display: inline-block; padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 1.5px; color: var(--cyan-bright); background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 20px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .article-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3.8vw, 2.6rem); font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 20px; line-height: 1.2; }
+    .article-byline { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .article-byline strong { color: var(--text-secondary); }
+    .in-brief { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(0,190,234,0.08));
+      border-left: 4px solid var(--purple-quantum); border-radius: 0 12px 12px 0;
+      padding: clamp(18px, 3vw, 28px); margin-bottom: 40px; }
+    .in-brief-label { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; color: var(--purple-quantum); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .in-brief p { font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--text-primary); line-height: 1.7; margin: 0; font-style: italic; }
+    .article-body { max-width: 780px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 60px; position: relative; z-index: 1; font-size: 1.05rem; color: var(--text-secondary); }
+    .article-body h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.2rem, 2.3vw, 1.7rem); color: var(--cyan-bright); margin: 50px 0 18px; }
+    .article-body h3 { font-family: 'Orbitron', sans-serif; font-size: clamp(1rem, 1.7vw, 1.25rem); color: var(--text-primary); margin: 32px 0 14px; }
+    .article-body h4 { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 24px 0 10px; }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { margin: 0 0 18px 22px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text-primary); }
+    .article-body a { color: var(--cyan-bright); text-decoration: none; border-bottom: 1px solid rgba(0, 217, 255, 0.25); }
+    .article-body a:hover { border-bottom-color: var(--cyan-bright); }
+    .article-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: rgba(0, 190, 234, 0.08); padding: 2px 6px; border-radius: 4px; color: var(--cyan-bright); }
+    .article-body pre { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 190, 234, 0.15); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; }
+    .article-body pre code { background: transparent; padding: 0; color: var(--text-primary); }
+    .article-body blockquote { border-left: 4px solid var(--green-neural); padding: 8px 20px; margin: 20px 0; background: rgba(16, 185, 129, 0.04); color: var(--text-primary); font-style: italic; }
+    .article-body hr { border: none; border-top: 1px solid rgba(0, 190, 234, 0.15); margin: 40px 0; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .article-body th, .article-body td { padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: left; }
+    .article-body th { color: var(--cyan-bright); font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .article-footer-cta { max-width: 780px; margin: 40px auto; padding: 30px; background: rgba(0, 190, 234, 0.04); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-align: center; position: relative; z-index: 1; }
+    .article-footer-cta p { color: var(--text-secondary); margin-bottom: 16px; }
+    .article-footer-cta a { display: inline-block; padding: 10px 24px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); color: var(--cyan-bright); text-decoration: none; border-radius: 30px; margin: 4px; transition: all 0.3s ease; }
+    .article-footer-cta a:hover { background: var(--cyan-bright); color: #000; }
+    footer { background: #000; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 190, 234, 0.15); }
+    footer p { color: var(--text-secondary); margin-bottom: 6px; font-size: 0.85rem; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+  </style>
+<script>
+  (function(ss,ex){
+    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
+    (function(d,s){
+      fs=d.getElementsByTagName(s)[0];
+      function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
+      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
+    })(document,'script');
+  })('lAxoEaKQb9v7OYGd');
+</script>
+</head>
+<body>
+
+<!-- ==================== CANONICAL NAV v2 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v2">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare.html" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/agriculture.html">Agriculture</a></li>
+        <li><a href="/emergency.html">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos.html">Demos</a></li>
+    <li><a href="/articles.html">Articles</a></li>
+    <li><a href="/licensing.html">Licensing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v2 ==================== -->
+
+
+  <article>
+    <header class="article-hero">
+      <div class="article-badge">healthtech</div>
+      <h1>The European Health Data Space Went Live on March 26. Here Is the Routing Architecture It Needs.</h1>
+      <div class="article-byline">
+        By <strong>Christopher Thomas Trevethan</strong> • Published 2026-04-17 • <a href="/" style="color: var(--cyan-bright);">Yonder Zenith LLC</a>
+      </div>
+      <div class="in-brief"><div class="in-brief-label">In brief</div><p>Article #210 — QIS Protocol Series</p></div>
+    </header>
+    <div class="article-body">
+<h1>The European Health Data Space Went Live on March 26. Here Is the Routing Architecture It Needs.</h1>
+<p><em>Article #210 — QIS Protocol Series</em></p>
+<hr>
+<p>On March 26, 2026, the European Health Data Space Regulation entered application.</p>
+<p>After years of negotiation between the European Parliament, the Council, and the Commission, 27 EU member states plus a growing number of EFTA partners now have a legal obligation to provide cross-border access to health data — for both primary use (patients accessing their own records) and secondary use (researchers, public health authorities, and policymakers accessing population health data for analysis).</p>
+<p>The HealthData@EU platform is the technical implementation vehicle. TEHDAS2 is the joint action coordinating the rollout. National Health Data Access Bodies (HDABs) are standing up Secure Data Environments and Trusted Research Environments in every member state.</p>
+<p>There is one thing missing from every architecture diagram published to date: a routing layer.</p>
+<hr>
+<h2>The Problem EHDS Has Not Specified</h2>
+<p>EHDS is explicit about what it wants to prevent: a single central European repository where member states upload patient data.</p>
+<p>The political and legal reasons are well understood. Germany&#39;s Constitutional Court, France&#39;s CNIL, and health ministries across the continent have made clear that patient data does not travel to Brussels. National sovereignty over health records is not negotiable.</p>
+<p>EHDS Chapter 4 — the secondary-use framework — therefore mandates a federated approach: data stays at source, researchers send queries in, results come back out. Trusted Research Environments operate within member state jurisdiction. No raw data crosses borders.</p>
+<p>This is the right architecture. The problem is that the specification stops there.</p>
+<p>How, exactly, do queries resolve across 27 national data environments? How does a researcher studying rare autoimmune disease across all of Europe — with perhaps 400 patients per country — get statistically meaningful results from a network of 27 independent secure environments without sending their query to 27 different help desks and waiting 27 different approval timelines?</p>
+<p>The answer EHDS does not yet specify is: a protocol.</p>
+<hr>
+<h2>What &quot;Federated&quot; Actually Requires Technically</h2>
+<p>The word &quot;federated&quot; appears throughout EHDS documentation. What it means technically has not been resolved.</p>
+<p>The current implicit assumption is a hub-and-spoke model: HealthData@EU acts as a coordination broker, researchers submit queries to a central interface, queries fan out to national TREs, results aggregate at the hub, de-identified summary results return to the researcher. This is how DARWIN EU — the EMA&#39;s federated pharmacovigilance network — currently operates.</p>
+<p>The hub-and-spoke model has a ceiling. At 27 member states, the central coordinator receives 27 independent result sets. It must reconcile them — handling different data standards, different coding systems, different population structures, different query latencies. The coordinator becomes the bottleneck. Every query has O(N) coordination cost. As participation grows, the system gets slower.</p>
+<p>More critically: the coordinator sees everything. Even if it doesn&#39;t store patient data, it sees query patterns, result distributions, and research interests from every member state. For politically sensitive queries — involving genetics, mental health, immigration status, reproductive health — even query-level visibility at a central broker creates sovereignty concerns that will slow adoption.</p>
+<p>This is not a policy problem. It is an architecture problem.</p>
+<hr>
+<h2>The Architecture Christopher Thomas Trevethan Discovered</h2>
+<p>Christopher Thomas Trevethan discovered — not invented — how intelligence scales quadratically without central coordination. The discovery, formalized on June 16, 2025 and covered by 39 provisional patents, is called Quadratic Intelligence Swarm (QIS) Protocol.</p>
+<p>The breakthrough is the complete loop. Not any single component.</p>
+<p>Here is how it works:</p>
+<p>A national data access body in, say, Portugal receives a research query: outcomes for patients over 70 with Type 2 diabetes and chronic kidney disease, stratified by treatment protocol. Their Secure Data Environment processes the query locally against Portuguese health records. The result is not sent to a central server. Instead, it is distilled into an outcome packet — approximately 512 bytes of pre-processed intelligence: the statistical shape of the answer, the query fingerprint, the confidence bounds.</p>
+<p>That packet is given a semantic fingerprint — a vector representation of the clinical question — and posted to a deterministic address defined by that clinical domain. Any routing mechanism that can post to and retrieve from a content-addressed store works: a DHT, a federated database, a vector index, a message queue. The routing is protocol-agnostic.</p>
+<p>A researcher in Germany studying the same clinical question does not query the Portuguese database. They query the address. They receive outcome packets from Portugal, Spain, France, Italy, the Netherlands — every national node that has processed queries in that clinical domain. They synthesize those packets locally. The result is cross-European clinical intelligence without a single byte of patient data crossing a border.</p>
+<p>The math that makes this a phase change: with 27 member states (N=27), the number of unique synthesis pathways is N(N-1)/2 = 351. Each node&#39;s compute cost is O(log N) or better — at 27 nodes, that is fewer than 5 routing hops. As EFTA partners join and the network grows to 35 nodes, synthesis pathways jump to 595 while each node&#39;s cost grows by a single routing hop. Intelligence scales quadratically. Compute scales logarithmically. The network gets smarter as it grows.</p>
+<hr>
+<h2>Why This Is Different From DARWIN EU and GA4GH</h2>
+<p>DARWIN EU is EMA&#39;s federated pharmacovigilance network. It currently spans 14 data partners, covering approximately 100 million European patients. It uses a hub-and-spoke model: queries go through a central Scientific Coordinator at Erasmus MC, partner nodes process locally, results aggregate at the hub.</p>
+<p>The DARWIN EU model is better than centralized data pooling. But the Scientific Coordinator is still a bottleneck. It sees all query patterns. It controls access. The 14-partner ceiling is not a policy choice — it is an architectural consequence of hub-and-spoke coordination cost.</p>
+<p>GA4GH Beacon is a discovery protocol for genomic datasets. Beacons respond to queries about whether a dataset contains variants matching a specific profile. Beacon v2 added phenotype queries. It is a question-answering interface, not an intelligence routing protocol. Beacons do not synthesize outcomes across networks. They do not compound intelligence as the network scales.</p>
+<p>QIS is neither of these. It is a routing protocol for pre-distilled outcome packets. No Scientific Coordinator. No central query interface. No hub that sees all traffic. Every node is both a producer and a consumer of intelligence. The coordinator is replaced by a semantic address space — a content-addressed namespace defined by clinical domain experts who know exactly what makes two research questions similar enough to share outcomes.</p>
+<p>That address space is what TEHDAS2 should be specifying right now.</p>
+<hr>
+<h2>The Three Natural Forces That Emerge</h2>
+<p>When researchers talk about &quot;data quality&quot; in federated networks, they are describing something that QIS makes automatic — without adding any mechanism to the protocol.</p>
+<p>Christopher Thomas Trevethan describes three forces that emerge naturally from the QIS architecture, as metaphors for what the math does:</p>
+<p><strong>First: the right experts define similarity.</strong> Someone must specify what makes a clinical query in Portugal &quot;similar enough&quot; to a clinical query in Germany that they should share outcome packets. This is the domain expert problem — and QIS surfaces it explicitly. An endocrinologist who understands Type 2 diabetes phenotyping across European populations defines the similarity function for that domain. Not a database administrator. Not a standards committee. The best clinical expert for that question. This is not a governance layer to build — it is a role to fill, and the math rewards filling it well.</p>
+<p><strong>Second: outcomes elect what works.</strong> When 20 national nodes have processed queries in the same clinical domain and deposited outcome packets, the synthesis that emerges naturally amplifies what is statistically consistent across populations and dampens what is idiosyncratic to a single country&#39;s data. No reputation scoring system. No weighting mechanism. The aggregate of real outcomes across real patients IS the quality signal. The math does the work.</p>
+<p><strong>Third: networks compete.</strong> If a QIS instance for EHDS cardiovascular research routes high-quality, well-synthesized outcome packets, researchers will use it. If another instance routes irrelevant noise because the similarity function was poorly defined, researchers will stop querying it. No governance enforcement needed. The network that actually helps researchers attracts participation. This is natural selection for intelligence infrastructure.</p>
+<hr>
+<h2>What TEHDAS2 Should Specify</h2>
+<p>TEHDAS2&#39;s mandate includes specifying the technical standards for HealthData@EU. The current focus is on data models (OMOP, HL7 FHIR), access mechanisms (APIs, Trusted Research Environments), and data quality frameworks.</p>
+<p>What is not yet specified: the protocol by which outcome intelligence routes across the federated network once queries are processed at the national level.</p>
+<p>That protocol specification should include:</p>
+<ol>
+<li><p><strong>Outcome packet format</strong>: a standardized 512-byte structure containing query fingerprint, result distribution, confidence intervals, node identifier hash, and semantic domain tag. Interoperable across all 27 national implementations regardless of their underlying data model.</p>
+</li>
+<li><p><strong>Semantic address space</strong>: a domain-expert-defined namespace for clinical research domains. Each domain in the European disease burden — cardiovascular, oncology, rare disease, mental health, infectious disease — gets a deterministic address. Queries in that domain post to and retrieve from that address.</p>
+</li>
+<li><p><strong>Routing mechanism specification</strong>: transport-agnostic. DHT-based routing (O(log N) or better, fully decentralized) is one excellent option. Federated database indices with vector similarity search is another. The standard should specify the interface, not the transport — exactly as HTTP specifies the protocol without mandating TCP implementation details.</p>
+</li>
+<li><p><strong>Privacy guarantees by architecture</strong>: the outcome packet format should be specified such that reconstruction of patient-level data is cryptographically infeasible. This is achievable by design — outcome packets contain no raw records, only statistical summaries. The privacy guarantee is structural, not policy-dependent.</p>
+</li>
+</ol>
+<p>This is not a research agenda. The architecture is defined. The math is proven. The 39 provisional patents covering QIS Protocol provide the IP framework. The implementation question for TEHDAS2 is specification, not invention.</p>
+<hr>
+<h2>The Window Is Now</h2>
+<p>The EHDS Regulation entered application 18 days ago. National Health Data Access Bodies are standing up. HealthData@EU is accepting input on technical standards. TEHDAS2&#39;s joint action is running through 2026.</p>
+<p>The routing layer has not been specified. The window for that specification is open.</p>
+<p>A decentralized intelligence routing protocol that satisfies EHDS&#39;s federated mandate — no central broker, no raw data transfer, privacy by architecture, quadratic scaling as member states join — already exists. It was discovered by Christopher Thomas Trevethan and is covered by 39 provisional patents.</p>
+<p>Every month that EHDS deploys without a routing protocol specification is a month where national TREs process queries in isolation. The results go nowhere. The intelligence dies at the node. 378 potential cross-border synthesis pathways sit unused.</p>
+<p>The architecture that closes this loop is QIS Protocol.</p>
+<hr>
+<p><em>Christopher Thomas Trevethan is the discoverer of Quadratic Intelligence Swarm (QIS) Protocol, a distributed outcome routing architecture covered by 39 provisional patents. QIS enables real-time intelligence synthesis across distributed networks without centralizing raw data. More at <a href="https://qisprotocol.com">qisprotocol.com</a>.</em></p>
+<p><em>Article #210 in the QIS Protocol Series.</em></p>
+
+    </div>
+  </article>
+
+  <section class="article-footer-cta">
+    <p><strong>Keep exploring QIS Protocol</strong></p>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/comparison.html">Compare Approaches</a>
+    <a href="/articles.html">All Articles</a>
+    <a href="/faq.html">FAQ</a>
+  </section>
+
+  <footer>
+    <p><strong>Yonder Zenith LLC</strong> &mdash; Redefining The Horizon</p>
+    <p>&copy; 2025 Yonder Zenith LLC. All rights reserved. <a href="/licensing.html">License</a> | <a href="/privacy.html">Privacy</a></p>
+    <p style="margin-top: 10px; opacity: 0.4; font-size: 0.8rem;">39 provisional patent applications filed. Math is public. Implementation is protected.</p>
+  </footer>
+</body>
+</html>

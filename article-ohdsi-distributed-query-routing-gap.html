@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The OHDSI (Observational Health Data Sciences and Informatics) network is one of the largest distributed clinical research infrastructures ever built. Over 400 ">
+  <meta name="keywords" content="healthtech, distributedsystems, federated-learning, ohdsi">
+  <meta name="author" content="Christopher Thomas Trevethan">
+  <link rel="canonical" href="https://qisprotocol.com/article-ohdsi-distributed-query-routing-gap.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The OHDSI Network Has 900 Million Patient Records. Here Is Why None of Them Talk to Each Other.">
+  <meta property="og:description" content="The OHDSI (Observational Health Data Sciences and Informatics) network is one of the largest distributed clinical research infrastructures ever built. Over 400 ">
+  <meta property="og:url" content="https://qisprotocol.com/article-ohdsi-distributed-query-routing-gap.html">
+  <meta property="og:site_name" content="QIS Protocol">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The OHDSI Network Has 900 Million Patient Records. Here Is Why None of Them Talk to Each Other.">
+  <meta name="twitter:description" content="The OHDSI (Observational Health Data Sciences and Informatics) network is one of the largest distributed clinical research infrastructures ever built. Over 400 ">
+
+  <title>The OHDSI Network Has 900 Million Patient Records. Here Is Why None of Them Talk to Each Other.</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://qisprotocol.com/#organization",
+      "name": "Yonder Zenith LLC",
+      "url": "https://qisprotocol.com",
+      "logo": "https://qisprotocol.com/images/logo.png",
+      "founder": {
+        "@id": "https://qisprotocol.com/#inventor"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://qisprotocol.com/#inventor",
+      "name": "Christopher Thomas Trevethan",
+      "jobTitle": "QIS Protocol Architect, Founder of Yonder Zenith LLC",
+      "affiliation": {
+        "@id": "https://qisprotocol.com/#organization"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "The OHDSI Network Has 900 Million Patient Records. Here Is Why None of Them Talk to Each Other.",
+      "description": "The OHDSI (Observational Health Data Sciences and Informatics) network is one of the largest distributed clinical research infrastructures ever built. Over 400 ",
+      "url": "https://qisprotocol.com/article-ohdsi-distributed-query-routing-gap.html",
+      "mainEntityOfPage": "https://qisprotocol.com/article-ohdsi-distributed-query-routing-gap.html",
+      "datePublished": "2026-04-17",
+      "dateModified": "2026-04-17",
+      "author": {
+        "@id": "https://qisprotocol.com/#inventor"
+      },
+      "publisher": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "QIS Protocol — Quadratic Intelligence Swarm",
+        "url": "https://qisprotocol.com"
+      },
+      "keywords": "healthtech, distributedsystems, federated-learning, ohdsi"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://qisprotocol.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://qisprotocol.com/articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The OHDSI Network Has 900 Million Patient Records. Here Is Why None of Them Talk to Each Other.",
+          "item": "https://qisprotocol.com/article-ohdsi-distributed-query-routing-gap.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6;
+      --green-neural: #10B981; --gold-accent: #F59E0B; --red-accent: #EF4444;
+      --dark-bg: #0A0A0A; --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; line-height: 1.8; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(0,190,234,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .article-hero { padding: 140px clamp(16px, 4vw, 40px) 40px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .article-badge {
+      display: inline-block; padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 1.5px; color: var(--cyan-bright); background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 20px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .article-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3.8vw, 2.6rem); font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 20px; line-height: 1.2; }
+    .article-byline { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .article-byline strong { color: var(--text-secondary); }
+    .in-brief { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(0,190,234,0.08));
+      border-left: 4px solid var(--purple-quantum); border-radius: 0 12px 12px 0;
+      padding: clamp(18px, 3vw, 28px); margin-bottom: 40px; }
+    .in-brief-label { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; color: var(--purple-quantum); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .in-brief p { font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--text-primary); line-height: 1.7; margin: 0; font-style: italic; }
+    .article-body { max-width: 780px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 60px; position: relative; z-index: 1; font-size: 1.05rem; color: var(--text-secondary); }
+    .article-body h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.2rem, 2.3vw, 1.7rem); color: var(--cyan-bright); margin: 50px 0 18px; }
+    .article-body h3 { font-family: 'Orbitron', sans-serif; font-size: clamp(1rem, 1.7vw, 1.25rem); color: var(--text-primary); margin: 32px 0 14px; }
+    .article-body h4 { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 24px 0 10px; }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { margin: 0 0 18px 22px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text-primary); }
+    .article-body a { color: var(--cyan-bright); text-decoration: none; border-bottom: 1px solid rgba(0, 217, 255, 0.25); }
+    .article-body a:hover { border-bottom-color: var(--cyan-bright); }
+    .article-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: rgba(0, 190, 234, 0.08); padding: 2px 6px; border-radius: 4px; color: var(--cyan-bright); }
+    .article-body pre { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 190, 234, 0.15); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; }
+    .article-body pre code { background: transparent; padding: 0; color: var(--text-primary); }
+    .article-body blockquote { border-left: 4px solid var(--green-neural); padding: 8px 20px; margin: 20px 0; background: rgba(16, 185, 129, 0.04); color: var(--text-primary); font-style: italic; }
+    .article-body hr { border: none; border-top: 1px solid rgba(0, 190, 234, 0.15); margin: 40px 0; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .article-body th, .article-body td { padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: left; }
+    .article-body th { color: var(--cyan-bright); font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .article-footer-cta { max-width: 780px; margin: 40px auto; padding: 30px; background: rgba(0, 190, 234, 0.04); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-align: center; position: relative; z-index: 1; }
+    .article-footer-cta p { color: var(--text-secondary); margin-bottom: 16px; }
+    .article-footer-cta a { display: inline-block; padding: 10px 24px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); color: var(--cyan-bright); text-decoration: none; border-radius: 30px; margin: 4px; transition: all 0.3s ease; }
+    .article-footer-cta a:hover { background: var(--cyan-bright); color: #000; }
+    footer { background: #000; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 190, 234, 0.15); }
+    footer p { color: var(--text-secondary); margin-bottom: 6px; font-size: 0.85rem; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+  </style>
+<script>
+  (function(ss,ex){
+    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
+    (function(d,s){
+      fs=d.getElementsByTagName(s)[0];
+      function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
+      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
+    })(document,'script');
+  })('lAxoEaKQb9v7OYGd');
+</script>
+</head>
+<body>
+
+<!-- ==================== CANONICAL NAV v2 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v2">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare.html" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/agriculture.html">Agriculture</a></li>
+        <li><a href="/emergency.html">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos.html">Demos</a></li>
+    <li><a href="/articles.html">Articles</a></li>
+    <li><a href="/licensing.html">Licensing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v2 ==================== -->
+
+
+  <article>
+    <header class="article-hero">
+      <div class="article-badge">healthtech</div>
+      <h1>The OHDSI Network Has 900 Million Patient Records. Here Is Why None of Them Talk to Each Other.</h1>
+      <div class="article-byline">
+        By <strong>Christopher Thomas Trevethan</strong> • Published 2026-04-17 • <a href="/" style="color: var(--cyan-bright);">Yonder Zenith LLC</a>
+      </div>
+      <div class="in-brief"><div class="in-brief-label">In brief</div><p>The OHDSI (Observational Health Data Sciences and Informatics) network is one of the largest distributed clinical research infrastructures ever built. Over 400 institutions. More than 900 million patient records standardized into the OMOP Common Data Model. A federated query…</p></div>
+    </header>
+    <div class="article-body">
+<h1>The OHDSI Network Has 900 Million Patient Records. Here Is Why None of Them Talk to Each Other.</h1>
+<p>The OHDSI (Observational Health Data Sciences and Informatics) network is one of the largest distributed clinical research infrastructures ever built. Over 400 institutions. More than 900 million patient records standardized into the OMOP Common Data Model. A federated query system that can ask a research question and get answers from Boston, Berlin, Tokyo, and São Paulo within hours — without any patient data leaving any hospital.</p>
+<p>This is a genuine engineering achievement. It is also operating at approximately 1% of its potential intelligence capacity.</p>
+<p>Here is the problem that nobody in Rotterdam this week is saying out loud.</p>
+<hr>
+<h2>What OHDSI Actually Does</h2>
+<p>When an OHDSI researcher runs a distributed network study, the sequence looks like this:</p>
+<ol>
+<li>Research question is formalized as an OMOP CDM analysis package</li>
+<li>Package is distributed to participating sites (100–400+ institutions)</li>
+<li>Each site runs the analysis locally against their patient data</li>
+<li>Each site returns aggregate results (summary statistics, not patient records)</li>
+<li>Results are pooled at a central coordinating center</li>
+<li>A meta-analysis is published, often 6–18 months later</li>
+</ol>
+<p>This is the state of the art in observational health research. It is genuinely better than what came before it.</p>
+<p>The problem is step 5. When results are &quot;pooled at a central coordinating center,&quot; what actually happens is: a statistician looks at 400 sets of aggregate numbers and runs a weighted average. The numbers come together. The intelligence does not.</p>
+<hr>
+<h2>The Gap That 400 Sites Cannot See</h2>
+<p>Consider what the OHDSI network knows right now that no researcher has access to:</p>
+<p>A hospital in Rotterdam has treated 4,200 patients with a specific chemotherapy protocol. Their 3-year survival rate is 12 points above the OHDSI network average. They have identified which patient subgroup drives that outperformance. They have not published it yet — it is in their local analysis results, not in any shared system.</p>
+<p>A hospital in Columbus has the same patient subgroup profile. They are seeing 3-year survival rates 8 points below the network average. They have tried three protocol variations. None worked. They are about to try the fourth.</p>
+<p>These two institutions are in the same OHDSI network. They are running OMOP CDM. They have answered the same queries. Their aggregate results sit in the same coordinating center database.</p>
+<p>They have never learned from each other.</p>
+<p>The Columbus team does not know Rotterdam cracked their problem. The Rotterdam team does not know Columbus is running the experiments that would validate their approach. The OHDSI central coordinator sees both result sets but has no mechanism to route the insight from one to the other.</p>
+<p>This is not a data access problem. Both sites are already in the network. This is an architecture problem.</p>
+<hr>
+<h2>Why Federated Queries Are Not Enough</h2>
+<p>The OHDSI model — like all federated query systems — aggregates answers. It does not route intelligence.</p>
+<p>The distinction matters mathematically. With N participating sites, federated queries produce N independent answer sets. A central analysis looks at all N answers and produces one pooled estimate. The intelligence produced is linear in N.</p>
+<p>What the network is actually capable of: N(N-1)/2 unique synthesis pairs between sites that share clinical problems. At 400 sites, that is 79,800 synthesis opportunities. Every one of them is currently running at zero.</p>
+<p>The German 33-hospital FHIR feasibility study (Gruendner et al., 2019, PMC) documented this explicitly: distributed federated queries across hospital networks produce independent answers that must be manually reconciled. The reconciliation step — where a human statistician decides how to weight and interpret heterogeneous results — is where intelligence gets lost. The math says 33 hospitals should produce 528 synthesis paths. The study produced one pooled estimate.</p>
+<p>That gap — between N answers and N(N-1)/2 synthesis pairs — is the architectural ceiling of every federated query system in existence.</p>
+<hr>
+<h2>What Distributed FHIR Query Routing Actually Requires</h2>
+<p>TEFCA (the Trusted Exchange Framework and Common Agreement) went into effect in January 2026, mandating FHIR-based health data exchange across US health systems. European health data space (EHDS) is driving equivalent standardization across EU member states. Every major health data infrastructure is now building on FHIR as the exchange layer.</p>
+<p>FHIR solves data standardization and exchange. It does not solve synthesis.</p>
+<p>What a distributed FHIR query routing system needs — and currently does not have — is a layer that:</p>
+<ol>
+<li>Takes query results from individual FHIR nodes</li>
+<li>Distills them into compact, comparable outcome representations</li>
+<li>Routes those representations to other nodes that share the same clinical question</li>
+<li>Enables each node to synthesize remotely-derived insights locally, without raw data transfer</li>
+<li>Closes the feedback loop so that what works at one node reaches the nodes that need it</li>
+</ol>
+<p>This is not a FHIR feature. It is not an OMOP CDM feature. It is an intelligence routing layer that operates above both.</p>
+<hr>
+<h2>The Architecture That Closes the Loop</h2>
+<p>Quadratic Intelligence Swarm (QIS), discovered by Christopher Thomas Trevethan on June 16, 2025, is the architecture that adds this layer.</p>
+<p>The QIS loop applied to an OHDSI/FHIR network looks like this:</p>
+<pre><code>OMOP CDM Node (e.g., Rotterdam)
+     │
+     │  Local analysis runs. Results stay local.
+     │
+     ▼
+Distillation: Query outcome → Outcome Packet (~512 bytes)
+     {
+       &quot;semantic_address&quot;: &quot;chemo-protocol-X/patient-subtype-A/survival-3yr&quot;,
+       &quot;outcome&quot;: &quot;12pt above network mean&quot;,
+       &quot;n&quot;: 4200,
+       &quot;context_hash&quot;: &quot;omop_cdm_v5.4/concept_set_1847&quot;,
+       &quot;timestamp&quot;: &quot;2026-04-13T...&quot;,
+       &quot;node_id&quot;: &quot;anon_hash_8a7f...&quot;
+     }
+     │
+     ▼
+Routing: Outcome packet posted to semantic address
+(DHT, vector DB, REST API — any mechanism works)
+     │
+     ▼
+Columbus node queries same semantic address
+Receives Rotterdam packet + 23 other packets from nodes
+with same patient subtype and protocol
+     │
+     ▼
+Local synthesis on Columbus hardware (milliseconds)
+Result: &quot;3 nodes achieved &gt;10pt above mean.
+All three used modified dosing schedule in week 3.
+Columbus current protocol differs at exactly that step.&quot;
+     │
+     ▼
+Columbus adjusts protocol hypothesis before experiment 4.
+Not because Rotterdam published. Because the loop closed.
+</code></pre>
+<p>No patient data left Rotterdam. No patient data entered Columbus. The synthesis happened on Columbus hardware using 512-byte packets that contain no patient identifiers, no raw records, no model weights.</p>
+<p>This is not incremental improvement over federated queries. It is a different category of operation.</p>
+<hr>
+<h2>The Math Against Federated Learning</h2>
+<p>Federated learning — the other common approach to distributed health data — makes the gap explicit.</p>
+<p>Standard federated learning (McMahan et al., 2017) requires:</p>
+<ul>
+<li>Central aggregator (single point of failure)</li>
+<li>Full model weight synchronization each round</li>
+<li>Bandwidth proportional to model size × number of sites</li>
+<li>Minimum viable site count (typically N≥20 for statistical meaningfulness)</li>
+<li>N=1 sites are excluded by architecture — rare disease single-site institutions cannot participate</li>
+</ul>
+<p>QIS routing requires:</p>
+<ul>
+<li>No central aggregator</li>
+<li>~512-byte outcome packets (not model weights)</li>
+<li>Bandwidth constant regardless of model size</li>
+<li>N=1 sites participate fully — their single outcome packet is as valid as any other node&#39;s</li>
+<li>No synchronization rounds — continuous, real-time</li>
+</ul>
+<p>The critical difference: federated learning aggregates intelligence centrally. QIS routes intelligence to where it is needed. The first approach requires a center. The second approach has no center to require.</p>
+<p>For an OHDSI network where rare disease research is a core use case — where some diseases have fewer than 10 sites worldwide — federated learning&#39;s N≥20 minimum is not a technical limitation. It is a structural exclusion of the research that most needs multi-site synthesis.</p>
+<hr>
+<h2>OHDSI Rotterdam: What 400 Sites Already Have</h2>
+<p>The OHDSI network, as it exists today, already has every component QIS needs except the routing layer itself:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>OHDSI Status</th>
+<th>QIS Requirement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Standardized data model (OMOP CDM)</td>
+<td>✓ Live, 400+ sites</td>
+<td>✓ Any schema works</td>
+</tr>
+<tr>
+<td>Privacy-preserving query execution</td>
+<td>✓ Local execution, aggregate results only</td>
+<td>✓ QIS requires local execution</td>
+</tr>
+<tr>
+<td>Site connectivity infrastructure</td>
+<td>✓ ATLAS + WebAPI</td>
+<td>✓ Any HTTP transport works</td>
+</tr>
+<tr>
+<td>Clinical domain expertise</td>
+<td>✓ Distributed across sites</td>
+<td>✓ Required for similarity address definition</td>
+</tr>
+<tr>
+<td>Multi-site participation</td>
+<td>✓ 400+ sites, 60+ countries</td>
+<td>✓ N scales quadratically</td>
+</tr>
+<tr>
+<td>FHIR compatibility</td>
+<td>✓ OMOP-on-FHIR mapping active</td>
+<td>✓ QIS is standard-agnostic</td>
+</tr>
+</tbody></table>
+<p>The one missing component: outcome routing between sites that share a clinical problem.</p>
+<p>Adding QIS to OHDSI does not require replacing ATLAS. It does not require replacing OMOP CDM. It does not require a data migration. It requires adding an outcome packet routing layer above the existing infrastructure — a layer that distills OMOP query results into packets, routes them by semantic similarity, and enables local synthesis at the receiving node.</p>
+<p>Zero-integration-cost is not hyperbole. The OHDSI nodes already run the queries. The packets are the distilled results of those queries. The routing layer is the one piece not yet built.</p>
+<hr>
+<h2>The OHDSI Routing Gap in One Question</h2>
+<p>Here is the question that exposes the gap:</p>
+<p><em>When your OHDSI node runs a distributed network study and receives pooled aggregate results from 150 sites, can you identify which 3 of those 150 sites have the most similar patient population to yours, and pull their specific analysis results for direct comparison?</em></p>
+<p>Today: No. The OHDSI architecture does not support semantic routing of results between nodes. You receive the pooled estimate. You do not receive node-to-node intelligence.</p>
+<p>With QIS outcome routing: Yes. Each node posts its results to a semantic address. Your node queries that address. You receive the packets from your closest clinical twins. Your synthesis happens locally. You do not wait 18 months for a publication.</p>
+<p>This is not a criticism of OHDSI. The OHDSI network was not designed to route intelligence — it was designed to run distributed queries and protect patient privacy. It succeeds at both. QIS adds the layer that OHDSI was never designed to provide.</p>
+<hr>
+<h2>A Note for OHDSI Europe Symposium Attendees</h2>
+<p>The OHDSI Europe Symposium runs April 18–20 in Rotterdam. The agenda includes sessions on distributed query optimization, federated study coordination, and FHIR-OMOP interoperability.</p>
+<p>These are exactly the problems the routing layer described in this article addresses.</p>
+<p>If you are attending Rotterdam and want to discuss the QIS architecture in the context of your specific OHDSI research question, the research license is free for academic researchers. See <a href="https://qisprotocol.com/research-license.html">research license page</a> — self-certification takes under two minutes.</p>
+<p>Christopher Thomas Trevethan, the discoverer of QIS and the holder of 39 provisional patents on the architecture, is available for direct consultation with OHDSI researchers and site coordinators.</p>
+<hr>
+<h2>The Routing Layer Is the Missing Infrastructure</h2>
+<p>Every major health data infrastructure in 2026 — OHDSI, EHDS, TEFCA, NHS Federated AI, ADHA — is building the query layer. None of them is building the routing intelligence layer.</p>
+<p>The query layer lets you ask the same question across 400 nodes. The routing layer lets each node learn from the answers of nodes that share its exact clinical problem.</p>
+<p>These are not the same thing. The first exists. The second does not yet exist — except in the architecture that Christopher Thomas Trevethan discovered on June 16, 2025.</p>
+<p>The 79,800 synthesis paths the OHDSI network is not running right now are not waiting for more data, more sites, or more funding.</p>
+<p>They are waiting for the routing layer.</p>
+<hr>
+<p><em>Christopher Thomas Trevethan is the discoverer of QIS (Quadratic Intelligence Swarm). 39 provisional patents filed. IP protection is in place. QIS Protocol is free for academic and nonprofit research use. <a href="https://qisprotocol.com/research-license.html">Research license self-certification →</a></em></p>
+<p><em>Related: <a href="https://qisprotocol.com/articles/qis-ohdsi-omop-routing.html">QIS + OMOP CDM Technical Reference</a> · <a href="https://qisprotocol.com/articles/federated-learning-rare-disease-alternative.html">Why Federated Learning Fails for Rare Disease Research</a> · <a href="https://qisprotocol.com/articles/qis-seven-layer-architecture.html">QIS Seven-Layer Architecture</a></em></p>
+
+    </div>
+  </article>
+
+  <section class="article-footer-cta">
+    <p><strong>Keep exploring QIS Protocol</strong></p>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/comparison.html">Compare Approaches</a>
+    <a href="/articles.html">All Articles</a>
+    <a href="/faq.html">FAQ</a>
+  </section>
+
+  <footer>
+    <p><strong>Yonder Zenith LLC</strong> &mdash; Redefining The Horizon</p>
+    <p>&copy; 2025 Yonder Zenith LLC. All rights reserved. <a href="/licensing.html">License</a> | <a href="/privacy.html">Privacy</a></p>
+    <p style="margin-top: 10px; opacity: 0.4; font-size: 0.8rem;">39 provisional patent applications filed. Math is public. Implementation is protected.</p>
+  </footer>
+</body>
+</html>
