@@ -490,7 +490,7 @@
         }
         .qis-live-grid {
           display: grid;
-          grid-template-columns: repeat(6, 1fr);
+          grid-template-columns: repeat(4, 1fr);
           gap: 14px;
           margin-bottom: 16px;
         }
@@ -547,9 +547,6 @@
           width: 100%;
         }
         @media (max-width: 720px) {
-          .qis-live-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 440px) {
           .qis-live-grid { grid-template-columns: repeat(2, 1fr); }
         }
       </style>
@@ -566,32 +563,22 @@
             <div class="v" id="qls-agents">&mdash;</div>
             <div class="l">Agents Live</div>
           </div>
-          <div class="qis-live-cell c-pairs">
-            <div class="v" id="qls-pairs">&mdash;</div>
-            <div class="l">Max Synthesis Pairs</div>
-            <div class="s">B &times; N(N-1)/2 across all buckets</div>
+          <div class="qis-live-cell c-buckets">
+            <div class="v" id="qls-buckets">&mdash;</div>
+            <div class="l">Bucket Addresses</div>
+          </div>
+          <div class="qis-live-cell c-packets">
+            <div class="v" id="qls-packets">&mdash;</div>
+            <div class="l">Packets Routed</div>
           </div>
           <div class="qis-live-cell c-hops">
             <div class="v" id="qls-hops">&mdash;</div>
             <div class="l">Hops / Query</div>
             <div class="s" id="qls-hops-note">direct peer lookup</div>
           </div>
-          <div class="qis-live-cell c-ratio">
-            <div class="v" id="qls-ratio">&mdash;</div>
-            <div class="l">Intelligence : Cost</div>
-            <div class="s">gap widens per node</div>
-          </div>
-          <div class="qis-live-cell c-packets">
-            <div class="v" id="qls-packets">&mdash;</div>
-            <div class="l">Packets Routed</div>
-          </div>
-          <div class="qis-live-cell c-buckets">
-            <div class="v" id="qls-buckets">&mdash;</div>
-            <div class="l">Bucket Addresses</div>
-          </div>
         </div>
         <div class="qis-live-sparkline">
-          <span class="sl-label">Session growth &rarr;</span>
+          <span class="sl-label">Packet growth (session) &rarr;</span>
           <svg id="qls-sparkline" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
             <path id="qls-spark-path" d="" fill="none" stroke="#10B981" stroke-width="1.5" opacity="0.8"/>
             <path id="qls-spark-area" d="" fill="url(#qls-spark-grad)" opacity="0.25"/>
@@ -1249,20 +1236,13 @@
       function setTrackerLive(data) {
         var agents = data.agents || 0;
         var buckets = data.buckets || 0;
-        // Max pairwise synthesis across the network = B × N(N-1)/2
-        // Each bucket can host its own complete synthesis space. Ceiling the architecture unlocks.
-        var pairsPerBucket = agents >= 2 ? (agents * (agents - 1) / 2) : 0;
-        var maxPairs = buckets * pairsPerBucket;
         var hops = computeHops();
-        var ratio = hops.value > 0 ? Math.round(maxPairs / hops.value) : maxPairs;
 
         setText('qls-agents', fmt(agents));
-        setText('qls-pairs', fmt(maxPairs));
+        setText('qls-buckets', fmt(buckets));
+        setText('qls-packets', fmt(data.packets || 0));
         setText('qls-hops', '~' + hops.value);
         setText('qls-hops-note', hops.note);
-        setText('qls-ratio', ratio > 0 ? fmt(ratio) + ':1' : '—');
-        setText('qls-packets', fmt(data.packets || 0));
-        setText('qls-buckets', fmt(buckets));
       }
 
       function setLabel(state) {
@@ -1318,14 +1298,14 @@
         var areaEl = document.getElementById('qls-spark-area');
         if (!pathEl || !areaEl || history.length < 2) return;
         var W = 400, H = 40;
-        var pairs = history.map(function(h) { return h.pairs; });
-        var max = Math.max.apply(null, pairs);
-        var min = Math.min.apply(null, pairs);
+        var series = history.map(function(h) { return h.packets || 0; });
+        var max = Math.max.apply(null, series);
+        var min = Math.min.apply(null, series);
         var range = max - min || 1;
         var step = W / (history.length - 1);
         var pts = history.map(function(h, i) {
           var x = i * step;
-          var y = H - ((h.pairs - min) / range) * (H - 4) - 2;
+          var y = H - (((h.packets || 0) - min) / range) * (H - 4) - 2;
           return x.toFixed(1) + ',' + y.toFixed(1);
         });
         var d = 'M' + pts.join(' L');
@@ -1349,10 +1329,8 @@
             setLabel('live');
 
             // Append to session history
-            var agents = data.agents || 0;
-            var pairs = agents >= 2 ? (agents * (agents - 1) / 2) : 0;
             var history = loadHistory();
-            history.push({ t: Date.now(), agents: agents, pairs: pairs, packets: data.packets || 0, buckets: data.buckets || 0 });
+            history.push({ t: Date.now(), agents: data.agents || 0, packets: data.packets || 0, buckets: data.buckets || 0 });
             saveHistory(history);
             renderSparkline(history);
           }
