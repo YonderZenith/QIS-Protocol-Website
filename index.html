@@ -568,8 +568,8 @@
           </div>
           <div class="qis-live-cell c-pairs">
             <div class="v" id="qls-pairs">&mdash;</div>
-            <div class="l">Synthesis Pairs</div>
-            <div class="s">N(N-1)/2</div>
+            <div class="l">Max Synthesis Pairs</div>
+            <div class="s">B &times; N(N-1)/2 across all buckets</div>
           </div>
           <div class="qis-live-cell c-hops">
             <div class="v" id="qls-hops">&mdash;</div>
@@ -1248,17 +1248,21 @@
 
       function setTrackerLive(data) {
         var agents = data.agents || 0;
-        var pairs = agents >= 2 ? (agents * (agents - 1) / 2) : 0;
+        var buckets = data.buckets || 0;
+        // Max pairwise synthesis across the network = B × N(N-1)/2
+        // Each bucket can host its own complete synthesis space. Ceiling the architecture unlocks.
+        var pairsPerBucket = agents >= 2 ? (agents * (agents - 1) / 2) : 0;
+        var maxPairs = buckets * pairsPerBucket;
         var hops = computeHops();
-        var ratio = hops.value > 0 ? Math.round(pairs / hops.value) : pairs;
+        var ratio = hops.value > 0 ? Math.round(maxPairs / hops.value) : maxPairs;
 
         setText('qls-agents', fmt(agents));
-        setText('qls-pairs', fmt(pairs));
+        setText('qls-pairs', fmt(maxPairs));
         setText('qls-hops', '~' + hops.value);
         setText('qls-hops-note', hops.note);
         setText('qls-ratio', ratio > 0 ? fmt(ratio) + ':1' : '—');
         setText('qls-packets', fmt(data.packets || 0));
-        setText('qls-buckets', fmt(data.buckets || 0));
+        setText('qls-buckets', fmt(buckets));
       }
 
       function setLabel(state) {
