@@ -181,6 +181,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://qisprotocol.com/article-candig-ga4gh-federated-genomics</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://qisprotocol.com/article-century-of-theory</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -343,6 +349,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://qisprotocol.com/article-ohdsi-community-invitation</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://qisprotocol.com/article-ohdsi-distributed-query-routing-gap</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -350,6 +362,12 @@
   </url>
   <url>
     <loc>https://qisprotocol.com/article-ohdsi-europe-rotterdam-routing-gap</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qisprotocol.com/article-ohdsi-qis-synthesis-layer</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -423,6 +441,18 @@
   <url>
     <loc>https://qisprotocol.com/article-qis-is-not-ai</loc>
     <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qisprotocol.com/article-qis-nfdi4health-interoperability</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qisprotocol.com/article-qis-ohdsi-omop-cdm-routing</loc>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
