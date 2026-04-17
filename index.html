@@ -554,7 +554,7 @@
         <div class="qis-live-header">
           <span>
             <span class="qis-live-pulse" id="qls-pulse"></span>
-            <span id="qls-state">CONNECTING&hellip;</span>
+            <span id="qls-state">BOOTSTRAPPING&hellip;</span>
           </span>
           <span id="qls-timestamp">&mdash;</span>
         </div>
@@ -1203,8 +1203,10 @@
       var POLL_INTERVAL_MS = 60000;    // 60s per Ysmara recommendation
       var STALE_AFTER_MS = 5 * 60 * 1000;
       var HISTORY_KEY = 'qis-live-history-v1';
+      var LAST_GOOD_KEY = 'qis-live-last-good-v1';
       var HISTORY_MAX = 50;
       var lastSuccess = null;
+      var lastGoodData = null;
       var liveModeActive = true; // toggled OFF when the scale-cycler is used
 
       function fmt(n) {
@@ -1253,8 +1255,21 @@
         var qlsPulse = document.getElementById('qls-pulse');
         var qlsTs = document.getElementById('qls-timestamp');
 
-        var labels = { live: 'LIVE', stale: 'STALE', offline: 'RELAY OFFLINE', example: 'EXAMPLE SCALE (not live)' };
-        var colors = { live: '#10B981', stale: '#F59E0B', offline: 'rgba(232,245,233,0.4)', example: '#8B5CF6' };
+        // Note: "offline" / "stale" labels intentionally removed — relay can go down
+        // but the DHT network keeps working, so we never display "down" to visitors.
+        // Instead show "CACHED" (last-known good) or "BOOTSTRAPPING" (truly first load).
+        var labels = {
+          live: 'LIVE',
+          cached: 'CACHED',
+          bootstrapping: 'BOOTSTRAPPING…',
+          example: 'EXAMPLE SCALE (not live)'
+        };
+        var colors = {
+          live: '#10B981',
+          cached: '#00D9FF',
+          bootstrapping: 'rgba(232,245,233,0.5)',
+          example: '#8B5CF6'
+        };
 
         if (lbl) {
           lbl.textContent = labels[state] || state;
@@ -1268,14 +1283,21 @@
         if (qlsPulse) {
           qlsPulse.classList.remove('live', 'stale', 'offline');
           if (state === 'live') qlsPulse.classList.add('live');
-          else if (state === 'stale') qlsPulse.classList.add('stale');
-          else qlsPulse.classList.add('offline');
+          // cached/bootstrapping = no pulse (calm, not alarming)
         }
 
         if (state === 'live' && lastSuccess) {
           var hh = String(lastSuccess.getUTCHours()).padStart(2, '0');
           var mm = String(lastSuccess.getUTCMinutes()).padStart(2, '0');
           var tsTxt = 'updated ' + hh + ':' + mm + ' UTC';
+          if (ts) ts.textContent = '• ' + tsTxt;
+          if (qlsTs) qlsTs.textContent = tsTxt;
+        } else if (state === 'cached') {
+          var tsTxt = 'last-known snapshot';
+          if (lastGoodData && lastGoodData.t) {
+            var age = Math.round((Date.now() - lastGoodData.t) / 1000 / 60);
+            tsTxt = age < 60 ? ('cached ' + age + 'm ago') : ('cached ' + Math.round(age / 60) + 'h ago');
+          }
           if (ts) ts.textContent = '• ' + tsTxt;
           if (qlsTs) qlsTs.textContent = tsTxt;
         } else if (state === 'example' && qlsTs) {
@@ -1290,6 +1312,18 @@
 
       function saveHistory(h) {
         try { localStorage.setItem(HISTORY_KEY, JSON.stringify(h.slice(-HISTORY_MAX))); }
+        catch (e) {}
+      }
+
+      function loadLastGood() {
+        try { return JSON.parse(localStorage.getItem(LAST_GOOD_KEY) || 'null'); }
+        catch (e) { return null; }
+      }
+
+      function saveLastGood(d) {
+        try { localStorage.setItem(LAST_GOOD_KEY, JSON.stringify({
+          agents: d.agents || 0, buckets: d.buckets || 0, packets: d.packets || 0, t: Date.now()
+        })); }
         catch (e) {}
       }
 
@@ -1326,6 +1360,8 @@
             setHeroLive(data.agents);
             setTrackerLive(data);
             lastSuccess = new Date();
+            lastGoodData = data;
+            saveLastGood(data);
             setLabel('live');
 
             // Append to session history
@@ -1335,10 +1371,16 @@
             renderSparkline(history);
           }
         } catch (err) {
-          if (lastSuccess && (Date.now() - lastSuccess.getTime()) > STALE_AFTER_MS) {
-            setLabel('stale');
-          } else if (!lastSuccess) {
-            setLabel('offline');
+          // Relay fetch failed — DHT peer-to-peer may still be working. Never show "down" if we have any
+          // prior snapshot; render the last-known numbers and dim the indicator.
+          if (lastGoodData || (lastGoodData = loadLastGood())) {
+            // Re-render last-known values so numbers stay visible, label shows "cached"
+            setHeroLive(lastGoodData.agents || 0);
+            setTrackerLive(lastGoodData);
+            setLabel('cached');
+          } else {
+            // Truly first-ever load with no cache — show bootstrapping state, not "down"
+            setLabel('bootstrapping');
           }
         }
       }
@@ -1349,8 +1391,17 @@
         resumeLive: function () { liveModeActive = true; if (lastSuccess) setLabel('live'); update(); }
       };
 
-      // Render initial sparkline from previous sessions if any
-      renderSparkline(loadHistory());
+      // Render cached values IMMEDIATELY on page load so visitors never see blank or "down"
+      (function initFromCache() {
+        var cached = loadLastGood();
+        if (cached) {
+          lastGoodData = cached;
+          setHeroLive(cached.agents || 0);
+          setTrackerLive(cached);
+          setLabel('cached'); // will upgrade to 'live' on first successful fetch
+        }
+        renderSparkline(loadHistory());
+      })();
 
       update();
       setInterval(update, POLL_INTERVAL_MS);
