@@ -65,11 +65,11 @@
       "description": "The complete QIS loop: distill outcomes locally, fingerprint by situation, route to matching addresses, synthesize at the edge, loop closes as new outcomes re-enter the network.",
       "step": [
         { "@type": "HowToStep", "name": "Observe", "text": "Each node collects data from its own local sources. Raw data stays on the originating device." },
-        { "@type": "HowToStep", "name": "Distill", "text": "The node compresses what it learned into a ~512-byte outcome packet: a condition code, treatment code, outcome delta, confidence indicator, and coarsened population tag. One edge, one outcome, one packet." },
+        { "@type": "HowToStep", "name": "Distill", "text": "The node compresses what it learned into a ~512-byte outcome packet: a contextual identifier, an outcome indicator, a confidence weight, and anonymized metadata (coarsened context descriptor). One edge, one outcome, one packet." },
         { "@type": "HowToStep", "name": "Fingerprint", "text": "The situation context is encoded as a semantic address. The address is deterministic: two nodes with the same problem compute the same address independently." },
         { "@type": "HowToStep", "name": "Route", "text": "The outcome packet routes to its matching address at O(log N) or better cost, using any routing mechanism: DHT, REST API, database, pub/sub, shared storage, or SMS." },
         { "@type": "HowToStep", "name": "Synthesize", "text": "The receiving node tallies all deposited outcome packets locally. No central aggregator. Synthesis takes milliseconds even for thousands of packets." },
-        { "@type": "HowToStep", "name": "Validate", "text": "Three Elections filter adversarial or out-of-context packets: curators define similarity, outcomes vote by being counted, users migrate to better-performing networks." },
+        { "@type": "HowToStep", "name": "Validate", "text": "Three emergent properties naturally validate packet quality: expert similarity selection, outcome validation through synthesis feedback, and network competition through participant choice." },
         { "@type": "HowToStep", "name": "Loop Close", "text": "The node acts on the synthesis. Its outcome becomes a new packet that deposits back into the network. The next node finds one more note in the mailbox. Intelligence compounds." }
       ]
     }
@@ -596,7 +596,7 @@
     <div class="step">
       <div class="step-number">Step 6</div>
       <h3>Validate</h3>
-      <p>Three Elections filter adversarial or out-of-context packets:</p>
+      <p>Three emergent properties naturally validate packet quality:</p>
       <p><strong>Election 1:</strong> Domain experts define what "similar" means — the fingerprint template. Different networks elect different curators. Competition on curation quality.</p>
       <p><strong>Election 2:</strong> Outcomes vote by being counted. No algorithm decides which treatment is best. The outcomes themselves — aggregated across hundreds of nodes — produce the answer.</p>
       <p><strong>Election 3:</strong> Users migrate to networks with better results. Networks that save more lives, grow more food, or prevent more failures attract more nodes. Natural selection at network scale.</p>

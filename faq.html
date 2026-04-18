@@ -474,7 +474,7 @@
             "name": "What domains can QIS be applied to?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "QIS is domain-agnostic. Any system with distributed agents generating local observations — healthcare, agriculture, finance, IoT, manufacturing, climate, autonomous vehicles, emergency response — can benefit. The math is universal; only the embedding function used to generate the semantic fingerprint changes."
+              "text": "QIS is domain-agnostic. Any system with distributed agents generating local observations — healthcare, agriculture, finance, IoT, manufacturing, climate, autonomous vehicles, emergency response — can benefit. The math is universal; only the similarity function used to generate the semantic fingerprint changes."
             }
           },
           {
@@ -771,7 +771,7 @@
               <h4>QIS Outcome Routing</h4>
               <ul>
                 <li>Routes pre-distilled outcome packets (~512 bytes)</li>
-                <li>Any observation size is valid, including N=8 cohorts</li>
+                <li>Any observation is valid — a node with only 8 observations contributes 8 valid outcome packets</li>
                 <li>Asynchronous, no central coordinator required</li>
                 <li>Routes to semantically similar contexts, not an average</li>
                 <li>Rare variants and small cohorts are first-class citizens</li>
@@ -836,7 +836,7 @@
             <li>A validated delta — what the data proved (a response signal, a survival interval, a correlation, a threshold crossing)</li>
             <li>A timestamp</li>
             <li>An anonymous node identifier</li>
-            <li>A confidence weight (typically cohort-size-weighted)</li>
+            <li>A confidence weight (derived from data quality, historical accuracy, or statistical measures)</li>
           </ul>
           <p><strong>What is not in it:</strong> personally identifiable information, protected health information, raw records, model weights, training data.</p>
         </div></div>

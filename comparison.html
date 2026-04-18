@@ -72,8 +72,8 @@
       "featureList": [
         "N(N-1)/2 quadratic intelligence scaling",
         "O(log N) or better communication cost",
-        "Zero raw data movement — embeddings only",
-        "Byzantine fault tolerance via Three Elections",
+        "Zero raw data movement — outcome packets only",
+        "Byzantine fault tolerance through emergent validation",
         "Full HIPAA and GDPR compliance by design",
         "No central aggregator or coordinator required",
         "Protocol-agnostic routing layer (Layer 4 of 7)"
@@ -116,7 +116,7 @@
           "name": "Does QIS Protocol share private data between nodes?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Raw data never leaves the originating device. QIS routes mathematical embeddings — fixed-dimensional vector representations that cannot be reverse-engineered to recover source data. This makes QIS HIPAA and GDPR compliant by design."
+            "text": "No. Raw data never leaves the originating device. QIS routes outcome packets — small structured records designed to resist reconstruction of source data. This makes QIS HIPAA and GDPR compliant by design."
           }
         },
         {
@@ -132,7 +132,7 @@
           "name": "What does Byzantine Fault Tolerance mean in QIS Protocol?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Byzantine Fault Tolerance means the network continues to produce correct results even when some nodes provide incorrect or malicious data. QIS achieves this through its Three Elections mechanism — Relevance, Credibility, and Synthesis — which validate outcomes at every routing step."
+            "text": "Byzantine Fault Tolerance means the network continues to produce correct results even when some nodes provide incorrect or malicious data. QIS achieves this through its three emergent validation properties — Relevance, Credibility, and Synthesis — which validate outcomes at every routing step."
           }
         },
         {
@@ -140,7 +140,7 @@
           "name": "Is QIS Protocol suitable for healthcare and HIPAA compliance?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Because raw patient data never leaves the originating device, QIS is HIPAA compliant by architecture rather than by policy. Only mathematical embeddings are routed, and these cannot be reversed to identify individuals."
+            "text": "Yes. Because raw patient data never leaves the originating device, QIS is HIPAA compliant by architecture rather than by policy. Only outcome packets are routed, and these are designed to resist identification of individuals."
           }
         },
         {
@@ -172,7 +172,7 @@
           "name": "Does QIS require identical data formats across sites?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Each node generates embeddings from its own local data in whatever format it uses. The routing layer operates on fixed-dimensional vectors, making QIS format-agnostic. This is a key advantage over federated learning, which typically requires schema alignment across participants."
+            "text": "No. Each node generates outcome packets from its own local data in whatever format it uses. The routing layer operates on semantic addresses — representation-agnostic — making QIS format-independent. This is a key advantage over federated learning, which typically requires schema alignment across participants."
           }
         },
         {
@@ -806,7 +806,7 @@
           <td class="r-poor">Data centralized</td>
           <td class="r-mid">Gradients shared</td>
           <td class="r-good">Full (isolated)</td>
-          <td class="r-good">Full (embeddings only)</td>
+          <td class="r-good">Full (outcome packets only)</td>
         </tr>
         <tr>
           <td scope="row">Single Point of Failure</td>
@@ -977,7 +977,7 @@
 
       <details class="faq-item">
         <summary>Does QIS Protocol share private data between nodes?</summary>
-        <div class="answer">No. Raw data never leaves the originating device. QIS routes mathematical embeddings — fixed-dimensional vector representations that cannot be reverse-engineered to recover source data. This makes QIS HIPAA and GDPR compliant by design.</div>
+        <div class="answer">No. Raw data never leaves the originating device. QIS routes outcome packets — small structured records designed to resist reconstruction of source data. This makes QIS HIPAA and GDPR compliant by design.</div>
       </details>
 
       <details class="faq-item">
@@ -987,12 +987,12 @@
 
       <details class="faq-item">
         <summary>What does Byzantine Fault Tolerance mean in QIS Protocol?</summary>
-        <div class="answer">Byzantine Fault Tolerance means the network continues to produce correct results even when some nodes provide incorrect or malicious data. QIS achieves this through its Three Elections mechanism — Relevance, Credibility, and Synthesis — which validate outcomes at every routing step.</div>
+        <div class="answer">Byzantine Fault Tolerance means the network continues to produce correct results even when some nodes provide incorrect or malicious data. QIS achieves this through its three emergent validation properties — Relevance, Credibility, and Synthesis — which validate outcomes at every routing step.</div>
       </details>
 
       <details class="faq-item">
         <summary>Is QIS Protocol suitable for healthcare and HIPAA compliance?</summary>
-        <div class="answer">Yes. Because raw patient data never leaves the originating device, QIS is HIPAA compliant by architecture rather than by policy. Only mathematical embeddings are routed, and these cannot be reversed to identify individuals.</div>
+        <div class="answer">Yes. Because raw patient data never leaves the originating device, QIS is HIPAA compliant by architecture rather than by policy. Only outcome packets are routed, and these are designed to resist identification of individuals.</div>
       </details>
 
       <details class="faq-item">
@@ -1012,7 +1012,7 @@
 
       <details class="faq-item">
         <summary>Does QIS require identical data formats across sites?</summary>
-        <div class="answer">No. Each node generates embeddings from its own local data in whatever format it uses. The routing layer operates on fixed-dimensional vectors, making QIS format-agnostic. This is a key advantage over federated learning, which typically requires schema alignment across participants.</div>
+        <div class="answer">No. Each node generates outcome packets from its own local data in whatever format it uses. The routing layer operates on semantic addresses — representation-agnostic — making QIS format-independent. This is a key advantage over federated learning, which typically requires schema alignment across participants.</div>
       </details>
 
       <details class="faq-item">
