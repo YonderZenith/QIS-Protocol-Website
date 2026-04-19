@@ -470,9 +470,9 @@
         a packet to that address, the N(N-1)/2 synthesis emerges. Concretely: a DHT-based implementation (Kademlia,
         Chord, Pastry) hits O(log N) or better hops per query; a centralized semantic-address store can hit O(1) direct lookup;
         gossip protocols, pub/sub, message queues, databases — even a shared folder — all satisfy the routing
-        requirement. QIS has a <strong>seven-layer architecture</strong>: (1) Data Sources, (2) Edge Nodes,
-        (3) Semantic Fingerprint, (4) Routing, (5) Outcome Packets, (6) Local Synthesis, (7) External Augmentation.
-        Layer 4 (Routing) accepts any infrastructure that delivers a packet to a problem-derived address.
+        requirement. QIS has a <strong>seven-layer architecture</strong>, bottom to top: (1) Observation, (2) Distillation,
+        (3) Fingerprinting, (4) Routing, (5) Synthesis, (6) Validation, (7) Return. Layer 4 (Routing) accepts any
+        infrastructure that delivers a packet to a problem-derived address.
       </p>
       <p>
         That's why the discovery matters. It's not "a new way to use DHTs" — it's a new class of intelligence
