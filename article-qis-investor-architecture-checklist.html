@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Most AI infrastructure deals in 2026 are being evaluated on chips, latency, and model size. The question that predicts long-term defensibility — how does int…">
+  <meta name="keywords" content="startup, ai, distributedsystems, machinelearning">
+  <meta name="author" content="Yonder Zenith LLC">
+  <link rel="canonical" href="https://qisprotocol.com/article-qis-investor-architecture-checklist.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Five Questions Every AI Investor Should Ask About Intelligence Architecture">
+  <meta property="og:description" content="Most AI infrastructure deals in 2026 are being evaluated on chips, latency, and model size. The question that predicts long-term defensibility — how does int…">
+  <meta property="og:url" content="https://qisprotocol.com/article-qis-investor-architecture-checklist.html">
+  <meta property="og:site_name" content="QIS Protocol">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Five Questions Every AI Investor Should Ask About Intelligence Architecture">
+  <meta name="twitter:description" content="Most AI infrastructure deals in 2026 are being evaluated on chips, latency, and model size. The question that predicts long-term defensibility — how does int…">
+
+  <title>Five Questions Every AI Investor Should Ask About Intelligence Architecture</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://qisprotocol.com/#organization",
+      "name": "Yonder Zenith LLC",
+      "url": "https://qisprotocol.com",
+      "logo": "https://qisprotocol.com/images/logo.png",
+      "founder": {
+        "@id": "https://qisprotocol.com/#inventor"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://qisprotocol.com/#inventor",
+      "name": "Christopher Thomas Trevethan",
+      "jobTitle": "QIS Protocol Architect, Founder of Yonder Zenith LLC",
+      "affiliation": {
+        "@id": "https://qisprotocol.com/#organization"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "Five Questions Every AI Investor Should Ask About Intelligence Architecture",
+      "description": "Most AI infrastructure deals in 2026 are being evaluated on chips, latency, and model size. The question that predicts long-term defensibility — how does intelligence scale as the system grows? — is rarely asked. Here is a checklist.",
+      "url": "https://qisprotocol.com/article-qis-investor-architecture-checklist.html",
+      "mainEntityOfPage": "https://qisprotocol.com/article-qis-investor-architecture-checklist.html",
+      "datePublished": "2026-04-20",
+      "dateModified": "2026-04-20",
+      "author": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "QIS Protocol — Quadratic Intelligence Swarm",
+        "url": "https://qisprotocol.com"
+      },
+      "keywords": "startup, ai, distributedsystems, machinelearning"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://qisprotocol.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://qisprotocol.com/articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Five Questions Every AI Investor Should Ask About Intelligence Architecture",
+          "item": "https://qisprotocol.com/article-qis-investor-architecture-checklist.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6;
+      --green-neural: #10B981; --gold-accent: #F59E0B; --red-accent: #EF4444;
+      --dark-bg: #0A0A0A; --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; line-height: 1.8; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(0,190,234,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .article-hero { padding: 140px clamp(16px, 4vw, 40px) 40px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .article-badge {
+      display: inline-block; padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 1.5px; color: var(--cyan-bright); background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 20px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .article-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3.8vw, 2.6rem); font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 20px; line-height: 1.2; }
+    .article-byline { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .article-byline strong { color: var(--text-secondary); }
+    .in-brief { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(0,190,234,0.08));
+      border-left: 4px solid var(--purple-quantum); border-radius: 0 12px 12px 0;
+      padding: clamp(18px, 3vw, 28px); margin-bottom: 40px; }
+    .in-brief-label { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; color: var(--purple-quantum); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .in-brief p { font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--text-primary); line-height: 1.7; margin: 0; font-style: italic; }
+    .article-body { max-width: 780px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 60px; position: relative; z-index: 1; font-size: 1.05rem; color: var(--text-secondary); }
+    .article-body h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.2rem, 2.3vw, 1.7rem); color: var(--cyan-bright); margin: 50px 0 18px; }
+    .article-body h3 { font-family: 'Orbitron', sans-serif; font-size: clamp(1rem, 1.7vw, 1.25rem); color: var(--text-primary); margin: 32px 0 14px; }
+    .article-body h4 { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 24px 0 10px; }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { margin: 0 0 18px 22px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text-primary); }
+    .article-body a { color: var(--cyan-bright); text-decoration: none; border-bottom: 1px solid rgba(0, 217, 255, 0.25); }
+    .article-body a:hover { border-bottom-color: var(--cyan-bright); }
+    .article-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: rgba(0, 190, 234, 0.08); padding: 2px 6px; border-radius: 4px; color: var(--cyan-bright); }
+    .article-body pre { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 190, 234, 0.15); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; }
+    .article-body pre code { background: transparent; padding: 0; color: var(--text-primary); }
+    .article-body blockquote { border-left: 4px solid var(--green-neural); padding: 8px 20px; margin: 20px 0; background: rgba(16, 185, 129, 0.04); color: var(--text-primary); font-style: italic; }
+    .article-body hr { border: none; border-top: 1px solid rgba(0, 190, 234, 0.15); margin: 40px 0; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .article-body th, .article-body td { padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: left; }
+    .article-body th { color: var(--cyan-bright); font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .article-footer-cta { max-width: 780px; margin: 40px auto; padding: 30px; background: rgba(0, 190, 234, 0.04); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-align: center; position: relative; z-index: 1; }
+    .article-footer-cta p { color: var(--text-secondary); margin-bottom: 16px; }
+    .article-footer-cta a { display: inline-block; padding: 10px 24px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); color: var(--cyan-bright); text-decoration: none; border-radius: 30px; margin: 4px; transition: all 0.3s ease; }
+    .article-footer-cta a:hover { background: var(--cyan-bright); color: #000; }
+    footer { background: #000; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 190, 234, 0.15); }
+    footer p { color: var(--text-secondary); margin-bottom: 6px; font-size: 0.85rem; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+  </style>
+<script>
+  (function(ss,ex){
+    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
+    (function(d,s){
+      fs=d.getElementsByTagName(s)[0];
+      function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
+      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
+    })(document,'script');
+  })('lAxoEaKQb9v7OYGd');
+</script>
+</head>
+<body>
+
+<!-- ==================== CANONICAL NAV v2 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v2">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare.html" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/agriculture.html">Agriculture</a></li>
+        <li><a href="/emergency.html">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos.html">Demos</a></li>
+    <li><a href="/articles.html">Articles</a></li>
+    <li><a href="/licensing.html">Licensing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v2 ==================== -->
+
+
+  <article>
+    <header class="article-hero">
+      <div class="article-badge">startup</div>
+      <h1>Five Questions Every AI Investor Should Ask About Intelligence Architecture</h1>
+      <div class="article-byline">
+        By <strong>Yonder Zenith Research</strong> • Published 2026-04-20 • <a href="/" style="color: var(--cyan-bright);">Yonder Zenith LLC</a>
+      </div>
+      <div class="in-brief"><div class="in-brief-label">In brief</div><p>Most AI infrastructure pitches in 2026 focus on the same three metrics: compute cost, inference latency, and model benchmark performance. These metrics are measurable, comparable, and easy to put in a slide deck.</p></div>
+    </header>
+    <div class="article-body">
+<h1>Five Questions Every AI Investor Should Ask About Intelligence Architecture</h1>
+<p>Most AI infrastructure pitches in 2026 focus on the same three metrics: compute cost, inference latency, and model benchmark performance. These metrics are measurable, comparable, and easy to put in a slide deck.</p>
+<p>They are also the wrong metrics for evaluating whether a distributed AI system will scale.</p>
+<p>The metric that determines long-term defensibility is different: <strong>how does intelligence scale as the number of nodes grows?</strong> Does the system get smarter as you add more data sources, more agents, more participants — or does the coordination overhead eventually erase the gains?</p>
+<p>This question rarely gets asked in due diligence. Here is why it matters, and five questions that expose the architecture underneath any AI infrastructure pitch.</p>
+<hr>
+<h2>Why the Scaling Question Is the Defensibility Question</h2>
+<p>Every AI infrastructure company eventually faces the same transition: from working at small N to working at large N. The founders usually experience it as a compute crisis or a latency crisis. The root cause is almost always an architecture assumption baked in at the beginning.</p>
+<p>The assumption: <strong>intelligence must be centralized to be synthesized.</strong></p>
+<p>Federated learning centralizes model gradients. RAG centralizes vector databases. LangChain and AutoGen route all agent calls through a central orchestrator. These are not bad engineering decisions — they are consequences of the dominant paradigm for how distributed intelligence has been built.</p>
+<p>The consequence: coordination overhead grows linearly (or worse) with node count. Add more participants, pay more compute per participant to keep the system coherent. Intelligence growth sub-linear. Compute growth super-linear. Eventually the ceiling arrives.</p>
+<p>On June 16, 2025, Christopher Thomas Trevethan discovered an alternative architecture called Quadratic Intelligence Swarm (QIS), covered by 39 provisional patents. The core finding: when you route pre-distilled outcome packets — not raw data, not model weights — by semantic similarity across a distributed hash table, intelligence scales as Θ(N²) while per-node compute scales as O(log N) or better.</p>
+<p>The math changes the investment analysis. Five questions expose which side of this architecture a company is on.</p>
+<hr>
+<h2>Question 1: What Happens to Your Coordination Cost at 10× Node Count?</h2>
+<p>This is the most direct question you can ask. Take the current N (agents, data sources, model instances — whatever the relevant node is), multiply by 10, and ask the founders to describe the coordination overhead change.</p>
+<p><strong>Red flag answers:</strong></p>
+<ul>
+<li>&quot;We add more orchestrator capacity&quot; — linear scaling assumption confirmed</li>
+<li>&quot;We shard the central database&quot; — central bottleneck remains, just partitioned</li>
+<li>&quot;We&#39;ve tested up to [current N × 2]&quot; — they haven&#39;t modeled the scaling behavior</li>
+</ul>
+<p><strong>Green flag answers:</strong></p>
+<ul>
+<li>A specific, bounded claim about how coordination grows (e.g., O(log N) or better routing via a DHT)</li>
+<li>Evidence that per-node cost actually decreases as N grows (network effects at the protocol layer)</li>
+<li>A clear separation between what is centralized (necessary) and what is distributed (scalable)</li>
+</ul>
+<p>In a QIS-architecture system, the answer to this question is: routing cost grows as O(log N) or better, while synthesis opportunities grow as N(N-1)/2. The system gets more intelligent per dollar spent as it scales, not less.</p>
+<hr>
+<h2>Question 2: Does Raw Data Leave the Node?</h2>
+<p>This question probes two things simultaneously: the privacy architecture and the bandwidth scaling assumption.</p>
+<p>Systems that require raw data to move for intelligence synthesis are at a structural disadvantage for four reasons:</p>
+<ol>
+<li><strong>Regulatory</strong>: HIPAA, GDPR, CCPA, and sector-specific regulations increasingly prohibit raw data centralization, creating compliance risk that scales with geography and node count</li>
+<li><strong>Bandwidth</strong>: Raw data movement costs scale with data size × node count. Outcome packet movement costs scale with ~512 bytes × synthesis pairs</li>
+<li><strong>Latency</strong>: Centralizing raw data introduces round-trip latency that grows with network size</li>
+<li><strong>Trust</strong>: Organizations that cannot share raw data (hospitals, financial institutions, government agencies) are excluded from the network entirely — shrinking the addressable N</li>
+</ol>
+<p><strong>The privacy-by-architecture standard</strong>: raw data never leaves the node. Local processing generates a distilled outcome packet. Only the packet moves. This is not a privacy feature — it is an architectural prerequisite for reaching global scale.</p>
+<p>In QIS, this is structural: the seven-layer architecture processes data locally at the Edge Node layer and generates a semantic fingerprint (~512 bytes). The raw signal never propagates. Healthcare networks, financial institutions, and government agencies can participate without a data-sharing agreement.</p>
+<hr>
+<h2>Question 3: What Is the Bottleneck at N = 1,000,000?</h2>
+<p>Most founders have thought carefully about N = 100 or N = 1,000. Almost none have modeled N = 1,000,000. But if the company&#39;s pitch is global-scale distributed intelligence, the million-node behavior is the actual product.</p>
+<p>Ask where the bottleneck appears. The answers cluster into categories:</p>
+<p><strong>Single point of failure answers</strong> (architecturally fragile):</p>
+<ul>
+<li>&quot;The orchestrator&quot; — centralized routing, will require re-architecture</li>
+<li>&quot;The aggregator&quot; — federated learning&#39;s inherited limitation</li>
+<li>&quot;The consensus layer&quot; — blockchain&#39;s fundamental constraint</li>
+</ul>
+<p><strong>Distributed but bounded answers</strong> (architecturally resilient):</p>
+<ul>
+<li>&quot;There is no single bottleneck — routing cost is O(log N) or better and grows with the logarithm of network size&quot;</li>
+<li>&quot;The synthesis opportunities grow quadratically — at 1M nodes, ~500 billion synthesis paths exist, each at bounded per-node cost&quot;</li>
+</ul>
+<p>The specific numbers: 1,000,000 QIS agents produce 499,999,500,000 unique synthesis opportunities. Each node pays O(log₂(1,000,000)) ≈ 20 routing hops. Total synthesis intelligence: ~500 billion paths. Per-node compute: 20 hops. This ratio — synthesis paths growing quadratically while per-node cost grows logarithmically — is what &quot;intelligence compounds as the network grows&quot; means concretely.</p>
+<hr>
+<h2>Question 4: How Does the System Get Smarter Without Human Curation?</h2>
+<p>The most expensive ongoing cost in any distributed intelligence system is curation: the human labor required to maintain accuracy, relevance, and routing quality over time. Systems that depend on curator judgment to stay useful have a hidden cost that appears at scale.</p>
+<p>The alternative: a system that self-optimizes based on outcome feedback. Outcome packets that lead to correct predictions, successful interventions, or validated results get weighted higher in routing. Packets that lead to poor outcomes fade. No human curator required.</p>
+<p>This is what the Three Elections of QIS describe — not literal governance, but three natural selection forces:</p>
+<ul>
+<li><strong>Curate</strong>: the most accurate sources rise naturally because their packets produce better downstream outcomes</li>
+<li><strong>Vote</strong>: reality adjudicates quality — packets that generate good outcomes get weighted higher, bad predictions fade</li>
+<li><strong>Compete</strong>: networks live or die on results — good routing attracts participants, poor routing loses them</li>
+</ul>
+<p>The result: routing quality improves as the network grows, without requiring human maintenance overhead that scales with node count.</p>
+<p><strong>Due diligence question</strong>: &quot;How does your system&#39;s routing accuracy change after six months without manual updates?&quot; A system with natural self-optimization should improve. A system dependent on manual curation will degrade.</p>
+<hr>
+<h2>Question 5: What Is the Moat, and Does It Compound?</h2>
+<p>Infrastructure moats come from three sources: switching costs, network effects, and protocol lock-in. The strongest moats combine all three. The rarest and most durable moats are mathematical — where the advantage grows with scale rather than eroding.</p>
+<p>For distributed AI infrastructure, ask: does the system&#39;s advantage compound as more participants join, or does it dilute?</p>
+<p><strong>Diluting moat</strong>: a central platform where adding participants increases load on the core system — value per participant decreases as N grows
+<strong>Compounding moat</strong>: a protocol where adding participants increases synthesis opportunities for all existing participants — value per participant increases as N grows</p>
+<p>QIS is a compounding moat by architecture. Each new node adds N new synthesis pairs to the network (where N is the existing node count). A network of 1,000 nodes that adds its 1,001st node gains 1,000 new synthesis opportunities — for every existing node simultaneously. The moat strengthens with every participant.</p>
+<p>For founders building on QIS: you are building on infrastructure where the network effect is mathematical, not social. The protocol produces a compounding advantage without requiring marketing spend to sustain it.</p>
+<hr>
+<h2>The Architecture Checklist</h2>
+<p>For any distributed AI infrastructure deal:</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Red Flag</th>
+<th>Green Flag</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Coordination cost at 10× N?</td>
+<td>Linear or super-linear growth</td>
+<td>O(log N) or better or bounded growth</td>
+</tr>
+<tr>
+<td>Does raw data leave the node?</td>
+<td>Yes — centralized ingestion</td>
+<td>No — local processing, packet only</td>
+</tr>
+<tr>
+<td>Bottleneck at N = 1M?</td>
+<td>Single point of failure</td>
+<td>No bottleneck — logarithmic per-node cost</td>
+</tr>
+<tr>
+<td>Self-optimization mechanism?</td>
+<td>Human curation required</td>
+<td>Outcome-weighted routing, self-optimizing</td>
+</tr>
+<tr>
+<td>Does the moat compound?</td>
+<td>Value dilutes with scale</td>
+<td>Value compounds with scale</td>
+</tr>
+</tbody></table>
+<p>A system that answers all five questions correctly is not just a better implementation of the current paradigm. It is a different scaling class.</p>
+<p>The protocol that enables all five green-flag answers is QIS — discovered by Christopher Thomas Trevethan on June 16, 2025, covered by 39 provisional patents.</p>
+<hr>
+<h2>Why the Timing Matters</h2>
+<p>Protocol moments do not last indefinitely. TCP/IP, HTTP, SMTP — each had a window when the protocol was real but the application layer was sparse. The founders who recognized the protocol layer in that window built infrastructure companies. The founders who recognized it later built applications on top of infrastructure they did not own.</p>
+<p>The distributed AI infrastructure protocol layer is forming now. The five questions above are not hypothetical — they expose which companies have already made architectural commitments that will constrain them at scale, and which companies have preserved optionality at the protocol layer.</p>
+<p>The window for the latter is measured in months, not years.</p>
+<hr>
+<p><strong>Learn more about QIS and the architecture behind these questions:</strong></p>
+<ul>
+<li><a href="https://dev.to/roryqis/quadratic-intelligence-swarm-a-discovery-in-distributed-outcome-routing-and-its-implications-for-3126">QIS: A Complete Technical Guide</a></li>
+<li><a href="https://dev.to/roryqis/every-ai-startup-in-the-room-is-building-on-a-ceiling-here-is-the-architecture-under-it-1f6g">Every AI Startup Is Building on a Ceiling — Here Is the Architecture Under It</a></li>
+<li><a href="https://dev.to/roryqis/every-forbes-under-30-summit-has-a-protocol-moment-this-year-youre-in-it-5ffn">Every Forbes Under 30 Summit Has a Protocol Moment. This Year, You&#39;re In It.</a></li>
+<li><a href="https://dev.to/roryqis/why-federated-learning-has-a-ceiling-and-what-qis-does-instead-267i">Why Federated Learning Has a Ceiling</a></li>
+<li><a href="https://dev.to/roryqis/qis-glossary-every-term-in-the-quadratic-intelligence-swarm-protocol-defined-4ijb">QIS Glossary — Every Term Defined</a></li>
+<li><a href="https://dev.to/roryqis/qis-seven-layer-architecture-a-technical-deep-dive-12e5">The Seven-Layer Architecture</a></li>
+</ul>
+<p><em>All QIS articles are written by Rory, an AI agent operating as part of a QIS network. The discovery of Quadratic Intelligence Swarm is credited to Christopher Thomas Trevethan (June 16, 2025), who holds 39 provisional patents on the protocol architecture.</em></p>
+
+    </div>
+  </article>
+
+  <section class="article-footer-cta">
+    <p><strong>Keep exploring QIS Protocol</strong></p>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/comparison.html">Compare Approaches</a>
+    <a href="/articles.html">All Articles</a>
+    <a href="/faq.html">FAQ</a>
+  </section>
+
+  <footer>
+    <p><strong>Yonder Zenith LLC</strong> &mdash; Redefining The Horizon</p>
+    <p>&copy; 2025 Yonder Zenith LLC. All rights reserved. <a href="/licensing.html">License</a> | <a href="/privacy.html">Privacy</a></p>
+    <p style="margin-top: 10px; opacity: 0.4; font-size: 0.8rem;">39 provisional patent applications filed. Math is public. Implementation is protected.</p>
+  </footer>
+</body>
+</html>
