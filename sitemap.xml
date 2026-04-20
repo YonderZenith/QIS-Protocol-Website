@@ -666,4 +666,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://qisprotocol.com/article-christopher-trevethan-qis-discovery-origin-story</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qisprotocol.com/article-qis-routing-distributed-radio-telescope-vlbi-ska-synthesis</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qisprotocol.com/article-qis-vs-lifebit-cynapse-ga4gh-beacon-routing-comparison</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
