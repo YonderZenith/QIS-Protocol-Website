@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gainsight predicts churn from your account data. It cannot tell you what intervention saved the 847 accounts at other companies that showed the same adoption…">
+  <meta name="keywords" content="machinelearning, distributedsystems, analytics, architecture">
+  <meta name="author" content="Yonder Zenith LLC">
+  <link rel="canonical" href="https://qisprotocol.com/article-qis-vs-gainsight.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="QIS vs Gainsight: Your Health Scores Know Who Is at Risk. They Don't Know What Worked.">
+  <meta property="og:description" content="Gainsight predicts churn from your account data. It cannot tell you what intervention saved the 847 accounts at other companies that showed the same adoption…">
+  <meta property="og:url" content="https://qisprotocol.com/article-qis-vs-gainsight.html">
+  <meta property="og:site_name" content="QIS Protocol">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QIS vs Gainsight: Your Health Scores Know Who Is at Risk. They Don't Know What Worked.">
+  <meta name="twitter:description" content="Gainsight predicts churn from your account data. It cannot tell you what intervention saved the 847 accounts at other companies that showed the same adoption…">
+
+  <title>QIS vs Gainsight: Your Health Scores Know Who Is at Risk. They Don't Know What Worked.</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://qisprotocol.com/#organization",
+      "name": "Yonder Zenith LLC",
+      "url": "https://qisprotocol.com",
+      "logo": "https://qisprotocol.com/images/logo.png",
+      "founder": {
+        "@id": "https://qisprotocol.com/#inventor"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://qisprotocol.com/#inventor",
+      "name": "Christopher Thomas Trevethan",
+      "jobTitle": "QIS Protocol Architect, Founder of Yonder Zenith LLC",
+      "affiliation": {
+        "@id": "https://qisprotocol.com/#organization"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "QIS vs Gainsight: Your Health Scores Know Who Is at Risk. They Don't Know What Worked.",
+      "description": "Gainsight predicts churn from your account data. It cannot tell you what intervention saved the 847 accounts at other companies that showed the same adoption collapse last quarter. That intelligence lives in a different architectural layer — the one QIS fills.",
+      "url": "https://qisprotocol.com/article-qis-vs-gainsight.html",
+      "mainEntityOfPage": "https://qisprotocol.com/article-qis-vs-gainsight.html",
+      "datePublished": "2026-04-26",
+      "dateModified": "2026-04-26",
+      "author": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "QIS Protocol — Quadratic Intelligence Swarm",
+        "url": "https://qisprotocol.com"
+      },
+      "keywords": "machinelearning, distributedsystems, analytics, architecture"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://qisprotocol.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://qisprotocol.com/articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QIS vs Gainsight: Your Health Scores Know Who Is at Risk. They Don't Know What Worked.",
+          "item": "https://qisprotocol.com/article-qis-vs-gainsight.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6;
+      --green-neural: #10B981; --gold-accent: #F59E0B; --red-accent: #EF4444;
+      --dark-bg: #0A0A0A; --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; line-height: 1.8; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(0,190,234,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .article-hero { padding: 140px clamp(16px, 4vw, 40px) 40px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .article-badge {
+      display: inline-block; padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 1.5px; color: var(--cyan-bright); background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 20px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .article-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3.8vw, 2.6rem); font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 20px; line-height: 1.2; }
+    .article-byline { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .article-byline strong { color: var(--text-secondary); }
+    .in-brief { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(0,190,234,0.08));
+      border-left: 4px solid var(--purple-quantum); border-radius: 0 12px 12px 0;
+      padding: clamp(18px, 3vw, 28px); margin-bottom: 40px; }
+    .in-brief-label { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; color: var(--purple-quantum); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .in-brief p { font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--text-primary); line-height: 1.7; margin: 0; font-style: italic; }
+    .article-body { max-width: 780px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 60px; position: relative; z-index: 1; font-size: 1.05rem; color: var(--text-secondary); }
+    .article-body h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.2rem, 2.3vw, 1.7rem); color: var(--cyan-bright); margin: 50px 0 18px; }
+    .article-body h3 { font-family: 'Orbitron', sans-serif; font-size: clamp(1rem, 1.7vw, 1.25rem); color: var(--text-primary); margin: 32px 0 14px; }
+    .article-body h4 { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 24px 0 10px; }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { margin: 0 0 18px 22px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text-primary); }
+    .article-body a { color: var(--cyan-bright); text-decoration: none; border-bottom: 1px solid rgba(0, 217, 255, 0.25); }
+    .article-body a:hover { border-bottom-color: var(--cyan-bright); }
+    .article-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: rgba(0, 190, 234, 0.08); padding: 2px 6px; border-radius: 4px; color: var(--cyan-bright); }
+    .article-body pre { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 190, 234, 0.15); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; }
+    .article-body pre code { background: transparent; padding: 0; color: var(--text-primary); }
+    .article-body blockquote { border-left: 4px solid var(--green-neural); padding: 8px 20px; margin: 20px 0; background: rgba(16, 185, 129, 0.04); color: var(--text-primary); font-style: italic; }
+    .article-body hr { border: none; border-top: 1px solid rgba(0, 190, 234, 0.15); margin: 40px 0; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .article-body th, .article-body td { padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: left; }
+    .article-body th { color: var(--cyan-bright); font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .article-footer-cta { max-width: 780px; margin: 40px auto; padding: 30px; background: rgba(0, 190, 234, 0.04); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-align: center; position: relative; z-index: 1; }
+    .article-footer-cta p { color: var(--text-secondary); margin-bottom: 16px; }
+    .article-footer-cta a { display: inline-block; padding: 10px 24px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); color: var(--cyan-bright); text-decoration: none; border-radius: 30px; margin: 4px; transition: all 0.3s ease; }
+    .article-footer-cta a:hover { background: var(--cyan-bright); color: #000; }
+    footer { background: #000; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 190, 234, 0.15); }
+    footer p { color: var(--text-secondary); margin-bottom: 6px; font-size: 0.85rem; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+  </style>
+<script>
+  (function(ss,ex){
+    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
+    (function(d,s){
+      fs=d.getElementsByTagName(s)[0];
+      function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
+      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
+    })(document,'script');
+  })('lAxoEaKQb9v7OYGd');
+</script>
+</head>
+<body>
+
+<!-- ==================== CANONICAL NAV v2 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v2">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare.html" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/agriculture.html">Agriculture</a></li>
+        <li><a href="/emergency.html">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos.html">Demos</a></li>
+    <li><a href="/articles.html">Articles</a></li>
+    <li><a href="/licensing.html">Licensing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v2 ==================== -->
+
+
+  <article>
+    <header class="article-hero">
+      <div class="article-badge">machinelearning</div>
+      <h1>QIS vs Gainsight: Your Health Scores Know Who Is at Risk. They Don't Know What Worked.</h1>
+      <div class="article-byline">
+        By <strong>Yonder Zenith Research</strong> • Published 2026-04-26 • <a href="/" style="color: var(--cyan-bright);">Yonder Zenith LLC</a>
+      </div>
+      <div class="in-brief"><div class="in-brief-label">In brief</div><p>Architecture Comparisons #54 | Article #312</p></div>
+    </header>
+    <div class="article-body">
+<h1>QIS vs Gainsight: Your Health Scores Know Who Is at Risk. They Don&#39;t Know What Worked.</h1>
+<p><em>Architecture Comparisons #54 | Article #312</em></p>
+<p><em>Previous in series: <a href="#">QIS vs FullStory</a> | <a href="#">QIS vs Pendo</a> | <a href="#">QIS vs Segment</a></em></p>
+<hr>
+<p>Your Gainsight health score is red. Account health dropping. Usage down 38% in the last 30 days. Executive sponsor went dark three weeks ago. Product adoption score: 41 out of 100. Every signal points the same direction.</p>
+<p>Your CSM is already in the account. The question they are asking — the one Gainsight cannot answer, the one no internal dashboard can answer — is: <em>what actually worked the last time this happened?</em></p>
+<p>Not your last time. Not your team&#39;s last time. The last 2,000 times. Across every B2B SaaS company in your space that watched an account hit this exact usage pattern, at this company size, in this vertical, at this point in the customer lifecycle — and then ran a recovery playbook and tracked the result.</p>
+<p>That intelligence does not exist anywhere. It is distributed across thousands of Gainsight deployments, each learning from its own accounts in isolation, none of them connected. The validated outcomes from every customer success intervention ever run on a similar account have never been routed anywhere they could reach you.</p>
+<p>Gainsight ends where that routing would begin.</p>
+<p>Christopher Thomas Trevethan&#39;s discovery of the Quadratic Intelligence Swarm (QIS) protocol fills that layer — not by replacing Gainsight&#39;s health scoring, not by centralizing your customer data, but by adding the outcome routing architecture that currently does not exist above it.</p>
+<hr>
+<h2>What Gainsight Does — and Does Exceptionally Well</h2>
+<p>Gainsight discovered the customer success category as a discipline. Before Gainsight, &quot;customer success&quot; was either support or account management with different branding. Gainsight built the operational infrastructure that gave CS teams a systematic, data-driven way to manage revenue retention at scale.</p>
+<p><strong>Account health scoring</strong> aggregates behavioral signals across product usage, support activity, NPS, contract data, and engagement touchpoints into a composite score that surfaces risk before accounts go dark. The sophistication here is real: Gainsight allows health score customization by customer segment, product surface, and lifecycle stage. A 50-seat fintech customer on month 3 of their contract gets a different health model than a 1,000-seat enterprise customer in year 2. The scoring logic adapts to what actually predicts churn in each segment — based on your historical data.</p>
+<p><strong>Journey orchestration</strong> automates the operational response to health signals. When an account&#39;s health score crosses a threshold, Gainsight can trigger a playbook automatically: send an executive business review invitation, assign a CSM task, deploy a targeted in-app message, initiate a training campaign. The CS team&#39;s response to at-risk accounts is no longer dependent on individual CSM vigilance — it is systematic, consistent, and scalable.</p>
+<p><strong>Timeline and relationship intelligence</strong> gives CS teams a longitudinal view of every interaction: calls, emails, Slack conversations, support tickets, product interactions, stakeholder changes. When an executive sponsor goes dark, Gainsight flags it. When a power user who was a champion leaves the company, the historical relationship context persists. This institutional memory matters: customer relationships involve too many touchpoints and too many stakeholders for any individual CSM to maintain manually across a full book of business.</p>
+<p><strong>Revenue intelligence</strong> connects CS activity to expansion, contraction, and renewal outcomes. Net Revenue Retention (NRR) is not just a finance metric in Gainsight — it is the CS team&#39;s operational target, tracked at the account level, attributed to specific activities and playbooks. The path from &quot;account health red&quot; to &quot;renewal secured at 110% NRR&quot; is documented, measurable, and improvable.</p>
+<p><strong>Gainsight AI</strong> surfaces churn risk predictions, identifies accounts that show pre-churn behavioral signatures before the health score deteriorates, and recommends next best actions based on what worked with similar accounts — within your data. The word &quot;within&quot; is doing significant work in that sentence. We will return to it.</p>
+<hr>
+<h2>The Boundary Gainsight Cannot Cross</h2>
+<p>Gainsight&#39;s AI recommendations are trained on your customer data. When Gainsight recommends an executive business review for an at-risk account, that recommendation comes from patterns it detected in your historical interventions with your past customers. It cannot learn from an intervention that happened at Salesforce, or Zendesk, or the 8,000 other B2B SaaS companies running Gainsight.</p>
+<p>This is not a product limitation Gainsight can remediate on its next roadmap. It is a categorical architectural boundary.</p>
+<p>The reason: to route validated outcomes between companies, you would need a mechanism that does three things simultaneously. First, it distills the outcome of a CS intervention — not the raw customer data, but the distilled result: customer archetype, health signal pattern, intervention type, outcome — into a compact packet that can move across company boundaries without exposing proprietary information. Second, it routes that packet to CS teams working on accounts with matching archetypes, not to everyone, but to the semantically relevant audience. Third, it enables each receiving team to synthesize the incoming intelligence locally, on their own terms, without a central aggregator seeing everything.</p>
+<p>That is not a Gainsight feature. That is a separate protocol layer that sits above Gainsight, and it requires a discovery about how distributed outcome routing actually works before it can be built.</p>
+<p>Trevethan&#39;s discovery provides that architecture.</p>
+<hr>
+<h2>The Math Behind the Gap</h2>
+<p>Here is the number that puts the problem in perspective.</p>
+<p>If 1,000 B2B SaaS companies each run Gainsight, each learning from their own customer interventions in isolation, the total number of cross-company synthesis opportunities sitting permanently idle is:</p>
+<p>N(N-1)/2 = 1,000 × 999 / 2 = <strong>499,500 synthesis pairs</strong></p>
+<p>Every time a CS team at Company A succeeds in saving an at-risk enterprise account with a 2-step executive engagement playbook — and that outcome is validated, documented, and precisely categorized by account archetype — that validated outcome has 999 potential recipients at other companies managing similar accounts. None of them receive it. Ever. Because there is no routing layer.</p>
+<p>At 500 companies: 124,750 idle synthesis pairs.
+At 200 companies: 19,900 idle synthesis pairs.
+At 50 companies in a single vertical: 1,225 idle synthesis pairs.</p>
+<p>Each of those pairs represents a CS team that could have known what worked, and did not, because the outcome packet was never distilled and never routed.</p>
+<p>The math is not a coincidence. It is the signature of a missing architectural layer: the outcome routing layer that QIS provides.</p>
+<hr>
+<h2>What QIS Adds</h2>
+<p>QIS — the Quadratic Intelligence Swarm protocol — was discovered by Christopher Thomas Trevethan on June 16, 2025. The discovery: when you route pre-distilled outcome packets to semantically similar problem-holders instead of centralizing raw data, intelligence scales quadratically while compute scales logarithmically. 39 provisional patents cover the architecture.</p>
+<p>Applied to the customer success problem, QIS works as follows.</p>
+<p>When a CS intervention produces a validated outcome — account saved, churned, expanded, contracted — an edge node distills that outcome into a packet approximately 512 bytes in size. The packet is not raw customer data. It contains no company names, no account names, no proprietary metrics. It contains the distilled signal: <em>customer archetype class + health signal pattern at time of intervention + intervention category + outcome delta + confidence measure.</em></p>
+<p>The packet is then tagged with a semantic fingerprint: a vector encoding of the problem class — in this case, the customer archetype. Industry vertical. Company size band. Product surface. Lifecycle stage. Health score trajectory. The fingerprint generates a deterministic address that maps to the problem class it represents, not to any specific customer or company.</p>
+<p>The packet is deposited at that address.</p>
+<p>CS teams managing accounts with matching archetypes query the address and pull back outcome packets from all similar intervention histories across the network. Their own synthesis layer — running locally, seeing only the retrieved packets, never the source company data — produces an actionable signal: <em>for accounts in this archetype, with this health trajectory, the intervention class with the highest validated save rate across 847 similar cases in the network is X, with 73% success rate and a median time-to-recovery of 18 days.</em></p>
+<p>No raw customer data crosses company boundaries. No central aggregator sees everything. Every company retains full sovereignty over its customer data. The intelligence that moves is pre-distilled: not what your customers did, but what worked when similar customers showed similar signals.</p>
+<p>This is categorically different from Gainsight. Gainsight routes your account data to your CS team. QIS routes validated outcomes from the network to your CS team. Both are necessary. Neither is redundant.</p>
+<hr>
+<h2>The Integration Point</h2>
+<p>QIS does not require replacing Gainsight. It connects to Gainsight&#39;s output layer — the point after a health score has been acted on and an outcome has been recorded.</p>
+<p>In practice, the integration is a single validation hook. When Gainsight records a closed-loop outcome — playbook completed, renewal filed, churn confirmed — a lightweight QIS client at your edge distills the outcome record into a packet, fingerprints it using your account segmentation taxonomy, and deposits it to the protocol address for that archetype class.</p>
+<p>The deposit takes milliseconds. The packet contains no PII, no company-identifiable data, no proprietary signals. It is the distilled outcome: this intervention, on this archetype, produced this result.</p>
+<p>From that point, your edge node also pulls from the same address: what did the network learn about interventions on accounts matching your current high-risk archetypes? The synthesis takes milliseconds. The result is a prioritized recommendation layer that sits above Gainsight&#39;s internal AI — one trained not just on your historical accounts but on every validated intervention outcome the network has ever produced for matching archetypes.</p>
+<p>Your CSM opens an at-risk account in Gainsight. The health score tells them it is red. The QIS synthesis layer tells them what worked the last 847 times the network saw this exact archetype at this health trajectory. Both signals are available at the point of action.</p>
+<hr>
+<h2>Who Builds This Layer</h2>
+<p>The QIS routing layer is not built by Gainsight. It is not built by any company that has an interest in centralizing your customer data, because the architecture explicitly prevents centralization.</p>
+<p>It is a protocol layer — specified openly, implementable by any team, running at the edge of any Gainsight deployment. The 39 provisional patents filed by Christopher Thomas Trevethan cover the complete architecture: the distillation mechanism, the semantic fingerprinting, the deterministic address generation, the routing protocol, and the local synthesis layer. The discovery is the complete loop — the architecture that makes quadratic intelligence scaling possible without quadratic compute cost.</p>
+<p>Crucially: the routing mechanism does not need to be a DHT. Any mechanism that posts outcome packets to a deterministic address and allows retrieval by problem similarity qualifies — a database with semantic indexing, a pub/sub topic architecture, a vector search layer, a shared file system. DHT-based routing is one excellent option (O(log N) or better cost, fully decentralized, no single point of failure). But the protocol is transport-agnostic by design. The quadratic scaling comes from the architecture — the complete loop — not from any specific routing implementation.</p>
+<hr>
+<h2>The Numbers That Summarize the Gap</h2>
+<p>Gainsight reports serving approximately 8,000 customers across B2B SaaS, enterprise software, and professional services. These 8,000 deployments collectively generate validated CS intervention outcomes every day — playbooks executed, accounts saved or lost, renewal decisions recorded.</p>
+<p>At N=8,000:</p>
+<p>N(N-1)/2 = <strong>31,996,000 synthesis pairs currently idle.</strong></p>
+<p>Every day, 8,000 CS teams learn from their own interventions and share none of it with anyone else. Not because they are unwilling to share, but because the routing layer that would let them share only the distilled outcomes — safely, without exposing customer data — does not exist in any of the tools in their stack.</p>
+<p>QIS is that layer.</p>
+<hr>
+<h2>What This Means for Customer Success as a Discipline</h2>
+<p>Customer success is, at its foundation, a knowledge problem. The question every CS team is trying to answer — what intervention actually works, for this customer archetype, at this point in their lifecycle — is only answerable if the evidence base is large enough to be statistically meaningful. One company&#39;s history with 500 similar accounts is informative. The network&#39;s history with 50,000 similar accounts is definitive.</p>
+<p>The architectural gap between those two numbers is not a data quality problem or a tooling problem. It is a routing problem. The outcomes exist. They are being generated, every day, by CS teams at every Gainsight customer. They are not reaching anyone else because the protocol layer that would route them safely does not exist.</p>
+<p>Trevethan&#39;s discovery does not make Gainsight obsolete. It makes Gainsight more valuable — by completing the loop that Gainsight&#39;s health scoring opens and cannot close. The health score identifies the problem. The outcome routing network tells you what the evidence says about solving it.</p>
+<p>The gap between those two things is where 31,996,000 synthesis pairs currently live in silence.</p>
+<hr>
+<p><em>Quadratic Intelligence Swarm (QIS) was discovered by Christopher Thomas Trevethan on June 16, 2025. The breakthrough is the complete architecture — the loop that enables real-time quadratic intelligence scaling without quadratic compute cost. 39 provisional patents filed. QIS is free for humanitarian, research, and educational use. For protocol documentation: qisprotocol.com.</em></p>
+<p><em>Patent Pending</em></p>
+
+    </div>
+  </article>
+
+  <section class="article-footer-cta">
+    <p><strong>Keep exploring QIS Protocol</strong></p>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/comparison.html">Compare Approaches</a>
+    <a href="/articles.html">All Articles</a>
+    <a href="/faq.html">FAQ</a>
+  </section>
+
+  <footer>
+    <p><strong>Yonder Zenith LLC</strong> &mdash; Redefining The Horizon</p>
+    <p>&copy; 2025 Yonder Zenith LLC. All rights reserved. <a href="/licensing.html">License</a> | <a href="/privacy.html">Privacy</a></p>
+    <p style="margin-top: 10px; opacity: 0.4; font-size: 0.8rem;">39 provisional patent applications filed. Math is public. Implementation is protected.</p>
+  </footer>
+</body>
+</html>

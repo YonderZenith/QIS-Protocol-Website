@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Linear gives engineering teams the clearest view of their own velocity, cycle patterns, and issue resolution data. QIS routes the cycle insights, bug cluster…">
+  <meta name="keywords" content="distributedsystems, engineering, architecture, productivity">
+  <meta name="author" content="Yonder Zenith LLC">
+  <link rel="canonical" href="https://qisprotocol.com/article-qis-vs-linear.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="QIS vs Linear: Engineering Teams Track Every Cycle, Every Bug Cluster, Every Velocity Pattern in Linear. That Intelligence Has Never Left Any of Their Workspaces.">
+  <meta property="og:description" content="Linear gives engineering teams the clearest view of their own velocity, cycle patterns, and issue resolution data. QIS routes the cycle insights, bug cluster…">
+  <meta property="og:url" content="https://qisprotocol.com/article-qis-vs-linear.html">
+  <meta property="og:site_name" content="QIS Protocol">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QIS vs Linear: Engineering Teams Track Every Cycle, Every Bug Cluster, Every Velocity Pattern in Linear. That Intelligence Has Never Left Any of Their Workspaces.">
+  <meta name="twitter:description" content="Linear gives engineering teams the clearest view of their own velocity, cycle patterns, and issue resolution data. QIS routes the cycle insights, bug cluster…">
+
+  <title>QIS vs Linear: Engineering Teams Track Every Cycle, Every Bug Cluster, Every Velocity Pattern in Linear. That Intelligence Has Never Left Any of Their Workspaces.</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://qisprotocol.com/#organization",
+      "name": "Yonder Zenith LLC",
+      "url": "https://qisprotocol.com",
+      "logo": "https://qisprotocol.com/images/logo.png",
+      "founder": {
+        "@id": "https://qisprotocol.com/#inventor"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://qisprotocol.com/#inventor",
+      "name": "Christopher Thomas Trevethan",
+      "jobTitle": "QIS Protocol Architect, Founder of Yonder Zenith LLC",
+      "affiliation": {
+        "@id": "https://qisprotocol.com/#organization"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "QIS vs Linear: Engineering Teams Track Every Cycle, Every Bug Cluster, Every Velocity Pattern in Linear. That Intelligence Has Never Left Any of Their Workspaces.",
+      "description": "Linear gives engineering teams the clearest view of their own velocity, cycle patterns, and issue resolution data. QIS routes the cycle insights, bug cluster patterns, and velocity signals Linear cannot — across every engineering org building similar systems.",
+      "url": "https://qisprotocol.com/article-qis-vs-linear.html",
+      "mainEntityOfPage": "https://qisprotocol.com/article-qis-vs-linear.html",
+      "datePublished": "2026-04-26",
+      "dateModified": "2026-04-26",
+      "author": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "QIS Protocol — Quadratic Intelligence Swarm",
+        "url": "https://qisprotocol.com"
+      },
+      "keywords": "distributedsystems, engineering, architecture, productivity"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://qisprotocol.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://qisprotocol.com/articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QIS vs Linear: Engineering Teams Track Every Cycle, Every Bug Cluster, Every Velocity Pattern in Linear. That Intelligence Has Never Left Any of Their Workspaces.",
+          "item": "https://qisprotocol.com/article-qis-vs-linear.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6;
+      --green-neural: #10B981; --gold-accent: #F59E0B; --red-accent: #EF4444;
+      --dark-bg: #0A0A0A; --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; line-height: 1.8; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(0,190,234,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .article-hero { padding: 140px clamp(16px, 4vw, 40px) 40px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .article-badge {
+      display: inline-block; padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 1.5px; color: var(--cyan-bright); background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 20px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .article-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3.8vw, 2.6rem); font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 20px; line-height: 1.2; }
+    .article-byline { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .article-byline strong { color: var(--text-secondary); }
+    .in-brief { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(0,190,234,0.08));
+      border-left: 4px solid var(--purple-quantum); border-radius: 0 12px 12px 0;
+      padding: clamp(18px, 3vw, 28px); margin-bottom: 40px; }
+    .in-brief-label { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; color: var(--purple-quantum); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .in-brief p { font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--text-primary); line-height: 1.7; margin: 0; font-style: italic; }
+    .article-body { max-width: 780px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 60px; position: relative; z-index: 1; font-size: 1.05rem; color: var(--text-secondary); }
+    .article-body h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.2rem, 2.3vw, 1.7rem); color: var(--cyan-bright); margin: 50px 0 18px; }
+    .article-body h3 { font-family: 'Orbitron', sans-serif; font-size: clamp(1rem, 1.7vw, 1.25rem); color: var(--text-primary); margin: 32px 0 14px; }
+    .article-body h4 { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 24px 0 10px; }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { margin: 0 0 18px 22px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text-primary); }
+    .article-body a { color: var(--cyan-bright); text-decoration: none; border-bottom: 1px solid rgba(0, 217, 255, 0.25); }
+    .article-body a:hover { border-bottom-color: var(--cyan-bright); }
+    .article-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: rgba(0, 190, 234, 0.08); padding: 2px 6px; border-radius: 4px; color: var(--cyan-bright); }
+    .article-body pre { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 190, 234, 0.15); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; }
+    .article-body pre code { background: transparent; padding: 0; color: var(--text-primary); }
+    .article-body blockquote { border-left: 4px solid var(--green-neural); padding: 8px 20px; margin: 20px 0; background: rgba(16, 185, 129, 0.04); color: var(--text-primary); font-style: italic; }
+    .article-body hr { border: none; border-top: 1px solid rgba(0, 190, 234, 0.15); margin: 40px 0; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .article-body th, .article-body td { padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: left; }
+    .article-body th { color: var(--cyan-bright); font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .article-footer-cta { max-width: 780px; margin: 40px auto; padding: 30px; background: rgba(0, 190, 234, 0.04); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-align: center; position: relative; z-index: 1; }
+    .article-footer-cta p { color: var(--text-secondary); margin-bottom: 16px; }
+    .article-footer-cta a { display: inline-block; padding: 10px 24px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); color: var(--cyan-bright); text-decoration: none; border-radius: 30px; margin: 4px; transition: all 0.3s ease; }
+    .article-footer-cta a:hover { background: var(--cyan-bright); color: #000; }
+    footer { background: #000; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 190, 234, 0.15); }
+    footer p { color: var(--text-secondary); margin-bottom: 6px; font-size: 0.85rem; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+  </style>
+<script>
+  (function(ss,ex){
+    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
+    (function(d,s){
+      fs=d.getElementsByTagName(s)[0];
+      function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
+      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
+    })(document,'script');
+  })('lAxoEaKQb9v7OYGd');
+</script>
+</head>
+<body>
+
+<!-- ==================== CANONICAL NAV v2 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v2">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare.html" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/agriculture.html">Agriculture</a></li>
+        <li><a href="/emergency.html">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos.html">Demos</a></li>
+    <li><a href="/articles.html">Articles</a></li>
+    <li><a href="/licensing.html">Licensing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v2 ==================== -->
+
+
+  <article>
+    <header class="article-hero">
+      <div class="article-badge">distributedsystems</div>
+      <h1>QIS vs Linear: Engineering Teams Track Every Cycle, Every Bug Cluster, Every Velocity Pattern in Linear. That Intelligence Has Never Left Any of Their Workspaces.</h1>
+      <div class="article-byline">
+        By <strong>Yonder Zenith Research</strong> • Published 2026-04-26 • <a href="/" style="color: var(--cyan-bright);">Yonder Zenith LLC</a>
+      </div>
+      <div class="in-brief"><div class="in-brief-label">In brief</div><p>Architecture Comparisons #71 | Article #329</p></div>
+    </header>
+    <div class="article-body">
+<h1>QIS vs Linear: Engineering Teams Track Every Cycle, Every Bug Cluster, Every Velocity Pattern in Linear. That Intelligence Has Never Left Any of Their Workspaces.</h1>
+<p><em>Architecture Comparisons #71 | Article #329</em></p>
+<blockquote>
+<p><strong>Architecture Comparisons</strong> is a running series examining how Quadratic Intelligence Swarm (QIS) protocol — discovered by Christopher Thomas Trevethan, 39 provisional patents filed — relates to existing tools and platforms. Each entry takes one tool, maps where it stops, and shows where QIS picks up.</p>
+</blockquote>
+<hr>
+<p>Your engineering team has been running in Linear for two years.</p>
+<p>You have cycles going back to the first quarter after the migration from Jira. Every two weeks, a snapshot: what your team committed to, what shipped, what slipped, and why. The slip patterns are educational. Three categories of issues consistently carry into the next cycle — not because the work is hard, but because of something structural about how those issue types interact with your codebase. You have that data. You can see it in your Linear workspace.</p>
+<p>You have a project history. Fourteen major projects completed, four still open. The closed ones carry a pattern: projects in the payments domain tend to surface integration edge cases at 80% completion that nobody caught during scoping. That pattern has repeated four times. It is in your issue history, traceable if you query for it, clear if you look.</p>
+<p>You have your bug clusters. Issues that recurred — not the same bug twice, but semantically similar bugs: the same class of boundary condition, the same category of async race condition, the same type of auth edge case. These clusters tell you something about your architecture. A senior engineer on your team noticed the pattern in the last retrospective. It is valuable organizational intelligence.</p>
+<p>None of this has ever reached the forty thousand other engineering organizations building B2B SaaS products, running similar tech stacks, shipping in similar two-week cycles, accumulating similar patterns in their own Linear workspaces.</p>
+<p>Linear makes your engineering team&#39;s velocity visible. It does not route what engineering teams learned shipping similar software to similar customers.</p>
+<hr>
+<h2>What Linear Is Built To Do</h2>
+<p>Linear was built as a reaction to the complexity that accretes in legacy project management tools. It is opinionated by design: keyboard-first, fast, with a data model that matches how engineering teams actually think — issues, cycles, projects, roadmaps, with clear ownership and priority signals at every level.</p>
+<p>That opinionation works. Linear teams consistently report better cycle time discipline and cleaner issue hygiene than teams that migrated from heavier tools. The product surface is small enough that everyone on the team actually uses it, which means the data is more complete than what you typically get in tools that are technically capable of everything but practically used for nothing.</p>
+<p>Linear&#39;s analytics surface your cycle completion rates. It shows your issue throughput over time, your velocity trend, your lead time from creation to close. It shows which members of your team are taking on what types of issues and at what pace. If you use projects with milestone tracking, you get a reasonable view of engineering execution against roadmap commitments.</p>
+<p>All of this is within-workspace analysis. Linear is telling you about your team&#39;s patterns, relative to your team&#39;s own history.</p>
+<hr>
+<h2>Where the Boundary Is</h2>
+<p>Linear is not designed to synthesize across workspaces. Every engineering organization&#39;s Linear data lives in isolation — not for security failure, but because that is the product&#39;s scope. Your cycle completion patterns are yours. The bug clusters in your codebase are yours. The project-level risk patterns your team has accumulated are yours.</p>
+<p>This is not a criticism of Linear. Cross-workspace synthesis is not what Linear was built to do, and no project management tool has solved it. The problem is that the most actionable intelligence an engineering team could receive — what worked for teams in directly analogous situations — exists, scattered across forty thousand other workspaces, permanently inaccessible.</p>
+<p>Consider what sits dormant across Linear&#39;s user base as of 2026, conservatively estimated at 40,000 engineering organizations:</p>
+<ul>
+<li>40,000 engineering orgs</li>
+<li>N(N-1)/2 unique pairs = <strong>~800 million synthesis opportunities</strong></li>
+</ul>
+<p>Each of those pairs represents a potential exchange: what cycle patterns correlate with high velocity at a B2B SaaS company at Series B? Which bug cluster categories tend to resolve faster with architectural intervention vs. process intervention? Which project risk signatures in the scoping phase predict shipping delays at the 80% mark?</p>
+<p>That intelligence exists. It is distributed across 40,000 workspaces. None of it has ever been synthesized.</p>
+<hr>
+<h2>What QIS Routes That Linear Cannot</h2>
+<p>Christopher Thomas Trevethan&#39;s discovery — the Quadratic Intelligence Swarm (QIS) protocol, 39 provisional patents filed — addresses a structural gap no project management tool is positioned to close.</p>
+<p>The architecture operates as a complete loop:</p>
+<ol>
+<li><strong>Raw signal at the edge</strong> — Your engineering team closes an issue, completes a cycle, merges a project to done. Linear records the event.</li>
+<li><strong>Local distillation</strong> — A QIS edge node at your workspace processes the event context, extracts a distilled outcome packet (~512 bytes): cycle type, completion status, slip category if applicable, architectural domain of the issue cluster, anonymized velocity signal.</li>
+<li><strong>Semantic fingerprinting</strong> — The packet receives a vector fingerprint encoding the semantic meaning of the engineering context: B2B SaaS, payments domain, two-week cycles, TypeScript/Node.js stack, team size tier.</li>
+<li><strong>Routing to a deterministic address</strong> — The packet is routed to an address determined by similarity — not by your company name, not by your workspace ID, but by the problem fingerprint. The routing mechanism can be a DHT, a vector database, a REST API endpoint, a message queue. The architecture is transport-agnostic; the critical requirement is that outcome packets reach a deterministic address findable by others facing the same problem.</li>
+<li><strong>Pull by edge twins</strong> — Engineering organizations whose fingerprints match yours can query that address and pull back the distilled outcome packets deposited by teams that faced your exact pattern. No raw data leaves any workspace. No issue content is transmitted. Only the synthesized insight: what resolved quickly, what required architectural intervention, what pattern preceded a velocity regression.</li>
+<li><strong>Local synthesis</strong> — Your edge node synthesizes the incoming packets locally. The result: real-time intelligence about what is working for teams in directly analogous situations — without any of those teams&#39; data ever entering your environment.</li>
+</ol>
+<p>The complete loop is the breakthrough. No single component of this architecture is novel in isolation. Distributed hash tables, vector similarity search, edge computing — these all existed before June 16, 2025, when Christopher Thomas Trevethan discovered that closing this specific loop produces quadratic intelligence scaling at logarithmic compute cost.</p>
+<p>The math is worth holding:</p>
+<ul>
+<li>40,000 engineering orgs in the network: <strong>~800 million synthesis pairs</strong></li>
+<li>Each pair can exchange velocity intelligence without either side transmitting raw issue data</li>
+<li>Each new engineering org that joins adds 39,999 new synthesis pathways</li>
+<li>Intelligence compounds as the network grows</li>
+</ul>
+<p>Linear&#39;s analytics improve when your team generates more data. QIS produces intelligence that improves when more teams — anywhere — generate outcome data in adjacent engineering contexts.</p>
+<hr>
+<h2>The Linear Integration Shape</h2>
+<p>QIS does not replace Linear. It adds an outcome routing layer that operates on top of whatever project management infrastructure your engineering team already uses.</p>
+<p>A Linear integration would attach to the events Linear already generates:</p>
+<pre><code class="language-python">class LinearQISBridge:
+    &quot;&quot;&quot;
+    Attaches to Linear events. Distills outcome signals.
+    Routes anonymized packets to semantic address.
+    Pulls from edge twins. Returns synthesis.
+    Raw issue data never leaves.
+    &quot;&quot;&quot;
+
+    def on_cycle_complete(self, cycle: LinearCycle):
+        &quot;&quot;&quot;Distill and route cycle outcome signal.&quot;&quot;&quot;
+        packet = OutcomePacket(
+            domain=&quot;engineering.velocity&quot;,
+            cycle_length_days=cycle.duration_days,
+            completion_rate=cycle.completed_issues / cycle.planned_issues,
+            slip_categories=self._extract_slip_categories(cycle),
+            issue_type_distribution=self._anonymize_distribution(cycle),
+            tech_context=self._fingerprint_stack(cycle.workspace),
+            timestamp=cycle.completed_at
+        )
+        address = self._semantic_address(packet)
+        self.router.deposit(address, packet)
+        return self.router.query(address, top_k=50)
+
+    def on_issue_cluster_detected(self, cluster: IssueCluster):
+        &quot;&quot;&quot;Route cluster pattern. Pull resolution paths from edge twins.&quot;&quot;&quot;
+        packet = OutcomePacket(
+            domain=&quot;engineering.bugs&quot;,
+            cluster_category=cluster.semantic_category,
+            cluster_size=cluster.issue_count,
+            architectural_domain=cluster.domain_fingerprint,
+            resolution_approach=cluster.resolution_type if cluster.resolved else None,
+            time_to_resolution_days=cluster.resolution_time,
+            tech_context=self._fingerprint_stack(cluster.workspace)
+        )
+        address = self._semantic_address(packet)
+        self.router.deposit(address, packet)
+        twins = self.router.query(address, top_k=100)
+        return self._synthesize_resolution_paths(twins)
+
+    def on_project_risk_signal(self, project: LinearProject, signal: RiskSignal):
+        &quot;&quot;&quot;Deposit project risk pattern. Query what resolved this class of risk.&quot;&quot;&quot;
+        packet = OutcomePacket(
+            domain=&quot;engineering.projects&quot;,
+            risk_category=signal.category,
+            project_phase=signal.detected_at_phase,
+            completion_pct_at_detection=signal.completion_pct,
+            architectural_context=self._fingerprint_project(project),
+            outcome=project.outcome if project.completed else None
+        )
+        address = self._semantic_address(packet)
+        self.router.deposit(address, packet)
+        return self.router.query(address, top_k=75)
+
+    def _semantic_address(self, packet: OutcomePacket) -&gt; str:
+        &quot;&quot;&quot;Deterministic address derived from problem semantics.&quot;&quot;&quot;
+        return self.hasher.digest(
+            packet.domain,
+            packet.tech_context.stack_fingerprint,
+            packet.tech_context.company_stage,
+            packet.tech_context.team_size_tier
+        )
+</code></pre>
+<p>Three event hooks. Three outcome domains. None of them transmit issue titles, assignee data, project names, or workspace identifiers. The routing layer sees fingerprints and outcome signals — engineering intelligence without organizational exposure.</p>
+<hr>
+<h2>The Velocity Intelligence Gap in Practice</h2>
+<p>Here is a concrete version of what this changes.</p>
+<p>Your engineering team is at 80% completion on a significant project. Linear shows you the issue breakdown: 23 open issues, 7 of them in the payments integration layer. Three of those issues opened in the last sprint, which is unusual for a project this close to done. Your team&#39;s pattern — which you can see in your own Linear history — is that this exact signature has preceded a two-week slip on three previous projects.</p>
+<p>You know that. Linear tells you that.</p>
+<p>What Linear cannot tell you: of the forty thousand other engineering organizations that have seen this exact pattern — payments integration issues surfacing at 80% project completion, late-cycle issue opens in a specific architectural domain — what did they do? Which teams resolved it with focused architectural intervention? Which teams shipped and handled the debt post-launch? Which architectural decisions at the 30% phase appear to correlate with preventing this class of late-cycle surprise entirely?</p>
+<p>That knowledge exists. It is distributed across 40,000 Linear workspaces. Every team that has shipped software with a payments layer has accumulated relevant outcome data. None of it is accessible to you when you need it — in the two-week window before a potential slip, with the exact problem fingerprint visible in your issue tracker.</p>
+<p>QIS routes that intelligence directly to the edge that needs it, in the moment it needs it, without any of those forty thousand teams&#39; raw data ever leaving their workspace.</p>
+<hr>
+<h2>The Three Emergent Properties</h2>
+<p>Christopher Thomas Trevethan&#39;s architecture produces three emergent properties that are worth naming — not as features to configure, but as natural forces the architecture unleashes.</p>
+<p><strong>The first</strong>: expertise-defined similarity. The semantic address for &quot;B2B SaaS engineering team, Series B, TypeScript stack, payments integration domain&quot; is best defined by someone who understands what makes two such situations genuinely similar. A principal engineer who has shipped payments at scale knows that team size and tech stack alone are insufficient — the similarity function needs to account for architectural maturity, test coverage discipline, the proportion of the team that understands the payments domain. Whoever defines that similarity function determines the quality of routing. The incentive is to find the best expert available.</p>
+<p><strong>The second</strong>: outcomes as votes. When your edge node queries the semantic address and pulls back outcome packets from edge twins, the synthesis that emerges is not a curated recommendation from a central authority. It is the mathematical aggregate of what actually happened when similar engineering organizations faced similar situations. No one voted on which outcomes to surface. The outcomes surfaced themselves — the same way aggregate data always surfaces pattern. The math does the work.</p>
+<p><strong>The third</strong>: networks compete on results. An engineering network with a poorly-defined similarity function routes irrelevant outcome packets — teams querying &quot;payments integration velocity intelligence&quot; get back packets from unrelated domains. That network loses users. A network with excellent domain expertise defining its similarity function routes gold — teams get back precisely relevant intelligence in real time. That network gains users. No governing body adjudicates which network is better. Engineering teams migrate to the network that actually makes them faster.</p>
+<p>These are not governance mechanisms. They are not protocol features to configure. They emerge from the architecture the same way traffic patterns emerge from road networks — not designed, but inevitable once the infrastructure exists.</p>
+<hr>
+<h2>What Stays Exactly the Same</h2>
+<p>Linear continues to do what it does exceptionally well:</p>
+<ul>
+<li><strong>Issue tracking</strong>: your team&#39;s issues, your team&#39;s priorities, your team&#39;s ownership</li>
+<li><strong>Cycle management</strong>: your two-week rhythm, your team&#39;s commitments, your velocity trends</li>
+<li><strong>Project execution</strong>: your roadmap, your milestones, your team&#39;s delivery patterns</li>
+<li><strong>Within-workspace analytics</strong>: Linear&#39;s cycle reports, velocity charts, and project completion data remain entirely local and entirely yours</li>
+</ul>
+<p>QIS does not access any of this. It attaches to the outcome events your team generates — cycle completions, issue resolutions, project milestones — and distills anonymized signals from them. Your workspace data stays in Linear. The intelligence about what those signals mean, across a network of similar teams, becomes accessible in real time.</p>
+<p>The two layers are separable. QIS is not a replacement for Linear. It is the protocol that lets Linear&#39;s outcome data participate in something larger than any single workspace.</p>
+<hr>
+<h2>The Series So Far</h2>
+<p>This article is part of the Architecture Comparisons series examining how QIS relates to the tools engineering and product teams already use.</p>
+<p>Recent entries in this series: <strong>#328</strong> — <a href="https://qisprotocol.com/articles/qis-vs-notion">QIS vs Notion</a> | <strong>#327</strong> — <a href="https://qisprotocol.com/articles/qis-vs-confluence">QIS vs Confluence</a> | <strong>#326</strong> — <a href="https://qisprotocol.com/articles/qis-vs-jira">QIS vs Jira</a></p>
+<p>For the full architecture: <strong><a href="https://dev.to/roryqis/qis-seven-layer-architecture-a-technical-deep-dive-12e5">Quadratic Intelligence Swarm — Technical Overview</a></strong></p>
+<p><em>Patent Pending</em></p>
+
+    </div>
+  </article>
+
+  <section class="article-footer-cta">
+    <p><strong>Keep exploring QIS Protocol</strong></p>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/comparison.html">Compare Approaches</a>
+    <a href="/articles.html">All Articles</a>
+    <a href="/faq.html">FAQ</a>
+  </section>
+
+  <footer>
+    <p><strong>Yonder Zenith LLC</strong> &mdash; Redefining The Horizon</p>
+    <p>&copy; 2025 Yonder Zenith LLC. All rights reserved. <a href="/licensing.html">License</a> | <a href="/privacy.html">Privacy</a></p>
+    <p style="margin-top: 10px; opacity: 0.4; font-size: 0.8rem;">39 provisional patent applications filed. Math is public. Implementation is protected.</p>
+  </footer>
+</body>
+</html>

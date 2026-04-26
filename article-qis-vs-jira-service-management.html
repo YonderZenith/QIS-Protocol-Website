@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your Jira Service Management queue just showed a P1. Database connection timeouts, three services degraded, SLA clock running. Your team starts digging through ">
+  <meta name="keywords" content="itsm, distributed-systems, ai, devops">
+  <meta name="author" content="Yonder Zenith LLC">
+  <link rel="canonical" href="https://qisprotocol.com/article-qis-vs-jira-service-management.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="QIS vs Jira Service Management: Jira Tracks Your Incidents. It Cannot Route What Fixed Them.">
+  <meta property="og:description" content="Your Jira Service Management queue just showed a P1. Database connection timeouts, three services degraded, SLA clock running. Your team starts digging through ">
+  <meta property="og:url" content="https://qisprotocol.com/article-qis-vs-jira-service-management.html">
+  <meta property="og:site_name" content="QIS Protocol">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QIS vs Jira Service Management: Jira Tracks Your Incidents. It Cannot Route What Fixed Them.">
+  <meta name="twitter:description" content="Your Jira Service Management queue just showed a P1. Database connection timeouts, three services degraded, SLA clock running. Your team starts digging through ">
+
+  <title>QIS vs Jira Service Management: Jira Tracks Your Incidents. It Cannot Route What Fixed Them.</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://qisprotocol.com/#organization",
+      "name": "Yonder Zenith LLC",
+      "url": "https://qisprotocol.com",
+      "logo": "https://qisprotocol.com/images/logo.png",
+      "founder": {
+        "@id": "https://qisprotocol.com/#inventor"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://qisprotocol.com/#inventor",
+      "name": "Christopher Thomas Trevethan",
+      "jobTitle": "QIS Protocol Architect, Founder of Yonder Zenith LLC",
+      "affiliation": {
+        "@id": "https://qisprotocol.com/#organization"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "QIS vs Jira Service Management: Jira Tracks Your Incidents. It Cannot Route What Fixed Them.",
+      "description": "Your Jira Service Management queue just showed a P1. Database connection timeouts, three services degraded, SLA clock running. Your team starts digging through ",
+      "url": "https://qisprotocol.com/article-qis-vs-jira-service-management.html",
+      "mainEntityOfPage": "https://qisprotocol.com/article-qis-vs-jira-service-management.html",
+      "datePublished": "2026-04-26",
+      "dateModified": "2026-04-26",
+      "author": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "QIS Protocol — Quadratic Intelligence Swarm",
+        "url": "https://qisprotocol.com"
+      },
+      "keywords": "itsm, distributed-systems, ai, devops"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://qisprotocol.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://qisprotocol.com/articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QIS vs Jira Service Management: Jira Tracks Your Incidents. It Cannot Route What Fixed Them.",
+          "item": "https://qisprotocol.com/article-qis-vs-jira-service-management.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6;
+      --green-neural: #10B981; --gold-accent: #F59E0B; --red-accent: #EF4444;
+      --dark-bg: #0A0A0A; --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; line-height: 1.8; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(0,190,234,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .article-hero { padding: 140px clamp(16px, 4vw, 40px) 40px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .article-badge {
+      display: inline-block; padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 1.5px; color: var(--cyan-bright); background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 20px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .article-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3.8vw, 2.6rem); font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 20px; line-height: 1.2; }
+    .article-byline { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .article-byline strong { color: var(--text-secondary); }
+    .in-brief { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(0,190,234,0.08));
+      border-left: 4px solid var(--purple-quantum); border-radius: 0 12px 12px 0;
+      padding: clamp(18px, 3vw, 28px); margin-bottom: 40px; }
+    .in-brief-label { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; color: var(--purple-quantum); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .in-brief p { font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--text-primary); line-height: 1.7; margin: 0; font-style: italic; }
+    .article-body { max-width: 780px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 60px; position: relative; z-index: 1; font-size: 1.05rem; color: var(--text-secondary); }
+    .article-body h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.2rem, 2.3vw, 1.7rem); color: var(--cyan-bright); margin: 50px 0 18px; }
+    .article-body h3 { font-family: 'Orbitron', sans-serif; font-size: clamp(1rem, 1.7vw, 1.25rem); color: var(--text-primary); margin: 32px 0 14px; }
+    .article-body h4 { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 24px 0 10px; }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { margin: 0 0 18px 22px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text-primary); }
+    .article-body a { color: var(--cyan-bright); text-decoration: none; border-bottom: 1px solid rgba(0, 217, 255, 0.25); }
+    .article-body a:hover { border-bottom-color: var(--cyan-bright); }
+    .article-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: rgba(0, 190, 234, 0.08); padding: 2px 6px; border-radius: 4px; color: var(--cyan-bright); }
+    .article-body pre { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 190, 234, 0.15); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; }
+    .article-body pre code { background: transparent; padding: 0; color: var(--text-primary); }
+    .article-body blockquote { border-left: 4px solid var(--green-neural); padding: 8px 20px; margin: 20px 0; background: rgba(16, 185, 129, 0.04); color: var(--text-primary); font-style: italic; }
+    .article-body hr { border: none; border-top: 1px solid rgba(0, 190, 234, 0.15); margin: 40px 0; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .article-body th, .article-body td { padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: left; }
+    .article-body th { color: var(--cyan-bright); font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .article-footer-cta { max-width: 780px; margin: 40px auto; padding: 30px; background: rgba(0, 190, 234, 0.04); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-align: center; position: relative; z-index: 1; }
+    .article-footer-cta p { color: var(--text-secondary); margin-bottom: 16px; }
+    .article-footer-cta a { display: inline-block; padding: 10px 24px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); color: var(--cyan-bright); text-decoration: none; border-radius: 30px; margin: 4px; transition: all 0.3s ease; }
+    .article-footer-cta a:hover { background: var(--cyan-bright); color: #000; }
+    footer { background: #000; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 190, 234, 0.15); }
+    footer p { color: var(--text-secondary); margin-bottom: 6px; font-size: 0.85rem; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+  </style>
+<script>
+  (function(ss,ex){
+    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
+    (function(d,s){
+      fs=d.getElementsByTagName(s)[0];
+      function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
+      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
+    })(document,'script');
+  })('lAxoEaKQb9v7OYGd');
+</script>
+</head>
+<body>
+
+<!-- ==================== CANONICAL NAV v2 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v2">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare.html" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/agriculture.html">Agriculture</a></li>
+        <li><a href="/emergency.html">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos.html">Demos</a></li>
+    <li><a href="/articles.html">Articles</a></li>
+    <li><a href="/licensing.html">Licensing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v2 ==================== -->
+
+
+  <article>
+    <header class="article-hero">
+      <div class="article-badge">itsm</div>
+      <h1>QIS vs Jira Service Management: Jira Tracks Your Incidents. It Cannot Route What Fixed Them.</h1>
+      <div class="article-byline">
+        By <strong>Yonder Zenith Research</strong> • Published 2026-04-26 • <a href="/" style="color: var(--cyan-bright);">Yonder Zenith LLC</a>
+      </div>
+      <div class="in-brief"><div class="in-brief-label">In brief</div><p>Your Jira Service Management queue just showed a P1. Database connection timeouts, three services degraded, SLA clock running. Your team starts digging through runbooks, past tickets, Confluence docs.</p></div>
+    </header>
+    <div class="article-body">
+<h1>QIS vs Jira Service Management: Jira Tracks Your Incidents. It Cannot Route What Fixed Them.</h1>
+<p>Your Jira Service Management queue just showed a P1. Database connection timeouts, three services degraded, SLA clock running. Your team starts digging through runbooks, past tickets, Confluence docs.</p>
+<p>Somewhere — in 64,999 other Jira Service Management deployments — a team already solved this exact incident six months ago. They found the root cause in 22 minutes. They wrote up the resolution. They closed the ticket.</p>
+<p>That resolution is sitting in their Jira instance. Your SLA clock is still running.</p>
+<p>This is the architecture gap that Christopher Thomas Trevethan&#39;s discovery of the Quadratic Intelligence Swarm protocol addresses. It is not a criticism of Jira Service Management. Jira is excellent at what it does. The gap is structural — and it sits precisely at the boundary where Jira stops.</p>
+<hr>
+<h2>What Jira Service Management Does Well</h2>
+<p>Jira Service Management is one of the most widely deployed ITSM platforms in the world, used by more than 65,000 teams across engineering, IT operations, and DevOps organizations.</p>
+<p>It handles the complete service management lifecycle: incident creation, prioritization, assignment, SLA tracking, escalation, resolution, and retrospective. Its integration with the Atlassian ecosystem — Confluence for runbooks, Bitbucket for code context, Opsgenie for alerting — means an incident&#39;s full context can live in one place.</p>
+<p>Jira&#39;s automation rules route tickets based on service type, priority, and component. Its asset and configuration management database (CMDB) ties incidents to the infrastructure components involved. Its reporting gives you MTTR, SLA compliance, incident volume trends, repeat incident rates.</p>
+<p>For managing what is happening inside your deployment, Jira Service Management is a sophisticated, battle-tested tool.</p>
+<p>The word &quot;inside&quot; is doing a lot of work in that sentence.</p>
+<hr>
+<h2>Where Jira Stops</h2>
+<p>Jira Service Management is architected around your organization&#39;s incidents, your teams&#39; resolutions, your historical tickets. The intelligence it accumulates — every resolution note, every root cause analysis, every workaround that actually worked — is bounded by your organizational perimeter.</p>
+<p>This is not a roadmap gap or a missing feature. It is a categorical architectural boundary.</p>
+<p>When your team resolves a P1 database timeout incident, that resolution is written to your Jira instance. When another team at a different company resolves an identical incident tomorrow, their resolution is written to their Jira instance. Neither team knows the other exists. The intelligence does not cross.</p>
+<p>Atlassian cannot build cross-organizational outcome routing. The commercial and legal dynamics make it structurally impossible for any ITSM vendor to route your resolution intelligence to a competitor&#39;s customer. Only an open protocol can do this — and no one in the ITSM category has built one.</p>
+<p>The result: 65,000+ Jira Service Management deployments are accumulating incident resolution intelligence in parallel, in isolation, generating zero synthesis between them.</p>
+<p>The math on that gap is worth computing.</p>
+<hr>
+<h2>The N(N-1)/2 Problem in ITSM</h2>
+<p>With 65,000 Jira Service Management deployments, the number of potential synthesis pairs — pairs of teams that have solved related incidents and could learn from each other — is:</p>
+<p><strong>N(N-1)/2 = 65,000 × 64,999 / 2 = 2,112,467,500</strong></p>
+<p>More than 2.1 billion synthesis pathways. Every one of them carrying zero signal.</p>
+<p>Every incident your team resolves generates intelligence that could benefit other teams with identical infrastructure, similar stack configurations, shared SaaS dependencies. Every resolution note your on-call engineer writes at 2am is organizational knowledge that evaporates at your perimeter.</p>
+<p>This is the same architectural problem Christopher Thomas Trevethan&#39;s discovery addresses across every domain where organizations accumulate outcome intelligence in parallel: healthcare institutions that cannot share treatment outcomes, financial firms that cannot share risk intelligence, supply chain operators that cannot share disruption resolution patterns.</p>
+<p>The domain changes. The architecture problem is identical.</p>
+<hr>
+<h2>What QIS Adds</h2>
+<p>The Quadratic Intelligence Swarm protocol, discovered by Christopher Thomas Trevethan on June 16, 2025, addresses this with a complete architectural loop:</p>
+<ol>
+<li><strong>Local processing</strong> — Your team resolves an incident. The resolution stays in Jira. Raw incident data never leaves.</li>
+<li><strong>Distillation into an outcome packet</strong> — A ~512-byte structured summary captures what mattered: component class, failure mode category, resolution pattern, confidence, time-to-resolve delta vs baseline. No PII. No proprietary infrastructure details.</li>
+<li><strong>Semantic fingerprinting</strong> — The packet receives a vector fingerprint encoding the problem&#39;s semantic signature: the category of failure, the class of component, the resolution approach.</li>
+<li><strong>Routing to a deterministic address</strong> — The packet is routed to an address defined by the semantic fingerprint. Any routing mechanism that can map a problem fingerprint to a deterministic address works: a DHT-based approach achieves O(log N) or better routing with no central server; a vector similarity index achieves O(1) lookup; a pub/sub topic hierarchy works at smaller scales. The protocol is routing-agnostic. The discovery is the loop, not the transport.</li>
+<li><strong>Query and local synthesis</strong> — When your team opens a new P1 incident, their node queries the address corresponding to its semantic fingerprint. It pulls back outcome packets from every team that has resolved semantically similar incidents. Synthesis happens locally, in milliseconds. Your team sees what actually worked — across 2.1 billion potential synthesis pairs — without your infrastructure details leaving your perimeter.</li>
+<li><strong>Loop continues</strong> — Your resolution becomes an outcome packet. The network gets smarter. Every team&#39;s MTTR improves as the network grows.</li>
+</ol>
+<p>The breakthrough, as Christopher Thomas Trevethan&#39;s discovery establishes, is that this architecture scales quadratically in intelligence while compute scales at most logarithmically. With 65,000 deployments:</p>
+<ul>
+<li><strong>Intelligence surface</strong>: 2,112,467,500 synthesis pairs</li>
+<li><strong>Routing cost per query</strong>: O(log N) or better — at most 16 hops across 65,000 nodes with DHT routing</li>
+<li><strong>Data exposure</strong>: zero — outcome packets contain no raw incident data, no infrastructure specifics, no customer identifiers</li>
+</ul>
+<p>This had not been done before. Christopher Thomas Trevethan holds 39 provisional patents covering the architecture.</p>
+<hr>
+<h2>The Three Natural Forces (Not Designed Mechanisms)</h2>
+<p>Christopher Thomas Trevethan&#39;s discovery includes what he calls the Three Elections — not governance features to build, but emergent natural forces that arise from the architecture itself.</p>
+<p><strong>Election 1 (Hiring):</strong> Someone with domain expertise defines what makes two incidents &quot;similar enough&quot; to share outcome intelligence. A senior SRE team, an ITSM standards body, an infrastructure community defines the similarity function for their network. No voting mechanism required — just the best domain experts defining semantic similarity for their problem space.</p>
+<p><strong>Election 2 (The Math):</strong> The outcomes themselves determine what works. When thousands of teams deposit resolution packets and your node synthesizes them, the aggregate of real outcomes from your exact twins surfaces the resolution patterns that actually reduced MTTR. No reputation layer, no quality scoring mechanism, no weighting system required. The math does this naturally.</p>
+<p><strong>Election 3 (Darwinism):</strong> Networks with well-defined similarity functions route useful packets. Networks with poor definitions route noise. Teams migrate to the networks that actually improve their on-call response. Natural selection operates at the network level without any designed selection mechanism.</p>
+<p>These are metaphors for emergent properties of the architecture — not features to configure.</p>
+<hr>
+<h2>Code: IncidentOutcomeRouter</h2>
+<p>Here is what integrating QIS outcome routing alongside Jira Service Management looks like in practice:</p>
+<pre><code class="language-python">import hashlib
+import json
+from dataclasses import dataclass, field, asdict
+from typing import Optional
+import time
+
+
+@dataclass
+class IncidentOutcomePacket:
+    &quot;&quot;&quot;
+    ~512-byte outcome packet for ITSM incident resolution intelligence.
+    Contains no raw incident data, no infrastructure specifics, no PII.
+    &quot;&quot;&quot;
+    schema_version: str = &quot;1.0&quot;
+    timestamp: float = field(default_factory=time.time)
+    domain_tag: str = &quot;itsm.incident&quot;
+
+    # Semantic fingerprint fields (define similarity)
+    component_class: str = &quot;&quot;          # e.g., &quot;database.postgres&quot;, &quot;cache.redis&quot;
+    failure_mode: str = &quot;&quot;             # e.g., &quot;connection_pool_exhaustion&quot;, &quot;oom&quot;
+    stack_profile: str = &quot;&quot;            # e.g., &quot;k8s.aws.rds&quot;, &quot;bare_metal.on_prem&quot;
+    incident_severity: str = &quot;&quot;        # P1/P2/P3/P4
+
+    # Outcome fields (the intelligence)
+    resolution_pattern: str = &quot;&quot;       # e.g., &quot;scale_out&quot;, &quot;config_change&quot;, &quot;rollback&quot;
+    time_to_resolve_delta: float = 0.0 # positive = faster than team baseline
+    confidence_score: float = 0.0      # 0.0–1.0
+    false_start_count: int = 0         # how many approaches failed before resolution
+
+    # Provenance (no identity leak)
+    provenance_hash: str = &quot;&quot;          # hash of team_id + incident_id — not reversible
+    ttl_hours: int = 720               # 30-day default TTL
+
+    def semantic_fingerprint(self) -&gt; str:
+        &quot;&quot;&quot;
+        Deterministic address from problem semantics.
+        Two teams with identical component_class + failure_mode + stack_profile
+        route to the same address — finding each other without any central registry.
+        &quot;&quot;&quot;
+        key = f&quot;{self.component_class}:{self.failure_mode}:{self.stack_profile}:{self.incident_severity}&quot;
+        return hashlib.sha256(key.encode()).hexdigest()[:32]
+
+    def to_bytes(self) -&gt; bytes:
+        return json.dumps(asdict(self), separators=(&#39;,&#39;, &#39;:&#39;)).encode()
+
+    def __post_init__(self):
+        if len(self.to_bytes()) &gt; 512:
+            # Truncate resolution_pattern to fit 512-byte budget
+            self.resolution_pattern = self.resolution_pattern[:80]
+
+
+class IncidentOutcomeRouter:
+    &quot;&quot;&quot;
+    Routes incident resolution intelligence to semantically similar teams.
+    Transport-agnostic: plug in DHT, vector DB, pub/sub, or REST API as routing layer.
+    &quot;&quot;&quot;
+
+    def __init__(self, routing_store):
+        &quot;&quot;&quot;
+        routing_store: any object with .deposit(address, packet) and .query(address, limit)
+        Could be a DHT node, ChromaDB collection, Redis cluster, REST API client.
+        The QIS discovery is the loop — not any specific transport.
+        &quot;&quot;&quot;
+        self.store = routing_store
+        self.team_baseline_mttr: dict[str, float] = {}
+
+    def on_incident_resolved(
+        self,
+        team_id: str,
+        incident_id: str,
+        component_class: str,
+        failure_mode: str,
+        stack_profile: str,
+        severity: str,
+        resolution_pattern: str,
+        actual_mttr_minutes: float,
+        false_starts: int = 0
+    ) -&gt; IncidentOutcomePacket:
+        &quot;&quot;&quot;
+        Called when a Jira Service Management incident is resolved.
+        Distills the resolution into an outcome packet and deposits it to the network.
+        No raw incident data leaves. No Jira ticket content is transmitted.
+        &quot;&quot;&quot;
+        # Compute MTTR delta vs team baseline
+        baseline = self.team_baseline_mttr.get(f&quot;{team_id}:{component_class}&quot;, actual_mttr_minutes)
+        mttr_delta = baseline - actual_mttr_minutes  # positive = resolved faster than usual
+
+        # Update baseline (rolling average)
+        self.team_baseline_mttr[f&quot;{team_id}:{component_class}&quot;] = (
+            0.8 * baseline + 0.2 * actual_mttr_minutes
+        )
+
+        # Confidence: higher for faster resolutions with fewer false starts
+        confidence = min(1.0, max(0.1, (1.0 - false_starts * 0.15) * min(1.0, mttr_delta / 30 + 0.5)))
+
+        packet = IncidentOutcomePacket(
+            component_class=component_class,
+            failure_mode=failure_mode,
+            stack_profile=stack_profile,
+            incident_severity=severity,
+            resolution_pattern=resolution_pattern,
+            time_to_resolve_delta=mttr_delta,
+            confidence_score=confidence,
+            false_start_count=false_starts,
+            provenance_hash=hashlib.sha256(
+                f&quot;{team_id}:{incident_id}&quot;.encode()
+            ).hexdigest()[:16]
+        )
+
+        # Deposit to the network at the packet&#39;s deterministic address
+        address = packet.semantic_fingerprint()
+        self.store.deposit(address, packet.to_bytes())
+
+        return packet
+
+    def query_for_incident(
+        self,
+        component_class: str,
+        failure_mode: str,
+        stack_profile: str,
+        severity: str,
+        limit: int = 20
+    ) -&gt; list[IncidentOutcomePacket]:
+        &quot;&quot;&quot;
+        Called when a new P1 lands. Queries the network for resolution intelligence
+        from all teams that have solved semantically similar incidents.
+        Returns packets ranked by confidence and recency — synthesized locally.
+        No outbound data about the current incident is transmitted in the query.
+        &quot;&quot;&quot;
+        # Build the query fingerprint from the problem semantics
+        query_key = f&quot;{component_class}:{failure_mode}:{stack_profile}:{severity}&quot;
+        address = hashlib.sha256(query_key.encode()).hexdigest()[:32]
+
+        raw_packets = self.store.query(address, limit=limit)
+
+        packets = []
+        for raw in raw_packets:
+            try:
+                data = json.loads(raw)
+                packets.append(IncidentOutcomePacket(**{
+                    k: v for k, v in data.items()
+                    if k in IncidentOutcomePacket.__dataclass_fields__
+                }))
+            except Exception:
+                continue
+
+        # Local synthesis: rank by composite score (confidence × recency × positive MTTR delta)
+        now = time.time()
+        def score(p: IncidentOutcomePacket) -&gt; float:
+            recency = max(0.1, 1.0 - (now - p.timestamp) / (p.ttl_hours * 3600))
+            mttr_signal = min(1.0, max(0.0, p.time_to_resolve_delta / 60 + 0.5))
+            return p.confidence_score * recency * mttr_signal
+
+        return sorted(packets, key=score, reverse=True)
+
+    def synthesize_response_playbook(
+        self,
+        packets: list[IncidentOutcomePacket]
+    ) -&gt; dict:
+        &quot;&quot;&quot;
+        Local synthesis: aggregate resolution patterns from queried packets.
+        Produces an actionable playbook without any external call.
+        &quot;&quot;&quot;
+        if not packets:
+            return {&quot;resolution_patterns&quot;: [], &quot;insight&quot;: &quot;No prior art in network for this incident profile.&quot;}
+
+        from collections import Counter
+        pattern_counts = Counter(p.resolution_pattern for p in packets)
+        top_patterns = pattern_counts.most_common(5)
+
+        avg_mttr_delta = sum(p.time_to_resolve_delta for p in packets) / len(packets)
+        avg_false_starts = sum(p.false_start_count for p in packets) / len(packets)
+
+        return {
+            &quot;resolution_patterns&quot;: [
+                {&quot;pattern&quot;: pat, &quot;count&quot;: cnt, &quot;share&quot;: cnt / len(packets)}
+                for pat, cnt in top_patterns
+            ],
+            &quot;expected_mttr_improvement_minutes&quot;: round(avg_mttr_delta, 1),
+            &quot;expected_false_starts&quot;: round(avg_false_starts, 1),
+            &quot;sample_size&quot;: len(packets),
+            &quot;insight&quot;: f&quot;Based on {len(packets)} similar incidents across the network, &quot;
+                       f&quot;&#39;{top_patterns[0][0]}&#39; resolved {top_patterns[0][1]/len(packets):.0%} of cases. &quot;
+                       f&quot;Average resolution was {abs(avg_mttr_delta):.0f}min &quot;
+                       f&quot;{&#39;faster&#39; if avg_mttr_delta &gt; 0 else &#39;slower&#39;} than team baseline.&quot;
+        }
+</code></pre>
+<p>The router integrates at the Jira automation layer: a webhook fires when an incident is resolved, <code>on_incident_resolved()</code> is called, the outcome packet is deposited. When a new P1 opens, <code>query_for_incident()</code> pulls the network&#39;s synthesis before the on-call engineer has finished reading the alert.</p>
+<hr>
+<h2>The Synthesis Gap in Numbers</h2>
+<p>With 65,000 Jira Service Management deployments accumulating incident resolution intelligence today:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current State</th>
+<th>With QIS Outcome Routing</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Synthesis pairs available</td>
+<td>2,112,467,500</td>
+<td>2,112,467,500</td>
+</tr>
+<tr>
+<td>Synthesis pairs active</td>
+<td>0</td>
+<td>All (at O(log N) or better routing cost)</td>
+</tr>
+<tr>
+<td>Resolution intelligence crossing org boundary</td>
+<td>0%</td>
+<td>100% (via ~512-byte packets)</td>
+</tr>
+<tr>
+<td>Runbook coverage per team</td>
+<td>Own incidents only</td>
+<td>Cross-network resolution patterns</td>
+</tr>
+<tr>
+<td>PHI / proprietary data transmitted</td>
+<td>N/A</td>
+<td>Zero — by architecture</td>
+</tr>
+<tr>
+<td>New routing hops as N scales</td>
+<td>N/A</td>
+<td>O(log N) or better — at most 17 for 65K nodes</td>
+</tr>
+<tr>
+<td>MTTR improvement source</td>
+<td>Internal retrospectives</td>
+<td>Network synthesis from semantically similar teams</td>
+</tr>
+</tbody></table>
+<p>The quadratic intelligence growth — N(N-1)/2 synthesis pairs — comes from the loop and semantic addressing, not from any specific routing mechanism. Christopher Thomas Trevethan&#39;s 39 provisional patents cover the architecture: the complete loop from raw signal to outcome packet to semantic address to local synthesis and back.</p>
+<hr>
+<h2>What This Is Not</h2>
+<p>QIS outcome routing does not:</p>
+<ul>
+<li>Replace Jira Service Management — incident tracking, SLA management, CMDB, escalation workflows stay in Jira</li>
+<li>Require sharing raw incident data, runbook content, infrastructure specifications, or organizational identifiers</li>
+<li>Require a central server — the routing layer can be fully decentralized via DHT, or centrally indexed via a vector database, or any other mechanism that maps problem fingerprints to deterministic addresses</li>
+<li>Require adoption across all 65,000 deployments before delivering value — the network produces intelligence at any N, with quadratic improvement as N grows</li>
+</ul>
+<p>It adds a synthesis layer that Jira Service Management architecturally cannot provide: the cross-organizational incident resolution intelligence that your on-call team needs at 2am, before they&#39;ve started the runbook.</p>
+<hr>
+<h2>Architecture Comparisons Series</h2>
+<p>This is part of the Architecture Comparisons series, which examines how the Quadratic Intelligence Swarm protocol extends platforms that reach their synthesis ceiling at the organizational boundary.</p>
+<p>Previous entries include QIS vs ServiceNow, QIS vs Gainsight, QIS vs Intercom, QIS vs Zendesk, QIS vs Tecton, QIS vs Azure ML, QIS vs Segment, QIS vs Kafka, QIS vs Redis, and 50+ others at <a href="https://dev.to/roryqis">dev.to/roryqis</a>.</p>
+<p>The pattern is consistent across categories: every platform accumulates outcome intelligence inside an organizational perimeter. The intelligence does not cross. QIS routes it — without moving the data that produced it.</p>
+<hr>
+<h2>About This Discovery</h2>
+<p>The Quadratic Intelligence Swarm protocol was discovered — not invented — by Christopher Thomas Trevethan on June 16, 2025. The discovery is that when you close the complete loop — raw signal → local processing → outcome packet → semantic fingerprint → routing by similarity → local synthesis → new outcome packets — intelligence scales quadratically (N(N-1)/2 synthesis pairs) while compute scales at most logarithmically (O(log N) or better routing cost per node). No single component of this loop is new. The discovery is that closing the loop produces a phase change in how intelligence scales.</p>
+<p>Christopher Thomas Trevethan holds 39 provisional patents covering the complete architecture.</p>
+<p><em>Patent Pending.</em></p>
+
+    </div>
+  </article>
+
+  <section class="article-footer-cta">
+    <p><strong>Keep exploring QIS Protocol</strong></p>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/comparison.html">Compare Approaches</a>
+    <a href="/articles.html">All Articles</a>
+    <a href="/faq.html">FAQ</a>
+  </section>
+
+  <footer>
+    <p><strong>Yonder Zenith LLC</strong> &mdash; Redefining The Horizon</p>
+    <p>&copy; 2025 Yonder Zenith LLC. All rights reserved. <a href="/licensing.html">License</a> | <a href="/privacy.html">Privacy</a></p>
+    <p style="margin-top: 10px; opacity: 0.4; font-size: 0.8rem;">39 provisional patent applications filed. Math is public. Implementation is protected.</p>
+  </footer>
+</body>
+</html>

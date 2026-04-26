@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMPC09C3R0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WMPC09C3R0');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Autotask PSA is the operational backbone for 21,000 managed service providers. QIS routes the resolution intelligence it cannot.">
+  <meta name="keywords" content="distributedsystems, devops, architecture, machinelearning">
+  <meta name="author" content="Yonder Zenith LLC">
+  <link rel="canonical" href="https://qisprotocol.com/article-qis-vs-autotask-psa.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="QIS vs Autotask PSA: 21,000 MSPs Use the Same Platform. Not One Resolution Has Ever Crossed From One to the Other.">
+  <meta property="og:description" content="Autotask PSA is the operational backbone for 21,000 managed service providers. QIS routes the resolution intelligence it cannot.">
+  <meta property="og:url" content="https://qisprotocol.com/article-qis-vs-autotask-psa.html">
+  <meta property="og:site_name" content="QIS Protocol">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QIS vs Autotask PSA: 21,000 MSPs Use the Same Platform. Not One Resolution Has Ever Crossed From One to the Other.">
+  <meta name="twitter:description" content="Autotask PSA is the operational backbone for 21,000 managed service providers. QIS routes the resolution intelligence it cannot.">
+
+  <title>QIS vs Autotask PSA: 21,000 MSPs Use the Same Platform. Not One Resolution Has Ever Crossed From One to the Other.</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://qisprotocol.com/#organization",
+      "name": "Yonder Zenith LLC",
+      "url": "https://qisprotocol.com",
+      "logo": "https://qisprotocol.com/images/logo.png",
+      "founder": {
+        "@id": "https://qisprotocol.com/#inventor"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://qisprotocol.com/#inventor",
+      "name": "Christopher Thomas Trevethan",
+      "jobTitle": "QIS Protocol Architect, Founder of Yonder Zenith LLC",
+      "affiliation": {
+        "@id": "https://qisprotocol.com/#organization"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "QIS vs Autotask PSA: 21,000 MSPs Use the Same Platform. Not One Resolution Has Ever Crossed From One to the Other.",
+      "description": "Autotask PSA is the operational backbone for 21,000 managed service providers. QIS routes the resolution intelligence it cannot.",
+      "url": "https://qisprotocol.com/article-qis-vs-autotask-psa.html",
+      "mainEntityOfPage": "https://qisprotocol.com/article-qis-vs-autotask-psa.html",
+      "datePublished": "2026-04-26",
+      "dateModified": "2026-04-26",
+      "author": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://qisprotocol.com/#organization"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "QIS Protocol — Quadratic Intelligence Swarm",
+        "url": "https://qisprotocol.com"
+      },
+      "keywords": "distributedsystems, devops, architecture, machinelearning"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://qisprotocol.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://qisprotocol.com/articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QIS vs Autotask PSA: 21,000 MSPs Use the Same Platform. Not One Resolution Has Ever Crossed From One to the Other.",
+          "item": "https://qisprotocol.com/article-qis-vs-autotask-psa.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --cyan-primary: #00BEEA; --cyan-bright: #00D9FF; --purple-quantum: #8B5CF6;
+      --green-neural: #10B981; --gold-accent: #F59E0B; --red-accent: #EF4444;
+      --dark-bg: #0A0A0A; --text-primary: #E8F5E9;
+      --text-secondary: rgba(232, 245, 233, 0.8); --text-muted: rgba(232, 245, 233, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; line-height: 1.8; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(0,190,234,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .article-hero { padding: 140px clamp(16px, 4vw, 40px) 40px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .article-badge {
+      display: inline-block; padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 1.5px; color: var(--cyan-bright); background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 20px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .article-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.6rem, 3.8vw, 2.6rem); font-weight: 900;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--cyan-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 20px; line-height: 1.2; }
+    .article-byline { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .article-byline strong { color: var(--text-secondary); }
+    .in-brief { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(0,190,234,0.08));
+      border-left: 4px solid var(--purple-quantum); border-radius: 0 12px 12px 0;
+      padding: clamp(18px, 3vw, 28px); margin-bottom: 40px; }
+    .in-brief-label { font-family: 'Orbitron', sans-serif; font-size: 0.72rem; color: var(--purple-quantum); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .in-brief p { font-size: clamp(0.95rem, 1.3vw, 1.1rem); color: var(--text-primary); line-height: 1.7; margin: 0; font-style: italic; }
+    .article-body { max-width: 780px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 60px; position: relative; z-index: 1; font-size: 1.05rem; color: var(--text-secondary); }
+    .article-body h2 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.2rem, 2.3vw, 1.7rem); color: var(--cyan-bright); margin: 50px 0 18px; }
+    .article-body h3 { font-family: 'Orbitron', sans-serif; font-size: clamp(1rem, 1.7vw, 1.25rem); color: var(--text-primary); margin: 32px 0 14px; }
+    .article-body h4 { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 24px 0 10px; }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { margin: 0 0 18px 22px; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text-primary); }
+    .article-body a { color: var(--cyan-bright); text-decoration: none; border-bottom: 1px solid rgba(0, 217, 255, 0.25); }
+    .article-body a:hover { border-bottom-color: var(--cyan-bright); }
+    .article-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: rgba(0, 190, 234, 0.08); padding: 2px 6px; border-radius: 4px; color: var(--cyan-bright); }
+    .article-body pre { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 190, 234, 0.15); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; }
+    .article-body pre code { background: transparent; padding: 0; color: var(--text-primary); }
+    .article-body blockquote { border-left: 4px solid var(--green-neural); padding: 8px 20px; margin: 20px 0; background: rgba(16, 185, 129, 0.04); color: var(--text-primary); font-style: italic; }
+    .article-body hr { border: none; border-top: 1px solid rgba(0, 190, 234, 0.15); margin: 40px 0; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    .article-body th, .article-body td { padding: 10px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: left; }
+    .article-body th { color: var(--cyan-bright); font-family: 'Orbitron', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .article-footer-cta { max-width: 780px; margin: 40px auto; padding: 30px; background: rgba(0, 190, 234, 0.04); border: 1px solid rgba(0, 190, 234, 0.2); border-radius: 12px; text-align: center; position: relative; z-index: 1; }
+    .article-footer-cta p { color: var(--text-secondary); margin-bottom: 16px; }
+    .article-footer-cta a { display: inline-block; padding: 10px 24px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid var(--cyan-bright); color: var(--cyan-bright); text-decoration: none; border-radius: 30px; margin: 4px; transition: all 0.3s ease; }
+    .article-footer-cta a:hover { background: var(--cyan-bright); color: #000; }
+    footer { background: #000; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 190, 234, 0.15); }
+    footer p { color: var(--text-secondary); margin-bottom: 6px; font-size: 0.85rem; }
+    footer a { color: var(--cyan-bright); text-decoration: none; }
+  </style>
+<script>
+  (function(ss,ex){
+    window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));};
+    (function(d,s){
+      fs=d.getElementsByTagName(s)[0];
+      function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); };
+      ce('https://sc.lfeeder.com/lftracker_v1_lAxoEaKQb9v7OYGd.js');
+    })(document,'script');
+  })('lAxoEaKQb9v7OYGd');
+</script>
+</head>
+<body>
+
+<!-- ==================== CANONICAL NAV v2 (auto-injected from data/canonical-ia.json) ==================== -->
+<nav class="qis-nav" data-qis-nav="v2">
+  <a href="/" class="qis-nav-logo">
+    <img src="images/favicon.png" alt="QIS Protocol">
+    <span>QIS PROTOCOL</span>
+  </a>
+  <button class="qis-nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.qis-nav-links').classList.toggle('qis-nav-open');">&#9776;</button>
+  <ul class="qis-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/how-it-works.html">How It Works</a></li>
+    <li class="qis-nav-has-dropdown">
+      <a href="/healthcare.html" aria-haspopup="true">Use Cases <span aria-hidden="true">&#9662;</span></a>
+      <ul class="qis-nav-submenu">
+        <li><a href="/healthcare.html">Healthcare</a></li>
+        <li><a href="/agriculture.html">Agriculture</a></li>
+        <li><a href="/emergency.html">Emergency Response</a></li>
+      </ul>
+    </li>
+    <li><a href="/demos.html">Demos</a></li>
+    <li><a href="/articles.html">Articles</a></li>
+    <li><a href="/licensing.html">Licensing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<style>
+  .qis-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 3vw, 40px); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,190,234,0.2); font-family: 'Rajdhani', sans-serif; }
+  .qis-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .qis-nav-logo img { width: clamp(28px, 4vw, 40px); height: auto; filter: drop-shadow(0 0 10px rgba(0,190,234,0.5)); }
+  .qis-nav-logo span { font-family: 'Orbitron', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.15rem); font-weight: 700; color: #00D9FF; letter-spacing: 1px; }
+  .qis-nav-burger { display: none; background: transparent; border: 1px solid rgba(0,190,234,0.4); color: #00D9FF; font-size: 1.3rem; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .qis-nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+  .qis-nav-links > li { position: relative; }
+  .qis-nav-links a { color: rgba(232,245,233,0.85); text-decoration: none; font-size: clamp(0.85rem, 1.05vw, 0.98rem); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 4px; display: block; transition: color 0.2s ease; }
+  .qis-nav-links a:hover, .qis-nav-links a:focus { color: #00D9FF; }
+  .qis-nav-has-dropdown > a::after { content: ''; }
+  .qis-nav-submenu { list-style: none; margin: 0; padding: 10px 0; position: absolute; top: calc(100% + 4px); left: 0; background: rgba(10,10,10,0.97); border: 1px solid rgba(0,190,234,0.25); border-radius: 10px; min-width: 200px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .qis-nav-has-dropdown:hover .qis-nav-submenu, .qis-nav-has-dropdown:focus-within .qis-nav-submenu { display: block; }
+  .qis-nav-submenu a { padding: 8px 18px; text-transform: none; letter-spacing: 0.5px; font-weight: 500; }
+  @media (max-width: 900px) {
+    .qis-nav-burger { display: flex; align-items: center; justify-content: center; }
+    .qis-nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; align-items: stretch; gap: 0; padding: 12px 0; border-bottom: 1px solid rgba(0,190,234,0.2); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .qis-nav-links.qis-nav-open { max-height: 80vh; overflow-y: auto; }
+    .qis-nav-links > li { border-top: 1px solid rgba(0,190,234,0.1); }
+    .qis-nav-links a { padding: 14px 24px; font-size: 0.95rem; }
+    .qis-nav-submenu { position: static; display: block; background: rgba(0,0,0,0.4); border: none; border-radius: 0; padding: 0; box-shadow: none; min-width: 0; }
+    .qis-nav-submenu a { padding: 10px 40px; font-size: 0.88rem; opacity: 0.85; }
+  }
+</style>
+<!-- ==================== /CANONICAL NAV v2 ==================== -->
+
+
+  <article>
+    <header class="article-hero">
+      <div class="article-badge">distributedsystems</div>
+      <h1>QIS vs Autotask PSA: 21,000 MSPs Use the Same Platform. Not One Resolution Has Ever Crossed From One to the Other.</h1>
+      <div class="article-byline">
+        By <strong>Yonder Zenith Research</strong> • Published 2026-04-26 • <a href="/" style="color: var(--cyan-bright);">Yonder Zenith LLC</a>
+      </div>
+      <div class="in-brief"><div class="in-brief-label">In brief</div><p>Architecture Comparisons #67 | Article #325</p></div>
+    </header>
+    <div class="article-body">
+<h1>QIS vs Autotask PSA: 21,000 MSPs Use the Same Platform. Not One Resolution Has Ever Crossed From One to the Other.</h1>
+<p><em>Architecture Comparisons #67 | Article #325</em></p>
+<blockquote>
+<p><strong>Architecture Comparisons</strong> examines how Quadratic Intelligence Swarm (QIS) protocol — discovered by Christopher Thomas Trevethan, 39 provisional patents filed — relates to existing tools. Each entry maps where the tool stops and where QIS picks up.</p>
+</blockquote>
+<hr>
+<p>It is Thursday afternoon. A Datto RMM alert fires across a dozen of your managed endpoints: a Windows security update pushed Tuesday has introduced a regression in the Bitdefender GravityZone agent on Windows 11 22H2 machines. The interaction corrupts the WMI repository, cascading into failed backup job reports, false-positive hardware alerts, and a locked-out endpoint management agent.</p>
+<p>Your Level 2 engineer starts from scratch. Ninety minutes of live triage. A WMI rebuild. An Autotask ticket with meticulous resolution notes: the patch KB number, the affected GravityZone agent version range, the symptom sequence, and the three-command remediation that clears the corruption in fifteen minutes.</p>
+<p>Your resolution exists. It is in Autotask. And by architecture, it will stay there.</p>
+<p>Twenty other MSPs opened the same incident six hours ago. Several are on the phone with Bitdefender support. A few will spend tomorrow rebuilding WMI on fifty endpoints, writing the same remediation your engineer finished before dinner.</p>
+<p>Autotask PSA captures resolutions. It does not route them.</p>
+<p>That distinction is not a feature gap. It is an architectural boundary with a mathematical consequence that compounds every single week.</p>
+<hr>
+<h2>What Autotask PSA Gets Right</h2>
+<p>Autotask PSA, built by Datto and now part of the Kaseya platform, is one of the two dominant professional services automation systems in the MSP market. Approximately 21,000 MSPs globally run their operations on it.</p>
+<p>The ticketing engine handles the full incident lifecycle with configurable workflows for triage, assignment, escalation, and SLA clock management. The SLA module tracks first-response and resolution time per contract tier with breach-risk dashboards. Contract and billing automation supports managed service agreements, block time, T&amp;M, and per-device models with automatic invoice generation. The Kaseya stack integration — Datto RMM alerts becoming Autotask tickets automatically, backup status flowing in, IT Glue documentation linked — makes the full platform coherent for shops running the full suite.</p>
+<p>For everything that happens inside a single MSP&#39;s business, Autotask PSA is a capable and battle-tested platform.</p>
+<p>Its architectural limit is not what it does. It is where it stops.</p>
+<hr>
+<h2>The Account Boundary Is an Intelligence Boundary</h2>
+<p>Autotask PSA is organized around accounts. Your MSP is an account. Each client is an account. Every ticket, resolution note, and contract exists inside your account&#39;s data boundary.</p>
+<p>That design is correct for a PSA. Client-specific context, billing, and SLA accountability require it.</p>
+<p>But the account boundary is also an intelligence boundary.</p>
+<p>There is no mechanism by which a resolution can reach any of the other 20,999 Autotask MSPs. Not through search. Not through a shared feed. Not through any mechanism Autotask&#39;s architecture supports — because Autotask was not built to operate as a cross-organization resolution network.</p>
+<p>The gap surfaces as time: ninety minutes of triage on a problem already solved, in an account you will never have access to, by an engineer whose resolution is waiting to be found by someone who cannot reach it.</p>
+<hr>
+<h2>The Mathematics of What Gets Lost</h2>
+<p>At a conservative 150 resolved tickets per week across 21,000 MSPs, the platform generates approximately 3.15 million documented resolutions every seven days.</p>
+<p>The combinatorial relationship:</p>
+<p>N(N-1)/2 = unique synthesis pairs for N MSPs</p>
+<p>For N = 21,000:</p>
+<p><strong>21,000 x 20,999 / 2 = 220,989,000 synthesis pairs</strong></p>
+<p>More than 220 million unique pairings, each representing a channel through which one MSP&#39;s resolution could reach a relevant peer. Today, every one of those pathways carries zero resolution intelligence. The resolutions exist. The MSPs exist. The relevance between them exists. The routing layer does not.</p>
+<hr>
+<h2>What QIS Does: A Routing Layer for Resolution Intelligence</h2>
+<p>QIS protocol — Quadratic Intelligence Swarm, discovered by Christopher Thomas Trevethan — operates at the layer between where Autotask stops and where cross-organization intelligence could begin.</p>
+<p>When an MSP engineer closes an Autotask ticket, a QIS node produces a distilled outcome packet. That packet compresses to approximately 512 bytes. It contains no client identifiers, device names, network addresses, contract terms, or billing data. It contains the abstract pattern of what was learned: the incident category, the environment class, the resolution pathway, the symptom sequence, and statistical signals — mean time to resolve, recurrence probability.</p>
+<p>The packet is semantically fingerprinted and routed to a deterministic address derived from its meaning. That address is the same for any MSP that encounters the same pattern — regardless of what transport mechanism carries the packet.</p>
+<p>When another MSP encounters the same cascade, their QIS node queries that address and retrieves the outcome packets already deposited. Milliseconds. No client data in the network layer. The synthesis happens locally.</p>
+<p>The engineer sees: &quot;31 similar incidents logged in the past 14 days. Dominant resolution: WMI rebuild via three-command sequence. Affected: GravityZone versions 7.6.x to 7.7.2 on Windows 11 22H2 post-KB5034765. Mean resolution time: 14 minutes.&quot;</p>
+<p>Their ninety-minute triage becomes fourteen minutes.</p>
+<p>This is the complete loop that Christopher Thomas Trevethan discovered. Not a single component — not the packet format, not the fingerprinting, not the addressing, not the transport. The architecture is the loop: pre-distillation at the source, semantic fingerprinting, deterministic addressing, protocol-agnostic routing, local synthesis at the destination. The breakthrough is that they compose into a system that routes intelligence without routing data.</p>
+<hr>
+<h2>Why This Is Architectural, Not a Feature Request</h2>
+<p>Autotask Community, Kaseya&#39;s knowledge base, and IT Glue exist as partial attempts to address this need. None closes the architectural gap.</p>
+<p>A knowledge base is manually populated. An engineer has to decide a resolution is worth publishing and submit it. The vast majority never clear that threshold. The result: the knowledge base captures what someone decided to publish, not what was actually useful to the network.</p>
+<p>QIS outcome routing fires on ticket close — the same event that triggers Autotask&#39;s billing automation. The packet is distilled automatically. The deposit happens automatically. The query happens automatically when a matching pattern is encountered.</p>
+<p>A knowledge base is a library. QIS is a routing protocol. Libraries require curators. Routing protocols route.</p>
+<hr>
+<h2>Code: Autotask Integration</h2>
+<pre><code class="language-python">import hashlib
+import json
+from dataclasses import dataclass
+from typing import Optional
+
+@dataclass
+class AutotaskResolutionPacket:
+    incident_category: str
+    environment_class: str
+    resolution_pathway: str
+    affected_version_range: str
+    trigger_event: str
+    symptom_sequence: list
+    mean_resolution_minutes: float
+    recurrence_probability: float
+    resolution_confidence: float
+
+def derive_semantic_address(packet: AutotaskResolutionPacket) -&gt; str:
+    fingerprint = (
+        f&quot;{packet.incident_category}:{packet.environment_class}:&quot;
+        f&quot;{packet.resolution_pathway}:{packet.trigger_event}&quot;
+    )
+    return hashlib.sha256(fingerprint.encode()).hexdigest()[:32]
+
+class AutotaskQISBridge:
+    def __init__(self, routing_store):
+        # routing_store accepts deposit(address, bytes) and query(address).
+        # DHT, vector index, REST API, shared folder — same pattern regardless.
+        self.store = routing_store
+
+    def on_ticket_complete(self, ticket: dict) -&gt; Optional[dict]:
+        packet = self._extract_packet(ticket)
+        if packet is None:
+            return None
+        address = derive_semantic_address(packet)
+        self.store.deposit(address, json.dumps(packet.__dict__).encode())
+        peer_packets = self.store.query(address, limit=50)
+        synthesis = self._synthesize_locally(peer_packets)
+        return {
+            &quot;semantic_address&quot;: address,
+            &quot;peer_resolutions_found&quot;: len(peer_packets),
+            &quot;dominant_pathway&quot;: synthesis.get(&quot;dominant_pathway&quot;),
+            &quot;mean_peer_resolution_minutes&quot;: synthesis.get(&quot;mean_resolution_minutes&quot;),
+            &quot;recurrence_probability&quot;: synthesis.get(&quot;recurrence_probability&quot;),
+            &quot;confidence&quot;: synthesis.get(&quot;confidence&quot;),
+        }
+
+    def _extract_packet(self, ticket: dict) -&gt; Optional[AutotaskResolutionPacket]:
+        category = ticket.get(&quot;issueType&quot;, &quot;&quot;)
+        resolution_notes = ticket.get(&quot;resolution&quot;, &quot;&quot;)
+        if not category or not resolution_notes:
+            return None
+        return AutotaskResolutionPacket(
+            incident_category=category.lower(),
+            environment_class=&quot;_&quot;.join(sorted(set(
+                i.get(&quot;type&quot;,&quot;&quot;).lower() for i in ticket.get(&quot;configurationItems&quot;,[])
+            )))[:64] or &quot;unclassified&quot;,
+            resolution_pathway=resolution_notes[:128].lower().replace(&quot; &quot;, &quot;_&quot;),
+            affected_version_range=ticket.get(&quot;affectedVersion&quot;, &quot;unknown&quot;),
+            trigger_event=ticket.get(&quot;changeTag&quot;, &quot;unspecified&quot;),
+            symptom_sequence=ticket.get(&quot;symptomTags&quot;, []),
+            mean_resolution_minutes=float(ticket.get(&quot;hoursWorked&quot;, 0)) * 60,
+            recurrence_probability=0.0,
+            resolution_confidence=0.75,
+        )
+
+    def _synthesize_locally(self, packets: list) -&gt; dict:
+        if not packets:
+            return {}
+        decoded = [json.loads(p) if isinstance(p, bytes) else p for p in packets]
+        pathways = [p.get(&quot;resolution_pathway&quot;, &quot;&quot;) for p in decoded]
+        dominant = max(set(pathways), key=pathways.count) if pathways else &quot;&quot;
+        times = [p.get(&quot;mean_resolution_minutes&quot;, 0) for p in decoded]
+        recurrences = [p.get(&quot;recurrence_probability&quot;, 0.0) for p in decoded]
+        return {
+            &quot;dominant_pathway&quot;: dominant,
+            &quot;mean_resolution_minutes&quot;: round(sum(times)/len(times), 1),
+            &quot;recurrence_probability&quot;: round(sum(recurrences)/len(recurrences), 3),
+            &quot;confidence&quot;: min(0.99, 0.5 + len(decoded) * 0.01),
+        }
+</code></pre>
+<p>The routing_store is deliberately abstract. A distributed hash table achieves at most O(log N) or better cost per lookup. A semantic vector index achieves O(1). A REST endpoint works for smaller federated networks. The architectural loop is identical regardless of which mechanism carries the packets.</p>
+<hr>
+<h2>Architecture Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Autotask PSA</th>
+<th>QIS Protocol</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ticket lifecycle management</td>
+<td>Full</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td>SLA tracking and breach alerting</td>
+<td>Full, per-contract</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td>Contract and billing automation</td>
+<td>Full</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td>Datto RMM / Kaseya integration</td>
+<td>Native</td>
+<td>Via webhook bridge at ticket close</td>
+</tr>
+<tr>
+<td>Internal knowledge base</td>
+<td>Account-scoped, manual</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td>Cross-MSP resolution routing</td>
+<td>None by architecture</td>
+<td>Core function</td>
+</tr>
+<tr>
+<td>Synthesis pairs at N=21,000</td>
+<td>0 (account boundary)</td>
+<td>220,989,000</td>
+</tr>
+<tr>
+<td>Client data in network layer</td>
+<td>N/A</td>
+<td>None by architecture</td>
+</tr>
+<tr>
+<td>Privacy model</td>
+<td>Contractual (BAA/DPA/GDPR)</td>
+<td>Structural (no client data enters packets)</td>
+</tr>
+<tr>
+<td>Routing mechanism</td>
+<td>Not applicable</td>
+<td>Protocol-agnostic (DHT, vector DB, REST, etc.)</td>
+</tr>
+<tr>
+<td>Routing cost per query</td>
+<td>Not applicable</td>
+<td>At most O(log N) or better; O(1) on many transports</td>
+</tr>
+<tr>
+<td>Latency to peer intelligence</td>
+<td>Never</td>
+<td>Milliseconds</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>The Kaseya Platform Context</h2>
+<p>IT Glue, Kaseya&#39;s documentation platform, is the closest existing mechanism to a knowledge-sharing layer. IT Glue shares documentation — manually authored write-ups that someone decided were worth publishing. It does not route resolutions. The curation overhead and lack of automatic distillation at ticket close mean the vast majority of resolution intelligence never enters IT Glue in shareable form.</p>
+<p>No combination of Kaseya products routes what happens when a ticket closes in one MSP to the technician opening the same pattern in another MSP. That routing layer is what QIS provides.</p>
+<hr>
+<h2>The MSP Intelligence Paradox</h2>
+<p>MSPs sell expertise. The product is accumulated resolution knowledge deployed faster than a client could deploy it themselves.</p>
+<p>Every one of those 21,000 Autotask MSPs builds this intelligence in isolation, even though the underlying incidents — patch regressions, firmware conflicts, SaaS API changes — are shared across the entire MSP ecosystem. The specific clients differ. The patterns do not.</p>
+<p>At N=21,000, the 220,989,000 synthesis pairs represent 220 million channels through which one MSP&#39;s resolution could reach the peer that will encounter it next. Today, all 220 million channels carry zero signal.</p>
+<hr>
+<h2>Conclusion</h2>
+<p>Autotask PSA is the operational system of record for a significant fraction of the global MSP industry. It manages ticket flow, SLA compliance, contract billing, and client relationships for 21,000 technology solution providers.</p>
+<p>Its architectural limit is the account boundary. Every resolution stays inside the MSP that generated it.</p>
+<p>At N=21,000, that produces 220,989,000 synthesis pairs that currently carry zero resolution intelligence.</p>
+<p>QIS protocol — Quadratic Intelligence Swarm, discovered by Christopher Thomas Trevethan, 39 provisional patents filed — routes outcome packets across those pairs. Not client data. Not account data. The abstract pattern of what was learned: distilled to 512 bytes, routed to a deterministic address, synthesized locally, delivered in milliseconds.</p>
+<p>Autotask PSA is your operational brain. QIS is the network memory it does not have.</p>
+<hr>
+<p><em>Architecture Comparisons series. Previous: <a href="https://qisprotocol.com/articles/qis-vs-connectwise-manage">QIS vs ConnectWise Manage</a>, <a href="https://qisprotocol.com/articles/qis-vs-solarwinds-service-desk">QIS vs SolarWinds Service Desk</a>, <a href="https://qisprotocol.com/articles/qis-vs-manageengine-service-desk">QIS vs ManageEngine Service Desk</a>, <a href="https://qisprotocol.com/articles/qis-vs-freshservice">QIS vs Freshservice</a>, <a href="https://qisprotocol.com/articles/qis-vs-opsgenie">QIS vs OpsGenie</a>, <a href="https://qisprotocol.com/articles/qis-vs-pagerduty">QIS vs PagerDuty</a>.</em></p>
+<p><em>QIS Protocol was discovered by Christopher Thomas Trevethan. 39 provisional patents filed. Patent Pending.</em></p>
+
+    </div>
+  </article>
+
+  <section class="article-footer-cta">
+    <p><strong>Keep exploring QIS Protocol</strong></p>
+    <a href="/how-it-works.html">How It Works</a>
+    <a href="/comparison.html">Compare Approaches</a>
+    <a href="/articles.html">All Articles</a>
+    <a href="/faq.html">FAQ</a>
+  </section>
+
+  <footer>
+    <p><strong>Yonder Zenith LLC</strong> &mdash; Redefining The Horizon</p>
+    <p>&copy; 2025 Yonder Zenith LLC. All rights reserved. <a href="/licensing.html">License</a> | <a href="/privacy.html">Privacy</a></p>
+    <p style="margin-top: 10px; opacity: 0.4; font-size: 0.8rem;">39 provisional patent applications filed. Math is public. Implementation is protected.</p>
+  </footer>
+</body>
+</html>
